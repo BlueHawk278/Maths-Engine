@@ -77,6 +77,7 @@ namespace MathsEngine.Modules.Core
             Console.Clear();
             Console.WriteLine("Welcome to the Statistics section");
             Console.ReadLine();
+            //
             Statistics.BivariateAnalysis.Calculate();
         }
     }
