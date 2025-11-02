@@ -1,7 +1,0 @@
-C:\Users\harry\OneDrive\Computer_Science\Programming\Projects\C#\MathsEngine\MathsEngine\bin\Debug\MathsEngine.exe.config
-C:\Users\harry\OneDrive\Computer_Science\Programming\Projects\C#\MathsEngine\MathsEngine\bin\Debug\MathsEngine.exe
-C:\Users\harry\OneDrive\Computer_Science\Programming\Projects\C#\MathsEngine\MathsEngine\bin\Debug\MathsEngine.pdb
-C:\Users\harry\OneDrive\Computer_Science\Programming\Projects\C#\MathsEngine\MathsEngine\obj\Debug\MathsEngine.csproj.AssemblyReference.cache
-C:\Users\harry\OneDrive\Computer_Science\Programming\Projects\C#\MathsEngine\MathsEngine\obj\Debug\MathsEngine.csproj.CoreCompileInputs.cache
-C:\Users\harry\OneDrive\Computer_Science\Programming\Projects\C#\MathsEngine\MathsEngine\obj\Debug\MathsEngine.exe
-C:\Users\harry\OneDrive\Computer_Science\Programming\Projects\C#\MathsEngine\MathsEngine\obj\Debug\MathsEngine.pdb
