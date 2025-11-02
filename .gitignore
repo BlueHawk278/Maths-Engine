@@ -29,3 +29,8 @@ TestResult.xml
 *.idea/
 *.DS_Store
 Thumbs.db
+
+
+CHANGELOG.md
+CHECKLIST.md
+ROADMAP.md

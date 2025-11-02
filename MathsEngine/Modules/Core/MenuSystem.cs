@@ -8,5 +8,76 @@ namespace MathsEngine.Modules.Core
 {
     internal class MenuSystem
     {
+        public static void showMainMenu()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("##### Welcome to the Maths Engine #####");
+                Console.WriteLine("1. Pure");
+                Console.WriteLine("2. Mechanics");
+                Console.WriteLine("3. Statistics");
+                Console.WriteLine("4. Exit");
+                string choice = Console.ReadLine().ToLower();
+
+                switch (choice)
+                {
+                    case "1":
+                        pureMenu();
+                        break;
+                    case "pure":
+                        pureMenu();
+                        break;
+
+                    case "2":
+                        mechanicsMenu();
+                        break;
+                    case "mechanics":
+                        mechanicsMenu();
+                        break;
+
+                    case "3":
+                        statisticsMethod();
+                        break;
+                    case "statistics":
+                        statisticsMethod();
+                        break;
+
+                    case "4":
+                        Console.WriteLine("Goodbye");
+                        return;
+                    case "exit":
+                        Console.WriteLine("Goodbye");
+                        return;
+
+                    default:
+                        Console.WriteLine("Invalid Input. Try again");
+                        Console.ReadLine();
+                        break;
+                }
+            }
+        }
+
+        private static void pureMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("Welcome to the Pure Maths section");
+            Console.ReadLine();
+        }
+
+        private static void mechanicsMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("Welcome to the Mechanics section");
+            Console.ReadLine();
+        }
+
+        private static void statisticsMethod()
+        {
+            Console.Clear();
+            Console.WriteLine("Welcome to the Statistics section");
+            Console.ReadLine();
+            Statistics.BivariateAnalysis.Calculate();
+        }
     }
 }
