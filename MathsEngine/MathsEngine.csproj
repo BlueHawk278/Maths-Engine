@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modules\Core\MenuSystem.cs" />
-    <Compile Include="Modules\Statistics\BivariateAnalysis.cs" />
+    <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysis.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
