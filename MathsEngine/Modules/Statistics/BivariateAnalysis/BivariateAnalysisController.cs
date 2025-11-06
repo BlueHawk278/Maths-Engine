@@ -26,6 +26,8 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             double correlation = getCorrelation();
             Console.WriteLine($"\nThe Spearman's Rank Correlation Coefficient is: {correlation:F3}");
 
+            displayAllInfo();
+
             Console.ReadLine();
         }
     }

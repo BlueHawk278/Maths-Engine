@@ -128,5 +128,43 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             
             return correlation;
         }
+
+        internal static void displayAllInfo()
+        {
+            Console.Write("n: ");
+            for(int i = 0; i < numDataPoints; ++i)
+                Console.Write(i + 1 + " ");
+            Console.WriteLine();
+
+            Console.Write("Score 1: ");
+            for (int i = 0; i < numDataPoints; ++i)
+                Console.Write(Score1[i] + " ");
+            Console.WriteLine();
+
+            Console.Write("Score 2: ");
+            for (int i = 0; i < numDataPoints; ++i)
+                Console.Write(Score2[i] + " ");
+            Console.WriteLine();
+
+            Console.Write("Rank 1: ");
+            for (int i = 0; i < numDataPoints; ++i)
+                Console.Write(Rank1[i] + " ");
+            Console.WriteLine();
+
+            Console.Write("Rank 2: ");
+            for (int i = 0; i < numDataPoints; ++i)
+                Console.Write(Rank2[i] + " ");
+            Console.WriteLine();
+
+            Console.Write("d: ");
+            for (int i = 0; i < numDataPoints; ++i)
+                Console.Write(Difference[i] + " ");
+            Console.WriteLine();
+
+            Console.Write("d^2: ");
+            for (int i = 0; i < numDataPoints; ++i)
+                Console.Write(differenceSquared[i] + " ");
+            Console.WriteLine();
+        }
     }
 }
