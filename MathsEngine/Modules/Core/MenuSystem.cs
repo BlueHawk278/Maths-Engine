@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MathsEngine.Modules.Statistics.BivariateAnalysis;
 
 namespace MathsEngine.Modules.Core
 {
@@ -25,28 +26,16 @@ namespace MathsEngine.Modules.Core
                     case "1":
                         pureMenu();
                         break;
-                    case "pure":
-                        pureMenu();
-                        break;
 
                     case "2":
                         mechanicsMenu();
                         break;
-                    case "mechanics":
-                        mechanicsMenu();
-                        break;
 
                     case "3":
-                        statisticsMethod();
-                        break;
-                    case "statistics":
-                        statisticsMethod();
+                        statisticsMenu();
                         break;
 
                     case "4":
-                        Console.WriteLine("Goodbye");
-                        return;
-                    case "exit":
                         Console.WriteLine("Goodbye");
                         return;
 
@@ -72,13 +61,13 @@ namespace MathsEngine.Modules.Core
             Console.ReadLine();
         }
 
-        private static void statisticsMethod()
+        private static void statisticsMenu()
         {
             Console.Clear();
             Console.WriteLine("Welcome to the Statistics section");
             Console.ReadLine();
-            //
-            Statistics.BivariateAnalysis.Calculate();
+
+            BivariateAnalysisController.Calculate();
         }
     }
 }

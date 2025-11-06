@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MathsEngine.Modules.Statistics.BivariateAnalysis
+{
+    internal class MathsVariables
+    {
+        internal static List<int> dataPoints = new List<int>();
+        internal static int numDataPoints = dataPoints.Count;
+
+        internal static List<int> Score1 = new List<int>();
+        internal static List<int> Score2 = new List<int>();
+
+        internal static List<double> Rank1 = new List<double>();
+        internal static List<double> Rank2 = new List<double>();
+
+        internal static List<double> Difference = new List<double>();
+        internal static List<double> differenceSquared = new List<double>();
+        internal static double sumDifferenceSquared = 0;
+    }
+}
