@@ -8,10 +8,17 @@ using static MathsEngine.Modules.Statistics.BivariateAnalysis.MathsVariables;
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 {
+    /// <summary>
+    /// Provides static methods for performing bivariate analysis calculations.
+    /// </summary>
+    /// <remarks>
+    /// This class relies on static variables defined in <see cref="MathsVariables"/> to store state,
+    /// such as data points, scores, and intermediate calculations.
+    /// </remarks>
     internal class AnalysisMethods
     {
         /// <summary>
-        /// Gets the number of data points and assigns them to the list
+        /// Prompts the user for the number of data points and initializes the data points list.
         /// </summary> 
         internal static void getNumDataPoints()
         {
@@ -26,8 +33,9 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         }
 
         /// <summary>
-        /// Gets scores from user input to be ranked
+        /// Prompts the user to enter a set of scores.
         /// </summary>
+        /// <param name="scores">The list to populate with the entered scores.</param>
         internal static void getScores(List<int> scores)
         {
             Console.WriteLine("Press any button to enter scores...");
@@ -44,6 +52,11 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             }
         }
 
+        /// <summary>
+        /// Calculates the ranks for a given list of scores, handling ties by averaging ranks.
+        /// </summary>
+        /// <param name="scores">The list of scores to rank.</param>
+        /// <param name="ranks">The list to populate with the calculated ranks.</param>
         internal static void getRanks(List<int> scores, List<double> ranks)
         {
             // Local copy of scores
@@ -89,6 +102,9 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             }
         }
 
+        /// <summary>
+        /// Calculates the absolute difference between corresponding ranks in <see cref="Rank1"/> and <see cref="Rank2"/>.
+        /// </summary>
         internal static void getDifference()
         {
             Difference.Clear();
@@ -99,6 +115,9 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             }
         }
 
+        /// <summary>
+        /// Calculates the square of each difference and the sum of these squared differences.
+        /// </summary>
         internal static void getDifferenceSquared()
         {
             differenceSquared.Clear();
@@ -111,6 +130,14 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             }
         }
 
+        /// <summary>
+        /// Calculates the Spearman's rank correlation coefficient.
+        /// </summary>
+        /// <returns>The correlation coefficient, a value between -1.0 and 1.0.</returns>
+        /// <remarks>
+        /// The formula used is: 1 - (6 * sum of squared differences) / (n * (n^2 - 1)).
+        /// The result is clamped to the range [-1.0, 1.0] to handle potential floating-point inaccuracies.
+        /// </remarks>
         internal static double getCorrelation()
         {
             // Correlation must be between -1 and 1
@@ -129,6 +156,9 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             return correlation;
         }
 
+        /// <summary>
+        /// Displays all collected and calculated data to the console.
+        /// </summary>      
         internal static void displayAllInfo()
         {
             Console.Write("n: ");

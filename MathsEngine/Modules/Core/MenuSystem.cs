@@ -65,9 +65,20 @@ namespace MathsEngine.Modules.Core
         {
             Console.Clear();
             Console.WriteLine("Welcome to the Statistics section");
-            Console.ReadLine();
+            Console.WriteLine("1. Bivariate Analysis");
+            Console.WriteLine("2. Standard Deviation");
+            string choice = Console.ReadLine();
 
-            BivariateAnalysisController.Calculate();
+            switch (choice)
+            {
+                case "1":
+                    BivariateAnalysisController.Calculate();
+                    break;
+                case "2":
+                    break;
+            }
+
+            Console.ReadLine();
         }
     }
 }
