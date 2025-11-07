@@ -69,16 +69,7 @@ namespace MathsEngine.Modules.Core
             Console.WriteLine("2. Standard Deviation");
             string choice = Console.ReadLine();
 
-            switch (choice)
-            {
-                case "1":
-                    BivariateAnalysisController.Calculate();
-                    break;
-                case "2":
-                    break;
-            }
-
-            Console.ReadLine();
+            BivariateAnalysisController.Calculate();
         }
     }
 }
