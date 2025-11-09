@@ -22,6 +22,8 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
             Methods.getRange();
 
             Methods.displayData();
+
+            Console.ReadKey();
         }
     }
 }

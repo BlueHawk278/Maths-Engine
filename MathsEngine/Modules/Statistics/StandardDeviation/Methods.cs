@@ -55,7 +55,10 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
         {
             mode.Clear();
             if (sortedValues == null || sortedValues.Count == 0)
+            {
+                Mode = double.NaN; // No values, so no mode.
                 return;
+            }
 
             int maxCount = 0;
             int currentCount = 1;
@@ -101,6 +104,16 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
             {
                 mode.Clear();
             }
+
+            // Assign to the single Mode variable
+            if (mode.Count > 0)
+            {
+                Mode = mode[0]; // Assigns the first found mode.
+            }
+            else
+            {
+                Mode = double.NaN; // Represents that there is no mode.
+            }
         }
         internal static void getMedian()
         {
@@ -122,15 +135,13 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
 
         internal static void getIQR()
         {
-            IQR = getQ3() - getQ1();
+            IQR = Q3 - Q1;
         }
-        internal static double getQ1()
+        internal static void getQ1()
         {
-            return 0;
         }
-        internal static double getQ3()
+        internal static void getQ3()
         {
-            return 0;
         }
 
         internal static void displayData()
