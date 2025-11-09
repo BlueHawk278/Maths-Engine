@@ -8,7 +8,7 @@ using static MathsEngine.Modules.Statistics.BivariateAnalysis.MathsVariables;
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 {
-    internal class BivariateAnalysisController
+    internal class BAController
     {
         public static void Calculate()
         {

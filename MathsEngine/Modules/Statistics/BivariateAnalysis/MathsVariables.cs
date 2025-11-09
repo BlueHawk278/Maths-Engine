@@ -9,7 +9,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
     internal class MathsVariables
     {
         internal static List<int> dataPoints = new List<int>();
-        internal static int numDataPoints = dataPoints.Count;
+        internal static int numDataPoints = 0;
 
         internal static List<int> Score1 = new List<int>();
         internal static List<int> Score2 = new List<int>();

@@ -45,8 +45,11 @@
   <ItemGroup>
     <Compile Include="Modules\Core\MenuSystem.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\AnalysisMethods.cs" />
-    <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysisController.cs" />
+    <Compile Include="Modules\Statistics\BivariateAnalysis\BAController.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\MathsVariables.cs" />
+    <Compile Include="Modules\Statistics\StandardDeviation\MathsVariables.cs" />
+    <Compile Include="Modules\Statistics\StandardDeviation\Methods.cs" />
+    <Compile Include="Modules\Statistics\StandardDeviation\SDController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

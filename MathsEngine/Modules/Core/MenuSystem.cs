@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MathsEngine.Modules.Statistics.BivariateAnalysis;
+using MathsEngine.Modules.Statistics.StandardDeviation;
 
 namespace MathsEngine.Modules.Core
 {
@@ -69,7 +70,14 @@ namespace MathsEngine.Modules.Core
             Console.WriteLine("2. Standard Deviation");
             string choice = Console.ReadLine();
 
-            BivariateAnalysisController.Calculate();
+            switch (choice)
+            {
+                case "1":
+                    BAController.Calculate();
+                    break;
+                case "2":
+                    SDController.
+            }
         }
     }
 }

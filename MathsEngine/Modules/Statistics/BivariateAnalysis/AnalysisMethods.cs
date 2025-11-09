@@ -42,13 +42,11 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             Console.ReadLine();
 
             scores.Clear();
-            int num = 0;
-            while (num < dataPoints.Count)
+            for(int i = 0; i < dataPoints.Count; i++)
             {
-                Console.Write($"Enter point {dataPoints[num]}: ");
-                int number = Convert.ToInt16(Console.ReadLine());
-                scores.Add(number);
-                num++;
+                Console.Write($"Enter points {dataPoints[i]}: ");
+                int num = Convert.ToInt16(Console.ReadLine());
+                scores.Add(num);
             }
         }
 
