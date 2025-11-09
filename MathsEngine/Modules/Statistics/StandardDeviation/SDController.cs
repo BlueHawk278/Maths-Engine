@@ -12,12 +12,15 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
         internal static void Calculate()
         {
             Methods.getNumDataPoints();
+
             Methods.getValues();
             Methods.sortValues();
+
             Methods.getMean();
             Methods.getMode();
             Methods.getMedian();
             Methods.getRange();
+
             Methods.displayData();
         }
     }

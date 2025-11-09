@@ -120,6 +120,19 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
             Range = sortedValues[numValues - 1] - sortedValues[0];
         }
 
+        internal static void getIQR()
+        {
+            IQR = getQ3() - getQ1();
+        }
+        internal static double getQ1()
+        {
+            return 0;
+        }
+        internal static double getQ3()
+        {
+            return 0;
+        }
+
         internal static void displayData()
         {
             Console.WriteLine("Mean: " + Mean);
