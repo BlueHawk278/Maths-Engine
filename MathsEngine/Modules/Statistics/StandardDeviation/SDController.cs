@@ -8,9 +8,17 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
 {
     internal class SDController
     {
-        static void calculate()
+        // Basic version
+        internal static void Calculate()
         {
-
+            Methods.getNumDataPoints();
+            Methods.getValues();
+            Methods.sortValues();
+            Methods.getMean();
+            Methods.getMode();
+            Methods.getMedian();
+            Methods.getRange();
+            Methods.displayData();
         }
     }
 }

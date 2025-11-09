@@ -76,7 +76,12 @@ namespace MathsEngine.Modules.Core
                     BAController.Calculate();
                     break;
                 case "2":
-                    SDController.
+                    SDController.Calculate();
+                    break;
+                default:
+                    Console.WriteLine("Sorry wrong input");
+                    statisticsMenu();
+                    break;
             }
         }
     }

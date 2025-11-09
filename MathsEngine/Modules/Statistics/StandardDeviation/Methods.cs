@@ -119,5 +119,13 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
         {
             Range = sortedValues[numValues - 1] - sortedValues[0];
         }
+
+        internal static void displayData()
+        {
+            Console.WriteLine("Mean: " + Mean);
+            Console.WriteLine("Median: " + Median);
+            Console.WriteLine("Mode: " + Mode);
+            Console.WriteLine("Range: " + Range);
+        }
     }
 }
