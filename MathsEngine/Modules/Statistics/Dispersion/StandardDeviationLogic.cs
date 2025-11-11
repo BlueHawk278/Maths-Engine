@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using static MathsEngine.Modules.Statistics.StandardDeviation.MathsVariables;
+using static MathsEngine.Modules.Statistics.StandardDeviation.Variables;
 
-namespace MathsEngine.Modules.Statistics.StandardDeviation
+namespace MathsEngine.Modules.Statistics.Dispersion
 {
-    internal class Methods
+    internal class StandardDeviationLogic
     {
         internal static void getNumDataPoints()
         {
@@ -115,7 +115,7 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
                 Mode = double.NaN; // Represents that there is no mode.
             }
         }
-        internal static void getMedian()
+        internal static void getMedian() // Q2
         {
             int midIndex = numValues / 2;
 
@@ -133,15 +133,40 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
             Range = sortedValues[numValues - 1] - sortedValues[0];
         }
 
-        internal static void getIQR()
+        // Get median and split into 2 lists Q1 median of lower one Q3 median of upper one
+        internal static void getInterQuartileRange()
         {
-            IQR = Q3 - Q1;
-        }
-        internal static void getQ1()
-        {
-        }
-        internal static void getQ3()
-        {
+            if (sortedValues == null || numValues < 4)
+            {
+                // Quartiles are not well-defined for fewer than 4 data points.
+                Q1 = double.NaN;
+                Q3 = double.NaN;
+                IQR = double.NaN;
+                return;
+            }
+
+            if (numValues % 2 == 0) // 0 Q1 1 Q2 2 Q3 3
+            {
+                List<double> upperHalf = new List<double>();
+                List<double> lowerHalf = new List<double>();
+                int midIndex = numValues / 2;
+
+                for(int i = 0; i < numValues; i++)
+                {
+                    if (originalValues[i] > Median)
+                    {
+                        upperHalf.Add(sortedValues[i]);
+                    }
+                    else if(originalValues[i] < Median)
+                    {
+                        lowerHalf.Add(sortedValues[i]);
+                    }
+                }
+            }
+            else if(numValues % 2 == 1)// 1 Q1 2 Q2 4 Q3 5
+            {
+
+            }
         }
 
         internal static void displayData()

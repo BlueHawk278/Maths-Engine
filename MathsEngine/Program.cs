@@ -12,7 +12,7 @@ namespace MathsEngine
     {
         static void Main(string[] args)
         {
-            MenuSystem.showMainMenu();
+            Core.Menu.Menu.mainMenu();
         }
     }
 }

@@ -43,13 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modules\Core\MenuSystem.cs" />
-    <Compile Include="Modules\Statistics\BivariateAnalysis\AnalysisMethods.cs" />
-    <Compile Include="Modules\Statistics\BivariateAnalysis\BAController.cs" />
-    <Compile Include="Modules\Statistics\BivariateAnalysis\MathsVariables.cs" />
-    <Compile Include="Modules\Statistics\StandardDeviation\MathsVariables.cs" />
-    <Compile Include="Modules\Statistics\StandardDeviation\Methods.cs" />
-    <Compile Include="Modules\Statistics\StandardDeviation\SDController.cs" />
+    <Compile Include="Core\Menu\Menu.cs" />
+    <Compile Include="Modules\Core\StatisticsHelpers\AverageCalculator.cs" />
+    <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysisLogic.cs" />
+    <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysis.cs" />
+    <Compile Include="Modules\Statistics\BivariateAnalysis\Variables.cs" />
+    <Compile Include="Modules\Statistics\Dispersion\Variables.cs" />
+    <Compile Include="Modules\Statistics\Dispersion\StandardDeviationLogic.cs" />
+    <Compile Include="Modules\Statistics\Dispersion\StandardDeviation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

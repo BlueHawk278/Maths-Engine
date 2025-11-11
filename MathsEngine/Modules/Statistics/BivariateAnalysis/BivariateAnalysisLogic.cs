@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using static MathsEngine.Modules.Statistics.BivariateAnalysis.MathsVariables;
+using static MathsEngine.Modules.Statistics.BivariateAnalysis.Variables;
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 {
@@ -12,10 +12,10 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
     /// Provides static methods for performing bivariate analysis calculations.
     /// </summary>
     /// <remarks>
-    /// This class relies on static variables defined in <see cref="MathsVariables"/> to store state,
+    /// This class relies on static variables defined in <see cref="Variables"/> to store state,
     /// such as data points, scores, and intermediate calculations.
     /// </remarks>
-    internal class AnalysisMethods
+    internal class BivariateAnalysisLogic
     {
         /// <summary>
         /// Prompts the user for the number of data points and initializes the data points list.

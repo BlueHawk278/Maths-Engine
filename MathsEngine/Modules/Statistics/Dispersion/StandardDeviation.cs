@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Statistics.StandardDeviation
 {
-    internal class SDController
+    internal class StandardDeviation
     {
         // Basic version
-        internal static void Calculate()
+        internal static void calculate()
         {
             Methods.getNumDataPoints();
 

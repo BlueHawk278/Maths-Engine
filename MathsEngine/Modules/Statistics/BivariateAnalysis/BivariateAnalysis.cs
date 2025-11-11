@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static MathsEngine.Modules.Statistics.BivariateAnalysis.AnalysisMethods;
-using static MathsEngine.Modules.Statistics.BivariateAnalysis.MathsVariables;
+using static MathsEngine.Modules.Statistics.BivariateAnalysis.BivariateAnalysisLogic;
+using static MathsEngine.Modules.Statistics.BivariateAnalysis.Variables;
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 {
-    internal class BAController
+    internal class BivariateAnalysis
     {
-        public static void Calculate()
+        public static void calculate()
         {
             getNumDataPoints();
 
