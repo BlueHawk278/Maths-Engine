@@ -9,10 +9,12 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
 {
     internal class StandardDeviation
     {
-        // Basic version
-        internal static void calculate()
+        internal static void calculate() // Initial logic as far as we can right now
         {
-            Variables.numValues = StandardDeviationLogic.getNumDataPoints();
+            StandardDeviationLogic.getNumDataPoints();
+            StandardDeviationLogic.getValues();
+            StandardDeviationLogic.sortValues();
+
 
             Console.ReadKey();
         }

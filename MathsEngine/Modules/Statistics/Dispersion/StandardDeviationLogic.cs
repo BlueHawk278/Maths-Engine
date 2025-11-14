@@ -10,7 +10,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion
 {
     internal class StandardDeviationLogic
     {
-        internal static int getNumValues()
+        internal static void getNumDataPoints()
         {
             Console.WriteLine("How many values would you like?");
             numValues = Convert.ToInt32(Console.ReadLine());
@@ -20,8 +20,6 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             {
                 originalValues.Add(i + 1);
             }
-
-            return numValues;
         }
 
         internal static void getValues()
@@ -40,99 +38,6 @@ namespace MathsEngine.Modules.Statistics.Dispersion
         {
             sortedValues = new List<double>(originalValues);
             sortedValues.Sort();
-        }
-
-        internal static void getMean()
-        {
-            double sum = 0;
-
-            for(int i = 0; i < numValues;i++)
-            {
-                sum += sortedValues[i];
-            }
-
-            Mean = sum / numValues;
-        }
-        internal static void getMode()
-        {
-            mode.Clear();
-            if (sortedValues == null || sortedValues.Count == 0)
-            {
-                Mode = double.NaN; // No values, so no mode.
-                return;
-            }
-
-            int maxCount = 0;
-            int currentCount = 1;
-            double currentNumber = sortedValues[0];
-
-            for (int i = 1; i < sortedValues.Count; i++)
-            {
-                if (sortedValues[i] == currentNumber)
-                {
-                    currentCount++;
-                }
-                else
-                {
-                    if (currentCount > maxCount)
-                    {
-                        maxCount = currentCount;
-                        mode.Clear();
-                        mode.Add(currentNumber);
-                    }
-                    else if (currentCount == maxCount)
-                    {
-                        mode.Add(currentNumber);
-                    }
-                    currentNumber = sortedValues[i];
-                    currentCount = 1;
-                }
-            }
-
-            // Final check for the last group of numbers
-            if (currentCount > maxCount)
-            {
-                maxCount = currentCount;
-                mode.Clear();
-                mode.Add(currentNumber);
-            }
-            else if (currentCount == maxCount)
-            {
-                mode.Add(currentNumber);
-            }
-
-            // If no number appears more than once, there is no mode
-            if (maxCount <= 1)
-            {
-                mode.Clear();
-            }
-
-            // Assign to the single Mode variable
-            if (mode.Count > 0)
-            {
-                Mode = mode[0]; // Assigns the first found mode.
-            }
-            else
-            {
-                Mode = double.NaN; // Represents that there is no mode.
-            }
-        }
-        internal static void getMedian() // Q2
-        {
-            int midIndex = numValues / 2;
-
-            if(numValues % 2 == 0)
-            {
-                Median = (sortedValues[midIndex - 1] + sortedValues[midIndex]) / 2.0;
-            }
-            else if(numValues % 2 == 1)
-            {
-                Median = sortedValues[midIndex];
-            }
-        }
-        internal static void getRange()
-        {
-            Range = sortedValues[numValues - 1] - sortedValues[0];
         }
 
         // Get median and split into 2 lists Q1 median of lower one Q3 median of upper one

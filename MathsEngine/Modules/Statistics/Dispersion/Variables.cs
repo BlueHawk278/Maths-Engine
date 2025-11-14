@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Statistics.StandardDeviation
 {
-    internal static class Variables
+    internal static class Variables // getters and setters?
     {
         internal static List<double> originalValues = new List<double>();
         internal static List<double> sortedValues = new List<double>();
