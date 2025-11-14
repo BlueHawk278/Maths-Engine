@@ -10,7 +10,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion
 {
     internal class StandardDeviationLogic
     {
-        internal static void getNumDataPoints()
+        internal static int getNumValues()
         {
             Console.WriteLine("How many values would you like?");
             numValues = Convert.ToInt32(Console.ReadLine());
@@ -20,6 +20,8 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             {
                 originalValues.Add(i + 1);
             }
+
+            return numValues;
         }
 
         internal static void getValues()

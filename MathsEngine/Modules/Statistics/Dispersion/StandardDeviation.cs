@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathsEngine.Modules.Statistics.Dispersion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,17 +12,7 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
         // Basic version
         internal static void calculate()
         {
-            Methods.getNumDataPoints();
-
-            Methods.getValues();
-            Methods.sortValues();
-
-            Methods.getMean();
-            Methods.getMode();
-            Methods.getMedian();
-            Methods.getRange();
-
-            Methods.displayData();
+            Variables.numValues = StandardDeviationLogic.getNumDataPoints();
 
             Console.ReadKey();
         }

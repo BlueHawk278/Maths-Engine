@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Menu\Menu.cs" />
+    <Compile Include="Modules\Core\GeneralHelpers\General.cs" />
     <Compile Include="Modules\Core\StatisticsHelpers\AverageCalculator.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysisLogic.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysis.cs" />
