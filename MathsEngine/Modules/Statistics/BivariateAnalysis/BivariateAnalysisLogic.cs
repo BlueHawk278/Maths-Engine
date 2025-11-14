@@ -157,7 +157,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         /// <summary>
         /// Displays all collected and calculated data to the console.
         /// </summary>      
-        internal static void displayAllInfo()
+        internal static void displayAllInfo() // sort it out
         {
             Console.Write("n: ");
             for(int i = 0; i < numDataPoints; ++i)
