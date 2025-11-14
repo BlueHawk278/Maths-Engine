@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 {
-    internal class Variables
+    internal class Variables // getters and setters ?
     {
         internal static List<int> dataPoints = new List<int>();
         internal static int numDataPoints = 0;
