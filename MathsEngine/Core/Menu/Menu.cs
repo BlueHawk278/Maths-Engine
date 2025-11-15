@@ -14,6 +14,7 @@ namespace MathsEngine.Core.Menu
             Console.WriteLine("1. Pure");
             Console.WriteLine("2. Mechanics");
             Console.WriteLine("3. Stats");
+            Console.WriteLine("4. Exit Program");
             string response = Console.ReadLine();
 
             switch (response)
@@ -27,6 +28,8 @@ namespace MathsEngine.Core.Menu
                 case "3":
                     statisticsMenu();
                     break;
+                case "4":
+                    return;
                 default:
                     mainMenu();
                     break;

@@ -11,7 +11,7 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
     {
         internal static void calculate() // Initial logic as far as we can right now
         {
-            StandardDeviationLogic.getNumDataPoints();
+            StandardDeviationLogic.getValues();
             StandardDeviationLogic.getValues();
             StandardDeviationLogic.sortValues();
 

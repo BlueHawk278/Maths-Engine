@@ -23,8 +23,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             getDifference();
             getDifferenceSquared();
 
-            double correlation = getCorrelation();
-            Console.WriteLine($"\nThe Spearman's Rank Correlation Coefficient is: {correlation:F3}");
+            Console.WriteLine($"\nThe Spearman's Rank Correlation Coefficient is: {getCorrelation():F3}");
 
             displayAllInfo();
 

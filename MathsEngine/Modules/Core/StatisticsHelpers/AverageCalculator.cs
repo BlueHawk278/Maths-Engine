@@ -6,8 +6,13 @@ using MathsEngine.Modules.Statistics.StandardDeviation;
 
 namespace MathsEngine.Modules.Core.StatisticsHelpers
 {
-    internal class AverageCalculator // make it so that methods can be used in different classes
+    internal class AverageCalculator
     {
+        /// <summary>
+        /// Calculates the mean (average) of a list of double values.
+        /// </summary>
+        /// <param name="nums">A list of double values for which the mean is to be calculated. The list must not be null.</param>
+        /// <returns>The mean of the values in the list. Returns 0 if the list is empty.</returns>
         internal static double calculateMean(List<double> nums)
         {
             if (nums.Count == 0) return 0;
@@ -21,6 +26,12 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
 
             return average;
         }
+
+        /// <summary>
+        /// Calculates the median (average) of a list of double values
+        /// </summary>
+        /// <param name="nums"> A list of double values for which the median is to be calculated. The list must not be null.</param>
+        /// <returns>The median of the values of the list. Returns 0 if the list is empty.</returns>
         internal static double calculateMedian(List<double> nums)
         {
             nums.Sort();
@@ -39,80 +50,111 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
             return midIndex;
         }
 
-        // slightly broken
-        internal static double calculateMode(List<double> nums, List<double> mode, double Mode)
+        /// <summary>
+        /// Calculates the mode(s) of a list of numbers.
+        /// </summary>
+        /// <param name="numbers">The list of numbers to analyze.</param>
+        /// <returns>A List containing the mode(s). Returns an empty list if there is no mode.</returns>
+        internal static List<double> calculateMode(List<double> numbers)
         {
-            List<double> sortedValues = new List<double>();
-            //sortedValues = mode.Sort();
-            mode.Clear();
-            if (Variables.sortedValues == null || Variables.sortedValues.Count == 0)
+            // If the list is empty or has only one value, there can be no mode.
+            if (numbers == null || numbers.Count <= 1)
             {
-                Mode = double.NaN; // No values, so no mode.
-                return 0;
+                return new List<double>();
             }
 
-            int maxCount = 0;
-            int currentCount = 1;
-            double currentNumber = Variables.sortedValues[0];
-
-            for (int i = 1; i < Variables.sortedValues.Count; i++)
+            // Use a Dictionary to count the frequency of each number.
+            // Key: the number, Value: its frequency.
+            var counts = new Dictionary<double, int>();
+            foreach (var number in numbers)
             {
-                if (Variables.sortedValues[i] == currentNumber)
+                if (counts.ContainsKey(number))
                 {
-                    currentCount++;
+                    counts[number]++;
                 }
                 else
                 {
-                    if (currentCount > maxCount)
-                    {
-                        maxCount = currentCount;
-                        mode.Clear();
-                        mode.Add(currentNumber);
-                    }
-                    else if (currentCount == maxCount)
-                    {
-                        mode.Add(currentNumber);
-                    }
-                    currentNumber = Variables.sortedValues[i];
-                    currentCount = 1;
+                    counts[number] = 1;
                 }
             }
 
-            // Final check for the last group of numbers
-            if (currentCount > maxCount)
+            // Find the highest frequency count.
+            int maxCount = 0;
+            foreach (var count in counts.Values)
             {
-                maxCount = currentCount;
-                mode.Clear();
-                mode.Add(currentNumber);
-            }
-            else if (currentCount == maxCount)
-            {
-                mode.Add(currentNumber);
+                if (count > maxCount)
+                {
+                    maxCount = count;
+                }
             }
 
-            // If no number appears more than once, there is no mode
+            // If no number appears more than once, there is no mode.
             if (maxCount <= 1)
             {
-                mode.Clear();
+                return new List<double>();
             }
 
-            // Assign to the single Mode variable
-            if (mode.Count > 0)
+            // Find all numbers that have the highest frequency.
+            var modes = new List<double>();
+            foreach (var pair in counts)
             {
-                Mode = mode[0]; // Assigns the first found mode.
-            }
-            else
-            {
-                Mode = double.NaN; // Represents that there is no mode.
+                if (pair.Value == maxCount)
+                {
+                    modes.Add(pair.Key);
+                }
             }
 
-            return 0; // idk
+            return modes;
         }
+
+        /// <summary>
+        /// Calculates the range of a list of doubles. It sorts the list then gets the difference from the index at each end.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns>The difference between the min and max value.</returns>
         internal static double calculateRange(List<double> nums)
         {
             nums.Sort();
 
             return nums[nums.Count - 1] - nums[0];
         }
+
+        // Get median and split into 2 lists Q1 median of lower one Q3 median of upper one
+        /*
+        internal static void getInterQuartileRange()
+        {
+            if (sortedValues == null || numValues < 4)
+            {
+                // Quartiles are not well-defined for fewer than 4 data points.
+                Q1 = double.NaN;
+                Q3 = double.NaN;
+                IQR = double.NaN;
+                return;
+            }
+
+            if (numValues % 2 == 0) // 0 Q1 1 Q2 2 Q3 3
+            {
+                List<double> upperHalf = new List<double>();
+                List<double> lowerHalf = new List<double>();
+                int midIndex = numValues / 2;
+
+                for (int i = 0; i < numValues; i++)
+                {
+                    if (originalValues[i] > Median)
+                    {
+                        upperHalf.Add(sortedValues[i]);
+                    }
+                    else if (originalValues[i] < Median)
+                    {
+                        lowerHalf.Add(sortedValues[i]);
+                    }
+                }
+            }
+            else if (numValues % 2 == 1)// 1 Q1 2 Q2 4 Q3 5
+            {
+
+            }
+        } // not finished
+        */
     }
 }

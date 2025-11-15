@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 using static MathsEngine.Modules.Statistics.BivariateAnalysis.Variables;
+
+/*
+ * TODO: Format displayAllInfo() to make it look better
+ */
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 {

@@ -19,6 +19,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         /// <summary>
         /// Gets or sets the number of data points.
         /// </summary>
+        
         internal static int _numDataPoints;
 
         internal static int NumDataPoints
