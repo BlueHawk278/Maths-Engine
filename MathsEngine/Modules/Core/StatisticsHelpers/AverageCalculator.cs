@@ -120,9 +120,17 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
         }
 
         // Get median and split into 2 lists Q1 median of lower one Q3 median of upper one
-        /*
-        internal static void getInterQuartileRange()
+        internal static void getInterQuartileRange(List<double> originalValues)
         {
+            double Q1, Q3, IQR;
+            int numValues = originalValues.Count;
+            double Median = calculateMedian(originalValues);
+
+            var sortedValues = new List<double>();
+            foreach (var var in originalValues)
+                sortedValues.Add(var);
+            sortedValues.Sort();
+
             if (sortedValues == null || numValues < 4)
             {
                 // Quartiles are not well-defined for fewer than 4 data points.
@@ -132,7 +140,7 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
                 return;
             }
 
-            if (numValues % 2 == 0) // 0 Q1 1 Q2 2 Q3 3
+            if (numValues % 2 == 0) // 0 | Q1 | 1 | Q2 | 2 | Q3 |3
             {
                 List<double> upperHalf = new List<double>();
                 List<double> lowerHalf = new List<double>();
@@ -154,7 +162,6 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
             {
 
             }
-        } // not finished
-        */
+        }
     }
 }

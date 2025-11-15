@@ -11,10 +11,10 @@ namespace MathsEngine.Modules.Statistics.StandardDeviation
     {
         internal static void calculate() // Initial logic as far as we can right now
         {
-            StandardDeviationLogic.getValues();
+            StandardDeviationLogic.getNumValues();
             StandardDeviationLogic.getValues();
             StandardDeviationLogic.sortValues();
-
+            StandardDeviationLogic.getAverages();
 
             Console.ReadKey();
         }

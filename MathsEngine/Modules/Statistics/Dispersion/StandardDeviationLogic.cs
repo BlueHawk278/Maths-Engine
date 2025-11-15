@@ -40,6 +40,13 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             sortedValues.Sort();
         }
 
+        internal static void getAverages()
+        {
+            Mean = Core.StatisticsHelpers.AverageCalculator.calculateMean(originalValues);
+            Median = Core.StatisticsHelpers.AverageCalculator.calculateMedian(originalValues);
+            modeList = Core.StatisticsHelpers.AverageCalculator.calculateMode(originalValues);
+            Range = Core.StatisticsHelpers.AverageCalculator.calculateRange(originalValues);
+        }
         internal static void displayData()
         {
             Console.WriteLine("Mean: " + Mean);
