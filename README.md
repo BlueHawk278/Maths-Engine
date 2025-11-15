@@ -10,12 +10,12 @@ Features:
 -	Designed to expand over time
 
 Current Modules:
-Statistics:
--	Spearman’s Rank / Bivariate analysis
--	Standard Deviation
--	Mean, Median, Mode etc.
-- Pure Maths
--	Pythagoras Theorem
+- Statistics:
+  -	Spearman’s Rank / Bivariate analysis
+  -	Standard Deviation
+  -	Mean, Median, Mode etc.
+- Pure Maths:
+  -	Pythagoras Theorem
 
 Planned Features
 Coming as I develop the project further:
@@ -29,4 +29,5 @@ Coming as I develop the project further:
 -	Optional SQL database support
 
 Folder Structure
+
 
