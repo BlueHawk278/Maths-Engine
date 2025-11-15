@@ -43,7 +43,7 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
         internal static double calculateMode(List<double> nums, List<double> mode, double Mode)
         {
             List<double> sortedValues = new List<double>();
-            sortedValues = mode.Sort();
+            //sortedValues = mode.Sort();
             mode.Clear();
             if (Variables.sortedValues == null || Variables.sortedValues.Count == 0)
             {

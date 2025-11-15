@@ -55,6 +55,7 @@ namespace MathsEngine.Core.Menu
                     break;
                 case "2":
                     Modules.Statistics.StandardDeviation.StandardDeviation.calculate();
+                    break;
             }
         }
     }

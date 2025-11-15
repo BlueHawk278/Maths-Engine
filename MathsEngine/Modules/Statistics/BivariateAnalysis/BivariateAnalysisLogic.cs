@@ -23,12 +23,12 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         internal static void getNumDataPoints()
         {
             Console.WriteLine("How many data points would you like to enter");
-            numDataPoints = Convert.ToInt16(Console.ReadLine());
+            NumDataPoints = Convert.ToInt16(Console.ReadLine());
 
-            dataPoints.Clear();
-            for (int i = 0; i < numDataPoints; i++)
+            DataPoints.Clear();
+            for (int i = 0; i < NumDataPoints; i++)
             {
-                dataPoints.Add(i + 1);
+                DataPoints.Add(i + 1);
             }
         }
 
@@ -42,9 +42,9 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             Console.ReadLine();
 
             scores.Clear();
-            for(int i = 0; i < dataPoints.Count; i++)
+            for(int i = 0; i < DataPoints.Count; i++)
             {
-                Console.Write($"Enter points {dataPoints[i]}: ");
+                Console.Write($"Enter points {DataPoints[i]}: ");
                 int num = Convert.ToInt16(Console.ReadLine());
                 scores.Add(num);
             }
@@ -106,7 +106,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         internal static void getDifference()
         {
             Difference.Clear();
-            for (int i = 0; i < numDataPoints; i++)
+            for (int i = 0; i < NumDataPoints; i++)
             {
                 double difference = Math.Abs(Rank1[i] - Rank2[i]);
                 Difference.Add(difference);
@@ -118,13 +118,13 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         /// </summary>
         internal static void getDifferenceSquared()
         {
-            differenceSquared.Clear();
-            sumDifferenceSquared = 0;
+            DifferenceSquared.Clear();
+            SumDifferenceSquared = 0;
             foreach (var val in Difference)
             {
                 double squared = Math.Pow(val, 2);
-                differenceSquared.Add(squared);
-                sumDifferenceSquared += squared;
+                DifferenceSquared.Add(squared);
+                SumDifferenceSquared += squared;
             }
         }
 
@@ -139,8 +139,8 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         internal static double getCorrelation()
         {
             // Correlation must be between -1 and 1
-            double topLine = sumDifferenceSquared * 6;
-            double bottomLine = numDataPoints * (Math.Pow(numDataPoints, 2) - 1);
+            double topLine = SumDifferenceSquared * 6;
+            double bottomLine = NumDataPoints * (Math.Pow(NumDataPoints, 2) - 1);
             
             // Avoid division by zero if there's only one data point
             if (bottomLine == 0) return 0;
@@ -160,38 +160,38 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         internal static void displayAllInfo() // sort it out
         {
             Console.Write("n: ");
-            for(int i = 0; i < numDataPoints; ++i)
+            for(int i = 0; i < NumDataPoints; ++i)
                 Console.Write(i + 1 + " ");
             Console.WriteLine();
 
             Console.Write("Score 1: ");
-            for (int i = 0; i < numDataPoints; ++i)
+            for (int i = 0; i < NumDataPoints; ++i)
                 Console.Write(Score1[i] + " ");
             Console.WriteLine();
 
             Console.Write("Score 2: ");
-            for (int i = 0; i < numDataPoints; ++i)
+            for (int i = 0; i < NumDataPoints; ++i)
                 Console.Write(Score2[i] + " ");
             Console.WriteLine();
 
             Console.Write("Rank 1: ");
-            for (int i = 0; i < numDataPoints; ++i)
+            for (int i = 0; i < NumDataPoints; ++i)
                 Console.Write(Rank1[i] + " ");
             Console.WriteLine();
 
             Console.Write("Rank 2: ");
-            for (int i = 0; i < numDataPoints; ++i)
+            for (int i = 0; i < NumDataPoints; ++i)
                 Console.Write(Rank2[i] + " ");
             Console.WriteLine();
 
             Console.Write("d: ");
-            for (int i = 0; i < numDataPoints; ++i)
+            for (int i = 0; i < NumDataPoints; ++i)
                 Console.Write(Difference[i] + " ");
             Console.WriteLine();
 
             Console.Write("d^2: ");
-            for (int i = 0; i < numDataPoints; ++i)
-                Console.Write(differenceSquared[i] + " ");
+            for (int i = 0; i < NumDataPoints; ++i)
+                Console.Write(DifferenceSquared[i] + " ");
             Console.WriteLine();
         }
     }
