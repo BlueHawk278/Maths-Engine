@@ -6,7 +6,7 @@ using MathsEngine.Modules.Statistics.StandardDeviation;
 
 namespace MathsEngine.Modules.Core.StatisticsHelpers
 {
-    internal class AverageCalculator
+    internal static class AverageCalculator
     {
         /// <summary>
         /// Calculates the mean (average) of a list of double values.
@@ -34,20 +34,29 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
         /// <returns>The median of the values of the list. Returns 0 if the list is empty.</returns>
         internal static double calculateMedian(List<double> nums)
         {
-            nums.Sort();
+            if (nums.Count == 0 || nums == null)
+            {
+                return 0;
+            }
+
+            var sortedNums = new List<double>(nums);
+            sortedNums.Sort();
 
             int midIndex = nums.Count / 2;
+            double median;
 
-            if (nums.Count % 2 == 0)
+            if (sortedNums.Count % 2 == 0)
             {
-                Variables.Median = (Variables.sortedValues[midIndex - 1] + Variables.sortedValues[midIndex]) / 2.0;
+                // Even number of elements: average of the two middle elements
+                median = (sortedNums[midIndex - 1] + sortedNums[midIndex]) / 2.0;
             }
-            else if (nums.Count % 2 == 1)
+            else
             {
-                Variables.Median = Variables.sortedValues[midIndex];
+                // Odd number of elements: the middle element
+                median = sortedNums[midIndex];
             }
 
-            return midIndex;
+            return median;
         }
 
         /// <summary>
@@ -55,10 +64,10 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
         /// </summary>
         /// <param name="numbers">The list of numbers to analyze.</param>
         /// <returns>A List containing the mode(s). Returns an empty list if there is no mode.</returns>
-        internal static List<double> calculateMode(List<double> numbers)
+        internal static List<double> calculateMode(List<double> nums)
         {
             // If the list is empty or has only one value, there can be no mode.
-            if (numbers == null || numbers.Count <= 1)
+            if (nums == null || nums.Count <= 1)
             {
                 return new List<double>();
             }
@@ -66,7 +75,7 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
             // Use a Dictionary to count the frequency of each number.
             // Key: the number, Value: its frequency.
             var counts = new Dictionary<double, int>();
-            foreach (var number in numbers)
+            foreach (var number in nums)
             {
                 if (counts.ContainsKey(number))
                 {
@@ -120,11 +129,10 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
         }
 
         // Get median and split into 2 lists Q1 median of lower one Q3 median of upper one
-        internal static void getInterQuartileRange(List<double> originalValues)
+        internal static List<double> getInterQuartileRange(List<double> originalValues)
         {
             double Q1, Q3, IQR;
             int numValues = originalValues.Count;
-            double Median = calculateMedian(originalValues);
 
             var sortedValues = new List<double>();
             foreach (var var in originalValues)
@@ -137,31 +145,37 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
                 Q1 = double.NaN;
                 Q3 = double.NaN;
                 IQR = double.NaN;
-                return;
+                return null;
             }
 
             if (numValues % 2 == 0) // 0 | Q1 | 1 | Q2 | 2 | Q3 |3
             {
-                List<double> upperHalf = new List<double>();
-                List<double> lowerHalf = new List<double>();
                 int midIndex = numValues / 2;
 
-                for (int i = 0; i < numValues; i++)
-                {
-                    if (originalValues[i] > Median)
-                    {
-                        upperHalf.Add(sortedValues[i]);
-                    }
-                    else if (originalValues[i] < Median)
-                    {
-                        lowerHalf.Add(sortedValues[i]);
-                    }
-                }
+                List<double> upperHalf = sortedValues.GetRange(0, midIndex);
+                List<double> lowerHalf = sortedValues.GetRange(midIndex, midIndex);
+
+                Q1 = calculateMedian(lowerHalf);
+                Q3 = calculateMedian(upperHalf);
+                IQR = Q3 - Q1;
+
+                return new List<double> { Q1, Q3, IQR };
             }
             else if (numValues % 2 == 1)// 1 Q1 2 Q2 4 Q3 5
             {
+                int midIndex = numValues / 2;
 
+                List<double> lowerHalf = sortedValues.GetRange(0, midIndex);
+                List<double> upperHalf = sortedValues.GetRange(midIndex + 1, midIndex);
+
+                Q1 = calculateMedian(lowerHalf);
+                Q3 = calculateMedian(upperHalf);
+                IQR = Q3 - Q1;
+
+                return new List<double> {Q1, Q3, IQR};
             }
+
+            return null;
         }
     }
 }

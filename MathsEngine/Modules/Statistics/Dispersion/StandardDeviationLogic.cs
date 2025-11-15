@@ -21,7 +21,6 @@ namespace MathsEngine.Modules.Statistics.Dispersion
                 originalValues.Add(i + 1);
             }
         }
-
         internal static void getValues()
         {
             Console.WriteLine("Press any button to enter the values");
@@ -51,7 +50,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion
         {
             Console.WriteLine("Mean: " + Mean);
             Console.WriteLine("Median: " + Median);
-            Console.WriteLine("Mode: " + Mode);
+            //Console.WriteLine("Mode: " + Mode); There is a list of modes
             Console.WriteLine("Range: " + Range);
         }
     }
