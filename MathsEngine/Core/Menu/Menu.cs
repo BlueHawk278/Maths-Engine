@@ -35,7 +35,6 @@ namespace MathsEngine.Core.Menu
                     break;
             }
         }
-
         private static void pureMenu()
         {
             Console.WriteLine("Welcome to the Pure Maths Menu");

@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathsEngine.Modules.Statistics.Dispersion;
 
 namespace MathsEngine.Modules.Core.StatisticsHelpers
 {

@@ -27,7 +27,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             Console.WriteLine($"\nThe Spearman's Rank Correlation Coefficient is: {correlationValue:F3}");
 
             Correlation correlation = calculateCorrelation(correlationValue);
-            Console.WriteLine($"Correlation: " + CorrelationExtensions.DisplayString(correlation));
+            Console.WriteLine($"Correlation: " + CorrelationExtensions.displayString(correlation));
 
             displayAllInfo();
 

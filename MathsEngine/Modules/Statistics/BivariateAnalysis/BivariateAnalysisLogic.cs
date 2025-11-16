@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 using static MathsEngine.Modules.Statistics.BivariateAnalysis.Variables;
 
 /*
- * TODO: Format displayAllInfo() to make it look better
+ * TODO: Format displayAllInfo() to make it look better,
+ *       Draw a scatter graph for the values,
+ *       Draw a line of best fit,
+ *       Determine the equation of the line of best fit
  */
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
@@ -167,6 +170,11 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             return Math.Round(correlation, 2);
         }
 
+        /// <summary>
+        /// Calculate the enum value for correlation based on the numeric value
+        /// </summary>
+        /// <param name="correlation"></param>
+        /// <returns></returns>
         internal static Correlation calculateCorrelation(double correlation)
         {
             if (correlation == 0.00)

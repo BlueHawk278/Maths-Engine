@@ -22,7 +22,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
     /// </summary>
     internal static class CorrelationExtensions
     {
-        public static string DisplayString(Correlation correlation)
+        public static string displayString(Correlation correlation)
         {
             switch (correlation)
             {

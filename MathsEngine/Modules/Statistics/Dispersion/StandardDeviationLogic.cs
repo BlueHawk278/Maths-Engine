@@ -20,7 +20,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             {
                 originalValues.Add(i + 1);
             }
-        }
+        } // make a global function as it is used more than once, for DRY
         internal static void getValues()
         {
             Console.WriteLine("Press any button to enter the values");

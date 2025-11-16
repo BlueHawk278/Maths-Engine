@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Statistics.Dispersion
 {
-    internal class StandardDeviation
+    internal static class StandardDeviation
     {
         internal static void calculate() // Initial logic as far as we can right now
         {

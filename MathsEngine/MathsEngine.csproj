@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysis.md" />
+    <None Include="Modules\Statistics\Dispersion\Dispersion.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\Mechanics\" />
