@@ -7,6 +7,8 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
 {
     internal static class AverageCalculator
     {
+        // MEASURES OF LOCATION
+
         /// <summary>
         /// Calculates the mean (average) of a list of double values.
         /// </summary>
@@ -126,6 +128,8 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
 
             return nums[nums.Count - 1] - nums[0];
         }
+
+        // MEASURES OF DISPERSION
 
         /// <summary>
         /// Calculates the interquartile range (IQR) of a given list of numeric values.

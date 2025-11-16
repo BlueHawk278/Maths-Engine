@@ -15,6 +15,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             StandardDeviationLogic.getValues();
             StandardDeviationLogic.sortValues();
             StandardDeviationLogic.getAverages();
+            StandardDeviationLogic.displayData();
 
             Console.ReadKey();
         }

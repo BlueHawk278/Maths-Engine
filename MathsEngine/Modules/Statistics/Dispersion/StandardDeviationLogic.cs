@@ -32,7 +32,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion
                 int num = Convert.ToInt16(Console.ReadLine());
                 originalValues[i] = num;
             }
-        }
+        } //
         internal static void sortValues()
         {
             sortedValues = new List<double>(originalValues);
@@ -60,6 +60,10 @@ namespace MathsEngine.Modules.Statistics.Dispersion
                 Console.Write(mode + " ");
 
             Console.WriteLine("Range: " + Range);
+
+            Console.WriteLine("Q1: " + Q1);
+            Console.WriteLine("Q3: " + Q3);
+            Console.WriteLine("IQR: " + IQR);
         }
     }
 }
