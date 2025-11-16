@@ -20,7 +20,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         /// Gets or sets the number of data points.
         /// </summary>
         
-        internal static int _numDataPoints;
+        private static int _numDataPoints;
 
         internal static int NumDataPoints
         {
@@ -66,5 +66,10 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         /// Gets or sets the sum of the squared differences.
         /// </summary>
         internal static double SumDifferenceSquared { get; set; }
+
+        /// <summary>
+        /// Gets or sets the correlation information used to track and associate related operations.
+        /// </summary>
+        internal static Correlation Correlation { get; set; }
     }
 }

@@ -20,12 +20,12 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
     /// This class relies on static variables defined in <see cref="Variables"/> to store state,
     /// such as data points, scores, and intermediate calculations.
     /// </remarks>
-    internal class BivariateAnalysisLogic
+    internal static class BivariateAnalysisLogic
     {
         /// <summary>
         /// Prompts the user for the number of data points and initializes the data points list.
         /// </summary> 
-        internal static void getNumDataPoints()
+        internal static List<int> getNumDataPoints()
         {
             Console.WriteLine("How many data points would you like to enter");
             NumDataPoints = Convert.ToInt16(Console.ReadLine());
@@ -35,13 +35,15 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             {
                 DataPoints.Add(i + 1);
             }
+
+            return DataPoints;
         }
 
         /// <summary>
         /// Prompts the user to enter a set of scores.
         /// </summary>
         /// <param name="scores">The list to populate with the entered scores.</param>
-        internal static void getScores(List<int> scores)
+        internal static List<int> getScores(List<int> scores)
         {
             Console.WriteLine("Press any button to enter scores...");
             Console.ReadLine();
@@ -53,6 +55,8 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
                 int num = Convert.ToInt16(Console.ReadLine());
                 scores.Add(num);
             }
+
+            return scores;
         }
 
         /// <summary>
@@ -60,7 +64,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         /// </summary>
         /// <param name="scores">The list of scores to rank.</param>
         /// <param name="ranks">The list to populate with the calculated ranks.</param>
-        internal static void getRanks(List<int> scores, List<double> ranks)
+        internal static List<double> getRanks(List<int> scores, List<double> ranks)
         {
             // Local copy of scores
             List<int> sorted = new List<int>(scores);
@@ -103,12 +107,14 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 
                 rank += tiedIndexes.Count;
             }
+
+            return ranks;
         }
 
         /// <summary>
         /// Calculates the absolute difference between corresponding ranks in <see cref="Rank1"/> and <see cref="Rank2"/>.
         /// </summary>
-        internal static void getDifference()
+        internal static List<double> getDifference()
         {
             Difference.Clear();
             for (int i = 0; i < NumDataPoints; i++)
@@ -116,12 +122,13 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
                 double difference = Math.Abs(Rank1[i] - Rank2[i]);
                 Difference.Add(difference);
             }
+            return Difference;
         }
 
         /// <summary>
         /// Calculates the square of each difference and the sum of these squared differences.
         /// </summary>
-        internal static void getDifferenceSquared()
+        internal static List<double> getDifferenceSquared()
         {
             DifferenceSquared.Clear();
             SumDifferenceSquared = 0;
@@ -131,6 +138,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
                 DifferenceSquared.Add(squared);
                 SumDifferenceSquared += squared;
             }
+            return DifferenceSquared;
         }
 
         /// <summary>
@@ -141,7 +149,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         /// The formula used is: 1 - (6 * sum of squared differences) / (n * (n^2 - 1)).
         /// The result is clamped to the range [-1.0, 1.0] to handle potential floating-point inaccuracies.
         /// </remarks>
-        internal static double getCorrelation()
+        internal static double getCorrelationValue()
         {
             // Correlation must be between -1 and 1
             double topLine = SumDifferenceSquared * 6;
@@ -156,7 +164,27 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             if (correlation < -1.0) return -1.0;
             if (correlation > 1.0) return 1.0;
             
-            return correlation;
+            return Math.Round(correlation, 2);
+        }
+
+        internal static Correlation calculateCorrelation(double correlation)
+        {
+            if (correlation == 0.00)
+                return Correlation.NoCorrelation;
+            if (correlation == 1.0)
+                return Correlation.PerfectPositive;
+            if (correlation == -1.0)
+                return Correlation.PerfectNegative;
+            if (correlation > 0.5 && correlation < 1.0)
+                return Correlation.StrongPositive;
+            if (correlation > 0 && correlation <= 0.5)
+                return Correlation.WeakPositive;
+            if (correlation < -0.5 && correlation > -1.0)
+                return Correlation.StrongNegative;
+            if (correlation < 0 && correlation >= -0.5)
+                return Correlation.WeakNegative;
+
+            return Correlation.Invalid;
         }
 
         /// <summary>
@@ -198,6 +226,8 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             for (int i = 0; i < NumDataPoints; ++i)
                 Console.Write(DifferenceSquared[i] + " ");
             Console.WriteLine();
+
+            Console.Write("∑d^2: " + SumDifferenceSquared);
         }
     }
 }

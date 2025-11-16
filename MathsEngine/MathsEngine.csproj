@@ -48,6 +48,7 @@
     <Compile Include="Modules\Core\StatisticsHelpers\AverageCalculator.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysisLogic.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysis.cs" />
+    <Compile Include="Modules\Statistics\BivariateAnalysis\Correlation.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\Variables.cs" />
     <Compile Include="Modules\Statistics\Dispersion\Variables.cs" />
     <Compile Include="Modules\Statistics\Dispersion\StandardDeviationLogic.cs" />
