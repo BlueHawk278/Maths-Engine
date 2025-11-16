@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathsEngine.Modules.Statistics.StandardDeviation
+namespace MathsEngine.Modules.Statistics.Dispersion
 {
     internal class StandardDeviation
     {

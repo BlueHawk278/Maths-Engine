@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using static MathsEngine.Modules.Statistics.StandardDeviation.Variables;
+using static MathsEngine.Modules.Statistics.Dispersion.Variables;
 
 namespace MathsEngine.Modules.Statistics.Dispersion
 {
-    internal class StandardDeviationLogic
+    internal static class StandardDeviationLogic
     {
         internal static void getNumValues()
         {
@@ -38,19 +38,27 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             sortedValues = new List<double>(originalValues);
             sortedValues.Sort();
         }
-
         internal static void getAverages()
         {
             Mean = Core.StatisticsHelpers.AverageCalculator.calculateMean(originalValues);
             Median = Core.StatisticsHelpers.AverageCalculator.calculateMedian(originalValues);
             modeList = Core.StatisticsHelpers.AverageCalculator.calculateMode(originalValues);
             Range = Core.StatisticsHelpers.AverageCalculator.calculateRange(originalValues);
+
+            var quartiles = Core.StatisticsHelpers.AverageCalculator.getInterQuartileRange(originalValues);
+            Q1 = quartiles[0];
+            Q3 = quartiles[1];
+            IQR = quartiles[2];
         }
         internal static void displayData()
         {
             Console.WriteLine("Mean: " + Mean);
             Console.WriteLine("Median: " + Median);
-            //Console.WriteLine("Mode: " + Mode); There is a list of modes
+
+            Console.Write("Mode: ");
+            foreach(double mode in modeList)
+                Console.Write(mode + " ");
+
             Console.WriteLine("Range: " + Range);
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathsEngine.Core.Menu
 {
-    internal class Menu
+    internal static class Menu
     {
         public static void mainMenu()
         {
@@ -36,15 +36,15 @@ namespace MathsEngine.Core.Menu
             }
         }
 
-        public static void pureMenu()
+        private static void pureMenu()
         {
             Console.WriteLine("Welcome to the Pure Maths Menu");
         }
-        public static void mechanicsMenu()
+        private static void mechanicsMenu()
         {
             Console.WriteLine("Welcome to the Mechanics Menu");
         }
-        public static void statisticsMenu()
+        private static void statisticsMenu()
         {
             Console.WriteLine("Welcome to the Statistics Menu");
             Console.WriteLine("1. Bivariate Analysis");
@@ -57,7 +57,7 @@ namespace MathsEngine.Core.Menu
                     Modules.Statistics.BivariateAnalysis.BivariateAnalysis.calculate();
                     break;
                 case "2":
-                    Modules.Statistics.StandardDeviation.StandardDeviation.calculate();
+                    Modules.Statistics.Dispersion.StandardDeviation.calculate();
                     break;
             }
         }

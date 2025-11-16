@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathsEngine.Modules.Statistics.StandardDeviation;
+using MathsEngine.Modules.Statistics.Dispersion;
 
 namespace MathsEngine.Modules.Core.StatisticsHelpers
 {
@@ -128,7 +128,17 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
             return nums[nums.Count - 1] - nums[0];
         }
 
-        // Get median and split into 2 lists Q1 median of lower one Q3 median of upper one
+        /// <summary>
+        /// Calculates the interquartile range (IQR) of a given list of numeric values.
+        /// </summary>
+        /// <remarks>The interquartile range is calculated as the difference between the third quartile (Q3)
+        /// and the first quartile (Q1). The input list is sorted internally, and the calculation  accounts for
+        /// both even and odd numbers of elements in the list.</remarks>
+        /// <param name="originalValues">A list of numeric values for which the interquartile range is to be calculated.  The list must contain at
+        /// least four elements.</param>
+        /// <returns>A list containing three values: the first quartile (Q1), the third quartile (Q3),  and the interquartile
+        /// range (IQR), in that order. Returns <see langword="null"/>  if the input list contains fewer than four
+        /// elements.</returns>
         internal static List<double> getInterQuartileRange(List<double> originalValues)
         {
             double Q1, Q3, IQR;
