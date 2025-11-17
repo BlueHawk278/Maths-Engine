@@ -6,58 +6,56 @@ using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Core.PureHelpers
 {
-    internal class PythagorasTheorem // need to check execution of methods
+    internal static class PythagorasTheorem // need to check execution of methods
     {
-        internal static void getValues(double hypotenuse, double a, double b)
+        internal static void calculate(Dictionary<string, double> values)
         {
-            // Check for initial valid input
-            List<double> variables = new List<double> { hypotenuse, a, b };
             int numMissingValues = 0;
 
-            foreach (double num in variables)
+            foreach (KeyValuePair<string, double> kvp in values)
             {
-                if (num == 0)
+                if (kvp.Value == 0)
                     numMissingValues++;
             }
 
-            if (numMissingValues > 1) // Maybe can check if it is valid
+            if (numMissingValues > 1)
             {
                 Console.WriteLine("Invalid input. Unable to calculate");
             }
             else if (numMissingValues == 0)
             {
-                checkValidResult(hypotenuse, a, b); // placeholder
+                checkValidResult(values);
             }
-            else if (hypotenuse == 0)
+            else if (values["Hypotenuse"] == 0)
             {
-                calculateHypotenuse(a, b);
+                calculateHypotenuse(values);
             }
-            else if (a == 0)
+            else if (values["a"] == 0)
             {
-                calculateMissingSide(hypotenuse, b);
+                calculateMissingSide(values);
             }
-            else if (b == 0)
+            else if (values["b"] == 0)
             {
-                calculateMissingSide(hypotenuse, a);
+                calculateMissingSide(values);
             }
         }
 
-        internal static double calculateHypotenuse(double a, double b)
+        internal static double calculateHypotenuse(Dictionary<string, double> values)
         {
-            return Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
+            return Math.Sqrt(Math.Pow(values["A"], 2) + Math.Pow(values["B"], 2));
         }
 
-        internal static double calculateMissingSide(double hypotenuse, double side)
+        internal static double calculateMissingSide(Dictionary<string, double> values)
         {
-            return Math.Sqrt(Math.Sqrt(hypotenuse) - Math.Sqrt(side));
+            return Math.Sqrt(Math.Sqrt(values["Hypotenuse"]) - Math.Sqrt(values["side"]));
         }
 
-        internal static bool checkValidResult(double hypotenuse, double a, double b)
+        internal static bool checkValidResult(Dictionary<string, double> values)
         {
     
             bool validResult = false;
 
-            if (Math.Pow(hypotenuse, 2) == (Math.Pow(a, 2) + Math.Pow(b, 2)))
+            if (Math.Pow(values["Hypotenuse"], 2) == (Math.Pow(values["A"], 2) + Math.Pow(values["B"], 2)))
                 validResult = true;
             
             return validResult;

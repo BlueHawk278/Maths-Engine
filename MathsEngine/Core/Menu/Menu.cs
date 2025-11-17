@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathsEngine.Core.Menu
 {
-    internal static class Menu
+    internal static class Menu // check 
     {
         public static void mainMenu()
         {
@@ -38,6 +38,15 @@ namespace MathsEngine.Core.Menu
         private static void pureMenu()
         {
             Console.WriteLine("Welcome to the Pure Maths Menu");
+            Console.WriteLine("1. Pythagoras Theorem");
+            int response = Convert.ToInt16(Console.ReadLine());
+
+            switch (response)
+            {
+                case 1:
+                    Modules.Pure.Menu.PythagorasMenu.menu();
+                    break;
+            }
         }
         private static void mechanicsMenu()
         {
@@ -48,14 +57,14 @@ namespace MathsEngine.Core.Menu
             Console.WriteLine("Welcome to the Statistics Menu");
             Console.WriteLine("1. Bivariate Analysis");
             Console.WriteLine("2. Standard Deviation");
-            string response = Console.ReadLine();
+            int response = Convert.ToInt16(Console.ReadLine());
 
             switch (response)
             {
-                case "1":
+                case 1:
                     Modules.Statistics.BivariateAnalysis.BivariateAnalysis.calculate();
                     break;
-                case "2":
+                case 2:
                     Modules.Statistics.Dispersion.StandardDeviation.calculate();
                     break;
             }
