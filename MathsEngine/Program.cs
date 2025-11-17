@@ -8,7 +8,7 @@ using MathsEngine.Modules.Core;
 
 namespace MathsEngine
 {
-    internal class Program
+    internal static class Program
     {
         static void Main(string[] args)
         {

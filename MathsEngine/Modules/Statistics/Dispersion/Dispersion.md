@@ -24,5 +24,4 @@ StandardDeviation.Calculate();
 
 ## Dependencies
 
-Mention if this module relies on any other modules in your project.
-*Example*: "This module depends on `MathsEngine.Modules.Core.StatisticsHelpers` for basic calculations like mean and median."
+This module depends on `MathsEngine.Modules.Core.StatisticsHelpers` for basic calculations like mean and median.
