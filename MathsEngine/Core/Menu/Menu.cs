@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MathsEngine.Core.Menu.Pure;
 
 namespace MathsEngine.Core.Menu
 {
-    internal static class Menu // check 
+    internal static class Menu // check, also test everything in the menu
     {
         public static void mainMenu()
         {
@@ -44,7 +45,7 @@ namespace MathsEngine.Core.Menu
             switch (response)
             {
                 case 1:
-                    Modules.Pure.Menu.PythagorasMenu.menu();
+                    PythagorasMenu.menu();
                     break;
             }
         }

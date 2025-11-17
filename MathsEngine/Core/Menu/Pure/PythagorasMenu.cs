@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MathsEngine.Modules.Pure.Menu
+namespace MathsEngine.Core.Menu.Pure
 {
     internal static class PythagorasMenu // fix this
     {
@@ -19,7 +16,8 @@ namespace MathsEngine.Modules.Pure.Menu
             {
                 case 1:
                     var values = getValues();
-                    Core.PureHelpers.PythagorasTheorem.checkValidResult(values);
+                    Modules.Core.PureHelpers.PythagorasTheorem.checkValidResult(values);
+                    menu();
                     break;
                 case 2:
                     break;

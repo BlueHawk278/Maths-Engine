@@ -50,7 +50,7 @@ namespace MathsEngine.Modules.Core.PureHelpers
             return Math.Sqrt(Math.Sqrt(values["Hypotenuse"]) - Math.Sqrt(values["side"]));
         }
 
-        internal static bool checkValidResult(Dictionary<string, double> values)
+        internal static void checkValidResult(Dictionary<string, double> values)
         {
     
             bool validResult = false;
@@ -58,7 +58,8 @@ namespace MathsEngine.Modules.Core.PureHelpers
             if (Math.Pow(values["Hypotenuse"], 2) == (Math.Pow(values["A"], 2) + Math.Pow(values["B"], 2)))
                 validResult = true;
             
-            return validResult;
+            if(validResult)
+                Console.WriteLine("This is a valid result"); // idk??
         }
     }
 }

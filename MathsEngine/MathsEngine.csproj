@@ -46,7 +46,7 @@
     <Compile Include="Core\Menu\Menu.cs" />
     <Compile Include="Modules\Core\PureHelpers\PythagorasTheorem.cs" />
     <Compile Include="Modules\Core\StatisticsHelpers\AverageCalculator.cs" />
-    <Compile Include="Modules\Pure\Menu\PythagorasMenu.cs" />
+    <Compile Include="Core\Menu\Pure\PythagorasMenu.cs" />
     <Compile Include="Modules\Pure\PythagorasTheorem\PythagorasTheorem.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysisLogic.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysis.cs" />
