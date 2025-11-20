@@ -9,6 +9,7 @@ This module provides tools to calculate the correlation between two sets of data
 *   **`BivariateAnalyisis.cs`**: The main entry point for the Bivariate Analysis feature.
 *   **`BivariateAnalysisLogic.cs`**: Contains the core calculation logic, keeping it separate from the user interaction.
 *   **`Variables.cs`**: A static class that holds the data and results for the calculations.
+*   **`Correlation.cs`**: An enum that displays the string value of the correlation.
 
 ## How to Use
 

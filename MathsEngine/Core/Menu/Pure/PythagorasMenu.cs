@@ -24,7 +24,7 @@ namespace MathsEngine.Core.Menu.Pure
             }
         }
 
-        private static Dictionary<string, double> getValues()
+        private static Dictionary<string, double> getValues() //  use strings to enable (?) then convert to doubles?
         {
             Console.Write("What length is the hypotenuse ( 0 if unknown ): ");
             double hypotenuse = Convert.ToDouble(Console.ReadLine());
