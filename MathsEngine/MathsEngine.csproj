@@ -64,7 +64,7 @@
     <None Include="Modules\Statistics\Dispersion\Dispersion.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modules\Mechanics\" />
+    <Folder Include="Modules\Mechanics\UniformAcceleration\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
