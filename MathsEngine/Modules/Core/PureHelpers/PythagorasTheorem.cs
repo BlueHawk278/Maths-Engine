@@ -4,62 +4,69 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// TODO: Make an Exception folder
+
 namespace MathsEngine.Modules.Core.PureHelpers
 {
-    internal static class PythagorasTheorem // need to check execution of methods
+    /// <summary>
+    /// Provides static methods for Pythagoras theorem calculations
+    /// </summary>
+    internal static class PythagorasTheorem
     {
-        internal static void calculate(Dictionary<string, double> values)
+        /// <summary>
+        /// Calculates the length of the hypotenuse given side A and B
+        /// </summary>
+        /// <param name="a">The length of side A.</param>
+        /// <param name="b">The length of side B.</param>
+        /// <returns></returns>
+        public static double calculateHypotenuse(double a, double b)
         {
-            int numMissingValues = 0;
-
-            foreach (KeyValuePair<string, double> kvp in values)
-            {
-                if (kvp.Value == 0)
-                    numMissingValues++;
-            }
-
-            if (numMissingValues > 1)
-            {
-                Console.WriteLine("Invalid input. Unable to calculate");
-            }
-            else if (numMissingValues == 0)
-            {
-                checkValidResult(values);
-            }
-            else if (values["Hypotenuse"] == 0)
-            {
-                calculateHypotenuse(values);
-            }
-            else if (values["a"] == 0)
-            {
-                calculateMissingSide(values);
-            }
-            else if (values["b"] == 0)
-            {
-                calculateMissingSide(values);
-            }
-        }
-
-        internal static double calculateHypotenuse(Dictionary<string, double> values)
-        {
-            return Math.Sqrt(Math.Pow(values["A"], 2) + Math.Pow(values["B"], 2));
-        }
-
-        internal static double calculateMissingSide(Dictionary<string, double> values)
-        {
-            return Math.Sqrt(Math.Sqrt(values["Hypotenuse"]) - Math.Sqrt(values["side"]));
-        }
-
-        internal static void checkValidResult(Dictionary<string, double> values)
-        {
-    
-            bool validResult = false;
-
-            if (Math.Pow(values["Hypotenuse"], 2) == (Math.Pow(values["A"], 2) + Math.Pow(values["B"], 2)))
-                validResult = true;
+            if (a <= 0 || b <= 0)
+                throw new ArgumentException("Side lengths must be positive.");
             
-            if(validResult)
-                Console.WriteLine("This is a valid result"); // idk??
+
+            double aSquared = Math.Pow(a, 2);
+            double bSquared = Math.Pow(b, 2);
+
+            return Math.Sqrt(aSquared + bSquared);
+        }
+
+        /// <summary>
+        /// Calculates the length of a missing side given the hypotenuse and a known side
+        /// </summary>
+        /// <param name="hypotenuse">The length of the hypotenuse.</param>
+        /// <param name="knownSide">The length of the known side.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static double calculateOtherSide(double hypotenuse, double knownSide)
+        {
+            if (hypotenuse <= 0 || knownSide <= 0)
+                throw new ArgumentException("Side lengths must be positive.");
+
+            if (knownSide >= hypotenuse)
+                throw new ArgumentException("Hypotenuse must be the longest side");
+
+            double hSquared = Math.Pow(hypotenuse, 2);
+            double aSquared = Math.Pow(knownSide, 2);
+
+            return Math.Sqrt(hSquared - aSquared);
+        }
+
+        /// <summary>
+        /// Checks if the values entered are valid in the Pythagoras Theorem
+        /// </summary>
+        /// <param name="hypotenuse">The length of the hypotenuse.</param>
+        /// <param name="a">The length of one of the shorter sides.</param>
+        /// <param name="b">The length of the other shorter side.</param>
+        /// <returns></returns>
+        public static bool checkValidCalculation(double hypotenuse, double a, double b)
+        {
+            double hSquared = Math.Sqrt(Math.Pow(hypotenuse, 2));
+            double otherSides = Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
+
+            if (hSquared == otherSides)
+                return true;
+            return false;
         }
     }
 }

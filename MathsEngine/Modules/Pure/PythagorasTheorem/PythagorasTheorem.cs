@@ -8,9 +8,9 @@ namespace MathsEngine.Modules.Pure.PythagorasTheorem
 {
     internal static class PythagorasTheorem
     {
-        internal static void calculate()
+        internal static void Start()
         {
-
+            MathsEngine.Core.Menu.Pure.PythagorasMenu.menu();
         }
     }
 }

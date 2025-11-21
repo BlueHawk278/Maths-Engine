@@ -1,45 +1,71 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace MathsEngine.Core.Menu.Pure
 {
     internal static class PythagorasMenu // fix this
     {
-        internal static void menu()
+        public static void menu()
         {
-            Console.WriteLine("Welcome to the Pythagoras Theorem Menu");
-            Console.WriteLine("1. Check valid values"); // idk
-            Console.WriteLine("2. Calculate a missing side");
-            int response = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("Pythagoras Theorem Calculator");
+            Console.WriteLine("1. Find the hypotenuse");
+            Console.WriteLine("2. Find another side");
+            Console.WriteLine("3. Check if calculation is valid");
+            string choice = Console.ReadLine();
 
-            switch (response)
+            switch (choice)
             {
-                case 1:
-                    var values = getValues();
-                    Modules.Core.PureHelpers.PythagorasTheorem.checkValidResult(values);
-                    menu();
+                case "1":
+                    HandleFindHypotenuse();
                     break;
-                case 2:
+                case "2":
+                    HandleFindOtherSide();
+                    break;
+                case "3":
+                    HandleCheckTheorem();
                     break;
             }
         }
 
-        private static Dictionary<string, double> getValues() //  use strings to enable (?) then convert to doubles?
+        public static void HandleFindHypotenuse()
         {
-            Console.Write("What length is the hypotenuse ( 0 if unknown ): ");
-            double hypotenuse = Convert.ToDouble(Console.ReadLine());
-            Console.Write("What length is side A ( 0 if unknown");
-            double a = Convert.ToDouble(Console.ReadLine());
-            Console.Write("What length is side B ( 0 if unknown");
-            double b = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter the first side");
+            double sideA = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter the second side");
+            double sideB = Convert.ToDouble(Console.ReadLine());
 
-            var values = new Dictionary<string, double>
-            {
-                { "Hypotenuse", hypotenuse },
-                { "A", a },
-                { "B", b }
-            };
-            return values;
+            double hypotenuse = Modules.Core.PureHelpers.PythagorasTheorem.calculateHypotenuse(sideA, sideB);
+
+            Console.WriteLine("Hypotenuse: " + hypotenuse);
+
+            menu();
+        }
+        public static void HandleFindOtherSide()
+        {
+            Console.WriteLine("Enter the hypotenuse");
+            double hypotenuse = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter the known side");
+            double knownSide = Convert.ToDouble(Console.ReadLine());
+
+            double unknownSide = Modules.Core.PureHelpers.PythagorasTheorem.calculateOtherSide(hypotenuse, knownSide);
+
+            Console.WriteLine("Unknown side: " + unknownSide);
+
+            menu();
+        }
+        public static void HandleCheckTheorem()
+        {
+            Console.WriteLine("Enter the hypotenuse");
+            double hypotenuse = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter the first side");
+            double firstSide = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter the second side");
+            double secondSide = Convert.ToDouble(Console.ReadLine());
+
+            bool validResult = Modules.Core.PureHelpers.PythagorasTheorem.checkValidCalculation(hypotenuse, firstSide, secondSide);
+
+            Console.WriteLine((validResult) ? "This is a valid equation" : "This is not a valid equation");
+
+            menu();
         }
     }
 }
