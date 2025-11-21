@@ -52,6 +52,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             // Example:
             Console.WriteLine($"Rank 1: {string.Join(", ", calc.Ranks1)}");
             Console.WriteLine($"Rank 2: {string.Join(", ", calc.Ranks2)}");
+            Console.WriteLine($"Difference: {string.Join(", ", calc.Difference)}");
             Console.WriteLine($"Difference Squared: {string.Join(", ", calc.DifferenceSquared)}");
             Console.WriteLine($"Sum of Difference Squared: {calc.SumDifferenceSquared:F2}");
             Console.WriteLine($"\nSpearman's Rank Correlation Coefficient is: {calc.CorrelationCoefficient:F3}");

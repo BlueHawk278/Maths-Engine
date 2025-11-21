@@ -15,6 +15,8 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         private readonly List<int> _scores1;
         private readonly List<int> _scores2;
 
+        private readonly Correlation _correlationValue;
+
         // --- 2. Results are exposed as public properties with private setters ---
         public List<double> Ranks1 { get; private set; }
         public List<double> Ranks2 { get; private set; }
@@ -89,7 +91,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             var differences = new List<double>();
             for (int i = 0; i < Ranks1.Count; i++)
             {
-                differences.Add(Math.Abs(Ranks1[i] - Ranks2[i]));
+                differences.Add(Ranks1[i] - Ranks2[i]);
             }
             return differences;
         }
@@ -112,7 +114,9 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         {
             double topLine = SumDifferenceSquared * 6;
             double bottomLine = _scores1.Count * (Math.Pow(_scores1.Count, 2) - 1);
+
             if (bottomLine == 0) return 0;
+
             return 1 - (topLine / bottomLine);
         }
     }

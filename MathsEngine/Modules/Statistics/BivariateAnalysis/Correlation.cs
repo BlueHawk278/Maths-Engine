@@ -15,7 +15,6 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         WeakNegative,
         StrongNegative,
         PerfectNegative,
-        Invalid
     }
     /// <summary>
     /// Provides an extensions method to display the correlations in a user-friendly manner.
