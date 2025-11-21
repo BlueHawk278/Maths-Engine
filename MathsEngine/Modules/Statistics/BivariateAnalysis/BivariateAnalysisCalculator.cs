@@ -15,7 +15,8 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         private readonly List<int> _scores1;
         private readonly List<int> _scores2;
 
-        private readonly Correlation _correlationValue;
+        public Correlation Correlation { get; private set; }
+        public string CorrelationString;
 
         // --- 2. Results are exposed as public properties with private setters ---
         public List<double> Ranks1 { get; private set; }
@@ -47,7 +48,9 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             Ranks2 = CalculateRanksFor(_scores2);
             Difference = CalculateDifference();
             DifferenceSquared = CalculateDifferenceSquared();
-            CorrelationCoefficient = CalculateCorrelation();
+            CorrelationCoefficient = CalculateCorrelationValue();
+            Correlation = getCorrelation();
+            CorrelationString = getCorrelationString();
         }
 
         // --- 3. All calculation logic is now private to this class ---
@@ -110,7 +113,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             return diffsSquared;
         }
 
-        private double CalculateCorrelation()
+        private double CalculateCorrelationValue()
         {
             double topLine = SumDifferenceSquared * 6;
             double bottomLine = _scores1.Count * (Math.Pow(_scores1.Count, 2) - 1);
@@ -118,6 +121,16 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             if (bottomLine == 0) return 0;
 
             return 1 - (topLine / bottomLine);
+        }
+        
+        private Correlation getCorrelation()
+        {
+            return CorrelationExtensions.getCorrelation(CorrelationCoefficient);
+        }
+        
+        private string getCorrelationString()
+        {
+            return CorrelationExtensions.displayString(Correlation);
         }
     }
 }

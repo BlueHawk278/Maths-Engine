@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 {
-    internal enum Correlation
+    public enum Correlation
     {
         PerfectPositive,
         StrongPositive,
@@ -15,13 +15,14 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         WeakNegative,
         StrongNegative,
         PerfectNegative,
+        Invalid
     }
     /// <summary>
     /// Provides an extensions method to display the correlations in a user-friendly manner.
     /// </summary>
     internal static class CorrelationExtensions
     {
-        public static string displayString(Correlation correlation)
+        internal static string displayString(Correlation correlation)
         {
             switch (correlation)
             {
@@ -42,6 +43,20 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
                 default:
                     return "Invalid Correlation";
             }
+        }
+        internal static Correlation getCorrelation(double correlationValue)
+        {
+            if (correlationValue == 1) return Correlation.PerfectPositive;
+            if (correlationValue >= 0.7) return Correlation.StrongPositive;
+            if (correlationValue > 0) return Correlation.WeakPositive;
+            if (correlationValue == 0) return Correlation.NoCorrelation;
+            if (correlationValue == -1) return Correlation.PerfectNegative;
+            if (correlationValue <= -0.7) return Correlation.StrongNegative;
+            if (correlationValue < 0) return Correlation.WeakNegative;
+
+            // Default case for any value outside the -1 to 1 range, though this shouldn't be hit
+            // with a valid correlation coefficient.
+            return Correlation.Invalid;
         }
     }
 }

@@ -56,6 +56,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             Console.WriteLine($"Difference Squared: {string.Join(", ", calc.DifferenceSquared)}");
             Console.WriteLine($"Sum of Difference Squared: {calc.SumDifferenceSquared:F2}");
             Console.WriteLine($"\nSpearman's Rank Correlation Coefficient is: {calc.CorrelationCoefficient:F3}");
+            Console.WriteLine($"Correlation: {calc.CorrelationString}");
         }
     }
 }
