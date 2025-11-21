@@ -14,7 +14,7 @@ namespace MathsEngine.Core.Menu
             Console.WriteLine("Welcome to the Maths Engine");
             Console.WriteLine("1. Pure");
             Console.WriteLine("2. Mechanics");
-            Console.WriteLine("3. Stats");
+            Console.WriteLine("3. Statistics");
             Console.WriteLine("4. Exit Program");
             string response = Console.ReadLine();
 
@@ -63,7 +63,7 @@ namespace MathsEngine.Core.Menu
             switch (response)
             {
                 case 1:
-                    Modules.Statistics.BivariateAnalysis.BivariateAnalysis.calculate();
+                    Modules.Statistics.BivariateAnalysis.BivariateAnalysis.Start();
                     break;
                 case 2:
                     Modules.Statistics.Dispersion.StandardDeviation.calculate();

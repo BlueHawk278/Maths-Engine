@@ -1,37 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static MathsEngine.Modules.Statistics.BivariateAnalysis.BivariateAnalysisLogic;
-using static MathsEngine.Modules.Statistics.BivariateAnalysis.Variables;
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 {
+    /// <summary>
+    /// Handles the user interface for the Bivariate Analysis feature.
+    /// </summary>
     internal static class BivariateAnalysis
     {
-        public static void calculate()
+        public static void Start()
         {
-            DataPoints = getNumDataPoints();
+            // --- 1. Handle all user input here ---
+            int numDataPoints = GetNumberOfDataPoints();
+            var scores1 = GetScoresFromUser(numDataPoints, "Score Set 1");
+            var scores2 = GetScoresFromUser(numDataPoints, "Score Set 2");
 
-            Score1 = getScores(Score1);
-            Score2 = getScores(Score2);
+            // --- 2. Create an INSTANCE of the calculator and run it ---
+            var calculator = new BivariateAnalysisCalculator(scores1, scores2);
+            calculator.Run();
 
-            Rank1 = getRanks(Score1, Rank1);
-            Rank2 = getRanks(Score2, Rank2);
-
-            Difference = getDifference();
-            DifferenceSquared = getDifferenceSquared();
-
-            double correlationValue = getCorrelationValue();
-            Console.WriteLine($"\nThe Spearman's Rank Correlation Coefficient is: {correlationValue:F3}");
-
-            Correlation correlation = calculateCorrelation(correlationValue);
-            Console.WriteLine($"Correlation: " + CorrelationExtensions.displayString(correlation));
-
-            displayAllInfo();
+            // --- 3. Display the results from the calculator object ---
+            DisplayResults(calculator);
 
             Console.ReadLine();
+        }
+
+        private static int GetNumberOfDataPoints()
+        {
+            // Add robust input handling here
+            Console.WriteLine("How many data points would you like to enter?");
+            return Convert.ToInt32(Console.ReadLine());
+        }
+
+        private static List<int> GetScoresFromUser(int count, string scoreName)
+        {
+            var scores = new List<int>();
+            Console.WriteLine($"\n--- Entering scores for {scoreName} ---");
+            for (int i = 0; i < count; i++)
+            {
+                // Add robust input handling here
+                Console.Write($"Enter point {i + 1}: ");
+                scores.Add(Convert.ToInt16(Console.ReadLine()));
+            }
+            return scores;
+        }
+
+        private static void DisplayResults(BivariateAnalysisCalculator calc)
+        {
+            Console.WriteLine("\n--- Results ---");
+            // Display the table of ranks, differences, etc.
+            // Example:
+            Console.WriteLine($"Rank 1: {string.Join(", ", calc.Ranks1)}");
+            Console.WriteLine($"Rank 2: {string.Join(", ", calc.Ranks2)}");
+            Console.WriteLine($"Difference Squared: {string.Join(", ", calc.DifferenceSquared)}");
+            Console.WriteLine($"Sum of Difference Squared: {calc.SumDifferenceSquared:F2}");
+            Console.WriteLine($"\nSpearman's Rank Correlation Coefficient is: {calc.CorrelationCoefficient:F3}");
         }
     }
 }
