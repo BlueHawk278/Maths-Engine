@@ -2,7 +2,7 @@
 
 namespace MathsEngine.Core.Menu.Pure
 {
-    internal static class PythagorasMenu // fix this
+    internal static class PythagorasMenu
     {
         public static void menu()
         {
@@ -25,6 +25,10 @@ namespace MathsEngine.Core.Menu.Pure
                     break;
             }
         }
+
+        /// <summary>
+        /// Methods that retrieve the side lengths and inputs them into the Pythagoras Theorem
+        /// </summary>
 
         public static void HandleFindHypotenuse()
         {
