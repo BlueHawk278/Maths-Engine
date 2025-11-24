@@ -26,7 +26,6 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             Console.WriteLine("How many data points would you like to enter?");
             return Convert.ToInt16(Console.ReadLine());
         }
-
         private static List<double> GetScoresFromUser(int numDataPoints)
         {
             var scores = new List<double>();
@@ -38,6 +37,6 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             }
 
             return scores;
-        }
+        } 
     }
 }

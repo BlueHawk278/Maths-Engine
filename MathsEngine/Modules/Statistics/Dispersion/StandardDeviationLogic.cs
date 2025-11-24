@@ -15,9 +15,11 @@ namespace MathsEngine.Modules.Statistics.Dispersion
         private double Mean, Median, Range, Q1, Q3, IQR;
         private List<double> modeList = new List<double>();
 
+        private List<double> distanceFromMean = new List<double>();
+
         public StandardDeviationLogic(List<double> originalValues)
         {
-            if (_originalValues == null || _originalValues.Count() == 0)
+            if (originalValues == null || originalValues.Count() == 0)
                 throw new ArgumentException("Score lists must be non-null and have the same number of elements.");
             _originalValues = originalValues;
             _sortedValues = new List<double>(originalValues);
@@ -28,8 +30,8 @@ namespace MathsEngine.Modules.Statistics.Dispersion
         public void Run()
         {
             getAverages(_originalValues);
+            distanceFromMean = getDistanceFromMean();
         }
-
         private void getAverages(List<double> values)
         {
             Mean = Core.StatisticsHelpers.AverageCalculator.calculateMean(values);
@@ -42,8 +44,33 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             Q3 = quartiles[1];
             IQR = quartiles[2];
         }
+
+        private List<double> getDistanceFromMean()
+        {
+            var distanceFromMean = new List<double>(_sortedValues);
+
+            for (int i = 0; i < _numValues; i++)
+            {
+                distanceFromMean.Add(_sortedValues[i] - Mean);
+            }
+
+            return distanceFromMean;
+        }
         public void displayData()
         {
+            Console.WriteLine();
+            foreach(double value in _originalValues)
+                Console.Write(value + ", ");
+            Console.WriteLine();
+
+            foreach(double value in _sortedValues)
+                Console.Write(value + ", ");
+            Console.WriteLine();
+
+            foreach(double value in distanceFromMean)
+                Console.Write(value + ", ");
+            Console.WriteLine();
+
             Console.WriteLine("Mean: " + Mean);
             Console.WriteLine("Median: " + Median);
 

@@ -124,9 +124,9 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
         /// <returns>The difference between the min and max value.</returns>
         internal static double calculateRange(List<double> nums)
         {
-            nums.Sort();
+            var sortedNums = new List<double>(nums);
 
-            return nums[nums.Count - 1] - nums[0];
+            return sortedNums[sortedNums.Count - 1] - sortedNums[0];
         }
 
         // MEASURES OF DISPERSION
@@ -147,9 +147,7 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
             double Q1, Q3, IQR;
             int numValues = originalValues.Count;
 
-            var sortedValues = new List<double>();
-            foreach (var var in originalValues)
-                sortedValues.Add(var);
+            var sortedValues = new List<double>(originalValues);
             sortedValues.Sort();
 
             if (sortedValues == null || numValues < 4)
