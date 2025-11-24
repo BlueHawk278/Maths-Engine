@@ -66,7 +66,7 @@ namespace MathsEngine.Core.Menu
                     Modules.Statistics.BivariateAnalysis.BivariateAnalysis.Start();
                     break;
                 case 2:
-                    Modules.Statistics.Dispersion.StandardDeviation.calculate();
+                    Modules.Statistics.Dispersion.StandardDeviation.Start();
                     break;
             }
         }

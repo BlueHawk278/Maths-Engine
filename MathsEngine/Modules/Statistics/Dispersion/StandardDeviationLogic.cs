@@ -4,53 +4,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using static MathsEngine.Modules.Statistics.Dispersion.Variables;
-
 namespace MathsEngine.Modules.Statistics.Dispersion
 {
-    internal static class StandardDeviationLogic
+    internal class StandardDeviationLogic
     {
-        internal static void getNumValues()
-        {
-            Console.WriteLine("How many values would you like?");
-            numValues = Convert.ToInt32(Console.ReadLine());
+        private readonly List<double> _originalValues = new List<double>();
+        private readonly List<double> _sortedValues = new List<double>();
+        private readonly int _numValues;
 
-            originalValues.Clear();
-            for(int i = 0; i < numValues; i++)
-            {
-                originalValues.Add(i + 1);
-            }
-        } // make a global function as it is used more than once, for DRY
-        internal static void getValues()
-        {
-            Console.WriteLine("Press any button to enter the values");
-            Console.ReadLine();
+        private double Mean, Median, Range, Q1, Q3, IQR;
+        private List<double> modeList = new List<double>();
 
-            for(int i = 0; i < numValues;i++)
-            {
-                Console.Write($"Enter number {i + 1}: ");
-                int num = Convert.ToInt16(Console.ReadLine());
-                originalValues[i] = num;
-            }
-        } //
-        internal static void sortValues()
+        public StandardDeviationLogic(List<double> originalValues)
         {
-            sortedValues = new List<double>(originalValues);
-            sortedValues.Sort();
+            if (_originalValues == null || _originalValues.Count() == 0)
+                throw new ArgumentException("Score lists must be non-null and have the same number of elements.");
+            _originalValues = originalValues;
+            _sortedValues = new List<double>(originalValues);
+            _sortedValues.Sort();
+            _numValues = _sortedValues.Count();
         }
-        internal static void getAverages()
-        {
-            Mean = Core.StatisticsHelpers.AverageCalculator.calculateMean(originalValues);
-            Median = Core.StatisticsHelpers.AverageCalculator.calculateMedian(originalValues);
-            modeList = Core.StatisticsHelpers.AverageCalculator.calculateMode(originalValues);
-            Range = Core.StatisticsHelpers.AverageCalculator.calculateRange(originalValues);
 
-            var quartiles = Core.StatisticsHelpers.AverageCalculator.getInterQuartileRange(originalValues);
+        public void Run()
+        {
+            getAverages(_originalValues);
+        }
+
+        private void getAverages(List<double> values)
+        {
+            Mean = Core.StatisticsHelpers.AverageCalculator.calculateMean(values);
+            Median = Core.StatisticsHelpers.AverageCalculator.calculateMedian(values);
+            modeList = Core.StatisticsHelpers.AverageCalculator.calculateMode(values);
+            Range = Core.StatisticsHelpers.AverageCalculator.calculateRange(values);
+
+            var quartiles = Core.StatisticsHelpers.AverageCalculator.getInterQuartileRange(values);
             Q1 = quartiles[0];
             Q3 = quartiles[1];
             IQR = quartiles[2];
         }
-        internal static void displayData()
+        public void displayData()
         {
             Console.WriteLine("Mean: " + Mean);
             Console.WriteLine("Median: " + Median);
