@@ -47,7 +47,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion
 
         private List<double> getDistanceFromMean()
         {
-            var distanceFromMean = new List<double>(_sortedValues);
+            var distanceFromMean = new List<double>();
 
             for (int i = 0; i < _numValues; i++)
             {
@@ -59,16 +59,22 @@ namespace MathsEngine.Modules.Statistics.Dispersion
         public void displayData()
         {
             Console.WriteLine();
+
+            Console.WriteLine("Original values: ");
             foreach(double value in _originalValues)
                 Console.Write(value + ", ");
             Console.WriteLine();
 
+            Console.WriteLine("Sorted values: ");
             foreach(double value in _sortedValues)
                 Console.Write(value + ", ");
             Console.WriteLine();
 
+            Console.WriteLine("Distance from mean: ");
             foreach(double value in distanceFromMean)
                 Console.Write(value + ", ");
+            Console.WriteLine();
+
             Console.WriteLine();
 
             Console.WriteLine("Mean: " + Mean);
