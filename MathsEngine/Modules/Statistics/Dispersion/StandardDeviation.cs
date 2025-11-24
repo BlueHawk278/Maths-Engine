@@ -8,7 +8,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion
 {
     internal static class StandardDeviation
     {
-        public static void Start() // Initial logic as far as we can right now
+        public static void Start()
         {
             int numDataPoints = GetNumberOfDataPoints();
             var originalValues = GetScoresFromUser(numDataPoints);

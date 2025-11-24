@@ -44,7 +44,6 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             Q3 = quartiles[1];
             IQR = quartiles[2];
         }
-
         private List<double> getDistanceFromMean()
         {
             var distanceFromMean = new List<double>();
@@ -54,7 +53,11 @@ namespace MathsEngine.Modules.Statistics.Dispersion
                 distanceFromMean.Add(_sortedValues[i] - Mean);
             }
 
-            return distanceFromMean;
+            // Check it total deviation from mean is 0
+            if (distanceFromMean.Sum() == 0)
+                return distanceFromMean;
+
+            return null;
         }
         public void displayData()
         {
