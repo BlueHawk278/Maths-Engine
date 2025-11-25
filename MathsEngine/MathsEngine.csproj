@@ -52,6 +52,7 @@
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysisCalculator.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysis.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\Correlation.cs" />
+    <Compile Include="Modules\Statistics\Dispersion\IStandardDeviation.cs" />
     <Compile Include="Modules\Statistics\Dispersion\StandardDeviationLogic.cs" />
     <Compile Include="Modules\Statistics\Dispersion\StandardDeviation.cs" />
     <Compile Include="Program.cs" />

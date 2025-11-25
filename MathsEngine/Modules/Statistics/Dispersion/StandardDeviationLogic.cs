@@ -4,18 +4,20 @@ using System.Linq;
 
 namespace MathsEngine.Modules.Statistics.Dispersion
 {
-    internal class StandardDeviationLogic
+    internal class StandardDeviationLogic : IStandardDeviation
     {
         private readonly List<double> _originalValues = new List<double>();
         private readonly List<double> _sortedValues = new List<double>();
         private readonly int _numValues;
 
-        private double Mean, Median, Range, Q1, Q3, IQR;
-        private List<double> modeList = new List<double>();
+        private double _mean, _median, _range, _q1, _q3, _iqr;
+        private List<double> _modeList = new List<double>();
 
-        private List<double> distanceFromMean = new List<double>();
-        private double _variance;
-        private double _standardDeviation;
+        private List<double> _distanceFromMean = new List<double>();
+
+        public double Variance { get; private set; }
+        public double StandardDeviation { get; private set; }
+        public double Mean => _mean;
 
         public StandardDeviationLogic(List<double> originalValues)
         {
@@ -26,25 +28,24 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             _sortedValues.Sort();
             _numValues = _sortedValues.Count();
         }
-
         public void Run()
         {
             getAverages(_originalValues);
-            distanceFromMean = getDistanceFromMean();
-            _variance = getVariance(distanceFromMean);
-            _standardDeviation = getStandardDeviation(_variance);
+            _distanceFromMean = getDistanceFromMean();
+            Variance = getVariance(_distanceFromMean);
+            StandardDeviation = getStandardDeviation(Variance);
         }
         private void getAverages(List<double> values)
         {
-            Mean = Core.StatisticsHelpers.AverageCalculator.calculateMean(values);
-            Median = Core.StatisticsHelpers.AverageCalculator.calculateMedian(values);
-            modeList = Core.StatisticsHelpers.AverageCalculator.calculateMode(values);
-            Range = Core.StatisticsHelpers.AverageCalculator.calculateRange(values);
+            _mean = Core.StatisticsHelpers.AverageCalculator.calculateMean(values);
+            _median = Core.StatisticsHelpers.AverageCalculator.calculateMedian(values);
+            _modeList = Core.StatisticsHelpers.AverageCalculator.calculateMode(values);
+            _range = Core.StatisticsHelpers.AverageCalculator.calculateRange(values);
 
             var quartiles = Core.StatisticsHelpers.AverageCalculator.getInterQuartileRange(values);
-            Q1 = quartiles[0];
-            Q3 = quartiles[1];
-            IQR = quartiles[2];
+            _q1 = quartiles[0];
+            _q3 = quartiles[1];
+            _iqr = quartiles[2];
         }
         private List<double> getDistanceFromMean()
         {
@@ -81,7 +82,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion
         {
             return Math.Sqrt(variance);
         }
-        public void displayData()
+        public void DisplayData()
         {
             Console.WriteLine();
 
@@ -96,26 +97,26 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             Console.WriteLine();
 
             Console.WriteLine("Distance from mean: ");
-            foreach(double value in distanceFromMean)
-                Console.Write(value + ", ");
+            foreach(double value in _distanceFromMean)
+                Console.Write(Math.Round(value, 3) + ", ");
             Console.WriteLine();
 
             Console.WriteLine();
 
-            Console.WriteLine("Mean: " + Mean);
-            Console.WriteLine("Median: " + Median);
+            Console.WriteLine("Mean: " + Math.Round(Mean, 3));
+            Console.WriteLine("Median: " + _median);
 
             Console.Write("Mode: ");
-            foreach(double mode in modeList)
+            foreach(double mode in _modeList)
                 Console.Write(mode + " ");
 
-            Console.WriteLine("Range: " + Range);
+            Console.WriteLine("Range: " + _range);
 
-            Console.WriteLine("Q1: " + Q1);
-            Console.WriteLine("Q3: " + Q3);
-            Console.WriteLine("IQR: " + IQR);
+            Console.WriteLine("Q1: " + _q1);
+            Console.WriteLine("Q3: " + _q3);
+            Console.WriteLine("IQR: " + _iqr);
             
-            Console.WriteLine($"\nStandard Deviation: {_standardDeviation}");
+            Console.WriteLine($"\nStandard Deviation: {Math.Round(StandardDeviation, 2)}");
         }
     }
 }

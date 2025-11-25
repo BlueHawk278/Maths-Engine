@@ -16,7 +16,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             var calculator = new StandardDeviationLogic(originalValues);
             calculator.Run();
 
-            calculator.displayData();
+            calculator.DisplayData();
 
             Console.ReadLine();
         }
