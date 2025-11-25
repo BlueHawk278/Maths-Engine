@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Menu\Menu.cs" />
+    <Compile Include="Core\Menu\Statistics\DispersionMenu.cs" />
     <Compile Include="Modules\Core\PureHelpers\PythagorasTheorem.cs" />
     <Compile Include="Modules\Core\StatisticsHelpers\AverageCalculator.cs" />
     <Compile Include="Core\Menu\Pure\PythagorasMenu.cs" />

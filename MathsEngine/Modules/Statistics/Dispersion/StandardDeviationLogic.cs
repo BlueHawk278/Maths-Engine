@@ -16,6 +16,8 @@ namespace MathsEngine.Modules.Statistics.Dispersion
         private List<double> modeList = new List<double>();
 
         private List<double> distanceFromMean = new List<double>();
+        private double _variance;
+        private double _standardDeviation;
 
         public StandardDeviationLogic(List<double> originalValues)
         {
@@ -31,6 +33,8 @@ namespace MathsEngine.Modules.Statistics.Dispersion
         {
             getAverages(_originalValues);
             distanceFromMean = getDistanceFromMean();
+            _variance = getVariance(distanceFromMean);
+            _standardDeviation = getStandardDeviation(_variance);
         }
         private void getAverages(List<double> values)
         {
@@ -58,6 +62,24 @@ namespace MathsEngine.Modules.Statistics.Dispersion
                 return distanceFromMean;
 
             return null;
+        }
+        private double getVariance(List<double> distanceFromMean)
+        {
+            if (distanceFromMean.Count() == 0 || distanceFromMean == null)
+                throw new ArgumentException("Score list must be non-null and have the same number of elements");
+
+            double variance = 0;
+
+            for (int i = 0; i < _numValues; i++)
+            {
+                variance += Math.Pow(distanceFromMean[i], 2);
+            }
+
+            return variance / _numValues;
+        }
+        private double getStandardDeviation(double variance)
+        {
+            return Math.Sqrt(variance);
         }
         public void displayData()
         {
@@ -92,6 +114,8 @@ namespace MathsEngine.Modules.Statistics.Dispersion
             Console.WriteLine("Q1: " + Q1);
             Console.WriteLine("Q3: " + Q3);
             Console.WriteLine("IQR: " + IQR);
+            
+            Console.WriteLine($"\nStandard Deviation: {_standardDeviation}");
         }
     }
 }
