@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Statistics.Dispersion
 {
@@ -52,20 +50,22 @@ namespace MathsEngine.Modules.Statistics.Dispersion
         {
             var distanceFromMean = new List<double>();
 
+            const double epsilon = 1e-9; // IDK, but it's needed for this to work
+
             for (int i = 0; i < _numValues; i++)
             {
                 distanceFromMean.Add(_sortedValues[i] - Mean);
             }
 
             // Check it total deviation from mean is 0
-            if (distanceFromMean.Sum() == 0)
+            if (Math.Abs(distanceFromMean.Sum()) < epsilon)
                 return distanceFromMean;
 
             return null;
         }
         private double getVariance(List<double> distanceFromMean)
         {
-            if (distanceFromMean.Count() == 0 || distanceFromMean == null)
+            if (distanceFromMean == null || distanceFromMean.Count() == 0)
                 throw new ArgumentException("Score list must be non-null and have the same number of elements");
 
             double variance = 0;
