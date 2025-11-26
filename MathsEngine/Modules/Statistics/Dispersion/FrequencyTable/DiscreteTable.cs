@@ -11,36 +11,28 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
         private double _mean;
         public double _sigmaF, _sigmaFX, _sigmaFXSquared;
         public double[,] Table { get; private set; }
-        private int NumRows { get; set; }
+        private int NumRows { get;}
         public double Variance { get; private set; }
         public double StandardDeviation { get; private set; }
         public double Mean => _mean;
 
-        public void Run()
+        public DiscreteTable(double[,] table)
         {
+            if(table == null)
+                throw new ArgumentNullException("Table must not be empty");
 
+            Table = table;
         }
 
-        private void GetTable(double[] table)
+        public void Run()
         {
-            Console.WriteLine("How many columns are there");
-            NumRows = Convert.ToInt16(Console.ReadLine());
+            GetTableValues(Table);
+            GetTotals(Table);
+            CalculateStandardDeviation();
+        }
 
-            Table = new double[NumRows, 4];
-
-
-            // Getting the x value and frequency for table
-            for (int i = 0; i < NumRows; i++)
-            {
-                Console.Write($"Enter X value No.{NumRows++}:  ");
-                int num = Convert.ToInt16(Console.ReadLine());
-                Console.Write($"Enter the frequency for this value: ");
-                int frequency = Convert.ToInt16(Console.ReadLine());
-
-                Table[NumRows, 0] = num;
-                Table[NumRows, 1] = frequency;
-            }
-
+        private void GetTableValues(double[,] table)
+        {
             // Calculating fx from frequency * x
             for (int i = 0; i < NumRows; i++)
             {
@@ -54,7 +46,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
             }
         }
 
-        private void GetTotals(double[] table)
+        private void GetTotals(double[,] table)
         {
             double total = 0;
 
@@ -83,13 +75,9 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
             total = 0;
         }
 
-        private void GetMeanX()
-        {
-            _mean = _sigmaFX / _sigmaF;
-        }
-
         private void CalculateStandardDeviation()
         {
+            _mean = _sigmaFX / _sigmaF;
             Variance = (_sigmaFXSquared / _sigmaF) - (Mean * Mean);
             StandardDeviation = Math.Sqrt(Variance);
         }

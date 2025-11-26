@@ -1,4 +1,6 @@
 ﻿using System;
+using MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers;
+using MathsEngine.Modules.Statistics.Dispersion.FrequencyTable;
 
 // TODO: Support for continuous ranges e.g. 5 < x < 10
 
@@ -16,7 +18,18 @@ namespace MathsEngine.Core.Menu.Statistics
 
             switch (response)
             {
-
+                case "1":
+                    StandardDeviationArray.Start();
+                    break;
+                case "2":
+                    Discrete.Start();
+                    break;
+                case "3":
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    menu();
+                    break;
             }
         }
     }
