@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MathsEngine.Core.Menu.Pure;
+using MathsEngine.Modules.Statistics.BivariateAnalysis;
+using MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers;
 
 namespace MathsEngine.Core.Menu
 {
@@ -63,10 +65,10 @@ namespace MathsEngine.Core.Menu
             switch (response)
             {
                 case 1:
-                    Modules.Statistics.BivariateAnalysis.BivariateAnalysis.Start();
+                    BivariateAnalysis.Start(); // 
                     break;
                 case 2:
-                    Modules.Statistics.Dispersion.StandardDeviation.Start();
+                    StandardDeviationArray.Start();
                     break;
             }
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MathsEngine.Modules.Statistics.Dispersion
+namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
 {
     internal class StandardDeviationLogic : IStandardDeviation
     {

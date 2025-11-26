@@ -10,7 +10,8 @@ namespace MathsEngine.Core.Menu.Statistics
         {
             Console.WriteLine("Welcome to the Dispersion / Standard Deviation Menu");
             Console.WriteLine("1. Calculate standard deviation from a set of numbers");
-            Console.WriteLine("2. Calculate standard deviation from a frequency table");
+            Console.WriteLine("2. Calculate standard deviation from a frequency table with discontinuous values");
+            Console.WriteLine("3. Calculate standard deviation from a frequency table with continuous values");
             string response = Console.ReadLine();
 
             switch (response)

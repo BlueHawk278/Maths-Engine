@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MathsEngine.Modules.Statistics.Dispersion
+namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
 {
-    internal static class StandardDeviation
+    internal static class StandardDeviationArray
     {
         public static void Start()
         {
@@ -20,7 +17,6 @@ namespace MathsEngine.Modules.Statistics.Dispersion
 
             Console.ReadLine();
         }
-
         private static int GetNumberOfDataPoints()
         {
             Console.WriteLine("How many data points would you like to enter?");
