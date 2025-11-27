@@ -22,22 +22,24 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
 
         private static double[,] getTable()
         {
-            Console.WriteLine("How many columns are there");
+            Console.WriteLine("How many rows are there");
             int NumRows = Convert.ToInt16(Console.ReadLine());
 
             double[,] Table = new double[NumRows, 4];
 
 
             // Getting the x value and frequency for table
+            int rowNum = 1;
             for (int i = 0; i < NumRows; i++)
             {
-                Console.Write($"Enter X value No.{NumRows++}:  ");
+                Console.Write($"Enter X value No.{rowNum}:  ");
                 int num = Convert.ToInt16(Console.ReadLine());
                 Console.Write($"Enter the frequency for this value: ");
                 int frequency = Convert.ToInt16(Console.ReadLine());
 
-                Table[NumRows, 0] = num;
-                Table[NumRows, 1] = frequency; // out of range error
+                rowNum++;
+                Table[i, 0] = num;
+                Table[i, 1] = frequency;
             }
 
             return Table;

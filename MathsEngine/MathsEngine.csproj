@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\Mechanics\UniformAcceleration\" />
+    <Folder Include="Modules\Statistics\Dispersion\ContinuousTable\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

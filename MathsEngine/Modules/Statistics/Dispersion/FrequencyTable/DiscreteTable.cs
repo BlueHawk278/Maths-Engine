@@ -21,6 +21,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
             if(table == null)
                 throw new ArgumentNullException("Table must not be empty");
 
+            NumRows = table.GetLength(0);
             Table = table;
         }
 
@@ -36,13 +37,13 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
             // Calculating fx from frequency * x
             for (int i = 0; i < NumRows; i++)
             {
-                Table[NumRows, 2] = Table[NumRows, 0] * Table[NumRows, 1];
+                Table[i, 2] = Table[i, 0] * Table[i, 1];
             }
 
             // Calculating fx^2 from fx * x
             for (int i = 0; i < NumRows; i++)
             {
-                Table[NumRows, 3] = Table[NumRows, 0] * Table[NumRows, 2];
+                Table[i, 3] = Table[i, 0] * Table[i, 2];
             }
         }
 
@@ -53,7 +54,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
             // 𝛴F
             for (int i = 0; i < NumRows; i++)
             {
-                total += Table[NumRows, 1];
+                total += Table[i, 1];
             }
             _sigmaF = total;
             total = 0;
@@ -61,7 +62,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
             // 𝛴FX
             for (int i = 0; i < NumRows; i++)
             {
-                total += Table[NumRows, 2];
+                total += Table[i, 2];
             }
             _sigmaFX = total;
             total = 0;
@@ -69,10 +70,9 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
             // 𝛴FX^2
             for (int i = 0; i < NumRows; i++)
             {
-                total += Table[NumRows, 3];
+                total += Table[i, 3];
             }
             _sigmaFXSquared = total;
-            total = 0;
         }
 
         private void CalculateStandardDeviation()
@@ -84,7 +84,8 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
 
         public void DisplayData()
         {
-
+            Console.WriteLine($"Mean: {Mean}");
+            Console.WriteLine($"Standard Deviation: {StandardDeviation}");
         }
     }
 }
