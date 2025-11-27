@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
 {
-    internal class DiscreteTable : IStandardDeviation
+    internal class DiscreteTableCalculator : IStandardDeviation
     {
         private double _mean;
         public double _sigmaF, _sigmaFX, _sigmaFXSquared;
@@ -16,7 +16,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
         public double StandardDeviation { get; private set; }
         public double Mean => _mean;
 
-        public DiscreteTable(double[,] table)
+        public DiscreteTableCalculator(double[,] table)
         {
             if(table == null)
                 throw new ArgumentNullException("Table must not be empty");
@@ -27,52 +27,26 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
 
         public void Run()
         {
-            GetTableValues(Table);
-            GetTotals(Table);
+            CalculateTotals();
             CalculateStandardDeviation();
         }
 
-        private void GetTableValues(double[,] table)
+        private void CalculateTotals()
         {
-            // Calculating fx from frequency * x
             for (int i = 0; i < NumRows; i++)
             {
-                Table[i, 2] = Table[i, 0] * Table[i, 1];
-            }
+                double x = Table[i, 0];
+                double f = Table[i, 1];
+                double fx = x * f;
+                double fxSquared = fx * x;
 
-            // Calculating fx^2 from fx * x
-            for (int i = 0; i < NumRows; i++)
-            {
-                Table[i, 3] = Table[i, 0] * Table[i, 2];
-            }
-        }
+                Table[i, 2] = fx;
+                Table[i, 3] = fxSquared;
 
-        private void GetTotals(double[,] table)
-        {
-            double total = 0;
-
-            // 𝛴F
-            for (int i = 0; i < NumRows; i++)
-            {
-                total += Table[i, 1];
+                _sigmaF += f;
+                _sigmaFX += fx;
+                _sigmaFXSquared += fxSquared;
             }
-            _sigmaF = total;
-            total = 0;
-
-            // 𝛴FX
-            for (int i = 0; i < NumRows; i++)
-            {
-                total += Table[i, 2];
-            }
-            _sigmaFX = total;
-            total = 0;
-
-            // 𝛴FX^2
-            for (int i = 0; i < NumRows; i++)
-            {
-                total += Table[i, 3];
-            }
-            _sigmaFXSquared = total;
         }
 
         private void CalculateStandardDeviation()

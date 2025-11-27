@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
 {
-    internal static class StandardDeviationArray
+    internal static class ArrayOfNumbersInput
     {
         public static void Start()
         {
             int numDataPoints = GetNumberOfDataPoints();
             var originalValues = GetScoresFromUser(numDataPoints);
 
-            var calculator = new StandardDeviationLogic(originalValues);
+            var calculator = new ArrayOfNumbersCalculator(originalValues);
             calculator.Run();
 
             calculator.DisplayData();

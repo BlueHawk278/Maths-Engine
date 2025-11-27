@@ -3,7 +3,9 @@ using MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers;
 using MathsEngine.Modules.Statistics.Dispersion.ContinuousTable;
 using MathsEngine.Modules.Statistics.Dispersion.FrequencyTable;
 
-// TODO: Support for continuous ranges e.g. 5 < x < 10
+// TODO: Support for continuous ranges e.g. 4-6 7-9
+//       Working backwards from the mean to find a missing frequency
+//       Combining sets of data to find new means and standard deviations
 
 namespace MathsEngine.Core.Menu.Statistics
 {
@@ -20,13 +22,13 @@ namespace MathsEngine.Core.Menu.Statistics
             switch (response)
             {
                 case "1":
-                    StandardDeviationArray.Start();
+                    ArrayOfNumbersInput.Start();
                     break;
                 case "2":
-                    Discrete.Start();
+                    DiscreteTableInput.Start();
                     break;
                 case "3":
-                    Continuous.Start();
+                    ContinuousTableInput.Start();
                     break;
                 default:
                     Console.WriteLine("Invalid input");

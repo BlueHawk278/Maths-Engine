@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
 {
-    internal class Discrete
+    internal class DiscreteTableInput
     {
         public static void Start()
         {
             double[,] table = getTable();
 
-            var Calculator = new DiscreteTable(table);
+            var Calculator = new DiscreteTableCalculator(table);
             Calculator.Run();
 
             Calculator.DisplayData();

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.ContinuousTable
 {
-    internal class Continuous
+    internal class ContinuousTableInput
     {
         public static void Start()
         {
             double[,] table = getTable();
 
-            var Calculator = new ContinuousTable(table);
+            var Calculator = new ContinuousTableCalculator(table);
             Calculator.Run();
 
             Calculator.DisplayData();
