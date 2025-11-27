@@ -52,6 +52,8 @@
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysisCalculator.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysis.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\Correlation.cs" />
+    <Compile Include="Modules\Statistics\Dispersion\ContinuousTable\Continuous.cs" />
+    <Compile Include="Modules\Statistics\Dispersion\ContinuousTable\ContinuousTable.cs" />
     <Compile Include="Modules\Statistics\Dispersion\FrequencyTable\Discrete.cs" />
     <Compile Include="Modules\Statistics\Dispersion\FrequencyTable\DiscreteTable.cs" />
     <Compile Include="Modules\Statistics\Dispersion\IStandardDeviation.cs" />
@@ -67,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\Mechanics\UniformAcceleration\" />
-    <Folder Include="Modules\Statistics\Dispersion\ContinuousTable\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,23 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
+namespace MathsEngine.Modules.Statistics.Dispersion.ContinuousTable
 {
-    internal class DiscreteTable : IStandardDeviation
+    internal class ContinuousTable : IStandardDeviation // MEAN is incorrect and therefore stnadard deviation
     {
         private double _mean;
         public double _sigmaF, _sigmaFX, _sigmaFXSquared;
-        private double[,] Table { get; set; }
-        private int NumRows { get;}
-        public double Variance { get; private set; }
+        private double[,] Table { get; }
+        private int NumRows { get; }
+
         public double StandardDeviation { get; private set; }
         public double Mean => _mean;
+        public double Variance { get; private set; }
 
-        public DiscreteTable(double[,] table)
+        public ContinuousTable(double[,] table)
         {
             if(table == null)
-                throw new ArgumentNullException("Table must not be empty");
-
+                throw new ArgumentNullException("table must not be null");
             NumRows = table.GetLength(0);
             Table = table;
         }
@@ -34,16 +34,13 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
 
         private void GetTableValues(double[,] table)
         {
-            // Calculating fx from frequency * x
+            
             for (int i = 0; i < NumRows; i++)
             {
-                Table[i, 2] = Table[i, 0] * Table[i, 1];
-            }
-
-            // Calculating fx^2 from fx * x
-            for (int i = 0; i < NumRows; i++)
-            {
-                Table[i, 3] = Table[i, 0] * Table[i, 2];
+                // Calculating fx from table
+                Table[i, 4] = table[i, 3] * table[i, 2];
+                // Calculating fx^2 from table
+                Table[i, 5] = table[i, 4] * table[i, 3];
             }
         }
 
@@ -51,26 +48,26 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
         {
             double total = 0;
 
-            // 𝛴F
+            // Calculating 𝛴f
             for (int i = 0; i < NumRows; i++)
             {
-                total += Table[i, 1];
+                total += table[i, 2];
             }
             _sigmaF = total;
             total = 0;
 
-            // 𝛴FX
+            // Calculating 𝛴fx
             for (int i = 0; i < NumRows; i++)
             {
-                total += Table[i, 2];
+                total += table[i, 4];
             }
             _sigmaFX = total;
             total = 0;
 
-            // 𝛴FX^2
+            // Calculating 𝛴fx^2
             for (int i = 0; i < NumRows; i++)
             {
-                total += Table[i, 3];
+                total += table[i, 5];
             }
             _sigmaFXSquared = total;
         }
@@ -84,7 +81,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
 
         public void DisplayData()
         {
-            Console.WriteLine($"Mean: {Mean}");
+            Console.WriteLine($"Mean: {_mean}");
             Console.WriteLine($"Standard Deviation: {StandardDeviation}");
         }
     }

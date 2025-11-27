@@ -1,5 +1,6 @@
 ﻿using System;
 using MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers;
+using MathsEngine.Modules.Statistics.Dispersion.ContinuousTable;
 using MathsEngine.Modules.Statistics.Dispersion.FrequencyTable;
 
 // TODO: Support for continuous ranges e.g. 5 < x < 10
@@ -25,6 +26,7 @@ namespace MathsEngine.Core.Menu.Statistics
                     Discrete.Start();
                     break;
                 case "3":
+                    Continuous.Start();
                     break;
                 default:
                     Console.WriteLine("Invalid input");
