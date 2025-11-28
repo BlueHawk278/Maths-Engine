@@ -16,6 +16,8 @@ Current Modules:
   -	Mean, Median, Mode etc.
 - Pure Maths:
   -	Pythagoras Theorem
+  -	Matrices
+- Mechanics:
 
 Planned Features
 Coming as I develop the project further:
@@ -29,5 +31,6 @@ Coming as I develop the project further:
 -	Optional SQL database support
 
 Folder Structure
+
 
 
