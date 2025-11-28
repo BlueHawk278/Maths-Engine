@@ -45,10 +45,7 @@ namespace MathsEngine.Core.Menu.Pure
             int columns2 = Convert.ToInt16(Console.ReadLine());
             MatriceBase matrice2 = new MatriceBase(rows2, columns2);
 
-            if (operation == "Add")
-                MatricesCalculator.AddMatrice(matrice1, matrice2);
-            else if (operation == "Subtract")
-                MatricesCalculator.SubtractMatrice(matrice1, matrice2);
+            MatricesCalculator.AddMatrice(matrice1, matrice2, operation);
         }
     }
 }
