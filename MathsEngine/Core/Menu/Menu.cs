@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using MathsEngine.Core.Menu.Pure;
 using MathsEngine.Core.Menu.Statistics;
 using MathsEngine.Modules.Statistics.BivariateAnalysis;
-using MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers;
 
 namespace MathsEngine.Core.Menu
 {
@@ -52,7 +51,7 @@ namespace MathsEngine.Core.Menu
                     PythagorasMenu.menu();
                     break;
                 case "2":
-                    MatricesMenu.menu();
+                    MatrixMenu.menu();
                     break;
                 default:
                     Console.WriteLine("Please enter a valid number");

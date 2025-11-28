@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Pure.Matrices
 {
-    internal class MatriceBase
+    internal class MatrixBase
     {
         public int NumRows { get; set; }
         public int NumCols { get; set; }
         public double[,] Matrice {  get; set; }
 
-        public MatriceBase(int rows, int cols)
+        public MatrixBase(int rows, int cols)
         {
             NumRows = rows;
             NumCols = cols;
             Matrice = new double[NumRows, NumCols];
+
+            GetMatrice();
         }
 
         public void GetMatrice()
