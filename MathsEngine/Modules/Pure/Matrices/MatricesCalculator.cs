@@ -13,10 +13,13 @@ namespace MathsEngine.Modules.Pure.Matrices
         /// </summary>
         /// <param name="matrice1"> The matrice that will be substracted from. </param>
         /// <param name="matrice2"> The matrice that will be subtracted by. </param>
-        private MatriceBase AddMatrice(MatriceBase matrice1, MatriceBase matrice2) // validate if same size
+        public static MatriceBase AddMatrice(MatriceBase matrice1, MatriceBase matrice2) // validate if same size
         {
             if (matrice1 == null || matrice2 == null)
                 throw new ArgumentException("Matrices are empty");
+
+            if (matrice1.NumRows != matrice2.NumRows || matrice1.NumCols != matrice2.NumCols)
+                throw new ArgumentException("Matrices can't be added, they are not the same size");
 
             var result = new MatriceBase(matrice1.NumRows, matrice1.NumCols);
 
@@ -37,10 +40,13 @@ namespace MathsEngine.Modules.Pure.Matrices
         /// <param name="matrice2"></param>
         /// <returns> The values at each index pf matrice1 - matrice2 </returns>
         /// <exception cref="ArgumentException"></exception>
-        private MatriceBase SubtractMatrice(MatriceBase matrice1, MatriceBase matrice2)
+        public static MatriceBase SubtractMatrice(MatriceBase matrice1, MatriceBase matrice2)
         {
             if (matrice1 == null || matrice2 == null)
                 throw new ArgumentException("Matrices are empty");
+
+            if (matrice1.NumRows != matrice2.NumRows || matrice1.NumCols != matrice2.NumCols)
+                throw new ArgumentException("Matrices can't be subtracted, they are not the same size");
 
             var result = new MatriceBase(matrice1.NumRows, matrice1.NumCols);
 
