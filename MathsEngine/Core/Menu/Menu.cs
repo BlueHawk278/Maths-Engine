@@ -43,12 +43,20 @@ namespace MathsEngine.Core.Menu
         {
             Console.WriteLine("Welcome to the Pure Maths Menu");
             Console.WriteLine("1. Pythagoras Theorem");
-            int response = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("2. Matrices");
+            string response = Console.ReadLine();
 
             switch (response)
             {
-                case 1:
+                case "1":
                     PythagorasMenu.menu();
+                    break;
+                case "2":
+                    MatricesMenu.menu();
+                    break;
+                default:
+                    Console.WriteLine("Please enter a valid number");
+                    mainMenu();
                     break;
             }
         }
