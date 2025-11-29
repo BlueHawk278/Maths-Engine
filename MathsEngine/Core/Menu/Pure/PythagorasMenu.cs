@@ -16,12 +16,15 @@ namespace MathsEngine.Core.Menu.Pure
             {
                 case "1":
                     HandleFindHypotenuse();
+                    Menu.mainMenu();
                     break;
                 case "2":
                     HandleFindOtherSide();
+                    Menu.mainMenu();
                     break;
                 case "3":
                     HandleCheckTheorem();
+                    Menu.mainMenu();
                     break;
             }
         }

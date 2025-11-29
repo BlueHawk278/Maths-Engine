@@ -21,12 +21,15 @@ namespace MathsEngine.Core.Menu.Pure
             {
                 case "1":
                     handleAddOrSubtractMatrices("Add");
+                    Menu.mainMenu();
                     break;
                 case "2":
                     handleAddOrSubtractMatrices("Subtract");
+                    Menu.mainMenu();
                     break;
                 case "3":
                     handleScalarMultiplication();
+                    Menu.mainMenu();
                     break;
                 default:
                     Console.WriteLine("Enter a valid number please");

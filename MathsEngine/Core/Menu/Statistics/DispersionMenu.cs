@@ -23,12 +23,15 @@ namespace MathsEngine.Core.Menu.Statistics
             {
                 case "1":
                     ArrayOfNumbersInput.Start();
+                    Menu.mainMenu();
                     break;
                 case "2":
                     DiscreteTableInput.Start();
+                    Menu.mainMenu();
                     break;
                 case "3":
                     ContinuousTableInput.Start();
+                    Menu.mainMenu();
                     break;
                 default:
                     Console.WriteLine("Invalid input");
