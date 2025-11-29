@@ -37,19 +37,20 @@ namespace MathsEngine.Core.Menu.Pure
 
         private static void handleAddOrSubtractMatrices(string operation)
         {
-            Console.Write("First Matrice: How many rows? ");
+            Console.Write("First Matrix: How many rows? ");
             int rows1 = Convert.ToInt16(Console.ReadLine());
-            Console.Write("First Matrice: How many columns? ");
+            Console.Write("First Matrix: How many columns? ");
             int columns1 = Convert.ToInt16(Console.ReadLine());
             MatrixBase matrice1 = new MatrixBase(rows1, columns1);
 
-            Console.Write("Second Matrice: How many rows? ");
+            Console.Write("Second Matrix: How many rows? ");
             int rows2 = Convert.ToInt16(Console.ReadLine());
-            Console.Write("Second Matrice: How many columns? ");
+            Console.Write("Second Matrix: How many columns? ");
             int columns2 = Convert.ToInt16(Console.ReadLine());
             MatrixBase matrice2 = new MatrixBase(rows2, columns2);
 
-            MatrixCalculator.AddOrSubtractMatrice(matrice1, matrice2, operation);
+            var result = MatrixCalculator.AddOrSubtractMatrice(matrice1, matrice2, operation);
+            displayMatrix(result);
         }
 
         private static void handleScalarMultiplication()
@@ -63,7 +64,23 @@ namespace MathsEngine.Core.Menu.Pure
             int number = Convert.ToInt16(Console.ReadLine());
 
             MatrixBase matrix = new MatrixBase(rows, columns);
-            
+            var result = MatrixCalculator.ScalarMultiplication(matrix, number);
+            displayMatrix(result);
+        }
+
+        private static void displayMatrix(double[,] matrix)
+        {
+            Console.WriteLine("Result Matrix: ");
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+
+                Console.WriteLine();
+            }
         }
     }
 }

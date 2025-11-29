@@ -10,13 +10,13 @@ namespace MathsEngine.Modules.Pure.Matrices
     {
         public int NumRows { get; set; }
         public int NumCols { get; set; }
-        public double[,] Matrice {  get; set; }
+        public double[,] Matrix {  get; set; }
 
         public MatrixBase(int rows, int cols)
         {
             NumRows = rows;
             NumCols = cols;
-            Matrice = new double[NumRows, NumCols];
+            Matrix = new double[NumRows, NumCols];
 
             GetMatrice();
         }
@@ -27,9 +27,9 @@ namespace MathsEngine.Modules.Pure.Matrices
             {
                 for(int j = 0; j < NumCols; j++)
                 {
-                    Console.Write($"Enter matrice index {i},{j}: ");
+                    Console.Write($"Enter matrix index {i},{j}: ");
                     double value = Convert.ToDouble(Console.ReadLine());
-                    Matrice[i, j] = value;
+                    Matrix[i, j] = value;
                 }
             }
         }

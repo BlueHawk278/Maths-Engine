@@ -9,11 +9,11 @@ namespace MathsEngine.Modules.Pure.Matrices
     internal class MatrixCalculator
     {
         /// <summary>
-        /// A method to take add matrices together
+        /// A method to take add or subtract matrices together based on user input
         /// </summary>
-        /// <param name="matrice1"> The matrix that will be subtracted from. </param>
-        /// <param name="matrice2"> The matrix that will be subtracted by. </param>
-        public static MatrixBase AddOrSubtractMatrice(MatrixBase matrice1, MatrixBase matrice2, string operation)
+        /// <param name="matrice1"> The matrix that will be subtracted from or added to. </param>
+        /// <param name="matrice2"> The matrix that will be subtracted by or added to. </param>
+        public static double[,] AddOrSubtractMatrice(MatrixBase matrice1, MatrixBase matrice2, string operation)
         {
             if (matrice1 == null || matrice2 == null)
                 throw new ArgumentException("Matrices are empty");
@@ -21,36 +21,35 @@ namespace MathsEngine.Modules.Pure.Matrices
             if (matrice1.NumRows != matrice2.NumRows || matrice1.NumCols != matrice2.NumCols)
                 throw new ArgumentException("Matrices can't be added, they are not the same size");
 
-            var result = new MatrixBase(matrice1.NumRows, matrice1.NumCols);
+            var result = new double[matrice1.NumRows, matrice1.NumCols];
 
             for(int i = 0; i <  matrice1.NumRows; i++)
             {
                 for(int j = 0; j < matrice1.NumCols; j++)
                 {
                     if(operation == "Add")
-                        result.Matrice[i, j] = matrice1.Matrice[i, j] + matrice2.Matrice[i, j];
+                        result[i, j] = matrice1.Matrix[i, j] + matrice2.Matrix[i, j];
                     if(operation == "Subtract")
-                        result.Matrice[i, j] = matrice1.Matrice[i, j] - matrice2.Matrice[i, j];
+                        result[i, j] = matrice1.Matrix[i, j] - matrice2.Matrix[i, j];
                 }
             }
             return result;
         }
 
-        public static MatrixBase ScalarMultiplication(MatrixBase matrix, int number)
+        public static double[,] ScalarMultiplication(MatrixBase matrix, int number)
         {
             if (matrix == null)
                 throw new ArgumentException("Matrices can't empty");
 
-            var result = new MatrixBase(matrix.NumRows, matrix.NumCols);
+            var result = new double[matrix.NumRows, matrix.NumCols];
 
             for (int i = 0; i < matrix.NumRows; i++)
             {
                 for (int j = 0; j < matrix.NumCols; j++)
                 {
-                    result.Matrice[i, j] = matrix.Matrice[i, j] * number;
+                    result[i, j] = matrix.Matrix[i, j] * number;
                 }
             }
-
             return result;
         }
     }
