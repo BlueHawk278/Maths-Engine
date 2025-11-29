@@ -28,9 +28,37 @@ Coming as I develop the project further:
 -	Graphing support in a GUI
 -	Step-by-step explanations
 -	Unit testing
--	Optional SQL database support
 
 Folder Structure
+The project is organized into two main folders: `Core` for the user interface and menu system, and `Modules` for the calculation logic.
 
-
-
+MathsEngine/
+├─ Properties/
+├─ References/
+├─ bin/
+├─ Core/
+│  ├─ Menu/
+│  │  ├─ Pure/
+│  │  │  ├─ MatrixMenu.cs
+│  │  │  └─ PythagorasMenu.cs
+│  │  ├─ Statistics/
+│  │  │  └─ DispersionMenu.cs
+│  │  └─ Menu.cs
+├─ Modules/
+│  ├─ Core/
+│  │  ├─ PureHelpers/
+│  │  │  └─ PythagorasTheorem.cs
+│  │  ├─ StatisticsHelpers/
+│  │  │  └─ AverageCalculator.cs
+│  ├─ Mechanics/
+│  │  └─ UniformAcceleration/
+│  ├─ Pure/
+│  │  ├─ Matrices/
+│  │  │  ├─ MatrixBase.cs
+│  │  │  └─ MatrixCalculator.cs
+│  │  ├─ PythagorasTheorem/
+│  │  │  └─ PythagorasTheorem.cs
+│  │  └─ Statistics/
+├─ obj/
+├─ App.config
+└─ Program.cs
