@@ -32,6 +32,7 @@ Coming as I develop the project further:
 Folder Structure
 The project is organized into two main folders: `Core` for the user interface and menu system, and `Modules` for the calculation logic.
 
+```text
 bin/
 
 Core/
@@ -80,3 +81,4 @@ obj/
 
 App.config
 Program.cs
+```
