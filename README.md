@@ -32,33 +32,51 @@ Coming as I develop the project further:
 Folder Structure
 The project is organized into two main folders: `Core` for the user interface and menu system, and `Modules` for the calculation logic.
 
-MathsEngine/
-├─ Properties/
-├─ References/
-├─ bin/
-├─ Core/
-│  ├─ Menu/
-│  │  ├─ Pure/
-│  │  │  ├─ MatrixMenu.cs
-│  │  │  └─ PythagorasMenu.cs
-│  │  ├─ Statistics/
-│  │  │  └─ DispersionMenu.cs
-│  │  └─ Menu.cs
-├─ Modules/
-│  ├─ Core/
-│  │  ├─ PureHelpers/
-│  │  │  └─ PythagorasTheorem.cs
-│  │  ├─ StatisticsHelpers/
-│  │  │  └─ AverageCalculator.cs
-│  ├─ Mechanics/
-│  │  └─ UniformAcceleration/
+bin/
+
+Core/
+├─ Menu/
 │  ├─ Pure/
-│  │  ├─ Matrices/
-│  │  │  ├─ MatrixBase.cs
-│  │  │  └─ MatrixCalculator.cs
-│  │  ├─ PythagorasTheorem/
-│  │  │  └─ PythagorasTheorem.cs
-│  │  └─ Statistics/
-├─ obj/
-├─ App.config
-└─ Program.cs
+│  │  ├─ MatrixMenu.cs
+│  │  └─ PythagorasMenu.cs
+│  ├─ Statistics/
+│  │  └─ DispersionMenu.cs
+│  └─ Menu.cs
+
+Modules/
+├─ Core/
+│  ├─ PureHelpers/
+│  │  └─ PythagorasTheorem.cs
+│  ├─ StatisticsHelpers/
+│  │  └─ AverageCalculator.cs
+├─ Mechanics/
+│  └─ UniformAcceleration/
+├─ Pure/
+│  ├─ Matrices/
+│  │  ├─ MatrixBase.cs
+│  │  └─ MatrixCalculator.cs
+│  ├─ PythagorasTheorem/
+│  │  └─ PythagorasTheorem.cs
+├─ Statistics/
+│  ├─ BivariateAnalysis/
+│  │  ├─ BivariateAnalysis.cs
+│  │  ├─ BivariateAnalysis.md
+│  │  ├─ BivariateAnalysisCalculator.cs
+│  │  └─ Correlation.cs
+│  ├─ Dispersion/
+│  │  ├─ ArrayOfNumbers/
+│  │  │  ├─ ArrayOfNumbersCalculator.cs
+│  │  │  └─ ArrayOfNumbersInput.cs
+│  │  ├─ ContinuousTable/
+│  │  │  ├─ ContinuousTableCalculator.cs
+│  │  │  └─ ContinuousTableInput.cs
+│  │  ├─ FrequencyTable/
+│  │  │  ├─ DiscreteTableCalculator.cs
+│  │  │  └─ DiscreteTableInput.cs
+│  │  ├─ Dispersion.md
+│  │  └─ StandardDeviation.cs
+
+obj/
+
+App.config
+Program.cs
