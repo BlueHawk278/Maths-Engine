@@ -11,9 +11,12 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
         private double _u, _v, _a, _t, _s;
         private double _averageVelocity;
 
-        private double CalculateAverageVelocity(double initialVelocity, double finalVelocity)
+        private double CalculateAverageVelocity(string initialVelocity, string finalVelocity)
         {
-            return initialVelocity + finalVelocity / 2;
+            if (initialVelocity == null || finalVelocity == null)
+                throw new ArgumentException("Values must not be null");
+
+            return Convert.ToDouble(initialVelocity + finalVelocity) / 2;
         }
 
         private double CalculateVUAT(string v, string u, string a, string t)
@@ -112,6 +115,60 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
         }
         private double CalculateSUTAT(string s, string u, string a, string t)
         {
+            // Check the values entered
+            List<string> values = new List<string> { s, u, a, t };
+            int invalidNums = 0;
+            for (int i = 0; i < 4; i++)
+                if (values[i] == null)
+                    invalidNums++;
+            if (invalidNums > 1)
+                throw new ArgumentException("Must be only one missing value");
+
+            if (s == null) // s = ut + 0.5at^2
+            {
+                return Convert.ToDouble(u) * Convert.ToDouble(t) + 0.5 * Convert.ToDouble(a) * Math.Pow(Convert.ToDouble(t), 2);
+            }
+            if (u == null) // u = (s - 0.5at^2) / t
+            {
+                double time = Convert.ToDouble(t);
+                if (time == 0)
+                    throw new DivideByZeroException("Time (t) cannot be zero.");
+                return (Convert.ToDouble(s) - 0.5 * Convert.ToDouble(a) * Math.Pow(time, 2)) / time;
+            }
+            if (a == null) // a = 2(s - ut) / t^2
+            {
+                double time = Convert.ToDouble(t);
+                if (time == 0)
+                    throw new DivideByZeroException("Time (t) cannot be zero.");
+                return 2 * (Convert.ToDouble(s) - Convert.ToDouble(u) * time) / Math.Pow(time, 2);
+            }
+            if (t == null) // 0.5at^2 + ut - s = 0
+            {
+                double acceleration = Convert.ToDouble(a);
+                double initialVelocity = Convert.ToDouble(u);
+                double displacement = Convert.ToDouble(s);
+
+                if (acceleration == 0)
+                {
+                    if (initialVelocity == 0)
+                        throw new InvalidOperationException("Both acceleration and initial velocity cannot be zero.");
+                    return displacement / initialVelocity;
+                }
+
+                // Solve using the quadratic formula: t = (-b ± sqrt(b^2 - 4ac)) / 2a
+                double discriminant = Math.Pow(initialVelocity, 2) - 4 * (0.5 * acceleration) * (-displacement);
+                if (discriminant < 0)
+                    throw new InvalidOperationException("No real solution for time (t) exists with these values.");
+
+                double t1 = (-initialVelocity + Math.Sqrt(discriminant)) / (2 * 0.5 * acceleration);
+                double t2 = (-initialVelocity - Math.Sqrt(discriminant)) / (2 * 0.5 * acceleration);
+
+                // Return the positive, non-zero solution if one exists
+                if (t1 > 0) return t1;
+                if (t2 > 0) return t2;
+                return 0; // Or handle cases where time is zero or negative
+            }
+
             return 0;
         }
     }
