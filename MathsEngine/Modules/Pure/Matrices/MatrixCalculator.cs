@@ -52,5 +52,12 @@ namespace MathsEngine.Modules.Pure.Matrices
             }
             return result;
         }
+
+        private static bool isValidForMultiplication(MatrixBase matrix1, MatrixBase matrix2)
+        {
+            if(matrix1.NumCols == matrix2.NumRows)
+                return true;
+            return false;
+        }    
     }
 }

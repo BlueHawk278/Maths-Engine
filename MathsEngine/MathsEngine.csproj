@@ -43,12 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Menu\Mechanics\UniformAccelerationMenu.cs" />
     <Compile Include="Core\Menu\Menu.cs" />
     <Compile Include="Core\Menu\Pure\MatrixMenu.cs" />
     <Compile Include="Core\Menu\Statistics\DispersionMenu.cs" />
     <Compile Include="Modules\Core\PureHelpers\PythagorasTheorem.cs" />
     <Compile Include="Modules\Core\StatisticsHelpers\AverageCalculator.cs" />
     <Compile Include="Core\Menu\Pure\PythagorasMenu.cs" />
+    <Compile Include="Modules\Mechanics\UniformAcceleration\UniformAcceleration.cs" />
+    <Compile Include="Modules\Mechanics\UniformAcceleration\UniformAccelerationCalculator.cs" />
     <Compile Include="Modules\Pure\Matrices\MatrixBase.cs" />
     <Compile Include="Modules\Pure\Matrices\MatrixCalculator.cs" />
     <Compile Include="Modules\Pure\PythagorasTheorem\PythagorasTheorem.cs" />
@@ -70,8 +73,6 @@
     <None Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysis.md" />
     <None Include="Modules\Statistics\Dispersion\Dispersion.md" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modules\Mechanics\UniformAcceleration\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

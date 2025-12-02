@@ -17,13 +17,11 @@ Current Modules:
 - Pure Maths:
   -	Pythagoras Theorem
   -	Matrices
-- Mechanics:
+- Mechanics: 
 
 Planned Features
 Coming as I develop the project further:
 -	More statistical measures
--	Algebra tools
--	Differentiation and integration
 -	Mechanics topics
 -	Graphing support in a GUI
 -	Step-by-step explanations
