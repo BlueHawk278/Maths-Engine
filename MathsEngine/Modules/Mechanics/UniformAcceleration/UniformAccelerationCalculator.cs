@@ -13,7 +13,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
             if (initialVelocity == null || finalVelocity == null)
                 throw new ArgumentException("Values must not be null");
 
-            return Convert.ToDouble(initialVelocity + finalVelocity) / 2;
+            return (Convert.ToDouble(initialVelocity) + Convert.ToDouble(finalVelocity)) / 2;
         }
 
         public static string CalculateVUAT(string v, string u, string a, string t)

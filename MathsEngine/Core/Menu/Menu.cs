@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MathsEngine.Core.Menu.Mechanics;
 using MathsEngine.Core.Menu.Pure;
 using MathsEngine.Core.Menu.Statistics;
 using MathsEngine.Modules.Statistics.BivariateAnalysis;
@@ -34,6 +35,7 @@ namespace MathsEngine.Core.Menu
                 case "4":
                     return;
                 default:
+                    Console.WriteLine("Please enter a valid number");
                     mainMenu();
                     break;
             }
@@ -62,6 +64,19 @@ namespace MathsEngine.Core.Menu
         private static void mechanicsMenu()
         {
             Console.WriteLine("Welcome to the Mechanics Menu");
+            Console.WriteLine("1. Uniform Acceleration");
+            string response = Console.ReadLine();
+
+            switch (response)
+            {
+                case "1":
+                    UniformAccelerationMenu.menu();
+                    break;
+                default:
+                    Console.WriteLine("Please enter a valid number");
+                    mainMenu();
+                    break;
+            }
         }
         private static void statisticsMenu()
         {
@@ -77,6 +92,10 @@ namespace MathsEngine.Core.Menu
                     break;
                 case 2:
                     DispersionMenu.menu();
+                    break;
+                default:
+                    Console.WriteLine("Please enter a valid number");
+                    mainMenu();
                     break;
             }
         }

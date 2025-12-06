@@ -18,14 +18,31 @@ namespace MathsEngine.Core.Menu.Mechanics
                     horizontalMotionMenu();
                     break;
                 default:
-                    menu();
+                    Menu.mainMenu();
                     break;
             }
         }
 
         private static void horizontalMotionMenu()
         {
+            Console.WriteLine("1. Average Velocity");
+            Console.WriteLine("2. UVATS equations");
+            string response = Console.ReadLine();
 
+            switch (response)
+            {
+                case "1":
+                    handleAverageVelocity();
+                    menu();
+                    break;
+                case "2":
+                    handleUVATS();
+                    menu();
+                    break;
+                default:
+                    Menu.mainMenu();
+                    break;
+            }
         }
 
         private static void handleAverageVelocity()
