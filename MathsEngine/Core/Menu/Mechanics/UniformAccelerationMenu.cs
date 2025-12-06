@@ -59,21 +59,78 @@ namespace MathsEngine.Core.Menu.Mechanics
             List<string> values = new List<string> { u, v, a, t, s };
 
             int invalidNums = 0;
-            foreach(string value in values)
-                if (value == null)
+
+            for(int i = 0; i < values.Count; i++)
+                if (values[i] == null)
                     invalidNums++;
+                
+
             if (invalidNums > 2)
                 throw new ArgumentException("Too many null values");
 
-            string U, V, A, T, S;
-
-            if (u == null && s == null)
+            // This loop runs twice. If we solve for one value on the first pass,
+            // the second pass can use that new value to solve for another.
+            for (int i = 0; i < 2; i++)
             {
-                U = UniformAccelerationCalculator.CalculateVUAT(v, u, a, t);
-                S = UniformAccelerationCalculator.CalculateVUAS(v, u, a, s);
+                // Try to find s (Displacement)
+                if (s == null)
+                {
+                    if (u != null && v != null && t != null)
+                        s = UniformAccelerationCalculator.CalculateSUVT(null, u, v, t);
+                    else if (u != null && a != null && t != null)
+                        s = UniformAccelerationCalculator.CalculateSUTAT(null, u, a, t);
+                    else if (v != null && u != null && a != null)
+                        s = UniformAccelerationCalculator.CalculateVUAS(v, u, a, null);
+                }
 
-                UniformAcceleration.displayCalculation(U, v, a, t, S);
+                // Try to find u (Initial Velocity)
+                if (u == null)
+                {
+                    if (v != null && a != null && t != null)
+                        u = UniformAccelerationCalculator.CalculateVUAT(v, null, a, t);
+                    else if (v != null && a != null && s != null)
+                        u = UniformAccelerationCalculator.CalculateVUAS(v, null, a, s);
+                    else if (s != null && v != null && t != null)
+                        u = UniformAccelerationCalculator.CalculateSUVT(s, null, v, t);
+                    else if (s != null && a != null && t != null)
+                        u = UniformAccelerationCalculator.CalculateSUTAT(s, null, a, t);
+                }
+
+                // Try to find v (Final Velocity)
+                if (v == null)
+                {
+                    if (u != null && a != null && t != null)
+                        v = UniformAccelerationCalculator.CalculateVUAT(null, u, a, t);
+                    else if (u != null && a != null && s != null)
+                        v = UniformAccelerationCalculator.CalculateVUAS(null, u, a, s);
+                    else if (s != null && u != null && t != null)
+                        v = UniformAccelerationCalculator.CalculateSUVT(s, u, null, t);
+                }
+
+                // Try to find a (Acceleration)
+                if (a == null)
+                {
+                    if (v != null && u != null && t != null)
+                        a = UniformAccelerationCalculator.CalculateVUAT(v, u, null, t);
+                    else if (v != null && u != null && s != null)
+                        a = UniformAccelerationCalculator.CalculateVUAS(v, u, null, s);
+                    else if (s != null && u != null && t != null)
+                        a = UniformAccelerationCalculator.CalculateSUTAT(s, u, null, t);
+                }
+
+                // Try to find t (Time)
+                if (t == null)
+                {
+                    if (v != null && u != null && a != null)
+                        t = UniformAccelerationCalculator.CalculateVUAT(v, u, a, null);
+                    else if (s != null && u != null && v != null)
+                        t = UniformAccelerationCalculator.CalculateSUVT(s, u, v, null);
+                    else if (s != null && u != null && a != null)
+                        t = UniformAccelerationCalculator.CalculateSUTAT(s, u, a, null);
+                }
             }
+
+            UniformAcceleration.displayCalculation(s, u, v, a, t);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
 
         public static void displayCalculation(string u, string v, string a, string t, string s)
         {
+            Console.WriteLine("--- Calculation results ---");
             Console.WriteLine("Initial Velocity: " + u);
             Console.WriteLine("Final Velocity: " + v);
             Console.WriteLine("Acceleration: " + a);
