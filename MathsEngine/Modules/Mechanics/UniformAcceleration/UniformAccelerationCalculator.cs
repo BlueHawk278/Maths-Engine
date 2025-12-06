@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Mechanics.UniformAcceleration
 {
@@ -11,7 +8,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
         private double _u, _v, _a, _t, _s;
         private double _averageVelocity;
 
-        private double CalculateAverageVelocity(string initialVelocity, string finalVelocity)
+        public static double CalculateAverageVelocity(string initialVelocity, string finalVelocity)
         {
             if (initialVelocity == null || finalVelocity == null)
                 throw new ArgumentException("Values must not be null");
@@ -19,7 +16,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
             return Convert.ToDouble(initialVelocity + finalVelocity) / 2;
         }
 
-        private double CalculateVUAT(string v, string u, string a, string t)
+        public static string CalculateVUAT(string v, string u, string a, string t)
         {
             // Check the values entered
             List<string> values = new List<string> { v, u, a, t };
@@ -31,20 +28,20 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 throw new ArgumentException("Must be only one missing value");
 
             if (v == null) // v = u + at 
-                return Convert.ToDouble(u) + Convert.ToDouble(a) * Convert.ToDouble(t);
+                return Convert.ToString(Convert.ToDouble(u) + Convert.ToDouble(a) * Convert.ToDouble(t));
 
             if (u == null) // u = v - at
-                return Convert.ToDouble(v) - Convert.ToDouble(a) * Convert.ToDouble(t);
+                return Convert.ToString(Convert.ToDouble(v) - Convert.ToDouble(a) * Convert.ToDouble(t));
 
             if (a == null) // a = v - u / t
-                return (Convert.ToDouble(v) - Convert.ToDouble(u)) / Convert.ToDouble(t);
+                return Convert.ToString((Convert.ToDouble(v) - Convert.ToDouble(u)) / Convert.ToDouble(t));
 
             if (t == null) // t = v - u / a
-                return (Convert.ToDouble(v) - Convert.ToDouble(u)) / Convert.ToDouble(a);
+                return Convert.ToString((Convert.ToDouble(v) - Convert.ToDouble(u)) / Convert.ToDouble(a));
 
-            return 0;
+            return "";
         }
-        private double CalculateVUAS(string v, string u, string a, string s)
+        public static string CalculateVUAS(string v, string u, string a, string s)
         {
             // Check the values entered
             List<string> values = new List<string> { v, u, a, s };
@@ -56,27 +53,27 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 throw new ArgumentException("Must be only one missing value");
 
             if (v == null) // v^2 = u^2 + 2as
-                return Math.Sqrt(Math.Pow(Convert.ToDouble(u), 2) + 2 * (Convert.ToDouble(a) * Convert.ToDouble(s)));
+                return Convert.ToString(Math.Sqrt(Math.Pow(Convert.ToDouble(u), 2) + 2 * (Convert.ToDouble(a) * Convert.ToDouble(s))));
             if (u == null) // u^2 = v^2 - 2as
-                return Math.Sqrt(Math.Pow(Convert.ToDouble(v), 2) - 2 * (Convert.ToDouble(a) * Convert.ToDouble(s)));
+                return Convert.ToString(Math.Sqrt(Math.Pow(Convert.ToDouble(v), 2) - 2 * (Convert.ToDouble(a) * Convert.ToDouble(s))));
             if (a == null) // a = (v^2 - u^2) / 2s
             {
                 double displacement = Convert.ToDouble(s);
                 if (displacement == 0)
                     throw new DivideByZeroException("Displacement (s) cannot be zero when calculating acceleration.");
-                return (Math.Pow(Convert.ToDouble(v), 2) - Math.Pow(Convert.ToDouble(u), 2)) / (2 * displacement);
+                return Convert.ToString((Math.Pow(Convert.ToDouble(v), 2) - Math.Pow(Convert.ToDouble(u), 2)) / (2 * displacement));
             }
             if (s == null) // s = (v^2 - u^2) / 2a
             {
                 double acceleration = Convert.ToDouble(a);
                 if (acceleration == 0)
                     throw new DivideByZeroException("Acceleration (a) cannot be zero when calculating displacement.");
-                return (Math.Pow(Convert.ToDouble(v), 2) - Math.Pow(Convert.ToDouble(u), 2)) / (2 * acceleration);
+                return Convert.ToString((Math.Pow(Convert.ToDouble(v), 2) - Math.Pow(Convert.ToDouble(u), 2)) / (2 * acceleration));
             }
 
-            return 0;
+            return "";
         }
-        private double CalculateSUVT(string s, string u, string v, string t)
+        public static string CalculateSUVT(string s, string u, string v, string t)
         {
             // Check the values entered
             List<string> values = new List<string> { s, u, v, t };
@@ -88,32 +85,32 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 throw new ArgumentException("Must be only one missing value");
 
             if (s == null) // s = 0.5 * (u + v) * t
-                return (Convert.ToDouble(u) + Convert.ToDouble(v)) * Convert.ToDouble(t) / 2;
+                return Convert.ToString((Convert.ToDouble(u) + Convert.ToDouble(v)) * Convert.ToDouble(t) / 2);
             if (u == null) // u = (2s / t) - v
             {
                 double time = Convert.ToDouble(t);
                 if (time == 0)
                     throw new DivideByZeroException("Time (t) cannot be zero when calculating initial velocity.");
-                return (2 * Convert.ToDouble(s) / time) - Convert.ToDouble(v);
+                return Convert.ToString((2 * Convert.ToDouble(s) / time) - Convert.ToDouble(v));
             }
             if (v == null) // v = (2s / t) - u
             {
                 double time = Convert.ToDouble(t);
                 if (time == 0)
                     throw new DivideByZeroException("Time (t) cannot be zero when calculating final velocity.");
-                return (2 * Convert.ToDouble(s) / time) - Convert.ToDouble(u);
+                return Convert.ToString((2 * Convert.ToDouble(s) / time) - Convert.ToDouble(u));
             }
             if (t == null) // t = 2s / (u + v)
             {
                 double velocitySum = Convert.ToDouble(u) + Convert.ToDouble(v);
                 if (velocitySum == 0)
                     throw new DivideByZeroException("Sum of initial and final velocities (u + v) cannot be zero.");
-                return (2 * Convert.ToDouble(s)) / velocitySum;
+                return Convert.ToString((2 * Convert.ToDouble(s)) / velocitySum);
             }
 
-            return 0;
+            return "";
         }
-        private double CalculateSUTAT(string s, string u, string a, string t)
+        public static string CalculateSUTAT(string s, string u, string a, string t)
         {
             // Check the values entered
             List<string> values = new List<string> { s, u, a, t };
@@ -126,21 +123,21 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
 
             if (s == null) // s = ut + 0.5at^2
             {
-                return Convert.ToDouble(u) * Convert.ToDouble(t) + 0.5 * Convert.ToDouble(a) * Math.Pow(Convert.ToDouble(t), 2);
+                return Convert.ToString(Convert.ToDouble(u) * Convert.ToDouble(t) + 0.5 * Convert.ToDouble(a) * Math.Pow(Convert.ToDouble(t), 2));
             }
             if (u == null) // u = (s - 0.5at^2) / t
             {
                 double time = Convert.ToDouble(t);
                 if (time == 0)
                     throw new DivideByZeroException("Time (t) cannot be zero.");
-                return (Convert.ToDouble(s) - 0.5 * Convert.ToDouble(a) * Math.Pow(time, 2)) / time;
+                return Convert.ToString((Convert.ToDouble(s) - 0.5 * Convert.ToDouble(a) * Math.Pow(time, 2)) / time);
             }
             if (a == null) // a = 2(s - ut) / t^2
             {
                 double time = Convert.ToDouble(t);
                 if (time == 0)
                     throw new DivideByZeroException("Time (t) cannot be zero.");
-                return 2 * (Convert.ToDouble(s) - Convert.ToDouble(u) * time) / Math.Pow(time, 2);
+                return Convert.ToString(2 * (Convert.ToDouble(s) - Convert.ToDouble(u) * time) / Math.Pow(time, 2));
             }
             if (t == null) // 0.5at^2 + ut - s = 0
             {
@@ -152,7 +149,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 {
                     if (initialVelocity == 0)
                         throw new InvalidOperationException("Both acceleration and initial velocity cannot be zero.");
-                    return displacement / initialVelocity;
+                    return Convert.ToString(displacement / initialVelocity);
                 }
 
                 // Solve using the quadratic formula: t = (-b ± sqrt(b^2 - 4ac)) / 2a
@@ -164,12 +161,12 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 double t2 = (-initialVelocity - Math.Sqrt(discriminant)) / (2 * 0.5 * acceleration);
 
                 // Return the positive, non-zero solution if one exists
-                if (t1 > 0) return t1;
-                if (t2 > 0) return t2;
-                return 0; // Or handle cases where time is zero or negative
+                if (t1 > 0) return Convert.ToString(t1);
+                if (t2 > 0) return Convert.ToString(t2);
+                return ""; // Or handle cases where time is zero or negative
             }
 
-            return 0;
+            return "";
         }
     }
 }
