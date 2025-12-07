@@ -10,6 +10,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
     {
         public static void Start()
         {
+            Console.Clear();
             // --- 1. Handle all user input here ---
             int numDataPoints = GetNumberOfDataPoints();
             var scores1 = GetScoresFromUser(numDataPoints, "Score Set 1");
@@ -22,6 +23,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             // --- 3. Display the results from the calculator object ---
             DisplayResults(calculator);
 
+            Console.WriteLine("\nPress Enter to return to the menu.");
             Console.ReadLine();
         }
 

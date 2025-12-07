@@ -14,11 +14,13 @@ namespace MathsEngine.Core.Menu
     {
         public static void mainMenu()
         {
+            Console.Clear();
             Console.WriteLine("Welcome to the Maths Engine");
             Console.WriteLine("1. Pure");
             Console.WriteLine("2. Mechanics");
             Console.WriteLine("3. Statistics");
             Console.WriteLine("4. Exit Program");
+            Console.Write("Input: ");
             string response = Console.ReadLine();
 
             switch (response)
@@ -42,10 +44,13 @@ namespace MathsEngine.Core.Menu
         }
         private static void pureMenu()
         {
+            Console.Clear();
             Console.WriteLine("Welcome to the Pure Maths Menu");
             Console.WriteLine("1. Pythagoras Theorem");
             Console.WriteLine("2. Matrices");
+            Console.Write("Input: ");
             string response = Console.ReadLine();
+            Console.Clear();
 
             switch (response)
             {
@@ -63,9 +68,12 @@ namespace MathsEngine.Core.Menu
         }
         private static void mechanicsMenu()
         {
+            Console.Clear();
             Console.WriteLine("Welcome to the Mechanics Menu");
             Console.WriteLine("1. Uniform Acceleration");
+            Console.Write("Input: ");
             string response = Console.ReadLine();
+            Console.Clear();
 
             switch (response)
             {
@@ -80,10 +88,13 @@ namespace MathsEngine.Core.Menu
         }
         private static void statisticsMenu()
         {
+            Console.Clear();
             Console.WriteLine("Welcome to the Statistics Menu");
             Console.WriteLine("1. Bivariate Analysis");
             Console.WriteLine("2. Standard Deviation");
+            Console.Write("Input: ");
             int response = Convert.ToInt16(Console.ReadLine());
+            Console.Clear();
 
             switch (response)
             {

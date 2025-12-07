@@ -9,8 +9,10 @@ namespace MathsEngine.Core.Menu.Mechanics
         public static void menu()
         {
             Console.WriteLine("Welcome to the Uniform Acceleration menu");
-            Console.WriteLine("1. Horizontal Motion");    
+            Console.WriteLine("1. Horizontal Motion");
+            Console.Write("Input: ");
             string response = Console.ReadLine();
+            Console.Clear();
 
             switch (response)
             {
@@ -27,7 +29,9 @@ namespace MathsEngine.Core.Menu.Mechanics
         {
             Console.WriteLine("1. Average Velocity");
             Console.WriteLine("2. UVATS equations");
+            Console.Write("Input: ");
             string response = Console.ReadLine();
+            Console.Clear();
 
             switch (response)
             {
