@@ -43,10 +43,12 @@ namespace MathsEngine.Core.Menu.Mechanics
                     handleUVATS();
                     menu();
                     break;
-                default:
-                    Menu.mainMenu();
-                    break;
             }
+
+            Console.WriteLine("\nPress Enter to return...");
+            Console.ReadLine();
+            menu();
+            
         }
 
         private static void handleAverageVelocity()
@@ -56,8 +58,15 @@ namespace MathsEngine.Core.Menu.Mechanics
             Console.Write("Enter the final velocity: ");
             string finalVelocity = Console.ReadLine();
 
-            double averageVelocity = UniformAccelerationCalculator.CalculateAverageVelocity(initialVelocity, finalVelocity);
-            Console.WriteLine($"Average Velocity: {averageVelocity}");
+            try
+            {
+                double averageVelocity = UniformAccelerationCalculator.CalculateAverageVelocity(initialVelocity, finalVelocity);
+                Console.WriteLine($"\nAverage Velocity: {averageVelocity:F2}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"\nError: {ex.Message}");
+            }
         }
         private static void handleUVATS()
         {
@@ -72,22 +81,37 @@ namespace MathsEngine.Core.Menu.Mechanics
             Console.Write("Enter the displacement: ");
             string s = Console.ReadLine();
 
-            checkCalculation(u, v, a, t, s);
+            try
+            {
+                checkCalculation(s, u, v, a, t);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"\nError: {ex.Message}");
+            }
         }
 
         private static void checkCalculation(string u, string v, string a, string t, string s)
         {
-            List<string> values = new List<string> { u, v, a, t, s };
+            // Convert empty strings to null to easily check what's missing
+            s = string.IsNullOrEmpty(s) ? null : s;
+            u = string.IsNullOrEmpty(u) ? null : u;
+            v = string.IsNullOrEmpty(v) ? null : v;
+            a = string.IsNullOrEmpty(a) ? null : a;
+            t = string.IsNullOrEmpty(t) ? null : t;
 
-            int invalidNums = 0;
+            var values = new List<string> { s, u, v, a, t };
+            int nullNums = 0;
 
-            for(int i = 0; i < values.Count; i++)
-                if (values[i] == null)
-                    invalidNums++;
-                
+            foreach(string str in values)
+                if (str == null)
+                    nullNums++;
 
-            if (invalidNums > 2)
-                throw new ArgumentException("Too many null values");
+            if (nullNums > 2)
+            {
+                Console.WriteLine("\nCannot solve. Please provide at least 3 values.");
+                return;
+            }
 
             // This loop runs twice. If we solve for one value on the first pass,
             // the second pass can use that new value to solve for another.
@@ -151,7 +175,7 @@ namespace MathsEngine.Core.Menu.Mechanics
                 }
             }
 
-            UniformAcceleration.displayCalculation(s, u, v, a, t);
+            UniformAcceleration.displayCalculation(u, v, a, t, s);
         }
     }
 }

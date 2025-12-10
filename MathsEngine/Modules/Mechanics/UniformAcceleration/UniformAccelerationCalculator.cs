@@ -10,8 +10,8 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
 
         public static double CalculateAverageVelocity(string initialVelocity, string finalVelocity)
         {
-            if (initialVelocity == null || finalVelocity == null)
-                throw new ArgumentException("Values must not be null");
+            if (string.IsNullOrEmpty(initialVelocity) || string.IsNullOrEmpty(finalVelocity))
+                throw new ArgumentException("Values must not be null or empty");
 
             return (Convert.ToDouble(initialVelocity) + Convert.ToDouble(finalVelocity)) / 2;
         }
