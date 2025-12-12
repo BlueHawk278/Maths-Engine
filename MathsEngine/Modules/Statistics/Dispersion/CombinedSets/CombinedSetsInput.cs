@@ -8,34 +8,27 @@ namespace MathsEngine.Modules.Statistics.Dispersion.CombinedSets
         public static void Start()
         {
             Console.Clear();
-            getDataSets();
+            var dataSet1 = getDataSet();
+            var dataSet2 = getDataSet();
 
-            //var calculator = new ArrayOfNumbersCalculator(originalValues);
-            //calculator.Run();
+            var calculator = new CombinedSetsCalculator(dataSet1, dataSet2);
+            calculator.Run();
 
-            //calculator.DisplayData();
+            calculator.DisplayData();
 
             Console.WriteLine("\nPress Enter to return to the menu.");
             Console.ReadLine();
         }
 
-        private static void getDataSets()
+        private static List<string> getDataSet()
         {
-            Console.Write("How many numbers in the First Data set: ");
-            string numDataPoints1 = Console.ReadLine();
+            Console.Write("How many numbers in the Data set: ");
+            string numDataPoints = Console.ReadLine();
             Console.Write("What is the mean of the values: ");
-            string mean1 = Console.ReadLine();
+            string mean = Console.ReadLine();
             Console.Write("What is the standard deviation: ");
-            string standardDeviation1 = Console.ReadLine();
-            List<string> dataSet1 = new List<string>();
-
-            Console.Write("How many numbers in the Second Data set: ");
-            string numDataPoints2 = Console.ReadLine();
-            Console.Write("What is the mean of the values: ");
-            string mean2 = Console.ReadLine();
-            Console.Write("What is the standard deviation: ");
-            string standardDeviation2 = Console.ReadLine();
-            List<string> dataSet2 = new List<string>();
+            string standardDeviation = Console.ReadLine();
+            return new List<string>() { numDataPoints, mean, standardDeviation };
         }
     }
 }
