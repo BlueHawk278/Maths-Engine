@@ -58,6 +58,8 @@
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysisCalculator.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysis.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\Correlation.cs" />
+    <Compile Include="Modules\Statistics\Dispersion\CombinedSets\CombinedSetsCalculator.cs" />
+    <Compile Include="Modules\Statistics\Dispersion\CombinedSets\CombinedSetsInput.cs" />
     <Compile Include="Modules\Statistics\Dispersion\ContinuousTable\ContinuousTableInput.cs" />
     <Compile Include="Modules\Statistics\Dispersion\ContinuousTable\ContinuousTableCalculator.cs" />
     <Compile Include="Modules\Statistics\Dispersion\FrequencyTable\DiscreteTableInput.cs" />
