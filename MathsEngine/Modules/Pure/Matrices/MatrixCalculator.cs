@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Pure.Matrices
 {
@@ -11,31 +7,39 @@ namespace MathsEngine.Modules.Pure.Matrices
         /// <summary>
         /// A method to take add or subtract matrices together based on user input
         /// </summary>
-        /// <param name="matrice1"> The matrix that will be subtracted from or added to. </param>
-        /// <param name="matrice2"> The matrix that will be subtracted by or added to. </param>
-        public static double[,] AddOrSubtractMatrice(MatrixBase matrice1, MatrixBase matrice2, string operation)
+        /// <param name="matrix1"> The matrix that will be subtracted from or added to. </param>
+        /// <param name="matrix2"> The matrix that will be subtracted by or added to. </param>
+        /// <param name="operation"> This will tell the program whether to add or subtract the matrices. </param>
+        public static double[,] AddOrSubtractMatrice(MatrixBase matrix1, MatrixBase matrix2, string operation)
         {
-            if (matrice1 == null || matrice2 == null)
+            if (matrix1 == null || matrix2 == null)
                 throw new ArgumentException("Matrices are empty");
 
-            if (matrice1.NumRows != matrice2.NumRows || matrice1.NumCols != matrice2.NumCols)
+            if (matrix1.NumRows != matrix2.NumRows || matrix1.NumCols != matrix2.NumCols)
                 throw new ArgumentException("Matrices can't be added, they are not the same size");
 
-            var result = new double[matrice1.NumRows, matrice1.NumCols];
+            var result = new double[matrix1.NumRows, matrix1.NumCols];
 
-            for(int i = 0; i <  matrice1.NumRows; i++)
+            for(int i = 0; i <  matrix1.NumRows; i++)
             {
-                for(int j = 0; j < matrice1.NumCols; j++)
+                for(int j = 0; j < matrix1.NumCols; j++)
                 {
                     if(operation == "Add")
-                        result[i, j] = matrice1.Matrix[i, j] + matrice2.Matrix[i, j];
+                        result[i, j] = matrix1.Matrix[i, j] + matrix2.Matrix[i, j];
                     if(operation == "Subtract")
-                        result[i, j] = matrice1.Matrix[i, j] - matrice2.Matrix[i, j];
+                        result[i, j] = matrix1.Matrix[i, j] - matrix2.Matrix[i, j];
                 }
             }
             return result;
         }
 
+        /// <summary>
+        /// Multiplying all of the values in a matrix by an integer
+        /// </summary>
+        /// <param name="matrix"> The matrix being multiplied by. </param>
+        /// <param name="number"> The number to multiply the matrix by. </param>
+        /// <returns> The result of the matrix * number.</returns>
+        /// <exception cref="ArgumentException"></exception>
         public static double[,] ScalarMultiplication(MatrixBase matrix, int number)
         {
             if (matrix == null)

@@ -16,6 +16,7 @@ namespace MathsEngine.Core.Menu.Pure
             Console.WriteLine("1. Adding matrices");
             Console.WriteLine("2. Subtract matrices");
             Console.WriteLine("3. Multiply a matrix by a number");
+            Console.WriteLine("4. Solving simple matrix equations");
             Console.Write("Input: ");
             string response = Console.ReadLine();
 
@@ -45,15 +46,15 @@ namespace MathsEngine.Core.Menu.Pure
             int rows1 = Convert.ToInt16(Console.ReadLine());
             Console.Write("First Matrix: How many columns? ");
             int columns1 = Convert.ToInt16(Console.ReadLine());
-            MatrixBase matrice1 = new MatrixBase(rows1, columns1);
+            MatrixBase matrix1 = new MatrixBase(rows1, columns1);
 
             Console.Write("\nSecond Matrix: How many rows? ");
             int rows2 = Convert.ToInt16(Console.ReadLine());
             Console.Write("Second Matrix: How many columns? ");
             int columns2 = Convert.ToInt16(Console.ReadLine());
-            MatrixBase matrice2 = new MatrixBase(rows2, columns2);
+            MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
-            var result = MatrixCalculator.AddOrSubtractMatrice(matrice1, matrice2, operation);
+            var result = MatrixCalculator.AddOrSubtractMatrice(matrix1, matrix2, operation);
             displayMatrix(result);
 
             Console.WriteLine("\nPress Enter to return to the menu.");
@@ -77,6 +78,26 @@ namespace MathsEngine.Core.Menu.Pure
 
             Console.WriteLine("\nPress Enter to return to the menu.");
             Console.ReadLine();
+        }
+
+        private static void handleMatrixEquations()
+        {
+            Console.Clear(); // Matrix1 - x = Matrix 2
+
+            Console.Write("First Matrix: How many rows? ");
+            int rows1 = Convert.ToInt16(Console.ReadLine());
+            Console.Write("First Matrix: How many columns? ");
+            int columns1 = Convert.ToInt16(Console.ReadLine());
+            MatrixBase matrix1 = new MatrixBase(rows1, columns1);
+
+            Console.WriteLine("What is the integer value of X");
+            int x = Convert.ToInt16(Console.ReadLine());
+
+            Console.Write("\nSecond Matrix: How many rows? ");
+            int rows2 = Convert.ToInt16(Console.ReadLine());
+            Console.Write("Second Matrix: How many columns? ");
+            int columns2 = Convert.ToInt16(Console.ReadLine());
+            MatrixBase matrix2 = new MatrixBase(rows2, columns2);
         }
 
         private static void displayMatrix(double[,] matrix)

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MathsEngine.Modules.Pure.Matrices
 {
@@ -21,7 +17,7 @@ namespace MathsEngine.Modules.Pure.Matrices
             GetMatrice();
         }
 
-        public void GetMatrice()
+        private void GetMatrice()
         {
             for(int i = 0; i < NumRows; i++)
             {
