@@ -120,7 +120,11 @@ namespace MathsEngine.Core.Menu.Pure
             int columns2 = Convert.ToInt16(Console.ReadLine());
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
+            var result = MatrixCalculator.matrixEquations(matrix1, matrix2, x);
+            displayMatrix(result);
 
+            Console.WriteLine("Press Enter to return to the main menu.");
+            Console.ReadLine();
         }
 
         private static void displayMatrix(double[,] matrix)

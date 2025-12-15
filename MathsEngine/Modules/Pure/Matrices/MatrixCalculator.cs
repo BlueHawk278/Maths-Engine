@@ -97,9 +97,9 @@ namespace MathsEngine.Modules.Pure.Matrices
             if (matrix1.NumRows != matrix2.NumRows || matrix1.NumCols != matrix2.NumCols)
                 throw new ArgumentException("Matrices can't be added, they are not the same size");
 
-            var result = addMatrix(matrix1, matrix2);
-
-
+            var result = subtractMatrix(matrix1, matrix2);
+            MatrixBase Matrix = new MatrixBase(result);
+            result = scalarDivision(Matrix, 2);
 
             return result;
         }

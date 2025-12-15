@@ -17,6 +17,13 @@ namespace MathsEngine.Modules.Pure.Matrices
             GetMatrice();
         }
 
+        public MatrixBase(double[,] array)
+        {
+            NumRows = array.GetLength(0);
+            NumCols = array.GetLength(1);
+            Matrix = array;
+        }
+
         private void GetMatrice()
         {
             for(int i = 0; i < NumRows; i++)
