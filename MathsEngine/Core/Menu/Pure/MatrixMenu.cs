@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
 using MathsEngine.Modules.Pure.Matrices;
 
 namespace MathsEngine.Core.Menu.Pure
@@ -23,13 +20,16 @@ namespace MathsEngine.Core.Menu.Pure
             switch (response)
             {
                 case "1":
-                    handleAddOrSubtractMatrices("Add");
+                    handleAddMatrix();
                     break;
                 case "2":
-                    handleAddOrSubtractMatrices("Subtract");
+                    handleSubtractMatrix();
                     break;
                 case "3":
                     handleScalarMultiplication();
+                    break;
+                case "4":
+                    handleMatrixEquations();
                     break;
                 default:
                     Console.WriteLine("Enter a valid number please");
@@ -39,7 +39,7 @@ namespace MathsEngine.Core.Menu.Pure
             Menu.mainMenu();
         }
 
-        private static void handleAddOrSubtractMatrices(string operation)
+        private static void handleAddMatrix()
         {
             Console.Clear();
             Console.Write("First Matrix: How many rows? ");
@@ -54,7 +54,28 @@ namespace MathsEngine.Core.Menu.Pure
             int columns2 = Convert.ToInt16(Console.ReadLine());
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
-            var result = MatrixCalculator.AddOrSubtractMatrice(matrix1, matrix2, operation);
+            var result = MatrixCalculator.addMatrix(matrix1, matrix2);
+            displayMatrix(result);
+
+            Console.WriteLine("\nPress Enter to return to the menu.");
+            Console.ReadLine();
+        }
+        private static void handleSubtractMatrix()
+        {
+            Console.Clear();
+            Console.Write("First Matrix: How many rows? ");
+            int rows1 = Convert.ToInt16(Console.ReadLine());
+            Console.Write("First Matrix: How many columns? ");
+            int columns1 = Convert.ToInt16(Console.ReadLine());
+            MatrixBase matrix1 = new MatrixBase(rows1, columns1);
+
+            Console.Write("\nSecond Matrix: How many rows? ");
+            int rows2 = Convert.ToInt16(Console.ReadLine());
+            Console.Write("Second Matrix: How many columns? ");
+            int columns2 = Convert.ToInt16(Console.ReadLine());
+            MatrixBase matrix2 = new MatrixBase(rows2, columns2);
+
+            var result = MatrixCalculator.subtractMatrix(matrix1, matrix2);
             displayMatrix(result);
 
             Console.WriteLine("\nPress Enter to return to the menu.");
@@ -73,14 +94,14 @@ namespace MathsEngine.Core.Menu.Pure
             int number = Convert.ToInt16(Console.ReadLine());
 
             MatrixBase matrix = new MatrixBase(rows, columns);
-            var result = MatrixCalculator.ScalarMultiplication(matrix, number);
+            var result = MatrixCalculator.scalarMultiplication(matrix, number);
             displayMatrix(result);
 
             Console.WriteLine("\nPress Enter to return to the menu.");
             Console.ReadLine();
         }
 
-        private static void handleMatrixEquations()
+        private static void handleMatrixEquations() //X - matrix = matrix
         {
             Console.Clear(); // Matrix1 - x = Matrix 2
 
@@ -98,6 +119,8 @@ namespace MathsEngine.Core.Menu.Pure
             Console.Write("Second Matrix: How many columns? ");
             int columns2 = Convert.ToInt16(Console.ReadLine());
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
+
+
         }
 
         private static void displayMatrix(double[,] matrix)
