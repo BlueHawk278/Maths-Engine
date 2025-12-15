@@ -13,7 +13,8 @@ namespace MathsEngine.Core.Menu.Pure
             Console.WriteLine("1. Adding matrices");
             Console.WriteLine("2. Subtract matrices");
             Console.WriteLine("3. Multiply a matrix by a number");
-            Console.WriteLine("4. Solving simple matrix equations");
+            Console.WriteLine("4. Divide a matrix by a number");
+            Console.WriteLine("5. Solving simple matrix equations");
             Console.Write("Input: ");
             string response = Console.ReadLine();
 
@@ -29,6 +30,9 @@ namespace MathsEngine.Core.Menu.Pure
                     handleScalarMultiplication();
                     break;
                 case "4":
+                    handleScalarDivision();
+                    break;
+                case "5":
                     handleMatrixEquations();
                     break;
                 default:
@@ -60,6 +64,7 @@ namespace MathsEngine.Core.Menu.Pure
             Console.WriteLine("\nPress Enter to return to the menu.");
             Console.ReadLine();
         }
+
         private static void handleSubtractMatrix()
         {
             Console.Clear();
@@ -95,6 +100,25 @@ namespace MathsEngine.Core.Menu.Pure
 
             MatrixBase matrix = new MatrixBase(rows, columns);
             var result = MatrixCalculator.scalarMultiplication(matrix, number);
+            displayMatrix(result);
+
+            Console.WriteLine("\nPress Enter to return to the menu.");
+            Console.ReadLine();
+        }
+
+        private static void handleScalarDivision()
+        {
+            Console.Clear();
+            Console.Write("How many rows in the matrix: ");
+            int rows = Convert.ToInt16(Console.ReadLine());
+            Console.Write("How many columns in the matrix: ");
+            int columns = Convert.ToInt16(Console.ReadLine());
+
+            Console.Write("\nWhat number would you like to multiply this matrix by: ");
+            int number = Convert.ToInt16(Console.ReadLine());
+
+            MatrixBase matrix = new MatrixBase(rows, columns);
+            var result = MatrixCalculator.scalarDivision(matrix, number);
             displayMatrix(result);
 
             Console.WriteLine("\nPress Enter to return to the menu.");
