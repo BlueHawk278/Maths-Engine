@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 
 namespace MathsEngine.Modules.Pure.Matrices
 {
@@ -105,22 +104,12 @@ namespace MathsEngine.Modules.Pure.Matrices
             return result;
         }
 
-        private static bool isValidForMultiplication(MatrixBase matrix1, MatrixBase matrix2)
-        {
-            if (matrix1 == null || matrix2 == null)
-                throw new ArgumentException("One or more matrix is empty.");
-
-            if (matrix1.NumCols == matrix2.NumRows)
-                return true;
-            return false;
-        }
-
         public static double[,] matrixMultiplication(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (!isValidForMultiplication(matrix1, matrix2))
                 throw new ArgumentException("Cannot multiply these matrices");
 
-            double[,] resultMatrix= new double[matrix1.NumRows, matrix2.NumCols];
+            double[,] resultMatrix = new double[matrix1.NumRows, matrix2.NumCols];
 
             for (int i = 0; i < matrix1.NumRows; i++)
             {
@@ -137,6 +126,15 @@ namespace MathsEngine.Modules.Pure.Matrices
             }
 
             return resultMatrix;
+        }
+        private static bool isValidForMultiplication(MatrixBase matrix1, MatrixBase matrix2)
+        {
+            if (matrix1 == null || matrix2 == null)
+                throw new ArgumentException("One or more matrix is empty.");
+
+            if (matrix1.NumCols == matrix2.NumRows)
+                return true;
+            return false;
         }
 
         public static double calculateDeterminant(MatrixBase matrix)

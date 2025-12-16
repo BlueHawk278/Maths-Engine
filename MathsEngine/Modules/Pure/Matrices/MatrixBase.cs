@@ -4,9 +4,9 @@ namespace MathsEngine.Modules.Pure.Matrices
 {
     internal class MatrixBase
     {
-        public int NumRows { get; set; }
-        public int NumCols { get; set; }
-        public double[,] Matrix {  get; set; }
+        public int NumRows { get; }
+        public int NumCols { get; }
+        public double[,] Matrix { get; }
 
         public MatrixBase(int rows, int cols)
         {
@@ -14,7 +14,7 @@ namespace MathsEngine.Modules.Pure.Matrices
             NumCols = cols;
             Matrix = new double[NumRows, NumCols];
 
-            GetMatrice();
+            populateMatrix();
         }
 
         public MatrixBase(double[,] array)
@@ -24,7 +24,7 @@ namespace MathsEngine.Modules.Pure.Matrices
             Matrix = array;
         }
 
-        private void GetMatrice()
+        private void populateMatrix()
         {
             for(int i = 0; i < NumRows; i++)
             {
@@ -35,6 +35,23 @@ namespace MathsEngine.Modules.Pure.Matrices
                     Matrix[i, j] = value;
                 }
             }
+        }
+
+        public static MatrixBase getIdentityMatrix(int size)
+        {
+            if (size <= 0)
+                throw new ArgumentException("Size must be a positive integer.");
+
+            var identityMatrix = new MatrixBase(size, size);
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    identityMatrix.Matrix[i, j] = (i == j) ? 1 : 0;
+                }
+            }
+            return identityMatrix;
         }
     }
 }

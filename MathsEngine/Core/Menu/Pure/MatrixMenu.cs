@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
 using MathsEngine.Modules.Pure.Matrices;
 
 namespace MathsEngine.Core.Menu.Pure
