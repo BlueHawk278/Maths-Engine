@@ -15,7 +15,8 @@ namespace MathsEngine.Core.Menu.Pure
             Console.WriteLine("3. Multiply a matrix by a number");
             Console.WriteLine("4. Divide a matrix by a number");
             Console.WriteLine("5. Solving simple matrix equations");
-            Console.WriteLine("6. Calculate the determinant of a square matrix");
+            Console.WriteLine("6. Multiply matrices by matrices");
+            Console.WriteLine("7. Calculate the determinant of a square matrix");
             Console.Write("Input: ");
             string response = Console.ReadLine();
 
@@ -37,6 +38,9 @@ namespace MathsEngine.Core.Menu.Pure
                     handleMatrixEquations();
                     break;
                 case "6":
+                    handleMatrixMultiplication();
+                    break;
+                case "7":
                     handleDeterminant();
                     break;
                 default:
@@ -147,6 +151,29 @@ namespace MathsEngine.Core.Menu.Pure
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
             var result = MatrixCalculator.matrixEquations(matrix1, matrix2, x);
+            displayMatrix(result);
+
+            Console.WriteLine("Press Enter to return to the main menu.");
+            Console.ReadLine();
+        }
+
+        private static void handleMatrixMultiplication()
+        {
+            Console.Clear();
+
+            Console.Write("First Matrix: How many rows? ");
+            int rows1 = Convert.ToInt16(Console.ReadLine());
+            Console.Write("First Matrix: How many columns? ");
+            int columns1 = Convert.ToInt16(Console.ReadLine());
+            MatrixBase matrix1 = new MatrixBase(rows1, columns1);
+
+            Console.Write("\nSecond Matrix: How many rows? ");
+            int rows2 = Convert.ToInt16(Console.ReadLine());
+            Console.Write("Second Matrix: How many columns? ");
+            int columns2 = Convert.ToInt16(Console.ReadLine());
+            MatrixBase matrix2 = new MatrixBase(rows2, columns2);
+
+            var result = MatrixCalculator.matrixMultiplication(matrix1, matrix2);
             displayMatrix(result);
 
             Console.WriteLine("Press Enter to return to the main menu.");

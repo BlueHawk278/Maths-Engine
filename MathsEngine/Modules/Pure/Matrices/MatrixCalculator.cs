@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace MathsEngine.Modules.Pure.Matrices
 {
@@ -112,6 +113,30 @@ namespace MathsEngine.Modules.Pure.Matrices
             if (matrix1.NumCols == matrix2.NumRows)
                 return true;
             return false;
+        }
+
+        public static double[,] matrixMultiplication(MatrixBase matrix1, MatrixBase matrix2)
+        {
+            if (!isValidForMultiplication(matrix1, matrix2))
+                throw new ArgumentException("Cannot multiply these matrices");
+
+            double[,] resultMatrix= new double[matrix1.NumRows, matrix2.NumCols];
+
+            for (int i = 0; i < matrix1.NumRows; i++)
+            {
+                for (int j = 0; j < matrix2.NumCols; j++)
+                {
+                    double sum = 0;
+
+                    for (int k = 0; k < matrix1.NumCols; k++)
+                    {
+                        sum += matrix1.Matrix[i, k] * matrix2.Matrix[k, j];
+                    }
+                    resultMatrix[i, j] = sum;
+                }
+            }
+
+            return resultMatrix;
         }
 
         public static double calculateDeterminant(MatrixBase matrix)
