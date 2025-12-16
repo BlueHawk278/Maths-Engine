@@ -13,6 +13,8 @@ namespace MathsEngine
         static void Main(string[] args)
         {
             Core.Menu.Menu.mainMenu();
+
+
         }
     }
 }

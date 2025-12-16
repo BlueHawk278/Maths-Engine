@@ -15,6 +15,7 @@ namespace MathsEngine.Core.Menu.Pure
             Console.WriteLine("3. Multiply a matrix by a number");
             Console.WriteLine("4. Divide a matrix by a number");
             Console.WriteLine("5. Solving simple matrix equations");
+            Console.WriteLine("6. Calculate the determinant of a square matrix");
             Console.Write("Input: ");
             string response = Console.ReadLine();
 
@@ -34,6 +35,9 @@ namespace MathsEngine.Core.Menu.Pure
                     break;
                 case "5":
                     handleMatrixEquations();
+                    break;
+                case "6":
+                    handleDeterminant();
                     break;
                 default:
                     Console.WriteLine("Enter a valid number please");
@@ -64,7 +68,6 @@ namespace MathsEngine.Core.Menu.Pure
             Console.WriteLine("\nPress Enter to return to the menu.");
             Console.ReadLine();
         }
-
         private static void handleSubtractMatrix()
         {
             Console.Clear();
@@ -105,7 +108,6 @@ namespace MathsEngine.Core.Menu.Pure
             Console.WriteLine("\nPress Enter to return to the menu.");
             Console.ReadLine();
         }
-
         private static void handleScalarDivision()
         {
             Console.Clear();
@@ -146,6 +148,19 @@ namespace MathsEngine.Core.Menu.Pure
 
             var result = MatrixCalculator.matrixEquations(matrix1, matrix2, x);
             displayMatrix(result);
+
+            Console.WriteLine("Press Enter to return to the main menu.");
+            Console.ReadLine();
+        }
+
+        private static void handleDeterminant()
+        {
+            Console.Clear();
+
+            MatrixBase matrix = new MatrixBase(2, 2);
+
+            var determinant = MatrixCalculator.calculateDeterminant(matrix);
+            Console.WriteLine($"Determinant: {determinant}");
 
             Console.WriteLine("Press Enter to return to the main menu.");
             Console.ReadLine();

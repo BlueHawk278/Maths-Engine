@@ -106,9 +106,26 @@ namespace MathsEngine.Modules.Pure.Matrices
 
         private static bool isValidForMultiplication(MatrixBase matrix1, MatrixBase matrix2)
         {
-            if(matrix1.NumCols == matrix2.NumRows)
+            if (matrix1 == null || matrix2 == null)
+                throw new ArgumentException("One or more matrix is empty.");
+
+            if (matrix1.NumCols == matrix2.NumRows)
                 return true;
             return false;
-        }    
+        }
+
+        public static double calculateDeterminant(MatrixBase matrix)
+        {
+            if (matrix == null)
+                throw new ArgumentException("Matrices are empty");
+
+            if (matrix.NumCols != 2 || matrix.NumRows != 2)
+                throw new ArgumentException("Must be a 2x2 Square matrix");
+
+            double ad = matrix.Matrix[0, 0] + matrix.Matrix[1, 1];
+            double bc = matrix.Matrix[0, 1] + matrix.Matrix[1, 0];
+
+            return ad - bc;
+        }
     }
 }
