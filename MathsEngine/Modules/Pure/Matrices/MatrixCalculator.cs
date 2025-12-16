@@ -50,7 +50,7 @@ namespace MathsEngine.Modules.Pure.Matrices
 
 
         /// <summary>
-        /// Multiplying all of the values in a matrix by an integer
+        /// Multiplying or dividing, all the values in a matrix by an integer
         /// </summary>
         /// <param name="matrix"> The matrix being multiplied by. </param>
         /// <param name="number"> The number to multiply the matrix by. </param>
@@ -104,6 +104,13 @@ namespace MathsEngine.Modules.Pure.Matrices
             return result;
         }
 
+        /// <summary>
+        /// A method to multiply matrices. They multiply by going across rows and down columns
+        /// </summary>
+        /// <param name="matrix1"></param>
+        /// <param name="matrix2"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static double[,] matrixMultiplication(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (!isValidForMultiplication(matrix1, matrix2))
@@ -127,6 +134,15 @@ namespace MathsEngine.Modules.Pure.Matrices
 
             return resultMatrix;
         }
+
+        /// <summary>
+        /// Checks if matrices are compatible for multiplication.
+        /// The number of columns for matrix 1 must equal the number of rows for matrix 2
+        /// </summary>
+        /// <param name="matrix1"></param>
+        /// <param name="matrix2"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         private static bool isValidForMultiplication(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (matrix1 == null || matrix2 == null)
@@ -137,6 +153,12 @@ namespace MathsEngine.Modules.Pure.Matrices
             return false;
         }
 
+        /// <summary>
+        /// Calculates the determinant for any given matrix. ***AD - BC***
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static double calculateDeterminant(MatrixBase matrix)
         {
             if (matrix == null)

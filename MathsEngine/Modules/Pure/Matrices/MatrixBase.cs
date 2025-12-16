@@ -37,6 +37,12 @@ namespace MathsEngine.Modules.Pure.Matrices
             }
         }
 
+        /// <summary>
+        /// A method that provides the identity matrix for a square matrix of the given size
+        /// </summary>
+        /// <param name="size"> The matrix will be size * size. </param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static MatrixBase getIdentityMatrix(int size)
         {
             if (size <= 0)
