@@ -5,8 +5,6 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
 {
     internal class UniformAccelerationCalculator
     {
-        private double _u, _v, _a, _t, _s;
-        private double _averageVelocity;
 
         public static double CalculateAverageVelocity(string initialVelocity, string finalVelocity)
         {

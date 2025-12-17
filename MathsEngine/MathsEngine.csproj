@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Menu\Mechanics\NewtonsLawsMenu.cs" />
     <Compile Include="Core\Menu\Mechanics\UniformAccelerationMenu.cs" />
     <Compile Include="Core\Menu\Menu.cs" />
     <Compile Include="Core\Menu\Pure\MatrixMenu.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Modules\Core\PureHelpers\PythagorasTheorem.cs" />
     <Compile Include="Modules\Core\StatisticsHelpers\AverageCalculator.cs" />
     <Compile Include="Core\Menu\Pure\PythagorasMenu.cs" />
+    <Compile Include="Modules\Mechanics\Dynamics\NewtonsLawsCalculator.cs" />
     <Compile Include="Modules\Mechanics\UniformAcceleration\UniformAccelerationCalculator.cs" />
     <Compile Include="Modules\Pure\Matrices\MatrixBase.cs" />
     <Compile Include="Modules\Pure\Matrices\MatrixCalculator.cs" />
