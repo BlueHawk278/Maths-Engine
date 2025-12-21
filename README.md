@@ -35,6 +35,9 @@ bin/
 
 Core/
 ├─ Menu/
+│  ├─ Mechanics/
+│  │  ├─ NewtonsLawsMenu.cs
+│  │  └─ UniformAccelerationMenu.cs
 │  ├─ Pure/
 │  │  ├─ MatrixMenu.cs
 │  │  └─ PythagorasMenu.cs
@@ -49,7 +52,10 @@ Modules/
 │  ├─ StatisticsHelpers/
 │  │  └─ AverageCalculator.cs
 ├─ Mechanics/
+│  ├─ Dynamics/
+│  │  └─ NewtonsLawsCalculator.cs
 │  └─ UniformAcceleration/
+│     └─ UniformAccelerationCalculator.cs
 ├─ Pure/
 │  ├─ Matrices/
 │  │  ├─ MatrixBase.cs
@@ -79,4 +85,5 @@ obj/
 
 App.config
 Program.cs
+
 ```

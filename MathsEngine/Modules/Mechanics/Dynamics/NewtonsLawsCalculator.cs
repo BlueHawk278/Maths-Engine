@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MathsEngine.Modules.Mechanics.Dynamics
 {
-    public class NewtonsLawsCalculator
+    public class NewtonsLawsCalculator // Integrate uniform acceleration equations
     {
         public static double calculateFma(string F, string m, string a)
         {
