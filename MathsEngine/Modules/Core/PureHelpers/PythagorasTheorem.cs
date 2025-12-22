@@ -22,7 +22,7 @@ namespace MathsEngine.Modules.Core.PureHelpers
         public static double calculateHypotenuse(double a, double b)
         {
             if (a <= 0 || b <= 0)
-                throw new ArgumentException("Side lengths must be positive.");
+                throw Utils.Exceptions.negativeSideLengthException;
             
 
             double aSquared = Math.Pow(a, 2);
@@ -41,10 +41,10 @@ namespace MathsEngine.Modules.Core.PureHelpers
         public static double calculateOtherSide(double hypotenuse, double knownSide)
         {
             if (hypotenuse <= 0 || knownSide <= 0)
-                throw new ArgumentException("Side lengths must be positive.");
+                throw Utils.Exceptions.negativeSideLengthException;
 
             if (knownSide >= hypotenuse)
-                throw new ArgumentException("Hypotenuse must be the longest side");
+                throw Utils.Exceptions.hyptonenuseNotLongestSideException;
 
             double hSquared = Math.Pow(hypotenuse, 2);
             double aSquared = Math.Pow(knownSide, 2);
