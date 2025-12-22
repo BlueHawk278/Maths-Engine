@@ -12,10 +12,10 @@ namespace MathsEngine.Modules.Pure.Matrices
         public static double[,] addMatrix(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (matrix1 == null || matrix2 == null)
-                throw new ArgumentException("Matrices are empty");
+                throw Utils.Exceptions.nullInputException;
 
             if (matrix1.NumRows != matrix2.NumRows || matrix1.NumCols != matrix2.NumCols)
-                throw new ArgumentException("Matrices can't be added, they are not the same size");
+                throw Utils.Exceptions.incompatibleAdditionMatricesException;
 
             var result = new double[matrix1.NumRows, matrix1.NumCols];
 
@@ -31,10 +31,10 @@ namespace MathsEngine.Modules.Pure.Matrices
         public static double[,] subtractMatrix(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (matrix1 == null || matrix2 == null)
-                throw new ArgumentException("Matrices are empty");
+                throw Utils.Exceptions.nullInputException;
 
             if (matrix1.NumRows != matrix2.NumRows || matrix1.NumCols != matrix2.NumCols)
-                throw new ArgumentException("Matrices can't be added, they are not the same size");
+                throw Utils.Exceptions.incompatibleSubtractionMatricesException;
 
             var result = new double[matrix1.NumRows, matrix1.NumCols];
 
@@ -59,7 +59,7 @@ namespace MathsEngine.Modules.Pure.Matrices
         public static double[,] scalarMultiplication(MatrixBase matrix, int number)
         {
             if (matrix == null)
-                throw new ArgumentException("Matrices can't empty");
+                throw Utils.Exceptions.nullInputException;
 
             var result = new double[matrix.NumRows, matrix.NumCols];
 
@@ -75,7 +75,7 @@ namespace MathsEngine.Modules.Pure.Matrices
         public static double[,] scalarDivision(MatrixBase matrix, int number)
         {
             if (matrix == null)
-                throw new ArgumentException("Matrices can't empty");
+                throw Utils.Exceptions.nullInputException;
 
             var result = new double[matrix.NumRows, matrix.NumCols];
 
@@ -92,10 +92,10 @@ namespace MathsEngine.Modules.Pure.Matrices
         public static double[,] matrixEquations(MatrixBase matrix1, MatrixBase matrix2, int number)
         {
             if (matrix1 == null || matrix2 == null)
-                throw new ArgumentException("Matrices are empty");
+                throw Utils.Exceptions.nullInputException;
 
             if (matrix1.NumRows != matrix2.NumRows || matrix1.NumCols != matrix2.NumCols)
-                throw new ArgumentException("Matrices can't be added, they are not the same size");
+                throw Utils.Exceptions.incompatibleSubtractionMatricesException;
 
             var result = subtractMatrix(matrix1, matrix2);
             MatrixBase Matrix = new MatrixBase(result);
@@ -114,7 +114,7 @@ namespace MathsEngine.Modules.Pure.Matrices
         public static double[,] matrixMultiplication(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (!isValidForMultiplication(matrix1, matrix2))
-                throw new ArgumentException("Cannot multiply these matrices");
+                throw Utils.Exceptions.incompatibleMatrixMultiplicationException;
 
             double[,] resultMatrix = new double[matrix1.NumRows, matrix2.NumCols];
 
@@ -146,7 +146,7 @@ namespace MathsEngine.Modules.Pure.Matrices
         private static bool isValidForMultiplication(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (matrix1 == null || matrix2 == null)
-                throw new ArgumentException("One or more matrix is empty.");
+                throw Utils.Exceptions.nullInputException;
 
             if (matrix1.NumCols == matrix2.NumRows)
                 return true;
@@ -162,7 +162,7 @@ namespace MathsEngine.Modules.Pure.Matrices
         public static double calculateDeterminant(MatrixBase matrix)
         {
             if (matrix == null)
-                throw new ArgumentException("Matrices are empty");
+                throw Utils.Exceptions.nullInputException;
 
             if (matrix.NumCols != 2 || matrix.NumRows != 2)
                 throw new ArgumentException("Must be a 2x2 Square matrix");
