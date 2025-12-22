@@ -20,7 +20,8 @@ namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
         public ArrayOfNumbersCalculator(List<double> originalValues)
         {
             if (originalValues == null || originalValues.Count() == 0)
-                throw new ArgumentException("Score lists must be non-null and have the same number of elements.");
+                throw Utils.Exceptions.nullInputException;
+            
             _originalValues = originalValues;
             _sortedValues = new List<double>(originalValues);
             _sortedValues.Sort();

@@ -24,6 +24,10 @@ namespace MathsEngine.Utils
         public static readonly Exception incompatibleMatrixMultiplicationException =
             new Exception("Cannot multiply these matrices");
 
+        // Bivariate Analysis
+        public static readonly Exception listsNotSameSizeException =
+            new Exception("Inputs must have the same amount of data points");
+
         // Dynamics
         public static readonly Exception nullMassException =
             new Exception("Mass cannot be 0");

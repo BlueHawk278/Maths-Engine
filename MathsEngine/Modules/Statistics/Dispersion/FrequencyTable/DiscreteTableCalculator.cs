@@ -19,7 +19,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
         public DiscreteTableCalculator(double[,] table)
         {
             if(table == null)
-                throw new ArgumentNullException("Table must not be empty");
+                throw Utils.Exceptions.nullInputException;
 
             NumRows = table.GetLength(0);
             Table = table;

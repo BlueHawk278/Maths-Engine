@@ -31,10 +31,11 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         /// </summary>
         public BivariateAnalysisCalculator(List<int> scores1, List<int> scores2)
         {
-            if (scores1 == null || scores2 == null || scores1.Count != scores2.Count)
-            {
-                throw new ArgumentException("Score lists must be non-null and have the same number of elements.");
-            }
+            if (scores1 == null || scores2 == null)
+                throw Utils.Exceptions.nullInputException;
+            if (scores1.Count != scores2.Count)
+                throw Utils.Exceptions.listsNotSameSizeException;
+
             _scores1 = scores1;
             _scores2 = scores2;
         }

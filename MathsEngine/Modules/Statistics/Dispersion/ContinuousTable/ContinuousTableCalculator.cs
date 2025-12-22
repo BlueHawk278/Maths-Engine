@@ -19,8 +19,8 @@ namespace MathsEngine.Modules.Statistics.Dispersion.ContinuousTable
 
         public ContinuousTableCalculator(double[,] table)
         {
-            if(table == null)
-                throw new ArgumentNullException("table must not be null");
+            if (table == null)
+                throw Utils.Exceptions.nullInputException;
             NumRows = table.GetLength(0);
             Table = table;
         }
