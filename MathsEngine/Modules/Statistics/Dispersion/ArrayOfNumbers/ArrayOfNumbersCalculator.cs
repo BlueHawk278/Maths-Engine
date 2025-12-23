@@ -20,7 +20,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
         public ArrayOfNumbersCalculator(List<double> originalValues)
         {
             if (originalValues == null || originalValues.Count() == 0)
-                throw Utils.Exceptions.nullInputException;
+                throw Utils.Exceptions.NullInputException;
             
             _originalValues = originalValues;
             _sortedValues = new List<double>(originalValues);

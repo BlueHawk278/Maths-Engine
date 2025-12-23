@@ -12,7 +12,7 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
             a = string.IsNullOrEmpty(a) ? "0" : a;
 
             if (m == "")
-                throw Utils.Exceptions.nullMassException;
+                throw Utils.Exceptions.NullMassException;
 
             int numNullValues = 0;
 
@@ -22,7 +22,7 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
                     numNullValues++;
 
             if (numNullValues >= 2)
-                throw Utils.Exceptions.nullValuesException;
+                throw Utils.Exceptions.NullValuesException;
 
             if (F == "")
                 return Convert.ToDouble(m) * Convert.ToDouble(a);

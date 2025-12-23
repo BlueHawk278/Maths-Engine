@@ -32,9 +32,9 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         public BivariateAnalysisCalculator(List<int> scores1, List<int> scores2)
         {
             if (scores1 == null || scores2 == null)
-                throw Utils.Exceptions.nullInputException;
+                throw Utils.Exceptions.NullInputException;
             if (scores1.Count != scores2.Count)
-                throw Utils.Exceptions.listsNotSameSizeException;
+                throw Utils.Exceptions.ListsNotSameSizeException;
 
             _scores1 = scores1;
             _scores2 = scores2;

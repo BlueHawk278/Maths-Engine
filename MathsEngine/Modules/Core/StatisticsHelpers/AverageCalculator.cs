@@ -16,7 +16,7 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
         /// <returns>The mean of the values in the list. Returns 0 if the list is empty.</returns>
         internal static double calculateMean(List<double> nums)
         {
-            if (nums.Count == 0 || nums == null) throw Utils.Exceptions.nullInputException;
+            if (nums.Count == 0 || nums == null) throw Utils.Exceptions.NullInputException;
 
             double sum = 0;
 
@@ -36,7 +36,7 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
         internal static double calculateMedian(List<double> nums)
         {
             if (nums.Count == 0 || nums == null)
-                throw Utils.Exceptions.nullInputException;
+                throw Utils.Exceptions.NullInputException;
 
             var sortedNums = new List<double>(nums);
             sortedNums.Sort();
@@ -66,7 +66,7 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
         internal static List<double> calculateMode(List<double> nums)
         {
             // If the list is empty or has only one value, there can be no mode.
-            if (nums == null || nums.Count <= 1) throw Utils.Exceptions.nullInputException;
+            if (nums == null || nums.Count <= 1) throw Utils.Exceptions.NullInputException;
 
             // Use a Dictionary to count the frequency of each number.
             // Key: the number, Value: its frequency.
@@ -146,7 +146,7 @@ namespace MathsEngine.Modules.Core.StatisticsHelpers
             sortedValues.Sort();
 
             if (sortedValues == null || numValues < 4)
-                throw Utils.Exceptions.nullInputException;
+                throw Utils.Exceptions.NullInputException;
 
             if (numValues % 2 == 0) // 0 | Q1 | 1 | Q2 | 2 | Q3 |3
             {

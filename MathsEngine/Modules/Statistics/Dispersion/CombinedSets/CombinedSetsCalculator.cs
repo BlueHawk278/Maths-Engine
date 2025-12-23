@@ -14,7 +14,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.CombinedSets
         public CombinedSetsCalculator(List<string> dataSet1, List<string> dataSet2)
         {
             if (dataSet1 == null || dataSet2 == null)
-                throw Utils.Exceptions.nullInputException;
+                throw Utils.Exceptions.NullInputException;
 
             _numFirstSetPoints = Convert.ToInt16(dataSet1[0]);
             mean1 = Convert.ToDouble(dataSet1[1]);
