@@ -17,7 +17,9 @@ Current Modules:
 - Pure Maths:
   -	Pythagoras Theorem
   -	Matrices
-- Mechanics: 
+- Mechanics:
+  - UVATS Equations
+  - Newton's Laws Calculations 
 
 Planned Features
 Coming as I develop the project further:
