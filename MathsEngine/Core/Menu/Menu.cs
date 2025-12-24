@@ -71,6 +71,7 @@ namespace MathsEngine.Core.Menu
             Console.Clear();
             Console.WriteLine("Welcome to the Mechanics Menu");
             Console.WriteLine("1. Uniform Acceleration");
+            Console.WriteLine("2. Newton's Laws Calculations");
             Console.Write("Input: ");
             string response = Console.ReadLine();
             Console.Clear();
@@ -79,6 +80,9 @@ namespace MathsEngine.Core.Menu
             {
                 case "1":
                     UniformAccelerationMenu.menu();
+                    break;
+                case "2":
+                    NewtonsLawsMenu.menu();
                     break;
                 default:
                     Console.WriteLine("Please enter a valid number");
