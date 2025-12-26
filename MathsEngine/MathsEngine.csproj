@@ -47,8 +47,10 @@
     <Compile Include="Core\Menu\Mechanics\UniformAccelerationMenu.cs" />
     <Compile Include="Core\Menu\Menu.cs" />
     <Compile Include="Core\Menu\Pure\MatrixMenu.cs" />
+    <Compile Include="Core\Menu\Pure\TrigonometryMenu.cs" />
     <Compile Include="Core\Menu\Statistics\DispersionMenu.cs" />
     <Compile Include="Modules\Core\PureHelpers\PythagorasTheorem.cs" />
+    <Compile Include="Modules\Core\PureHelpers\Trigonometry.cs" />
     <Compile Include="Modules\Core\StatisticsHelpers\AverageCalculator.cs" />
     <Compile Include="Core\Menu\Pure\PythagorasMenu.cs" />
     <Compile Include="Modules\Mechanics\Dynamics\NewtonsLawsCalculator.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Modules\Pure\Matrices\MatrixBase.cs" />
     <Compile Include="Modules\Pure\Matrices\MatrixCalculator.cs" />
     <Compile Include="Modules\Pure\PythagorasTheorem\PythagorasTheorem.cs" />
+    <Compile Include="Modules\Pure\Trigonometry\SideType.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysisCalculator.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\BivariateAnalysis.cs" />
     <Compile Include="Modules\Statistics\BivariateAnalysis\Correlation.cs" />

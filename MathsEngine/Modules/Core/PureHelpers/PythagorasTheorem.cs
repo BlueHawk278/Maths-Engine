@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-// TODO: Make an Exception folder
-
 namespace MathsEngine.Modules.Core.PureHelpers
 {
     /// <summary>
