@@ -15,6 +15,10 @@ namespace MathsEngine.Utils
             new Exception("Side lengths must be positive.");
         public static readonly Exception HypotenuseNotLongestSideException =
             new Exception("Hypotenuse must be the longest side");
+        
+        // Trigonometry
+        public static readonly Exception AcuteAngleException =
+            new Exception("Angle is Acute (Must be between 0 and 90 degrees)");
 
         // Matrices
         public static readonly Exception IncompatibleAdditionMatricesException = 
