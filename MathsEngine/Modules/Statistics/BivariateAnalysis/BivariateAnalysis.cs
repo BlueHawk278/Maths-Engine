@@ -50,8 +50,6 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         private static void DisplayResults(BivariateAnalysisCalculator calc)
         {
             Console.WriteLine("\n--- Results ---");
-            // Display the table of ranks, differences, etc.
-            // Example:
             Console.WriteLine($"Rank 1: {string.Join(", ", calc.Ranks1)}");
             Console.WriteLine($"Rank 2: {string.Join(", ", calc.Ranks2)}");
             Console.WriteLine($"Difference: {string.Join(", ", calc.Difference)}");

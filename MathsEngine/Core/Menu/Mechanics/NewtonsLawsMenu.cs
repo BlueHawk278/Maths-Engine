@@ -56,9 +56,6 @@ namespace MathsEngine.Core.Menu.Mechanics
 
             double value = Modules.Mechanics.Dynamics.NewtonsLawsCalculator.calculateFma(F, M, A);
 
-            if (value == 0) // ERROR
-                throw new Exception("Something went wrong");
-
             if (F == null) F = Convert.ToString(value);
             if (M == null) M = Convert.ToString(value);
             if (A == null) A = Convert.ToString(value);

@@ -34,7 +34,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.ContinuousTable
             {
                 Console.Write($"Enter the lower limit for X value No.{rowNum}: ");
                 int lowerNum = Convert.ToInt16(Console.ReadLine());
-                Console.Write($"Enter the lower limit for X value No.{rowNum}: ");
+                Console.Write($"Enter the upper limit for X value No.{rowNum}: ");
                 int upperNum = Convert.ToInt16(Console.ReadLine());
                 Console.Write($"Enter the frequency for value No.{rowNum}: ");
                 int frequency = Convert.ToInt16(Console.ReadLine());
