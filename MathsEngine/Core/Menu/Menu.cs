@@ -1,8 +1,4 @@
-﻿    using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using MathsEngine.Core.Menu.Mechanics;
 using MathsEngine.Core.Menu.Pure;
 using MathsEngine.Core.Menu.Statistics;
@@ -47,7 +43,8 @@ namespace MathsEngine.Core.Menu
             Console.Clear();
             Console.WriteLine("Welcome to the Pure Maths Menu");
             Console.WriteLine("1. Pythagoras Theorem");
-            Console.WriteLine("2. Matrices");
+            Console.WriteLine("2. Trigonometry");
+            Console.WriteLine("3. Matrices");
             Console.Write("Input: ");
             string response = Console.ReadLine();
             Console.Clear();
@@ -58,6 +55,9 @@ namespace MathsEngine.Core.Menu
                     PythagorasMenu.menu();
                     break;
                 case "2":
+                    TrigonometryMenu.menu();
+                    break;
+                case "3":
                     MatrixMenu.menu();
                     break;
                 default:

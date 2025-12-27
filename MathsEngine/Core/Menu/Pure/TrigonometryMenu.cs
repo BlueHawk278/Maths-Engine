@@ -1,5 +1,4 @@
 ﻿using System;
-using MathsEngine.Modules.Core.PureHelpers;
 using MathsEngine.Modules.Pure.Trigonometry;
 
 namespace MathsEngine.Core.Menu.Pure
