@@ -2,38 +2,75 @@
 
 namespace MathsEngine.Utils
 {
-    internal class Exceptions
+    // General
+    public class NullInputException : Exception
     {
-        // General
-        public static readonly Exception NullInputException = 
-            new Exception("Values entered must not be null");
-        public static readonly Exception NullValuesException =
-            new Exception("Cannot have more than one null value");
+        public NullInputException() : base("Values entered must not be null") { }
+        public NullInputException(string message) : base(message) { }
+    }
 
-        // Pythagoras Theorem
-        public static readonly Exception NegativeSideLengthException = 
-            new Exception("Side lengths must be positive.");
-        public static readonly Exception HypotenuseNotLongestSideException =
-            new Exception("Hypotenuse must be the longest side");
-        
-        // Trigonometry
-        public static readonly Exception AcuteAngleException =
-            new Exception("Angle is Acute (Must be between 0 and 90 degrees)");
+    public class NullValuesException : Exception
+    {
+        public NullValuesException() : base("Cannot have more than one null value") { }
+        public NullValuesException(string message) : base(message) { }
+    }
 
-        // Matrices
-        public static readonly Exception IncompatibleAdditionMatricesException = 
-            new Exception("Matrices can't be added, they are not the same size");
-        public static readonly Exception IncompatibleSubtractionMatricesException =
-            new Exception("Matrices can't be subtracted, they are not the same size");
-        public static readonly Exception IncompatibleMatrixMultiplicationException =
-            new Exception("Cannot multiply these matrices");
+    ///// PURE
+    
+    // Pythagoras Theorem
+    public class NegativeSideLengthException : Exception
+    {
+        public NegativeSideLengthException() : base("Side lengths must be positive.") { }
+        public NegativeSideLengthException(string message) : base(message) { }
+    }
 
-        // Bivariate Analysis
-        public static readonly Exception ListsNotSameSizeException =
-            new Exception("Inputs must have the same amount of data points");
+    public class HypotenuseNotLongestSideException : Exception
+    {
+        public HypotenuseNotLongestSideException() : base("Hypotenuse must be the longest side") { }
+        public HypotenuseNotLongestSideException(string message) : base(message) { }
+    }
 
-        // Dynamics
-        public static readonly Exception NullMassException =
-            new Exception("Mass cannot be 0");
+    // Trigonometry
+    public class AcuteAngleException : Exception
+    {
+        public AcuteAngleException() : base("Angle must be between 0 and 90 degrees") { }
+        public AcuteAngleException(string message) : base(message) { }
+    }
+
+    // Matrices
+    public class IncompatibleAdditionMatricesException : Exception
+    {
+        public IncompatibleAdditionMatricesException() : base("Matrices can't be added, they are not the same size") { }
+        public IncompatibleAdditionMatricesException(string message) : base(message) { }
+    }
+
+    public class IncompatibleSubtractionMatricesException : Exception
+    {
+        public IncompatibleSubtractionMatricesException() : base("Matrices can't be subtracted, they are not the same size") { }
+        public IncompatibleSubtractionMatricesException(string message) : base(message) { }
+    }
+
+    public class IncompatibleMatrixMultiplicationException : Exception
+    {
+        public IncompatibleMatrixMultiplicationException() : base("Cannot multiply these matrices") { }
+        public IncompatibleMatrixMultiplicationException(string message) : base(message) { }
+    }
+
+    ///// Statistics
+
+    // Bivariate Analysis
+    public class ListsNotSameSizeException : Exception
+    {
+        public ListsNotSameSizeException() : base("Inputs must have the same amount of data points") { }
+        public ListsNotSameSizeException(string message) : base(message) { }
+    }
+
+    ///// Mechanics
+
+    // Dynamics
+    public class NullMassException : Exception
+    {
+        public NullMassException() : base("Mass cannot be 0") { }
+        public NullMassException(string message) : base(message) { }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Core.PureHelpers
 {
@@ -20,7 +21,7 @@ namespace MathsEngine.Modules.Core.PureHelpers
         public static double calculateHypotenuse(double a, double b)
         {
             if (a <= 0 || b <= 0)
-                throw Utils.Exceptions.NegativeSideLengthException;
+                throw new NegativeSideLengthException("Side lengths must not be negative");
             
 
             double aSquared = Math.Pow(a, 2);
@@ -39,10 +40,10 @@ namespace MathsEngine.Modules.Core.PureHelpers
         public static double calculateOtherSide(double hypotenuse, double knownSide)
         {
             if (hypotenuse <= 0 || knownSide <= 0)
-                throw Utils.Exceptions.NegativeSideLengthException;
+                throw new NegativeSideLengthException("Side lengths must not be negative");
 
             if (knownSide >= hypotenuse)
-                throw Utils.Exceptions.HypotenuseNotLongestSideException;
+                throw new HypotenuseNotLongestSideException("Hypotenuse must be the longest side");
 
             double hSquared = Math.Pow(hypotenuse, 2);
             double aSquared = Math.Pow(knownSide, 2);

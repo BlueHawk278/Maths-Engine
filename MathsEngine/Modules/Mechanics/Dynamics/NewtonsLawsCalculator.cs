@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Mechanics.Dynamics
 {
@@ -12,7 +13,7 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
             a = string.IsNullOrEmpty(a) ? "0" : a;
 
             if (m == "")
-                throw Utils.Exceptions.NullMassException;
+                throw new NullMassException("Side lengths must not be negative");
 
             int numNullValues = 0;
 
@@ -22,7 +23,7 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
                     numNullValues++;
 
             if (numNullValues >= 2)
-                throw Utils.Exceptions.NullValuesException;
+                throw new NullValuesException("Side lengths must not be negative");
 
             if (F == "")
                 return Convert.ToDouble(m) * Convert.ToDouble(a);

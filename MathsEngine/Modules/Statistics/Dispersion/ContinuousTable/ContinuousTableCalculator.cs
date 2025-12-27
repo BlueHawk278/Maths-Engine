@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.ContinuousTable
 {
@@ -20,7 +21,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.ContinuousTable
         public ContinuousTableCalculator(double[,] table)
         {
             if (table == null)
-                throw Utils.Exceptions.NullInputException;
+                throw new NullInputException("Side lengths must not be negative");
             NumRows = table.GetLength(0);
             Table = table;
         }

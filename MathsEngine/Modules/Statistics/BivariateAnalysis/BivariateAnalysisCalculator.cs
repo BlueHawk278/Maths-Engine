@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 {
@@ -32,9 +33,9 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         public BivariateAnalysisCalculator(List<int> scores1, List<int> scores2)
         {
             if (scores1 == null || scores2 == null)
-                throw Utils.Exceptions.NullInputException;
+                throw new NullInputException("Side lengths must not be negative");
             if (scores1.Count != scores2.Count)
-                throw Utils.Exceptions.ListsNotSameSizeException;
+                throw new ListsNotSameSizeException("Side lengths must not be negative");
 
             _scores1 = scores1;
             _scores2 = scores2;

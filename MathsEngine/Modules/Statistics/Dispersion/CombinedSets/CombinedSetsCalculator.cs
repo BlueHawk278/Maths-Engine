@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.CombinedSets
 {
@@ -14,7 +15,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.CombinedSets
         public CombinedSetsCalculator(List<string> dataSet1, List<string> dataSet2)
         {
             if (dataSet1 == null || dataSet2 == null)
-                throw Utils.Exceptions.NullInputException;
+                throw new NullInputException("Side lengths must not be negative");
 
             _numFirstSetPoints = Convert.ToInt16(dataSet1[0]);
             mean1 = Convert.ToDouble(dataSet1[1]);

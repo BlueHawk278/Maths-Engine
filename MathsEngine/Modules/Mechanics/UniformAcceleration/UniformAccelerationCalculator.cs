@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Mechanics.UniformAcceleration
 {
@@ -9,7 +10,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
         public static double CalculateAverageVelocity(string initialVelocity, string finalVelocity)
         {
             if (string.IsNullOrEmpty(initialVelocity) || string.IsNullOrEmpty(finalVelocity))
-                throw Utils.Exceptions.NullInputException;
+                throw new NullInputException("Side lengths must not be negative");
 
             return (Convert.ToDouble(initialVelocity) + Convert.ToDouble(finalVelocity)) / 2;
         }
@@ -23,7 +24,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 if (values[i] == null)
                     invalidNums++;
             if (invalidNums > 1)
-                throw Utils.Exceptions.NullValuesException;
+                throw new NullValuesException("Side lengths must not be negative");
 
             if (v == null) // v = u + at 
                 return Convert.ToString(Convert.ToDouble(u) + Convert.ToDouble(a) * Convert.ToDouble(t));
@@ -48,7 +49,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 if (values[i] == null)
                     invalidNums++;
             if (invalidNums > 1)
-                throw Utils.Exceptions.NullValuesException;
+                throw new NullValuesException("Side lengths must not be negative");
 
             if (v == null) // v^2 = u^2 + 2as
                 return Convert.ToString(Math.Sqrt(Math.Pow(Convert.ToDouble(u), 2) + 2 * (Convert.ToDouble(a) * Convert.ToDouble(s))));
@@ -80,7 +81,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 if (values[i] == null)
                     invalidNums++;
             if (invalidNums > 1)
-                throw Utils.Exceptions.NullValuesException;
+                throw new NullValuesException("Side lengths must not be negative");
 
             if (s == null) // s = 0.5 * (u + v) * t
                 return Convert.ToString((Convert.ToDouble(u) + Convert.ToDouble(v)) * Convert.ToDouble(t) / 2);
@@ -117,7 +118,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 if (values[i] == null)
                     invalidNums++;
             if (invalidNums > 1)
-                throw Utils.Exceptions.NullValuesException;
+                throw new NullValuesException("Side lengths must not be negative");
 
             if (s == null) // s = ut + 0.5at^2
             {

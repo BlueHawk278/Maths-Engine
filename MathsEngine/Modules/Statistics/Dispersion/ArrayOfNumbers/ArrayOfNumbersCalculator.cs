@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
 {
@@ -20,7 +21,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
         public ArrayOfNumbersCalculator(List<double> originalValues)
         {
             if (originalValues == null || originalValues.Count() == 0)
-                throw Utils.Exceptions.NullInputException;
+                throw new NullInputException("Side lengths must not be negative");
             
             _originalValues = originalValues;
             _sortedValues = new List<double>(originalValues);
