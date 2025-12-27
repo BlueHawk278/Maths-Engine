@@ -43,16 +43,12 @@ Core/
 │  ├─ Pure/
 │  │  ├─ MatrixMenu.cs
 │  │  └─ PythagorasMenu.cs
+|  |  └─ TrigonometryMenu.cs
 │  ├─ Statistics/
 │  │  └─ DispersionMenu.cs
 │  └─ Menu.cs
 
 Modules/
-├─ Core/
-│  ├─ PureHelpers/
-│  │  └─ PythagorasTheorem.cs
-│  ├─ StatisticsHelpers/
-│  │  └─ AverageCalculator.cs
 ├─ Mechanics/
 │  ├─ Dynamics/
 │  │  └─ NewtonsLawsCalculator.cs
@@ -64,6 +60,9 @@ Modules/
 │  │  └─ MatrixCalculator.cs
 │  ├─ PythagorasTheorem/
 │  │  └─ PythagorasTheorem.cs
+|  |─ Trigonometry/
+|  |  ├─ SideType.cs
+|  |  └─ TrigonometryCalculator.cs
 ├─ Statistics/
 │  ├─ BivariateAnalysis/
 │  │  ├─ BivariateAnalysis.cs

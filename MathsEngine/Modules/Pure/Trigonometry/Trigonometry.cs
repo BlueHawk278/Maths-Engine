@@ -1,8 +1,7 @@
 ﻿using System;
-using MathsEngine.Modules.Pure.Trigonometry;
 using MathsEngine.Utils;
 
-namespace MathsEngine.Modules.Core.PureHelpers
+namespace MathsEngine.Modules.Pure.Trigonometry
 {
     public class Trigonometry
     {

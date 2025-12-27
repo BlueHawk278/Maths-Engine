@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using MathsEngine.Modules.Core;
-
 namespace MathsEngine
 {
     internal static class Program

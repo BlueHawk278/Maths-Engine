@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MathsEngine.Utils;
 
-namespace MathsEngine.Modules.Core.StatisticsHelpers
+namespace MathsEngine.Modules.Statistics
 {
     internal static class AverageCalculator
     {
