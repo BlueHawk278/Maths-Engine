@@ -16,18 +16,48 @@ namespace MathsEngine.Modules.Pure.Trigonometry
         public static double calculateMissingSide(double knownSideLength, double angle, SideType knownSideType, SideType sideToFind)
         {
             if (knownSideLength <= 0)
-                throw new NegativeSideLengthException("Side must not be negative.");
+                throw new NegativeSideLengthException();
 
             if (angle <= 0.0 || angle >= 90.0)
-                throw new AcuteAngleException("Acute angles must be between 0 and 90 degrees.");
+                throw new AcuteAngleException();
+
+            if (sideToFind == knownSideType)
+                throw new DuplicateSideException();
 
             // Convert angle to radians
             double angleInRadians = angle * (Math.PI / 180.0);
             double result = 0;
 
+            if ((knownSideType == SideType.Opposite && sideToFind == SideType.Hypotenuse) ||
+                (knownSideType == SideType.Hypotenuse && sideToFind == SideType.Opposite))
+            {
+                if (sideToFind == SideType.Hypotenuse) 
+                    result = knownSideLength / Math.Sin(angleInRadians);
+                else // Find O, know H: O = H * sin(angle)
+                    result = knownSideLength * Math.Sin(angleInRadians);
+            }
 
+            // CAH (Cosine)
+            if ((knownSideType == SideType.Adjacent && sideToFind == SideType.Hypotenuse) ||
+                (knownSideType == SideType.Hypotenuse && sideToFind == SideType.Adjacent))
+            {
+                if (sideToFind == SideType.Hypotenuse)
+                    result = knownSideLength / Math.Cos(angleInRadians);
+                else
+                    result = knownSideLength * Math.Cos(angleInRadians);
+            }
 
-            return 0;
+            // TOA (Tangent)
+            if ((knownSideType == SideType.Opposite && sideToFind == SideType.Adjacent) ||
+                (knownSideType == SideType.Adjacent && sideToFind == SideType.Opposite))
+            {
+                if (sideToFind == SideType.Adjacent)
+                    result = knownSideLength / Math.Tan(angleInRadians);
+                else
+                    result = knownSideLength * Math.Tan(angleInRadians);
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -41,18 +71,44 @@ namespace MathsEngine.Modules.Pure.Trigonometry
         public static double calculateMissingAngle(double side1Length, SideType side1Type, double side2Length, SideType side2Type)
         {
             if (side1Length  <= 0 || side2Length <= 0)
-                throw new NegativeSideLengthException("Side lengths must not be negative");
+                throw new NegativeSideLengthException();
 
             if (side1Type == SideType.Hypotenuse && side1Length <= side2Length)
-                throw new HypotenuseNotLongestSideException("Side lengths must not be negative");
+                throw new HypotenuseNotLongestSideException();
             if (side2Type == SideType.Hypotenuse && side2Length <= side1Length)
-                throw new HypotenuseNotLongestSideException("Side lengths must not be negative");
+                throw new HypotenuseNotLongestSideException();
 
             double opposite = 0, adjacent = 0, hypotenuse = 0;
             double angleInRadians = 0;
 
-            // angle = angle * (180.0/Math.PI);
-            return 0;
+            // SOH (Sine)
+            if ((side1Type == SideType.Opposite && side2Type == SideType.Hypotenuse) ||
+                (side1Type == SideType.Hypotenuse && side2Type == SideType.Opposite))
+            {
+                opposite = (side1Type == SideType.Opposite) ? side1Length : side2Length;
+                hypotenuse = (side1Type == SideType.Hypotenuse) ? side1Length : side2Length;
+                angleInRadians = Math.Asin(opposite / hypotenuse);
+            }
+
+            // CAH (Cosine)
+            if ((side1Type == SideType.Adjacent && side2Type == SideType.Hypotenuse) ||
+                (side1Type == SideType.Hypotenuse && side2Type == SideType.Adjacent))
+            {
+                adjacent = (side1Type == SideType.Adjacent) ? side1Length : side2Length;
+                hypotenuse = (side1Type == SideType.Hypotenuse) ? side1Length : side2Length;
+                angleInRadians = Math.Acos(adjacent / hypotenuse);
+            }
+
+            // TOA (Tangent)
+            if ((side1Type == SideType.Opposite && side2Type == SideType.Adjacent) ||
+                (side1Type == SideType.Adjacent && side2Type == SideType.Opposite))
+            {
+                opposite = (side1Type == SideType.Opposite) ? side1Length : side2Length;
+                adjacent = (side1Type == SideType.Adjacent) ? side1Length : side2Length;
+                angleInRadians = Math.Atan(opposite / adjacent);
+            }
+
+            return angleInRadians * (180.0 / Math.PI);
         }
     }
 }

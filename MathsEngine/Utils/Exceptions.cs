@@ -37,6 +37,12 @@ namespace MathsEngine.Utils
         public AcuteAngleException(string message) : base(message) { }
     }
 
+    public class DuplicateSideException : Exception
+    {
+        public DuplicateSideException() : base("Known side and the side to find cannot be the same") { }
+        public DuplicateSideException(string message) : base(message){ }
+    }
+
     // Matrices
     public class IncompatibleAdditionMatricesException : Exception
     {
