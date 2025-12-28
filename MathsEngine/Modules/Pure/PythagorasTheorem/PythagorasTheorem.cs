@@ -6,7 +6,7 @@ namespace MathsEngine.Modules.Pure.PythagorasTheorem
     /// <summary>
     /// Provides static methods for Pythagoras theorem calculations
     /// </summary>
-    internal static class PythagorasTheorem
+    public static class PythagorasTheorem
     {
         /// <summary>
         /// Calculates the length of the hypotenuse given side A and B

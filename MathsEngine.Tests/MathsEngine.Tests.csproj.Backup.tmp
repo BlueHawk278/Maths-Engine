@@ -19,12 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="MechanicsTests\" />
-    <Folder Include="StatisticsTests\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\MathsEngine\MathsEngine.csproj" />
+    <Folder Include="Pure\" />
   </ItemGroup>
 
 </Project>
