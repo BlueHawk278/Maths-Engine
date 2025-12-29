@@ -7,6 +7,28 @@ namespace MathsEngine.Tests.PureTests.TrigonometryTests;
 public class CalculateMissingSideTests
 {
     /*
+     * VALUE TESTS
+     */
+
+    [Theory]
+    [InlineData(10, 30, SideType.Adjacent, SideType.Opposite, 5.77)]
+    [InlineData(10, 30, SideType.Adjacent, SideType.Hypotenuse, 11.55)]
+    [InlineData(10, 45, SideType.Opposite, SideType.Adjacent, 10.0)]
+    [InlineData(10, 45, SideType.Opposite, SideType.Hypotenuse, 14.14)]
+    [InlineData(20, 60, SideType.Hypotenuse, SideType.Opposite, 17.32)]
+    [InlineData(20, 60, SideType.Hypotenuse, SideType.Adjacent, 10.0)]
+    public void CalculateMissingSide_WithValidInputs_ReturnsCorrectResult(
+        double knownSideLength,
+        double angle,
+        SideType knownSideType,
+        SideType sideToFind,
+        double expected)
+    {
+        var result = Trigonometry.CalculateMissingSide(knownSideLength, angle, knownSideType, sideToFind);
+        Assert.Equal(expected, result, 2);
+    }
+
+    /*
      *  EXCEPTION TESTS
      */
 
