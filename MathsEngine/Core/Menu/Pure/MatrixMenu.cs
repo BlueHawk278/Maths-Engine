@@ -65,7 +65,7 @@ namespace MathsEngine.Core.Menu.Pure
             int columns2 = Convert.ToInt16(Console.ReadLine());
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
-            var result = MatrixCalculator.addMatrix(matrix1, matrix2);
+            var result = MatrixCalculator.AddMatrix(matrix1, matrix2);
             displayMatrix(result);
 
             Console.WriteLine("\nPress Enter to return to the menu.");
@@ -86,7 +86,7 @@ namespace MathsEngine.Core.Menu.Pure
             int columns2 = Convert.ToInt16(Console.ReadLine());
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
-            var result = MatrixCalculator.subtractMatrix(matrix1, matrix2);
+            var result = MatrixCalculator.SubtractMatrix(matrix1, matrix2);
             displayMatrix(result);
 
             Console.WriteLine("\nPress Enter to return to the menu.");
@@ -105,7 +105,7 @@ namespace MathsEngine.Core.Menu.Pure
             int number = Convert.ToInt16(Console.ReadLine());
 
             MatrixBase matrix = new MatrixBase(rows, columns);
-            var result = MatrixCalculator.scalarMultiplication(matrix, number);
+            var result = MatrixCalculator.ScalarMultiplication(matrix, number);
             displayMatrix(result);
 
             Console.WriteLine("\nPress Enter to return to the menu.");
@@ -123,7 +123,7 @@ namespace MathsEngine.Core.Menu.Pure
             int number = Convert.ToInt16(Console.ReadLine());
 
             MatrixBase matrix = new MatrixBase(rows, columns);
-            var result = MatrixCalculator.scalarDivision(matrix, number);
+            var result = MatrixCalculator.ScalarDivision(matrix, number);
             displayMatrix(result);
 
             Console.WriteLine("\nPress Enter to return to the menu.");
@@ -149,7 +149,7 @@ namespace MathsEngine.Core.Menu.Pure
             int columns2 = Convert.ToInt16(Console.ReadLine());
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
-            var result = MatrixCalculator.matrixEquations(matrix1, matrix2, x);
+            var result = MatrixCalculator.MatrixEquations(matrix1, matrix2, x);
             displayMatrix(result);
 
             Console.WriteLine("Press Enter to return to the main menu.");
@@ -172,7 +172,7 @@ namespace MathsEngine.Core.Menu.Pure
             int columns2 = Convert.ToInt16(Console.ReadLine());
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
-            var result = MatrixCalculator.matrixMultiplication(matrix1, matrix2);
+            var result = MatrixCalculator.MatrixMultiplication(matrix1, matrix2);
             displayMatrix(result);
 
             Console.WriteLine("Press Enter to return to the main menu.");
@@ -185,7 +185,7 @@ namespace MathsEngine.Core.Menu.Pure
 
             MatrixBase matrix = new MatrixBase(2, 2);
 
-            var determinant = MatrixCalculator.calculateDeterminant(matrix);
+            var determinant = MatrixCalculator.CalculateDeterminant(matrix);
             Console.WriteLine($"Determinant: {determinant}");
 
             Console.WriteLine("Press Enter to return to the main menu.");

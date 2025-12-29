@@ -44,10 +44,10 @@ namespace MathsEngine.Utils
     }
 
     // Matrices
-    public class IncompatibleAdditionMatricesException : Exception
+    public class IncompatibleMatrixAdditionException : Exception
     {
-        public IncompatibleAdditionMatricesException() : base("Matrices can't be added, they are not the same size") { }
-        public IncompatibleAdditionMatricesException(string message) : base(message) { }
+        public IncompatibleMatrixAdditionException() : base("Matrices can't be added, they are not the same size") { }
+        public IncompatibleMatrixAdditionException(string message) : base(message) { }
     }
 
     public class IncompatibleSubtractionMatricesException : Exception

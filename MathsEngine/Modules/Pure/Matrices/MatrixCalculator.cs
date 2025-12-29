@@ -3,20 +3,22 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Pure.Matrices
 {
-    internal class MatrixCalculator
+    public class MatrixCalculator
     {
         /// <summary>
         /// A method to take add or subtract matrices together based on user input
         /// </summary>
         /// <param name="matrix1"> The matrix that will be subtracted from or added to. </param>
         /// <param name="matrix2"> The matrix that will be subtracted by or added to. </param>
-        public static double[,] addMatrix(MatrixBase matrix1, MatrixBase matrix2)
+        public static double[,] AddMatrix(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (matrix1 == null || matrix2 == null)
-                throw new NullInputException("Side lengths must not be negative");
+                throw new NullInputException("Matrices must not be empty or null.");
+            if (MatrixBase.CheckEmptyMatrix(matrix1)|| MatrixBase.CheckEmptyMatrix(matrix2))
+                throw new NullInputException("Matrices must not be empty or null.");
 
             if (matrix1.NumRows != matrix2.NumRows || matrix1.NumCols != matrix2.NumCols)
-                throw new IncompatibleAdditionMatricesException("Side lengths must not be negative");
+                throw new IncompatibleMatrixAdditionException("Side lengths must not be negative");
 
             var result = new double[matrix1.NumRows, matrix1.NumCols];
 
@@ -29,13 +31,15 @@ namespace MathsEngine.Modules.Pure.Matrices
             }
             return result;
         }
-        public static double[,] subtractMatrix(MatrixBase matrix1, MatrixBase matrix2)
+        public static double[,] SubtractMatrix(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (matrix1 == null || matrix2 == null)
-                throw new NullInputException("Side lengths must not be negative");
+                throw new NullInputException("Matrices must not be empty or null.");
+            if (MatrixBase.CheckEmptyMatrix(matrix1) || MatrixBase.CheckEmptyMatrix(matrix2))
+                throw new NullInputException("Matrices must not be empty or null.");
 
             if (matrix1.NumRows != matrix2.NumRows || matrix1.NumCols != matrix2.NumCols)
-                throw new IncompatibleSubtractionMatricesException("Side lengths must not be negative");
+                throw new IncompatibleMatrixAdditionException("Side lengths must not be negative");
 
             var result = new double[matrix1.NumRows, matrix1.NumCols];
 
@@ -57,9 +61,9 @@ namespace MathsEngine.Modules.Pure.Matrices
         /// <param name="number"> The number to multiply the matrix by. </param>
         /// <returns> The result of the matrix * number.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public static double[,] scalarMultiplication(MatrixBase matrix, int number)
+        public static double[,] ScalarMultiplication(MatrixBase matrix, int number)
         {
-            if (matrix == null)
+            if (matrix == null || MatrixBase.CheckEmptyMatrix(matrix))
                 throw new NullInputException("Side lengths must not be negative");
 
             var result = new double[matrix.NumRows, matrix.NumCols];
@@ -73,10 +77,13 @@ namespace MathsEngine.Modules.Pure.Matrices
             }
             return result;
         }
-        public static double[,] scalarDivision(MatrixBase matrix, int number)
+        public static double[,] ScalarDivision(MatrixBase matrix, int number)
         {
-            if (matrix == null)
+            if (matrix == null || MatrixBase.CheckEmptyMatrix(matrix))
                 throw new NullInputException("Side lengths must not be negative");
+
+            if (number == 0)
+                throw new DivideByZeroException("You cannot divide anything by 0");
 
             var result = new double[matrix.NumRows, matrix.NumCols];
 
@@ -90,7 +97,7 @@ namespace MathsEngine.Modules.Pure.Matrices
             return result;
         }
 
-        public static double[,] matrixEquations(MatrixBase matrix1, MatrixBase matrix2, int number)
+        public static double[,] MatrixEquations(MatrixBase matrix1, MatrixBase matrix2, int number)
         {
             if (matrix1 == null || matrix2 == null)
                 throw new NullInputException("Side lengths must not be negative");
@@ -98,9 +105,9 @@ namespace MathsEngine.Modules.Pure.Matrices
             if (matrix1.NumRows != matrix2.NumRows || matrix1.NumCols != matrix2.NumCols)
                 throw new IncompatibleSubtractionMatricesException("Side lengths must not be negative");
 
-            var result = subtractMatrix(matrix1, matrix2);
+            var result = SubtractMatrix(matrix1, matrix2);
             MatrixBase Matrix = new MatrixBase(result);
-            result = scalarDivision(Matrix, 2);
+            result = ScalarDivision(Matrix, 2);
 
             return result;
         }
@@ -112,9 +119,9 @@ namespace MathsEngine.Modules.Pure.Matrices
         /// <param name="matrix2"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public static double[,] matrixMultiplication(MatrixBase matrix1, MatrixBase matrix2)
+        public static double[,] MatrixMultiplication(MatrixBase matrix1, MatrixBase matrix2)
         {
-            if (!isValidForMultiplication(matrix1, matrix2))
+            if (!IsValidForMultiplication(matrix1, matrix2))
                 throw new IncompatibleMatrixMultiplicationException("Side lengths must not be negative");
 
             double[,] resultMatrix = new double[matrix1.NumRows, matrix2.NumCols];
@@ -144,7 +151,7 @@ namespace MathsEngine.Modules.Pure.Matrices
         /// <param name="matrix2"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        private static bool isValidForMultiplication(MatrixBase matrix1, MatrixBase matrix2)
+        private static bool IsValidForMultiplication(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (matrix1 == null || matrix2 == null)
                 throw new NullInputException("Side lengths must not be negative");
@@ -160,7 +167,7 @@ namespace MathsEngine.Modules.Pure.Matrices
         /// <param name="matrix"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public static double calculateDeterminant(MatrixBase matrix)
+        public static double CalculateDeterminant(MatrixBase matrix)
         {
             if (matrix == null)
                 throw new NullInputException("Side lengths must not be negative");
