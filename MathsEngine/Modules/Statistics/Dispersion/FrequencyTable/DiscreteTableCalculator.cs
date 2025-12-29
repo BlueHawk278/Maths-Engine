@@ -7,7 +7,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
 {
-    internal class DiscreteTableCalculator : IStandardDeviation
+    public class DiscreteTableCalculator : IStandardDeviation
     {
         private double _mean;
         public double _sigmaF, _sigmaFX, _sigmaFXSquared;
