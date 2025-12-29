@@ -68,7 +68,7 @@ namespace MathsEngine.Core.Menu.Pure
                     return;
             }
 
-            result = Trigonometry.calculateMissingSide(knownSideLength, angle, knownSideType, sideToFindType);
+            result = Trigonometry.CalculateMissingSide(knownSideLength, angle, knownSideType, sideToFindType);
             displayCalculation(result, $"{sideToFindType}");
         }
 
@@ -87,7 +87,7 @@ namespace MathsEngine.Core.Menu.Pure
             double side2Length = Convert.ToDouble(Console.ReadLine());
             SideType side2Type = (SideType)Convert.ToInt32(side2Choice) - 1;
 
-            double result = Trigonometry.calculateMissingAngle(side1Length, side1Type, side2Length, side2Type);
+            double result = Trigonometry.CalculateMissingAngle(side1Length, side1Type, side2Length, side2Type);
             displayCalculation(result, "Angle");
         }
 
