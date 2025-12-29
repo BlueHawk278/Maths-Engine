@@ -6,7 +6,7 @@ namespace MathsEngine.Modules.Pure.PythagorasTheorem
     /// <summary>
     /// Provides static methods for Pythagoras theorem calculations
     /// </summary>
-    internal static class PythagorasTheorem
+    public static class PythagorasTheorem
     {
         /// <summary>
         /// Calculates the length of the hypotenuse given side A and B
@@ -14,10 +14,10 @@ namespace MathsEngine.Modules.Pure.PythagorasTheorem
         /// <param name="a">The length of side A.</param>
         /// <param name="b">The length of side B.</param>
         /// <returns></returns>
-        public static double calculateHypotenuse(double a, double b)
+        public static double CalculateHypotenuse(double a, double b)
         {
             if (a <= 0 || b <= 0)
-                throw new NegativeSideLengthException("Side lengths must not be negative");
+                throw new NegativeSideLengthException("Side lengths must not be negative or 0");
             
 
             double aSquared = Math.Pow(a, 2);
@@ -33,10 +33,10 @@ namespace MathsEngine.Modules.Pure.PythagorasTheorem
         /// <param name="knownSide">The length of the known side.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public static double calculateOtherSide(double hypotenuse, double knownSide)
+        public static double CalculateOtherSide(double hypotenuse, double knownSide)
         {
             if (hypotenuse <= 0 || knownSide <= 0)
-                throw new NegativeSideLengthException("Side lengths must not be negative");
+                throw new NegativeSideLengthException("Side lengths must not be negative or 0");
 
             if (knownSide >= hypotenuse)
                 throw new HypotenuseNotLongestSideException("Hypotenuse must be the longest side");
@@ -54,14 +54,15 @@ namespace MathsEngine.Modules.Pure.PythagorasTheorem
         /// <param name="a">The length of one of the shorter sides.</param>
         /// <param name="b">The length of the other shorter side.</param>
         /// <returns></returns>
-        public static bool checkValidCalculation(double hypotenuse, double a, double b)
+        public static bool CheckValidCalculation(double hypotenuse, double a, double b)
         {
-            double hSquared = Math.Sqrt(Math.Pow(hypotenuse, 2));
-            double otherSides = Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
+            if (hypotenuse <= 0 || a <= 0 || b <= 0)
+                throw new NegativeSideLengthException("Side lengths must not be negative or 0");
 
-            if (hSquared == otherSides)
-                return true;
-            return false;
+            if (hypotenuse <= a || hypotenuse <= b)
+                throw new HypotenuseNotLongestSideException("Hypotenuse must be the longest side");
+
+            return Math.Abs((a * a + b * b) - (hypotenuse * hypotenuse)) < 1e-9;
         }
     }
 }
