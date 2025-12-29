@@ -13,7 +13,7 @@ namespace MathsEngine.Modules.Pure.Trigonometry
         /// <param name="knownSideType">The type of the know side (Opposite, Adjacent, Hypotenuse)</param>
         /// <param name="sideToFind">The type of the side to calculate.</param>
         /// <returns>The length of the calculated side.</returns>
-        public static double calculateMissingSide(double knownSideLength, double angle, SideType knownSideType, SideType sideToFind)
+        public static double CalculateMissingSide(double knownSideLength, double angle, SideType knownSideType, SideType sideToFind)
         {
             if (knownSideLength <= 0)
                 throw new NegativeSideLengthException();
@@ -68,7 +68,7 @@ namespace MathsEngine.Modules.Pure.Trigonometry
         /// <param name="side2Length">The length of the second known side.</param>
         /// <param name="side2Type">The type of the second known side.</param>
         /// <returns>The size of the calculated angle.</returns>
-        public static double calculateMissingAngle(double side1Length, SideType side1Type, double side2Length, SideType side2Type)
+        public static double CalculateMissingAngle(double side1Length, SideType side1Type, double side2Length, SideType side2Type)
         {
             if (side1Length  <= 0 || side2Length <= 0)
                 throw new NegativeSideLengthException();

@@ -6,32 +6,55 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
 {
     public class NewtonsLawsCalculator // Integrate uniform acceleration equations
     {
-        public static double calculateFma(string F, string m, string a)
+        public static double CalculateFma(string F, string m, string a)
         {
-            F = string.IsNullOrEmpty(F) ? "0" : F;
-            m = string.IsNullOrEmpty(m) ? "0" : m;
-            a = string.IsNullOrEmpty(a) ? "0" : a;
+            bool fUnknown = string.IsNullOrEmpty(F);
+            bool mUnknown = string.IsNullOrEmpty(m);
+            bool aUnknown = string.IsNullOrEmpty(a);
 
-            if (m == "")
-                throw new NullMassException("Side lengths must not be negative");
+            var unknownCount = 0;
+            if (fUnknown) unknownCount++;
+            if (mUnknown) unknownCount++;
+            if (aUnknown) unknownCount++;
 
-            int numNullValues = 0;
+            if (unknownCount != 1)
+                throw new NullValuesException("Must provide exactly two values to calculate the third.");
 
-            List<string> values = new List<string> { F, m, a };
-            foreach(string val in values)
-                if (Convert.ToDouble(val) == 0)
-                    numNullValues++;
+            double force = fUnknown ? 0 : Convert.ToDouble(F);
+            double mass = mUnknown ? 0 : Convert.ToDouble(m);
+            double acceleration = aUnknown ? 0 : Convert.ToDouble(a);
 
-            if (numNullValues >= 2)
-                throw new NullValuesException("Side lengths must not be negative");
+            if (fUnknown)
+                return mass * acceleration;
+            if (mUnknown)
+            {
+                if (acceleration == 0) throw new DivideByZeroException("Acceleration cannot be zero when calculating mass.");
+                return force / acceleration;
+            }
+            if (aUnknown)
+            {
+                if (mass == 0) throw new DivideByZeroException("Mass cannot be zero when calculating acceleration.");
+                return force / mass;
+            }
+            // This line is unreachable due to the unknownCount check, but is required for compilation
+            throw new InvalidOperationException("An unexpected error occurred during calculation.");
+        }
 
-            if (F == "")
-                return Convert.ToDouble(m) * Convert.ToDouble(a);
-            if (m == "")
-                return Convert.ToDouble(F) / Convert.ToDouble(a);
-            if (a == "")
-                return Convert.ToDouble(F) / Convert.ToDouble(m);
-            return 0;
+        public static bool CheckValidCalculation(string F, string m, string a)
+        {
+            bool fUnknown = string.IsNullOrEmpty(F);
+            bool mUnknown = string.IsNullOrEmpty(m);
+            bool aUnknown = string.IsNullOrEmpty(a);
+
+            if (fUnknown || mUnknown || aUnknown)
+                throw new NullValuesException("Must provide all three values to check a calculation.");
+
+            double force = Convert.ToDouble(F);
+            double mass = Convert.ToDouble(m);
+            double acceleration = Convert.ToDouble(a);
+
+            // Use a small tolerance for floating-point comparison
+            return Math.Abs(force - (mass * acceleration)) < 1e-9;
         }
     }
 }

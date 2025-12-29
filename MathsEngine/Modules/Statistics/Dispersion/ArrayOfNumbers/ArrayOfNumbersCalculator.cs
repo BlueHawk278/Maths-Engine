@@ -5,7 +5,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
 {
-    internal class ArrayOfNumbersCalculator : IStandardDeviation
+    public class ArrayOfNumbersCalculator : IStandardDeviation
     {
         private readonly List<double> _originalValues = new List<double>();
         private readonly List<double> _sortedValues = new List<double>();

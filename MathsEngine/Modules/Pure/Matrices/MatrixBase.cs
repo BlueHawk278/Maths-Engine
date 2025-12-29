@@ -2,7 +2,7 @@
 
 namespace MathsEngine.Modules.Pure.Matrices
 {
-    internal class MatrixBase
+    public class MatrixBase
     {
         public int NumRows { get; }
         public int NumCols { get; }
@@ -58,6 +58,15 @@ namespace MathsEngine.Modules.Pure.Matrices
                 }
             }
             return identityMatrix;
+        }
+
+        public static bool CheckEmptyMatrix(MatrixBase matrix)
+        {
+            if(matrix.Matrix.GetLength(0) == 0)
+                return true;
+            if(matrix.Matrix.GetLength(1) == 0)
+                return true;
+            return false;
         }
     }
 }

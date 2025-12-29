@@ -12,7 +12,8 @@ namespace MathsEngine.Core.Menu.Mechanics
     {
         public static void menu()
         {
-            Console.WriteLine("1. Basic F=ma equations");
+            Console.WriteLine("1. Calculate a missing value (F=ma)");
+            Console.WriteLine("2. Check a calculation");
             Console.WriteLine("Input: ");
             string response = Console.ReadLine();
 
@@ -20,6 +21,9 @@ namespace MathsEngine.Core.Menu.Mechanics
             {
                 case "1":
                     handleFMA_Equations();
+                    break;
+                case "2":
+                    handleCheckCalculation();
                     break;
                 default:
                     Menu.mainMenu();
@@ -31,14 +35,14 @@ namespace MathsEngine.Core.Menu.Mechanics
         {
             try
             {
-                Console.WriteLine("Enter the Force");
+                Console.WriteLine("Enter the Force (leave blank if unknown)");
                 string F = Console.ReadLine();
-                Console.WriteLine("Enter the Mass");
+                Console.WriteLine("Enter the Mass (leave blank if unknown)");
                 string M = Console.ReadLine();
-                Console.WriteLine("Enter the Acceleration");
+                Console.WriteLine("Enter the Acceleration (leave blank if unknown)");
                 string A = Console.ReadLine();
 
-                checkCalculation(F, M, A);
+                performCalculation(F, M, A);
             }
             catch (NullInputException ex)
             {
@@ -73,28 +77,73 @@ namespace MathsEngine.Core.Menu.Mechanics
             }
         }
 
-        private static void checkCalculation(string F, string M, string A)
+        private static void handleCheckCalculation()
         {
-            F = string.IsNullOrEmpty(F) ? null : F;
-            M = string.IsNullOrEmpty(M) ? null : M;
-            A = string.IsNullOrEmpty(A) ? null : A;
+            try
+            {
+                Console.WriteLine("Enter the Force");
+                string F = Console.ReadLine();
+                Console.WriteLine("Enter the Mass");
+                string M = Console.ReadLine();
+                Console.WriteLine("Enter the Acceleration");
+                string A = Console.ReadLine();
+
+                bool isValid = Modules.Mechanics.Dynamics.NewtonsLawsCalculator.CheckValidCalculation(F, M, A);
+
+                if (isValid)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nThis is a valid calculation.");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\nThis is not a valid calculation.");
+                }
+                Console.ResetColor();
+            }
+            catch (NullValuesException ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.ResetColor();
+            }
+            catch (FormatException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error: Invalid input. Please enter valid numbers.");
+                Console.ResetColor();
+            }
+            finally
+            {
+                Console.WriteLine("\nPress any key to return to the main menu...");
+                Console.ReadKey();
+                Menu.mainMenu();
+            }
+        }
+
+        private static void performCalculation(string F, string M, string A)
+        {
+            bool fIsNull = string.IsNullOrEmpty(F);
+            bool mIsNull = string.IsNullOrEmpty(M);
+            bool aIsNull = string.IsNullOrEmpty(A);
 
             int numNull = 0;
-            if (F == null) numNull++;
-            if (M == null) numNull++;
-            if (A == null) numNull++;
+            if (fIsNull) numNull++;
+            if (mIsNull) numNull++;
+            if (aIsNull) numNull++;
 
             if (numNull == 3)
                 throw new NullInputException("Please provide at least two values (F, M, or A).");
 
-            if (numNull > 1)
+            if (numNull != 1)
                 throw new NullValuesException("Calculation is not possible. Only one value can be unknown.");
 
-            double value = Modules.Mechanics.Dynamics.NewtonsLawsCalculator.calculateFma(F, M, A);
+            double value = Modules.Mechanics.Dynamics.NewtonsLawsCalculator.CalculateFma(F, M, A);
 
-            if (F == null) F = Convert.ToString(value);
-            if (M == null) M = Convert.ToString(value);
-            if (A == null) A = Convert.ToString(value);
+            if (fIsNull) F = Convert.ToString(value);
+            if (mIsNull) M = Convert.ToString(value);
+            if (aIsNull) A = Convert.ToString(value);
 
             displayCalculation(F, M, A);
         }
@@ -109,7 +158,7 @@ namespace MathsEngine.Core.Menu.Mechanics
 
         private static string FormatValue(string value)
         {
-            if (value == null)
+            if (string.IsNullOrEmpty(value))
                 return "Not Calculated";
 
             // Convert to double to format it to 2 decimal places.

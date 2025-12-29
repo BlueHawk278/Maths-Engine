@@ -7,7 +7,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.ContinuousTable
 {
-    internal class ContinuousTableCalculator : IStandardDeviation
+    public class ContinuousTableCalculator : IStandardDeviation
     {
         private double _mean;
         public double _sigmaF, _sigmaFX, _sigmaFXSquared;
