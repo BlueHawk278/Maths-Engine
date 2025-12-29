@@ -4,7 +4,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Mechanics.UniformAcceleration
 {
-    internal class UniformAccelerationCalculator
+    public class UniformAccelerationCalculator
     {
 
         public static double CalculateAverageVelocity(string initialVelocity, string finalVelocity)
