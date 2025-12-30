@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
@@ -51,8 +48,8 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             Difference = CalculateDifference();
             DifferenceSquared = CalculateDifferenceSquared();
             CorrelationCoefficient = CalculateCorrelationValue();
-            Correlation = getCorrelation();
-            CorrelationString = getCorrelationString();
+            Correlation = GetCorrelation();
+            CorrelationString = GetCorrelationString();
         }
 
         // --- 3. All calculation logic is now private to this class ---
@@ -125,12 +122,12 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             return 1 - (topLine / bottomLine);
         }
         
-        private Correlation getCorrelation()
+        private Correlation GetCorrelation()
         {
             return CorrelationExtensions.getCorrelation(CorrelationCoefficient);
         }
         
-        private string getCorrelationString()
+        private string GetCorrelationString()
         {
             return CorrelationExtensions.displayString(Correlation);
         }

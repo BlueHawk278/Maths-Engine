@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
 {
@@ -12,37 +8,34 @@ namespace MathsEngine.Modules.Statistics.Dispersion.FrequencyTable
         {
             double[,] table = getTable();
 
-            var Calculator = new DiscreteTableCalculator(table);
-            Calculator.Run();
+            var calculator = new DiscreteTableCalculator(table);
+            calculator.Run();
 
-            Calculator.DisplayData();
+            calculator.DisplayData();
 
             Console.ReadLine();
         }
 
         private static double[,] getTable()
         {
-            Console.WriteLine("How many rows are there");
-            int NumRows = Convert.ToInt16(Console.ReadLine());
+            int numRows = Parsing.GetIntInput("How many rows are there?");
 
-            double[,] Table = new double[NumRows, 4];
+            double[,] table = new double[numRows, 4];
 
 
             // Getting the x value and frequency for table
             int rowNum = 1;
-            for (int i = 0; i < NumRows; i++)
+            for (int i = 0; i < numRows; i++)
             {
-                Console.Write($"Enter X value No.{rowNum}:  ");
-                int num = Convert.ToInt16(Console.ReadLine());
-                Console.Write($"Enter the frequency for this value: ");
-                int frequency = Convert.ToInt16(Console.ReadLine());
+                int num = Parsing.GetIntInput($"Enter X value No.{rowNum}:  ");
+                int frequency = Parsing.GetIntInput("Enter the frequency for this value: ");
 
                 rowNum++;
-                Table[i, 0] = num;
-                Table[i, 1] = frequency;
+                table[i, 0] = num;
+                table[i, 1] = frequency;
             }
 
-            return Table;
+            return table;
         }
     }
 }

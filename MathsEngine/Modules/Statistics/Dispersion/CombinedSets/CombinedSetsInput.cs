@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.CombinedSets
 {
@@ -22,13 +23,12 @@ namespace MathsEngine.Modules.Statistics.Dispersion.CombinedSets
 
         private static List<string> getDataSet()
         {
-            Console.Write("How many numbers in the Data set: ");
-            string numDataPoints = Console.ReadLine();
-            Console.Write("What is the mean of the values: ");
-            string mean = Console.ReadLine();
-            Console.Write("What is the standard deviation: ");
-            string standardDeviation = Console.ReadLine();
-            return new List<string>() { numDataPoints, mean, standardDeviation };
+            int numDataPoints = Parsing.GetIntInput("How many numbers in the Data set: ");
+            double mean = Parsing.GetDoubleInput("What is the mean of the values: ");
+            double standardDeviation = Parsing.GetDoubleInput("What is the standard deviation: ");
+
+            //return new List<int> { numDataPoints, mean, standardDeviation };
+            return new List<string>();
         }
     }
 }

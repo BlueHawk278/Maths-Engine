@@ -1,7 +1,8 @@
-﻿using System;
-using MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers;
+﻿using MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers;
 using MathsEngine.Modules.Statistics.Dispersion.ContinuousTable;
 using MathsEngine.Modules.Statistics.Dispersion.FrequencyTable;
+using MathsEngine.Utils;
+using System;
 
 // TODO: Support for continuous ranges e.g. 4-6 7-9
 //       Working backwards from the mean to find a missing frequency
@@ -17,27 +18,26 @@ namespace MathsEngine.Core.Menu.Statistics
             Console.WriteLine("1. Calculate standard deviation from a set of numbers");
             Console.WriteLine("2. Calculate standard deviation from a frequency table with discontinuous values");
             Console.WriteLine("3. Calculate standard deviation from a frequency table with continuous values");
-            Console.Write("Input: ");
-            string response = Console.ReadLine();
+            Console.WriteLine("4. Main Menu");
+            int response = Parsing.GetMenuInput("Input: ", 4);
             Console.Clear();
 
             switch (response)
             {
-                case "1":
+                case 1:
                     ArrayOfNumbersInput.Start();
-                    Menu.mainMenu();
+                    Menu.MainMenu();
                     break;
-                case "2":
+                case 2:
                     DiscreteTableInput.Start();
-                    Menu.mainMenu();
+                    Menu.MainMenu();
                     break;
-                case "3":
+                case 3:
                     ContinuousTableInput.Start();
-                    Menu.mainMenu();
+                    Menu.MainMenu();
                     break;
-                default:
-                    Console.WriteLine("Invalid input");
-                    menu();
+                case 4:
+                    Menu.MainMenu();
                     break;
             }
         }

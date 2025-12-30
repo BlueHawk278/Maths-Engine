@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
 {
@@ -21,8 +22,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
         }
         private static int GetNumberOfDataPoints()
         {
-            Console.WriteLine("How many data points would you like to enter?");
-            return Convert.ToInt16(Console.ReadLine());
+            return Parsing.GetIntInput("How many data points would you like to enter?");
         }
         private static List<double> GetScoresFromUser(int numDataPoints)
         {
@@ -30,8 +30,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
 
             for (int i = 0; i < numDataPoints; i++)
             {
-                Console.Write($"Enter point {i + 1}: ");
-                scores.Add(Convert.ToDouble(Console.ReadLine()));
+                scores.Add(Parsing.GetDoubleInput($"Enter point {i + 1}: "));
             }
 
             return scores;

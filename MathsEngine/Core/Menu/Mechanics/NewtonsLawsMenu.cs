@@ -14,35 +14,32 @@ namespace MathsEngine.Core.Menu.Mechanics
         {
             Console.WriteLine("1. Calculate a missing value (F=ma)");
             Console.WriteLine("2. Check a calculation");
-            Console.WriteLine("Input: ");
-            string response = Console.ReadLine();
+            Console.WriteLine("3. Main Menu");
+            int response = Parsing.GetMenuInput("Input: ", 3);
 
             switch (response)
             {
-                case "1":
-                    handleFMA_Equations();
+                case 1:
+                    HandleFMA_Equations();
                     break;
-                case "2":
-                    handleCheckCalculation();
+                case 2:
+                    HandleCheckCalculation();
                     break;
-                default:
-                    Menu.mainMenu();
+                case 3:
+                    Menu.MainMenu();
                     break;
             }
         }
 
-        private static void handleFMA_Equations()
+        private static void HandleFMA_Equations()
         {
             try
             {
-                Console.WriteLine("Enter the Force (leave blank if unknown)");
-                string F = Console.ReadLine();
-                Console.WriteLine("Enter the Mass (leave blank if unknown)");
-                string M = Console.ReadLine();
-                Console.WriteLine("Enter the Acceleration (leave blank if unknown)");
-                string A = Console.ReadLine();
+                double? force = Parsing.GetNullableDoubleInput("Enter the force");
+                double? mass = Parsing.GetNullableDoubleInput("Enter the mass");
+                double? acceleration = Parsing.GetNullableDoubleInput("Enter the acceleration");
 
-                performCalculation(F, M, A);
+                PerformCalculation(force, mass, acceleration);
             }
             catch (NullInputException ex)
             {
@@ -73,22 +70,19 @@ namespace MathsEngine.Core.Menu.Mechanics
             {
                 Console.WriteLine("\nPress any key to return to the main menu...");
                 Console.ReadKey();
-                Menu.mainMenu();
+                Menu.MainMenu();
             }
         }
 
-        private static void handleCheckCalculation()
+        private static void HandleCheckCalculation()
         {
             try
             {
-                Console.WriteLine("Enter the Force");
-                string F = Console.ReadLine();
-                Console.WriteLine("Enter the Mass");
-                string M = Console.ReadLine();
-                Console.WriteLine("Enter the Acceleration");
-                string A = Console.ReadLine();
+                double? force = Parsing.GetNullableDoubleInput("Enter the force");
+                double? mass = Parsing.GetNullableDoubleInput("Enter the mass");
+                double? acceleration = Parsing.GetNullableDoubleInput("Enter the acceleration");
 
-                bool isValid = Modules.Mechanics.Dynamics.NewtonsLawsCalculator.CheckValidCalculation(F, M, A);
+                bool isValid = Modules.Mechanics.Dynamics.NewtonsLawsCalculator.CheckValidCalculation(force, mass, acceleration);
 
                 if (isValid)
                 {
@@ -118,51 +112,40 @@ namespace MathsEngine.Core.Menu.Mechanics
             {
                 Console.WriteLine("\nPress any key to return to the main menu...");
                 Console.ReadKey();
-                Menu.mainMenu();
+                Menu.MainMenu();
             }
         }
 
-        private static void performCalculation(string F, string M, string A)
+        private static void PerformCalculation(double? F, double? M, double? A)
         {
-            bool fIsNull = string.IsNullOrEmpty(F);
-            bool mIsNull = string.IsNullOrEmpty(M);
-            bool aIsNull = string.IsNullOrEmpty(A);
+            int missingCount =
+                (F is null ? 1 : 0) +
+                (M is null ? 1 : 0) +
+                (A is null ? 1 : 0);
 
-            int numNull = 0;
-            if (fIsNull) numNull++;
-            if (mIsNull) numNull++;
-            if (aIsNull) numNull++;
+            if (missingCount > 1)
+                throw new ArgumentException("Calculation is not possible. Only one value can be unknown.");
 
-            if (numNull == 3)
-                throw new NullInputException("Please provide at least two values (F, M, or A).");
+            if (missingCount == 0)
+            {
+                Console.WriteLine("\nAll values provided. Use 'Check a calculation' to verify them.");
+                return;
+            }
 
-            if (numNull != 1)
-                throw new NullValuesException("Calculation is not possible. Only one value can be unknown.");
+            double? calculatedValue = Modules.Mechanics.Dynamics.NewtonsLawsCalculator.CalculateFma(F, M, A);
 
-            double value = Modules.Mechanics.Dynamics.NewtonsLawsCalculator.CalculateFma(F, M, A);
+            if (F is null) F = calculatedValue;
+            else if(M is null) M = calculatedValue;
+            else if(A is null) A = calculatedValue;
 
-            if (fIsNull) F = Convert.ToString(value);
-            if (mIsNull) M = Convert.ToString(value);
-            if (aIsNull) A = Convert.ToString(value);
+            Dictionary<string, double?> resultDictionary = new Dictionary<string, double?>()
+            {
+                {"Resultant Force (F)", F},
+                {"Mass (M)", M},
+                {"Acceleration (A)", A}
+            };
 
-            displayCalculation(F, M, A);
-        }
-
-        private static void displayCalculation(string F, string M, string A)
-        {
-            Console.WriteLine("--- Calculation Results ---");
-            Console.WriteLine($"Resultant Force (F): {FormatValue(F)}");
-            Console.WriteLine($"Mass (M): {FormatValue(M)}");
-            Console.WriteLine($"Acceleration (A): {FormatValue(A)}");
-        }
-
-        private static string FormatValue(string value)
-        {
-            if (string.IsNullOrEmpty(value))
-                return "Not Calculated";
-
-            // Convert to double to format it to 2 decimal places.
-            return Convert.ToDouble(value).ToString("F2");
+            Display.DisplayResult(resultDictionary);
         }
     }
 }

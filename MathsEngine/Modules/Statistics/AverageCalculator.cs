@@ -12,9 +12,10 @@ namespace MathsEngine.Modules.Statistics
         /// </summary>
         /// <param name="nums">A list of double values for which the mean is to be calculated. The list must not be null.</param>
         /// <returns>The mean of the values in the list. Returns 0 if the list is empty.</returns>
-        internal static double calculateMean(List<double> nums)
+        internal static double CalculateMean(List<double> nums)
         {
-            if (nums.Count == 0 || nums == null) throw new NullInputException("Side lengths must not be negative");
+            if (nums.Count == 0 || nums == null) 
+                throw new NullInputException("Side lengths must not be negative");
 
             double sum = 0;
 
@@ -31,7 +32,7 @@ namespace MathsEngine.Modules.Statistics
         /// </summary>
         /// <param name="nums"> A list of double values for which the median is to be calculated. The list must not be null.</param>
         /// <returns>The median of the values of the list. Returns 0 if the list is empty.</returns>
-        internal static double calculateMedian(List<double> nums)
+        internal static double CalculateMedian(List<double> nums)
         {
             if (nums.Count == 0 || nums == null)
                 throw new NullInputException("Side lengths must not be negative");
@@ -61,10 +62,11 @@ namespace MathsEngine.Modules.Statistics
         /// </summary>
         /// <param name="numbers">The list of numbers to analyze.</param>
         /// <returns>A List containing the mode(s). Returns an empty list if there is no mode.</returns>
-        internal static List<double> calculateMode(List<double> nums)
+        internal static List<double> CalculateMode(List<double> nums)
         {
             // If the list is empty or has only one value, there can be no mode.
-            if (nums == null || nums.Count <= 1) throw new NullInputException("Side lengths must not be negative");
+            if (nums == null || nums.Count <= 1) 
+                throw new NullInputException("Side lengths must not be negative");
 
             // Use a Dictionary to count the frequency of each number.
             // Key: the number, Value: its frequency.
@@ -115,7 +117,7 @@ namespace MathsEngine.Modules.Statistics
         /// </summary>
         /// <param name="nums"></param>
         /// <returns>The difference between the min and max value.</returns>
-        internal static double calculateRange(List<double> nums)
+        internal static double CalculateRange(List<double> nums)
         {
             var sortedNums = new List<double>(nums);
 
@@ -135,7 +137,7 @@ namespace MathsEngine.Modules.Statistics
         /// <returns>A list containing three values: the first quartile (Q1), the third quartile (Q3),  and the interquartile
         /// range (IQR), in that order. Returns <see langword="null"/>  if the input list contains fewer than four
         /// elements.</returns>
-        internal static List<double> getInterQuartileRange(List<double> originalValues)
+        internal static List<double> GetInterQuartileRange(List<double> originalValues)
         {
             double Q1, Q3, IQR;
             int numValues = originalValues.Count;
@@ -153,8 +155,8 @@ namespace MathsEngine.Modules.Statistics
                 List<double> upperHalf = sortedValues.GetRange(0, midIndex);
                 List<double> lowerHalf = sortedValues.GetRange(midIndex, midIndex);
 
-                Q1 = calculateMedian(lowerHalf);
-                Q3 = calculateMedian(upperHalf);
+                Q1 = CalculateMedian(lowerHalf);
+                Q3 = CalculateMedian(upperHalf);
                 IQR = Q3 - Q1;
 
                 return new List<double> { Q1, Q3, IQR };
@@ -166,8 +168,8 @@ namespace MathsEngine.Modules.Statistics
                 List<double> lowerHalf = sortedValues.GetRange(0, midIndex);
                 List<double> upperHalf = sortedValues.GetRange(midIndex + 1, midIndex);
 
-                Q1 = calculateMedian(lowerHalf);
-                Q3 = calculateMedian(upperHalf);
+                Q1 = CalculateMedian(lowerHalf);
+                Q3 = CalculateMedian(upperHalf);
                 IQR = Q3 - Q1;
 
                 return new List<double> {Q1, Q3, IQR};

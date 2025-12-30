@@ -3,12 +3,13 @@ using MathsEngine.Core.Menu.Mechanics;
 using MathsEngine.Core.Menu.Pure;
 using MathsEngine.Core.Menu.Statistics;
 using MathsEngine.Modules.Statistics.BivariateAnalysis;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Core.Menu
 {
     internal static class Menu // check, also test everything in the menu
     {
-        public static void mainMenu()
+        public static void MainMenu()
         {
             Console.Clear();
             Console.WriteLine("Welcome to the Maths Engine");
@@ -16,88 +17,82 @@ namespace MathsEngine.Core.Menu
             Console.WriteLine("2. Mechanics");
             Console.WriteLine("3. Statistics");
             Console.WriteLine("4. Exit Program");
-            Console.Write("Input: ");
-            string response = Console.ReadLine();
+            int response = Parsing.GetMenuInput("Input: ", 4);
+            Console.Clear();
 
             switch (response)
             {
-                case "1":
-                    pureMenu();
+                case 1:
+                    PureMenu();
                     break;
-                case "2":
-                    mechanicsMenu();
+                case 2:
+                    MechanicsMenu();
                     break;
-                case "3":
-                    statisticsMenu();
+                case 3:
+                    StatisticsMenu();
                     break;
-                case "4":
+                case 4:
                     return;
-                default:
-                    Console.WriteLine("Please enter a valid number");
-                    mainMenu();
-                    break;
             }
         }
-        private static void pureMenu()
+        private static void PureMenu()
         {
             Console.Clear();
             Console.WriteLine("Welcome to the Pure Maths Menu");
             Console.WriteLine("1. Pythagoras Theorem");
             Console.WriteLine("2. Trigonometry");
             Console.WriteLine("3. Matrices");
-            Console.Write("Input: ");
-            string response = Console.ReadLine();
+            Console.WriteLine("4. Main Menu");
+            int response = Parsing.GetMenuInput("Input: ", 4);
             Console.Clear();
 
             switch (response)
             {
-                case "1":
+                case 1:
                     PythagorasMenu.menu();
                     break;
-                case "2":
+                case 2:
                     TrigonometryMenu.menu();
                     break;
-                case "3":
+                case 3:
                     MatrixMenu.menu();
                     break;
-                default:
-                    Console.WriteLine("Please enter a valid number");
-                    mainMenu();
+                case 4:
+                    MainMenu();
                     break;
             }
         }
-        private static void mechanicsMenu()
+        private static void MechanicsMenu()
         {
             Console.Clear();
             Console.WriteLine("Welcome to the Mechanics Menu");
             Console.WriteLine("1. Uniform Acceleration");
             Console.WriteLine("2. Newton's Laws Calculations");
-            Console.Write("Input: ");
-            string response = Console.ReadLine();
+            Console.WriteLine("3. Main Menu");
+            int response = Parsing.GetMenuInput("Input: ", 3);
             Console.Clear();
 
             switch (response)
             {
-                case "1":
+                case 1:
                     UniformAccelerationMenu.menu();
                     break;
-                case "2":
+                case 2:
                     NewtonsLawsMenu.menu();
                     break;
-                default:
-                    Console.WriteLine("Please enter a valid number");
-                    mainMenu();
+                case 3:
+                    MainMenu();
                     break;
             }
         }
-        private static void statisticsMenu()
+        private static void StatisticsMenu()
         {
             Console.Clear();
             Console.WriteLine("Welcome to the Statistics Menu");
             Console.WriteLine("1. Bivariate Analysis");
             Console.WriteLine("2. Standard Deviation");
-            Console.Write("Input: ");
-            int response = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("3. Main Menu");
+            int response = Parsing.GetMenuInput("Input: ", 3);
             Console.Clear();
 
             switch (response)
@@ -108,9 +103,8 @@ namespace MathsEngine.Core.Menu
                 case 2:
                     DispersionMenu.menu();
                     break;
-                default:
-                    Console.WriteLine("Please enter a valid number");
-                    mainMenu();
+                case 3:
+                    MainMenu();
                     break;
             }
         }

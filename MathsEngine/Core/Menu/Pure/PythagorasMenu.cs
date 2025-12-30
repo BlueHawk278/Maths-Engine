@@ -13,38 +13,39 @@ namespace MathsEngine.Core.Menu.Pure
             Console.WriteLine("1. Find the hypotenuse");
             Console.WriteLine("2. Find another side");
             Console.WriteLine("3. Check if calculation is valid");
-            Console.Write("Input: ");
-            string choice = Console.ReadLine();
+            Console.WriteLine("4. Main Menu");
+            int response = Parsing.GetMenuInput("Input: ", 4);
 
-            switch (choice)
+            switch (response)
             {
-                case "1":
-                    handleFindHypotenuse();
+                case 1:
+                    HandleFindHypotenuse();
                     break;
-                case "2":
-                    handleFindOtherSide();
+                case 2:
+                    HandleFindOtherSide();
                     break;
-                case "3":
-                    handleCheckTheorem();
+                case 3:
+                    HandleCheckTheorem();
+                    break;
+                case 4:
+                    Menu.MainMenu();
                     break;
             }
             // Return to the main menu after a calculation is done.
-            Menu.mainMenu();
+            Menu.MainMenu();
         }
 
         /// <summary>
         /// Methods that retrieve the side lengths and inputs them into the Pythagoras Theorem
         /// </summary>
 
-        private static void handleFindHypotenuse()
+        private static void HandleFindHypotenuse()
         {
             try
             {
                 Console.Clear();
-                Console.WriteLine("Enter the first side");
-                double sideA = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Enter the second side");
-                double sideB = Convert.ToDouble(Console.ReadLine());
+                double? sideA = Parsing.GetNullableDoubleInput("Enter side A (leave blank to calculate): ");
+                double? sideB = Parsing.GetNullableDoubleInput("Enter side B (leave blank to calculate): ");
 
                 double hypotenuse = PythagorasTheorem.CalculateHypotenuse(sideA, sideB);
 
@@ -69,15 +70,13 @@ namespace MathsEngine.Core.Menu.Pure
             }
         }
 
-        private static void handleFindOtherSide()
+        private static void HandleFindOtherSide()
         {
             try
             {
                 Console.Clear();
-                Console.WriteLine("Enter the hypotenuse");
-                double hypotenuse = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Enter the known side");
-                double knownSide = Convert.ToDouble(Console.ReadLine());
+                double? hypotenuse = Parsing.GetNullableDoubleInput("Enter the hypotenuse");
+                double? knownSide = Parsing.GetNullableDoubleInput("Enter the known side");
 
                 double unknownSide =
                     PythagorasTheorem.CalculateOtherSide(hypotenuse, knownSide);
@@ -102,17 +101,14 @@ namespace MathsEngine.Core.Menu.Pure
                 Console.ReadLine();
             }
         }
-        private static void handleCheckTheorem()
+        private static void HandleCheckTheorem()
         {
             try
             {
                 Console.Clear();
-                Console.WriteLine("Enter the hypotenuse");
-                double hypotenuse = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Enter the first side");
-                double firstSide = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Enter the second side");
-                double secondSide = Convert.ToDouble(Console.ReadLine());
+                double? hypotenuse = Parsing.GetNullableDoubleInput("Enter the hypotenuse");
+                double? firstSide = Parsing.GetNullableDoubleInput("Enter the first side.");
+                double? secondSide = Parsing.GetNullableDoubleInput("Enter the second side.");
 
                 bool validResult =
                     PythagorasTheorem.CheckValidCalculation(hypotenuse, firstSide, secondSide);

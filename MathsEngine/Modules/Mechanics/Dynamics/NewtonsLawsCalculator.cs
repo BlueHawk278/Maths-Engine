@@ -1,60 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
 using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Mechanics.Dynamics
 {
-    public class NewtonsLawsCalculator // Integrate uniform acceleration equations
+    public class NewtonsLawsCalculator
     {
-        public static double CalculateFma(string F, string m, string a)
+        public static double? CalculateFma(double? f, double? m, double? a)
         {
-            bool fUnknown = string.IsNullOrEmpty(F);
-            bool mUnknown = string.IsNullOrEmpty(m);
-            bool aUnknown = string.IsNullOrEmpty(a);
+            int missingCount =
+                (f is null ? 1 : 0) +
+                (m is null ? 1 : 0) +
+                (a is null ? 1 : 0);
 
-            var unknownCount = 0;
-            if (fUnknown) unknownCount++;
-            if (mUnknown) unknownCount++;
-            if (aUnknown) unknownCount++;
+            if (missingCount != 1)
+                throw new ArgumentException("Exactly one value must be null to perform a calculation.");
 
-            if (unknownCount != 1)
-                throw new NullValuesException("Must provide exactly two values to calculate the third.");
+            if (m <= 0)
+                throw new ArgumentException("Mass must be a positive number.");
 
-            double force = fUnknown ? 0 : Convert.ToDouble(F);
-            double mass = mUnknown ? 0 : Convert.ToDouble(m);
-            double acceleration = aUnknown ? 0 : Convert.ToDouble(a);
+            if (f is null) // F = m * a
+                return m.Value * a.Value;
 
-            if (fUnknown)
-                return mass * acceleration;
-            if (mUnknown)
+            if (m is null) // m = F / a
             {
-                if (acceleration == 0) throw new DivideByZeroException("Acceleration cannot be zero when calculating mass.");
-                return force / acceleration;
+                if (a.Value == 0)
+                    throw new DivideByZeroException("Acceleration cannot be zero when calculating mass.");
+                return f.Value / a.Value;
             }
-            if (aUnknown)
+
+            if (a is null) // a = F / m
             {
-                if (mass == 0) throw new DivideByZeroException("Mass cannot be zero when calculating acceleration.");
-                return force / mass;
+                // This check is technically redundant due to the check at the start, but good for safety.
+                if (m.Value == 0)
+                    throw new DivideByZeroException("Mass cannot be zero when calculating acceleration.");
+                return f.Value / m.Value;
             }
-            // This line is unreachable due to the unknownCount check, but is required for compilation
-            throw new InvalidOperationException("An unexpected error occurred during calculation.");
+
+            throw new InvalidOperationException("Could not perform calculation with the provided values.");
         }
 
-        public static bool CheckValidCalculation(string F, string m, string a)
+        public static bool CheckValidCalculation(double? f, double? m, double? a)
         {
-            bool fUnknown = string.IsNullOrEmpty(F);
-            bool mUnknown = string.IsNullOrEmpty(m);
-            bool aUnknown = string.IsNullOrEmpty(a);
+            if (f is null || m is null || a is null)
+                throw new ArgumentException("All values must be provided to check a calculation.");
 
-            if (fUnknown || mUnknown || aUnknown)
-                throw new NullValuesException("Must provide all three values to check a calculation.");
+            if (m <= 0)
+                throw new ArgumentException("Mass must be a positive number.");
 
-            double force = Convert.ToDouble(F);
-            double mass = Convert.ToDouble(m);
-            double acceleration = Convert.ToDouble(a);
-
-            // Use a small tolerance for floating-point comparison
-            return Math.Abs(force - (mass * acceleration)) < 1e-9;
+            return Math.Abs(f.Value - (m.Value * a.Value)) < 1e-9;
         }
     }
 }
