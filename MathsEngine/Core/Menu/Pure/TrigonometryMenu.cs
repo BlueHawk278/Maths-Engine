@@ -80,14 +80,5 @@ namespace MathsEngine.Core.Menu.Pure
             Console.ReadLine();
             menu();
         }
-
-        private static string FormatValue(string value)
-        {
-            if (value == null)
-                return "Not Calculated";
-
-            // Convert to double to format it to 2 decimal places.
-            return Convert.ToDouble(value).ToString("F2");
-        }
     }
 }
