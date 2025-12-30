@@ -19,13 +19,16 @@ namespace MathsEngine.Core.Menu.Pure
             switch (choice)
             {
                 case "1":
-                    handleFindHypotenuse();
+                    HandleFindHypotenuse();
                     break;
                 case "2":
-                    handleFindOtherSide();
+                    HandleFindOtherSide();
                     break;
                 case "3":
-                    handleCheckTheorem();
+                    HandleCheckTheorem();
+                    break;
+                default:
+                    menu();
                     break;
             }
             // Return to the main menu after a calculation is done.
@@ -36,15 +39,13 @@ namespace MathsEngine.Core.Menu.Pure
         /// Methods that retrieve the side lengths and inputs them into the Pythagoras Theorem
         /// </summary>
 
-        private static void handleFindHypotenuse()
+        private static void HandleFindHypotenuse()
         {
             try
             {
                 Console.Clear();
-                Console.WriteLine("Enter the first side");
-                double sideA = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Enter the second side");
-                double sideB = Convert.ToDouble(Console.ReadLine());
+                double? sideA = Parsing.GetDoubleInput("Enter side A (leave blank to calculate): ");
+                double? sideB = Parsing.GetDoubleInput("Enter side B (leave blank to calculate): ");
 
                 double hypotenuse = PythagorasTheorem.CalculateHypotenuse(sideA, sideB);
 
@@ -69,15 +70,13 @@ namespace MathsEngine.Core.Menu.Pure
             }
         }
 
-        private static void handleFindOtherSide()
+        private static void HandleFindOtherSide()
         {
             try
             {
                 Console.Clear();
-                Console.WriteLine("Enter the hypotenuse");
-                double hypotenuse = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Enter the known side");
-                double knownSide = Convert.ToDouble(Console.ReadLine());
+                double? hypotenuse = Parsing.GetDoubleInput("Enter the hypotenuse");
+                double? knownSide = Parsing.GetDoubleInput("Enter the known side");
 
                 double unknownSide =
                     PythagorasTheorem.CalculateOtherSide(hypotenuse, knownSide);
@@ -102,17 +101,14 @@ namespace MathsEngine.Core.Menu.Pure
                 Console.ReadLine();
             }
         }
-        private static void handleCheckTheorem()
+        private static void HandleCheckTheorem()
         {
             try
             {
                 Console.Clear();
-                Console.WriteLine("Enter the hypotenuse");
-                double hypotenuse = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Enter the first side");
-                double firstSide = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Enter the second side");
-                double secondSide = Convert.ToDouble(Console.ReadLine());
+                double? hypotenuse = Parsing.GetDoubleInput("Enter the hypotenuse");
+                double? firstSide = Parsing.GetDoubleInput("Enter the first side.");
+                double? secondSide = Parsing.GetDoubleInput("Enter the second side.");
 
                 bool validResult =
                     PythagorasTheorem.CheckValidCalculation(hypotenuse, firstSide, secondSide);

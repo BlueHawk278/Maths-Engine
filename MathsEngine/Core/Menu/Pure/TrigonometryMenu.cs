@@ -1,5 +1,6 @@
 ﻿using System;
 using MathsEngine.Modules.Pure.Trigonometry;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Core.Menu.Pure
 {
@@ -16,10 +17,10 @@ namespace MathsEngine.Core.Menu.Pure
             switch (response)
             {
                 case "1":
-                    handleMissingSide();
+                    HandleMissingSide();
                     break;
                 case "2":
-                    handleMissingAngle();
+                    HandleMissingAngle();
                     break;
                 default:
                     menu();
@@ -27,71 +28,50 @@ namespace MathsEngine.Core.Menu.Pure
             }
         }
 
-        private static void handleMissingSide()
+        private static void HandleMissingSide()
         {
-            Console.WriteLine("Enter the angle you know in degrees:");
-            double angle = Convert.ToDouble(Console.ReadLine());
+            double? angle = Parsing.GetDoubleInput("Enter the angle you know in degrees");
 
-            Console.WriteLine("Which side do you know? (1. Opposite, 2. Adjacent, 3. Hypotenuse)");
-            string sideKnownChoice = Console.ReadLine();
+            SideType sideKnown =
+                Parsing.GetSideType("Which side do you know? (Opposite, Adjacent, Hypotenuse)");
 
-            Console.Write("Enter the length of the known side: ");
-            double knownSideLength = Convert.ToDouble(Console.ReadLine());
+            double? knownSideLength = Parsing.GetDoubleInput("Enter the length of the known side");
 
-            SideType knownSideType;
             SideType sideToFindType;
-            string sideToFindChoice;
-            double result = 0;
 
-            switch (sideKnownChoice)
+            switch (sideKnown)
             {
-                case "1":
-                    knownSideType = SideType.Opposite;
-                    Console.WriteLine("Which side do you want to find? (1. Adjacent, 2. Hypotenuse)");
-                    sideToFindChoice = Console.ReadLine();
-                    sideToFindType = sideToFindChoice == "1" ? SideType.Adjacent : SideType.Hypotenuse;
+                case SideType.Opposite:
+                    sideToFindType = Parsing.GetSideType("Which side do you want to find? (Adjacent, Hypotenuse)");
                     break;
-                case "2":
-                    knownSideType = SideType.Adjacent;
-                    Console.WriteLine("Which side do you want to find? (1. Opposite, 2. Hypotenuse)");
-                    sideToFindChoice = Console.ReadLine();
-                    sideToFindType = sideToFindChoice == "1" ? SideType.Opposite : SideType.Hypotenuse;
+                case SideType.Adjacent:
+                    sideToFindType = Parsing.GetSideType("Which side do you want to find? (Opposite, Hypotenuse)");
                     break;
-                case "3":
-                    knownSideType = SideType.Hypotenuse;
-                    Console.WriteLine("Which side do you want to find? (1. Opposite, 2. Adjacent)");
-                    sideToFindChoice = Console.ReadLine();
-                    sideToFindType = sideToFindChoice == "1" ? SideType.Opposite : SideType.Adjacent;
+                case SideType.Hypotenuse:
+                    sideToFindType = Parsing.GetSideType("Which side do you want to find? (Adjacent, Opposite)");
                     break;
                 default:
                     menu();
                     return;
             }
 
-            result = Trigonometry.CalculateMissingSide(knownSideLength, angle, knownSideType, sideToFindType);
-            displayCalculation(result, $"{sideToFindType}");
+            double result = Trigonometry.CalculateMissingSide(knownSideLength, angle, sideKnown, sideToFindType);
+            DisplayCalculation(result, $"{sideToFindType}");
         }
 
-        private static void handleMissingAngle()
+        private static void HandleMissingAngle()
         {
-            Console.WriteLine("Enter the first side you know (1. Opposite, 2. Adjacent, 3. Hypotenuse):");
-            string side1Choice = Console.ReadLine();
-            Console.Write("Enter the length of this side: ");
-            double side1Length = Convert.ToDouble(Console.ReadLine());
-            SideType side1Type = (SideType)Convert.ToInt32(side1Choice) - 1;
+            SideType side1Type = Parsing.GetSideType("Enter the first side you know (Opposite, Adjacent, Hypotenuse)");
+            double? side1Length = Parsing.GetDoubleInput("Enter the length of the first side");
 
-
-            Console.WriteLine("Enter the second side you know (1. Opposite, 2. Adjacent, 3. Hypotenuse):");
-            string side2Choice = Console.ReadLine();
-            Console.Write("Enter the length of this side: ");
-            double side2Length = Convert.ToDouble(Console.ReadLine());
-            SideType side2Type = (SideType)Convert.ToInt32(side2Choice) - 1;
+            SideType side2Type = Parsing.GetSideType("Enter the second side you know (Opposite, Adjacent, Hypotenuse):");
+            double? side2Length = Parsing.GetDoubleInput("Enter the length of the second side");
 
             double result = Trigonometry.CalculateMissingAngle(side1Length, side1Type, side2Length, side2Type);
-            displayCalculation(result, "Angle");
+            DisplayCalculation(result, "Angle");
         }
 
-        private static void displayCalculation(double result, string calculatedItem) //
+        private static void DisplayCalculation(double result, string calculatedItem) //
         {
             Console.WriteLine($"\n--- Calculation Result ---");
             Console.WriteLine($"{calculatedItem}: {result:F2}");
@@ -100,7 +80,7 @@ namespace MathsEngine.Core.Menu.Pure
             menu();
         }
 
-        private static string formatValue(string value)
+        private static string FormatValue(string value)
         {
             if (value == null)
                 return "Not Calculated";
