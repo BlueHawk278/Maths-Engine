@@ -44,8 +44,8 @@ namespace MathsEngine.Core.Menu.Pure
             try
             {
                 Console.Clear();
-                double? sideA = Parsing.GetDoubleInput("Enter side A (leave blank to calculate): ");
-                double? sideB = Parsing.GetDoubleInput("Enter side B (leave blank to calculate): ");
+                double? sideA = Parsing.GetNullableDoubleInput("Enter side A (leave blank to calculate): ");
+                double? sideB = Parsing.GetNullableDoubleInput("Enter side B (leave blank to calculate): ");
 
                 double hypotenuse = PythagorasTheorem.CalculateHypotenuse(sideA, sideB);
 
@@ -75,8 +75,8 @@ namespace MathsEngine.Core.Menu.Pure
             try
             {
                 Console.Clear();
-                double? hypotenuse = Parsing.GetDoubleInput("Enter the hypotenuse");
-                double? knownSide = Parsing.GetDoubleInput("Enter the known side");
+                double? hypotenuse = Parsing.GetNullableDoubleInput("Enter the hypotenuse");
+                double? knownSide = Parsing.GetNullableDoubleInput("Enter the known side");
 
                 double unknownSide =
                     PythagorasTheorem.CalculateOtherSide(hypotenuse, knownSide);
@@ -106,9 +106,9 @@ namespace MathsEngine.Core.Menu.Pure
             try
             {
                 Console.Clear();
-                double? hypotenuse = Parsing.GetDoubleInput("Enter the hypotenuse");
-                double? firstSide = Parsing.GetDoubleInput("Enter the first side.");
-                double? secondSide = Parsing.GetDoubleInput("Enter the second side.");
+                double? hypotenuse = Parsing.GetNullableDoubleInput("Enter the hypotenuse");
+                double? firstSide = Parsing.GetNullableDoubleInput("Enter the first side.");
+                double? secondSide = Parsing.GetNullableDoubleInput("Enter the second side.");
 
                 bool validResult =
                     PythagorasTheorem.CheckValidCalculation(hypotenuse, firstSide, secondSide);

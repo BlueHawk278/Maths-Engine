@@ -35,12 +35,12 @@ namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
         }
         private void CalculateAverages()
         {
-            _mean = AverageCalculator.calculateMean(_originalValues);
-            _median = AverageCalculator.calculateMedian(_originalValues);
-            _modeList = AverageCalculator.calculateMode(_originalValues);
-            _range = AverageCalculator.calculateRange(_originalValues);
+            _mean = AverageCalculator.CalculateMean(_originalValues);
+            _median = AverageCalculator.CalculateMedian(_originalValues);
+            _modeList = AverageCalculator.CalculateMode(_originalValues);
+            _range = AverageCalculator.CalculateRange(_originalValues);
 
-            var quartiles = AverageCalculator.getInterQuartileRange(_originalValues);
+            var quartiles = AverageCalculator.GetInterQuartileRange(_originalValues);
             _q1 = quartiles[0];
             _q3 = quartiles[1];
             _iqr = quartiles[2];

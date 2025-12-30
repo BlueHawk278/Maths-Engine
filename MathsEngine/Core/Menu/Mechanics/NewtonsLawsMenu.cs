@@ -35,9 +35,9 @@ namespace MathsEngine.Core.Menu.Mechanics
         {
             try
             {
-                double? force = Parsing.GetDoubleInput("Enter the force");
-                double? mass = Parsing.GetDoubleInput("Enter the mass");
-                double? acceleration = Parsing.GetDoubleInput("Enter the acceleration");
+                double? force = Parsing.GetNullableDoubleInput("Enter the force");
+                double? mass = Parsing.GetNullableDoubleInput("Enter the mass");
+                double? acceleration = Parsing.GetNullableDoubleInput("Enter the acceleration");
 
                 PerformCalculation(force, mass, acceleration);
             }
@@ -78,9 +78,9 @@ namespace MathsEngine.Core.Menu.Mechanics
         {
             try
             {
-                double? force = Parsing.GetDoubleInput("Enter the force");
-                double? mass = Parsing.GetDoubleInput("Enter the mass");
-                double? acceleration = Parsing.GetDoubleInput("Enter the acceleration");
+                double? force = Parsing.GetNullableDoubleInput("Enter the force");
+                double? mass = Parsing.GetNullableDoubleInput("Enter the mass");
+                double? acceleration = Parsing.GetNullableDoubleInput("Enter the acceleration");
 
                 bool isValid = Modules.Mechanics.Dynamics.NewtonsLawsCalculator.CheckValidCalculation(force, mass, acceleration);
 

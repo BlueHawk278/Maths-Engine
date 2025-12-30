@@ -56,8 +56,8 @@ namespace MathsEngine.Core.Menu.Mechanics
         {
             try
             {
-                double? initialVelocity = Parsing.GetDoubleInput("Enter the initial velocity: ");
-                double? finalVelocity = Parsing.GetDoubleInput("Enter the final velocity: ");
+                double? initialVelocity = Parsing.GetNullableDoubleInput("Enter the initial velocity: ");
+                double? finalVelocity = Parsing.GetNullableDoubleInput("Enter the final velocity: ");
 
                 double averageVelocity = UniformAccelerationCalculator.CalculateAverageVelocity(initialVelocity, finalVelocity);
                 Console.WriteLine($"\nAverage Velocity: {averageVelocity:F2}");
@@ -74,11 +74,11 @@ namespace MathsEngine.Core.Menu.Mechanics
         {
             try
             {
-                double? initialVelocity = Parsing.GetDoubleInput("Enter the initial velocity (u): ");
-                double? finalVelocity = Parsing.GetDoubleInput("Enter the final velocity (v): ");
-                double? acceleration = Parsing.GetDoubleInput("Enter the acceleration (a): ");
-                double? timeTaken = Parsing.GetDoubleInput("Enter the time taken (t): ");
-                double? displacement = Parsing.GetDoubleInput("Enter the displacement (s): ");
+                double? initialVelocity = Parsing.GetNullableDoubleInput("Enter the initial velocity (u): ");
+                double? finalVelocity = Parsing.GetNullableDoubleInput("Enter the final velocity (v): ");
+                double? acceleration = Parsing.GetNullableDoubleInput("Enter the acceleration (a): ");
+                double? timeTaken = Parsing.GetNullableDoubleInput("Enter the time taken (t): ");
+                double? displacement = Parsing.GetNullableDoubleInput("Enter the displacement (s): ");
 
                 CheckCalculation(initialVelocity, finalVelocity, acceleration, timeTaken, displacement);
             }

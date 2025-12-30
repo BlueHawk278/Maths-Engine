@@ -31,12 +31,12 @@ namespace MathsEngine.Core.Menu.Pure
 
         private static void HandleMissingSide()
         {
-            double? angle = Parsing.GetDoubleInput("Enter the angle you know in degrees");
+            double? angle = Parsing.GetNullableDoubleInput("Enter the angle you know in degrees");
 
             SideType sideKnown =
                 Parsing.GetSideType("Which side do you know? (Opposite, Adjacent, Hypotenuse)");
 
-            double? knownSideLength = Parsing.GetDoubleInput("Enter the length of the known side");
+            double? knownSideLength = Parsing.GetNullableDoubleInput("Enter the length of the known side");
 
             SideType sideToFindType;
 
@@ -63,10 +63,10 @@ namespace MathsEngine.Core.Menu.Pure
         private static void HandleMissingAngle()
         {
             SideType side1Type = Parsing.GetSideType("Enter the first side you know (Opposite, Adjacent, Hypotenuse)");
-            double? side1Length = Parsing.GetDoubleInput("Enter the length of the first side");
+            double? side1Length = Parsing.GetNullableDoubleInput("Enter the length of the first side");
 
             SideType side2Type = Parsing.GetSideType("Enter the second side you know (Opposite, Adjacent, Hypotenuse):");
-            double? side2Length = Parsing.GetDoubleInput("Enter the length of the second side");
+            double? side2Length = Parsing.GetNullableDoubleInput("Enter the length of the second side");
 
             double result = Trigonometry.CalculateMissingAngle(side1Length, side1Type, side2Length, side2Type);
             DisplayCalculation(result, "Angle");

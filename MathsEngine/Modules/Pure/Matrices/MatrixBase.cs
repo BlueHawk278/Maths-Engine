@@ -1,4 +1,5 @@
 ﻿using System;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Pure.Matrices
 {
@@ -14,7 +15,7 @@ namespace MathsEngine.Modules.Pure.Matrices
             NumCols = cols;
             Matrix = new double[NumRows, NumCols];
 
-            populateMatrix();
+            PopulateMatrix();
         }
 
         public MatrixBase(double[,] array)
@@ -24,14 +25,13 @@ namespace MathsEngine.Modules.Pure.Matrices
             Matrix = array;
         }
 
-        private void populateMatrix()
+        private void PopulateMatrix()
         {
             for(int i = 0; i < NumRows; i++)
             {
                 for(int j = 0; j < NumCols; j++)
                 {
-                    Console.Write($"Enter matrix index {i},{j}: ");
-                    double value = Convert.ToDouble(Console.ReadLine());
+                    double value = Parsing.GetDoubleInput($"Enter Matrix index [{i},{j}]");
                     Matrix[i, j] = value;
                 }
             }
@@ -43,7 +43,7 @@ namespace MathsEngine.Modules.Pure.Matrices
         /// <param name="size"> The matrix will be size * size. </param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public static MatrixBase getIdentityMatrix(int size)
+        public static MatrixBase GetIdentityMatrix(int size)
         {
             if (size <= 0)
                 throw new ArgumentException("Size must be a positive integer.");

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 {
@@ -29,9 +28,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 
         private static int GetNumberOfDataPoints()
         {
-            // Add robust input handling here
-            Console.WriteLine("How many data points would you like to enter?");
-            return Convert.ToInt32(Console.ReadLine());
+            return Parsing.GetIntInput("How many data points would you like to enter?");
         }
 
         private static List<int> GetScoresFromUser(int count, string scoreName)
@@ -40,9 +37,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             Console.WriteLine($"\n--- Entering scores for {scoreName} ---");
             for (int i = 0; i < count; i++)
             {
-                // Add robust input handling here
-                Console.Write($"Enter point {i + 1}: ");
-                scores.Add(Convert.ToInt16(Console.ReadLine()));
+                scores.Add(Parsing.GetIntInput($"Enter point {i + 1}: "));
             }
             return scores;
         }

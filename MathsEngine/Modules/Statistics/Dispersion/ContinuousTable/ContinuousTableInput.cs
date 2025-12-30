@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.Dispersion.ContinuousTable
 {
@@ -22,22 +18,18 @@ namespace MathsEngine.Modules.Statistics.Dispersion.ContinuousTable
 
         private static double[,] getTable()
         {
-            Console.WriteLine("How many rows are there");
-            int NumRows = Convert.ToInt16(Console.ReadLine());
+            int numRows = Parsing.GetIntInput("How many rows are there");
 
-            double[,] Table = new double[NumRows, 6];
+            double[,] Table = new double[numRows, 6];
 
 
             // Getting the lower and upper x value and frequency for table
             int rowNum = 1;
-            for (int i = 0; i < NumRows; i++)
+            for (int i = 0; i < numRows; i++)
             {
-                Console.Write($"Enter the lower limit for X value No.{rowNum}: ");
-                int lowerNum = Convert.ToInt16(Console.ReadLine());
-                Console.Write($"Enter the upper limit for X value No.{rowNum}: ");
-                int upperNum = Convert.ToInt16(Console.ReadLine());
-                Console.Write($"Enter the frequency for value No.{rowNum}: ");
-                int frequency = Convert.ToInt16(Console.ReadLine());
+                int lowerNum = Parsing.GetIntInput($"Enter the lower limit for X value No.{rowNum}: ");
+                int upperNum = Parsing.GetIntInput($"Enter the upper limit for X value No.{rowNum}: ");
+                int frequency = Parsing.GetIntInput($"Enter the frequency for value No.{rowNum}: ");
 
                 rowNum++;
                 Table[i, 0] = lowerNum;

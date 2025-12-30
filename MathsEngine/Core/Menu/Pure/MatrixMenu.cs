@@ -54,16 +54,13 @@ namespace MathsEngine.Core.Menu.Pure
         private static void HandleAddMatrix()
         {
             Console.Clear();
-            Console.Write("First Matrix: How many rows? ");
-            int rows1 = Convert.ToInt16(Console.ReadLine());
-            Console.Write("First Matrix: How many columns? ");
-            int columns1 = Convert.ToInt16(Console.ReadLine());
+
+            int rows1 = Parsing.GetIntInput("First Matrix - How many rows: ");
+            int columns1 = Parsing.GetIntInput("First Matrix - How many columns: ");
             MatrixBase matrix1 = new MatrixBase(rows1, columns1);
 
-            Console.Write("\nSecond Matrix: How many rows? ");
-            int rows2 = Convert.ToInt16(Console.ReadLine());
-            Console.Write("Second Matrix: How many columns? ");
-            int columns2 = Convert.ToInt16(Console.ReadLine());
+            int rows2 = Parsing.GetIntInput("Second Matrix - How many rows: ");
+            int columns2 = Parsing.GetIntInput("Second Matrix - How many columns: ");
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
             var result = MatrixCalculator.AddMatrix(matrix1, matrix2);
@@ -75,16 +72,13 @@ namespace MathsEngine.Core.Menu.Pure
         private static void HandleSubtractMatrix()
         {
             Console.Clear();
-            Console.Write("First Matrix: How many rows? ");
-            int rows1 = Convert.ToInt16(Console.ReadLine());
-            Console.Write("First Matrix: How many columns? ");
-            int columns1 = Convert.ToInt16(Console.ReadLine());
+
+            int rows1 = Parsing.GetIntInput("First Matrix - How many rows: ");
+            int columns1 = Parsing.GetIntInput("First Matrix - How many columns: ");
             MatrixBase matrix1 = new MatrixBase(rows1, columns1);
 
-            Console.Write("\nSecond Matrix: How many rows? ");
-            int rows2 = Convert.ToInt16(Console.ReadLine());
-            Console.Write("Second Matrix: How many columns? ");
-            int columns2 = Convert.ToInt16(Console.ReadLine());
+            int rows2 = Parsing.GetIntInput("Second Matrix - How many rows: ");
+            int columns2 = Parsing.GetIntInput("Second Matrix - How many columns: ");
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
             var result = MatrixCalculator.SubtractMatrix(matrix1, matrix2);
@@ -97,13 +91,11 @@ namespace MathsEngine.Core.Menu.Pure
         private static void HandleScalarMultiplication()
         {
             Console.Clear();
-            Console.Write("How many rows in the matrix: ");
-            int rows = Convert.ToInt16(Console.ReadLine());
-            Console.Write("How many columns in the matrix: ");
-            int columns = Convert.ToInt16(Console.ReadLine());
 
-            Console.Write("\nWhat number would you like to multiply this matrix by: ");
-            int number = Convert.ToInt16(Console.ReadLine());
+            int rows = Parsing.GetIntInput("How many rows in the matrix: ");
+            int columns = Parsing.GetIntInput("How many columns in the matrix: ");
+
+            int number = Parsing.GetIntInput("What number would you like to multiply this matrix by: ");
 
             MatrixBase matrix = new MatrixBase(rows, columns);
             var result = MatrixCalculator.ScalarMultiplication(matrix, number);
@@ -115,13 +107,11 @@ namespace MathsEngine.Core.Menu.Pure
         private static void HandleScalarDivision()
         {
             Console.Clear();
-            Console.Write("How many rows in the matrix: ");
-            int rows = Convert.ToInt16(Console.ReadLine());
-            Console.Write("How many columns in the matrix: ");
-            int columns = Convert.ToInt16(Console.ReadLine());
 
-            Console.Write("\nWhat number would you like to multiply this matrix by: ");
-            int number = Convert.ToInt16(Console.ReadLine());
+            int rows = Parsing.GetIntInput("How many rows in the matrix: ");
+            int columns = Parsing.GetIntInput("How many columns in the matrix: ");
+
+            int number = Parsing.GetIntInput("What number would you like to multiply this matrix by: ");
 
             MatrixBase matrix = new MatrixBase(rows, columns);
             var result = MatrixCalculator.ScalarDivision(matrix, number);
@@ -135,19 +125,14 @@ namespace MathsEngine.Core.Menu.Pure
         {
             Console.Clear(); // Matrix1 - x = Matrix 2
 
-            Console.Write("First Matrix: How many rows? ");
-            int rows1 = Convert.ToInt16(Console.ReadLine());
-            Console.Write("First Matrix: How many columns? ");
-            int columns1 = Convert.ToInt16(Console.ReadLine());
+            int rows1 = Parsing.GetIntInput("First Matrix - How many rows: ");
+            int columns1 = Parsing.GetIntInput("First Matrix - How many columns: ");
             MatrixBase matrix1 = new MatrixBase(rows1, columns1);
 
-            Console.WriteLine("What is the integer value of X");
-            int x = Convert.ToInt16(Console.ReadLine());
+            int x = Parsing.GetIntInput("What is the value of X: ");
 
-            Console.Write("\nSecond Matrix: How many rows? ");
-            int rows2 = Convert.ToInt16(Console.ReadLine());
-            Console.Write("Second Matrix: How many columns? ");
-            int columns2 = Convert.ToInt16(Console.ReadLine());
+            int rows2 = Parsing.GetIntInput("Second Matrix - How many rows: ");
+            int columns2 = Parsing.GetIntInput("Second Matrix - How many columns: ");
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
             var result = MatrixCalculator.MatrixEquations(matrix1, matrix2, x);
@@ -161,16 +146,12 @@ namespace MathsEngine.Core.Menu.Pure
         {
             Console.Clear();
 
-            Console.Write("First Matrix: How many rows? ");
-            int rows1 = Convert.ToInt16(Console.ReadLine());
-            Console.Write("First Matrix: How many columns? ");
-            int columns1 = Convert.ToInt16(Console.ReadLine());
+            int rows1 = Parsing.GetIntInput("First Matrix - How many rows: ");
+            int columns1 = Parsing.GetIntInput("First Matrix - How many columns: ");
             MatrixBase matrix1 = new MatrixBase(rows1, columns1);
 
-            Console.Write("\nSecond Matrix: How many rows? ");
-            int rows2 = Convert.ToInt16(Console.ReadLine());
-            Console.Write("Second Matrix: How many columns? ");
-            int columns2 = Convert.ToInt16(Console.ReadLine());
+            int rows2 = Parsing.GetIntInput("Second Matrix - How many rows: ");
+            int columns2 = Parsing.GetIntInput("Second Matrix - How many columns: ");
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
             var result = MatrixCalculator.MatrixMultiplication(matrix1, matrix2);

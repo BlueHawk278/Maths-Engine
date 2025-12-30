@@ -4,7 +4,7 @@ namespace MathsEngine.Utils;
 
 public class Parsing
 {
-    public static double? GetDoubleInput(string prompt)
+    public static double? GetNullableDoubleInput(string prompt)
     {
         Console.Write(prompt);
         string input = Console.ReadLine()?.Trim();
@@ -16,6 +16,32 @@ public class Parsing
             return value;
 
         throw new ArgumentException("Invalid number entered.");
+    }
+
+    public static double GetDoubleInput(string prompt)
+    {
+        Console.Write(prompt);
+        string input = Console.ReadLine()?.Trim();
+
+        while (true)
+        {
+            if (!string.IsNullOrEmpty(input))
+                return Convert.ToDouble(input);
+            Console.WriteLine("Invalid input. Try again");
+        }
+    }
+
+    public static int GetIntInput(string prompt)
+    {
+        while (true)
+        {
+            Console.Write(prompt);
+            string input = Console.ReadLine()?.Trim();
+
+            if (!string.IsNullOrEmpty(input))
+                return Convert.ToInt32(input);
+            Console.WriteLine("Invalid input. Try again");
+        }
     }
 
     public static int GetMenuInput(string prompt, int maxNum)
