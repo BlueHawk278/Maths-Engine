@@ -80,8 +80,7 @@ namespace MathsEngine.Core.Menu.Mechanics
                 double? timeTaken = Parsing.GetDoubleInput("Enter the time taken (t): ");
                 double? displacement = Parsing.GetDoubleInput("Enter the displacement (s): ");
 
-                CheckCalculation(ref initialVelocity, ref finalVelocity, ref acceleration, ref timeTaken, ref displacement);
-                DisplayCalculation(initialVelocity, finalVelocity, acceleration, timeTaken, displacement);
+                CheckCalculation(initialVelocity, finalVelocity, acceleration, timeTaken, displacement);
             }
             catch (Exception ex)
             {
@@ -91,7 +90,7 @@ namespace MathsEngine.Core.Menu.Mechanics
             }
         }
 
-        private static void CheckCalculation(ref double? u, ref double? v, ref double? a, ref double? t, ref double? s)
+        private static void CheckCalculation(double? u, double? v, double? a, double? t, double? s)
         {
             int missingCount =
                 (u is null ? 1 : 0) +
@@ -144,24 +143,17 @@ namespace MathsEngine.Core.Menu.Mechanics
                 if (t is null && s.HasValue && u.HasValue && a.HasValue)
                     t = UniformAccelerationCalculator.CalculateSUTAT(s, u, a, null);
             }
-        }
 
-        private static void DisplayCalculation(double? u, double? v, double? a, double? t, double? s)
-        {
-            Console.WriteLine("\n--- Calculation results ---");
-            Console.WriteLine($"Initial Velocity (u): {FormatValue(u)}");
-            Console.WriteLine($"Final Velocity (v): {FormatValue(v)}");
-            Console.WriteLine($"Acceleration (a): {FormatValue(a)}");
-            Console.WriteLine($"Time (t): {FormatValue(t)}");
-            Console.WriteLine($"Displacement (s): {FormatValue(s)}");
-        }
+            Dictionary<string, double?> Values = new Dictionary<string, double?>
+            {
+                { "Initial Velocity (U)", u },
+                { "Final Velocity (V)", v},
+                { "Acceleration (A)", a},
+                { "Time Taken (T)", t},
+                { "Displacement", s}
+            };
 
-        private static string FormatValue(double? value)
-        {
-            if (value == null)
-                return "Not Calculated";
-
-            return value.Value.ToString("F2");
+            Display.DisplayResult(Values);
         }
     }
 }
