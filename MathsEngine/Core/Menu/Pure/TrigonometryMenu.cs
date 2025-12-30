@@ -12,18 +12,19 @@ namespace MathsEngine.Core.Menu.Pure
 
             Console.WriteLine("1. Calculate a missing side");
             Console.WriteLine("2. Calculate a missing angle");
-            string response = Console.ReadLine();
+            Console.WriteLine("3. Main Menu");
+            int response = Parsing.GetMenuInput("Input: ", 3);
 
             switch (response)
             {
-                case "1":
+                case 1:
                     HandleMissingSide();
                     break;
-                case "2":
+                case 2:
                     HandleMissingAngle();
                     break;
-                default:
-                    menu();
+                case 3:
+                    Menu.MainMenu();
                     break;
             }
         }

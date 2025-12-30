@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using MathsEngine.Modules.Mechanics.UniformAcceleration;
+﻿using MathsEngine.Modules.Mechanics.UniformAcceleration;
+using MathsEngine.Utils;
 
 namespace MathsEngine.Core.Menu.Mechanics
 {
-    public class UniformAccelerationMenu
+    public class UniformAccelerationMenu // HUGE REFACTORING NEEDED
     {
         public static void menu()
         {
             Console.WriteLine("Welcome to the Uniform Acceleration menu");
             Console.WriteLine("1. Horizontal Motion");
-            Console.Write("Input: ");
-            string response = Console.ReadLine();
-            Console.Clear();
+            Console.WriteLine("2. Main Menu");
+            int response = Parsing.GetMenuInput("Input: ", 2);
 
             switch (response)
             {
-                case "1":
+                case 1:
                     horizontalMotionMenu();
                     break;
-                default:
-                    Menu.mainMenu();
+                case 2:
+                    Menu.MainMenu();
                     break;
             }
         }

@@ -14,19 +14,19 @@ namespace MathsEngine.Core.Menu.Mechanics
         {
             Console.WriteLine("1. Calculate a missing value (F=ma)");
             Console.WriteLine("2. Check a calculation");
-            Console.WriteLine("Input: ");
-            string response = Console.ReadLine();
+            Console.WriteLine("3. Main Menu");
+            int response = Parsing.GetMenuInput("Input: ", 3);
 
             switch (response)
             {
-                case "1":
+                case 1:
                     handleFMA_Equations();
                     break;
-                case "2":
+                case 2:
                     handleCheckCalculation();
                     break;
-                default:
-                    Menu.mainMenu();
+                case 3:
+                    Menu.MainMenu();
                     break;
             }
         }
@@ -73,7 +73,7 @@ namespace MathsEngine.Core.Menu.Mechanics
             {
                 Console.WriteLine("\nPress any key to return to the main menu...");
                 Console.ReadKey();
-                Menu.mainMenu();
+                Menu.MainMenu();
             }
         }
 
@@ -118,7 +118,7 @@ namespace MathsEngine.Core.Menu.Mechanics
             {
                 Console.WriteLine("\nPress any key to return to the main menu...");
                 Console.ReadKey();
-                Menu.mainMenu();
+                Menu.MainMenu();
             }
         }
 
