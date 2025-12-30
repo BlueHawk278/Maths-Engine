@@ -20,10 +20,10 @@ namespace MathsEngine.Core.Menu.Mechanics
             switch (response)
             {
                 case 1:
-                    handleFMA_Equations();
+                    HandleFMA_Equations();
                     break;
                 case 2:
-                    handleCheckCalculation();
+                    HandleCheckCalculation();
                     break;
                 case 3:
                     Menu.MainMenu();
@@ -31,7 +31,7 @@ namespace MathsEngine.Core.Menu.Mechanics
             }
         }
 
-        private static void handleFMA_Equations()
+        private static void HandleFMA_Equations()
         {
             try
             {
@@ -74,7 +74,7 @@ namespace MathsEngine.Core.Menu.Mechanics
             }
         }
 
-        private static void handleCheckCalculation()
+        private static void HandleCheckCalculation()
         {
             try
             {
@@ -138,24 +138,14 @@ namespace MathsEngine.Core.Menu.Mechanics
             else if(M is null) M = calculatedValue;
             else if(A is null) A = calculatedValue;
 
-            displayCalculation(F, M, A);
-        }
+            Dictionary<string, double?> resultDictionary = new Dictionary<string, double?>()
+            {
+                {"Resultant Force (F)", F},
+                {"Mass (M)", M},
+                {"Acceleration (A)", A}
+            };
 
-        private static void displayCalculation(double? F, double? M, double? A)
-        {
-            Console.WriteLine("--- Calculation Results ---");
-            Console.WriteLine($"Resultant Force (F): {FormatValue(F)}");
-            Console.WriteLine($"Mass (M): {FormatValue(M)}");
-            Console.WriteLine($"Acceleration (A): {FormatValue(A)}");
-        }
-
-        private static string FormatValue(double? value)
-        {
-            if (value is null)
-                return "Not Calculated";
-
-            // Convert to double to format it to 2 decimal places.
-            return Convert.ToDouble(value).ToString("F2");
+            Display.DisplayResult(resultDictionary);
         }
     }
 }

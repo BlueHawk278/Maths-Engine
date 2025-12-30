@@ -28,6 +28,7 @@ namespace MathsEngine.Modules.Statistics.Dispersion.CombinedSets
             double standardDeviation = Parsing.GetDoubleInput("What is the standard deviation: ");
 
             //return new List<int> { numDataPoints, mean, standardDeviation };
+            return new List<string>();
         }
     }
 }
