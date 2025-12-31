@@ -65,6 +65,8 @@ namespace MathsEngine.Core.Menu.Pure
             {
                 Console.WriteLine("\nPress Enter to return to the menu.");
                 Console.ReadLine();
+
+                Menu.MainMenu();
             }
         }
 
@@ -97,8 +99,11 @@ namespace MathsEngine.Core.Menu.Pure
             {
                 Console.WriteLine("\nPress Enter to go back to the main menu.");
                 Console.ReadLine();
+
+                Menu.MainMenu();
             }
         }
+
         private static void HandleCheckTheorem()
         {
             try
@@ -123,6 +128,8 @@ namespace MathsEngine.Core.Menu.Pure
             {
                 Console.WriteLine("\nPress Enter to return to the menu.");
                 Console.ReadLine();
+
+                Menu.MainMenu();
             }
         }
     }

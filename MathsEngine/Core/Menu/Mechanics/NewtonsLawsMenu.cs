@@ -68,6 +68,7 @@ namespace MathsEngine.Core.Menu.Mechanics
             {
                 Console.WriteLine("\nPress any key to return to the main menu...");
                 Console.ReadKey();
+
                 Menu.MainMenu();
             }
         }
@@ -110,6 +111,7 @@ namespace MathsEngine.Core.Menu.Mechanics
             {
                 Console.WriteLine("\nPress any key to return to the main menu...");
                 Console.ReadKey();
+
                 Menu.MainMenu();
             }
         }
@@ -144,6 +146,11 @@ namespace MathsEngine.Core.Menu.Mechanics
             };
 
             Display.DisplayResult(resultDictionary);
+
+            Console.WriteLine("\nPress Enter to return to the main menu.");
+            Console.ReadLine();
+
+            Menu.MainMenu();
         }
     }
 }

@@ -58,6 +58,11 @@ namespace MathsEngine.Core.Menu.Pure
 
             double result = Trigonometry.CalculateMissingSide(knownSideLength, angle, sideKnown, sideToFindType);
             DisplayCalculation(result, $"{sideToFindType}");
+
+            Console.WriteLine("\nPress Enter to return to the main menu.");
+            Console.ReadLine();
+
+            Menu.MainMenu();
         }
 
         private static void HandleMissingAngle()
@@ -76,9 +81,10 @@ namespace MathsEngine.Core.Menu.Pure
         {
             Console.WriteLine($"\n--- Calculation Result ---");
             Console.WriteLine($"{calculatedItem}: {result:F2}");
+
             Console.WriteLine("\nPress Enter to return to the menu.");
             Console.ReadLine();
-            menu();
+            Menu.MainMenu();
         }
     }
 }

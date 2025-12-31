@@ -62,6 +62,8 @@ namespace MathsEngine.Core.Menu.Pure
 
             Console.WriteLine("\nPress Enter to return to the menu.");
             Console.ReadLine();
+            
+            Menu.MainMenu();
         }
         private static void HandleSubtractMatrix()
         {
@@ -80,6 +82,8 @@ namespace MathsEngine.Core.Menu.Pure
 
             Console.WriteLine("\nPress Enter to return to the menu.");
             Console.ReadLine();
+
+            Menu.MainMenu();
         }
 
         private static void HandleScalarMultiplication()
@@ -97,6 +101,8 @@ namespace MathsEngine.Core.Menu.Pure
 
             Console.WriteLine("\nPress Enter to return to the menu.");
             Console.ReadLine();
+
+            Menu.MainMenu();
         }
         private static void HandleScalarDivision()
         {
@@ -113,6 +119,8 @@ namespace MathsEngine.Core.Menu.Pure
 
             Console.WriteLine("\nPress Enter to return to the menu.");
             Console.ReadLine();
+
+            Menu.MainMenu();
         }
 
         private static void HandleMatrixMultiplication()
@@ -132,6 +140,8 @@ namespace MathsEngine.Core.Menu.Pure
 
             Console.WriteLine("Press Enter to return to the main menu.");
             Console.ReadLine();
+
+            Menu.MainMenu();
         }
 
         private static void HandleDeterminant()
@@ -145,6 +155,8 @@ namespace MathsEngine.Core.Menu.Pure
 
             Console.WriteLine("Press Enter to return to the main menu.");
             Console.ReadLine();
+
+            Menu.MainMenu();
         }
 
         private static void DisplayMatrix(double[,] matrix)
@@ -160,6 +172,11 @@ namespace MathsEngine.Core.Menu.Pure
 
                 Console.WriteLine();
             }
+
+            Console.WriteLine("Press Enter to return to the main menu.");
+            Console.ReadLine();
+
+            Menu.MainMenu();
         }
     }
 }
