@@ -21,6 +21,11 @@ namespace MathsEngine.Core.Menu.Mechanics
                     Menu.MechanicsMenu();
                     break;
             }
+
+            Console.WriteLine("\nPress Enter to return...");
+            Console.ReadLine();
+
+            Menu.MainMenu();
         }
 
         private static void HorizontalMotionMenu()
@@ -45,6 +50,8 @@ namespace MathsEngine.Core.Menu.Mechanics
 
             Console.WriteLine("\nPress Enter to return...");
             Console.ReadLine();
+
+            Menu.MainMenu();
         }
 
         private static void HandleAverageVelocity()

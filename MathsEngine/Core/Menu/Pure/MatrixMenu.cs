@@ -43,6 +43,11 @@ namespace MathsEngine.Core.Menu.Pure
                     Menu.PureMenu();
                     break;
             }
+
+            Console.WriteLine("\nPress Enter to return...");
+            Console.ReadLine();
+
+            Menu.MainMenu();
         }
 
         private static void HandleAddMatrix()
@@ -59,9 +64,6 @@ namespace MathsEngine.Core.Menu.Pure
 
             var result = MatrixCalculator.AddMatrix(matrix1, matrix2);
             DisplayMatrix(result);
-
-            Console.WriteLine("\nPress Enter to return to the menu.");
-            Console.ReadLine();
         }
         private static void HandleSubtractMatrix()
         {
@@ -77,9 +79,6 @@ namespace MathsEngine.Core.Menu.Pure
 
             var result = MatrixCalculator.SubtractMatrix(matrix1, matrix2);
             DisplayMatrix(result);
-
-            Console.WriteLine("\nPress Enter to return to the menu.");
-            Console.ReadLine();
         }
 
         private static void HandleScalarMultiplication()
@@ -94,9 +93,6 @@ namespace MathsEngine.Core.Menu.Pure
             MatrixBase matrix = new MatrixBase(rows, columns);
             var result = MatrixCalculator.ScalarMultiplication(matrix, number);
             DisplayMatrix(result);
-
-            Console.WriteLine("\nPress Enter to return to the menu.");
-            Console.ReadLine();
         }
         private static void HandleScalarDivision()
         {
@@ -110,9 +106,6 @@ namespace MathsEngine.Core.Menu.Pure
             MatrixBase matrix = new MatrixBase(rows, columns);
             var result = MatrixCalculator.ScalarDivision(matrix, number);
             DisplayMatrix(result);
-
-            Console.WriteLine("\nPress Enter to return to the menu.");
-            Console.ReadLine();
         }
 
         private static void HandleMatrixMultiplication()
@@ -129,9 +122,6 @@ namespace MathsEngine.Core.Menu.Pure
 
             var result = MatrixCalculator.MatrixMultiplication(matrix1, matrix2);
             DisplayMatrix(result);
-
-            Console.WriteLine("Press Enter to return to the main menu.");
-            Console.ReadLine();
         }
 
         private static void HandleDeterminant()
@@ -142,9 +132,6 @@ namespace MathsEngine.Core.Menu.Pure
 
             var determinant = MatrixCalculator.CalculateDeterminant(matrix);
             Console.WriteLine($"Determinant: {determinant}");
-
-            Console.WriteLine("Press Enter to return to the main menu.");
-            Console.ReadLine();
         }
 
         private static void DisplayMatrix(double[,] matrix)
