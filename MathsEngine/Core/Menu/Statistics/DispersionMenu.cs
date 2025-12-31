@@ -40,6 +40,11 @@ namespace MathsEngine.Core.Menu.Statistics
                     Menu.StatisticsMenu();
                     break;
             }
+
+            Console.WriteLine("\nPress Enter to return...");
+            Console.ReadLine();
+
+            Menu.MainMenu();
         }
     }
 }

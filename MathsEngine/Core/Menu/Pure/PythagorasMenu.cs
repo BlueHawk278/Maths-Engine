@@ -31,6 +31,11 @@ namespace MathsEngine.Core.Menu.Pure
                     Menu.PureMenu();
                     break;
             }
+
+            Console.WriteLine("\nPress Enter to return...");
+            Console.ReadLine();
+
+            Menu.MainMenu();
         }
 
         /// <summary>
@@ -42,8 +47,8 @@ namespace MathsEngine.Core.Menu.Pure
             try
             {
                 Console.Clear();
-                double? sideA = Parsing.GetNullableDoubleInput("Enter side A (leave blank to calculate): ");
-                double? sideB = Parsing.GetNullableDoubleInput("Enter side B (leave blank to calculate): ");
+                double? sideA = Parsing.GetNullableDoubleInput("Enter side A: ");
+                double? sideB = Parsing.GetNullableDoubleInput("Enter side B: ");
 
                 double hypotenuse = PythagorasTheorem.CalculateHypotenuse(sideA, sideB);
 
@@ -61,13 +66,6 @@ namespace MathsEngine.Core.Menu.Pure
                 Console.WriteLine($"\nError: {ex.Message}");
                 Console.ResetColor();
             }
-            finally
-            {
-                Console.WriteLine("\nPress Enter to return to the menu.");
-                Console.ReadLine();
-
-                Menu.MainMenu();
-            }
         }
 
         private static void HandleFindOtherSide()
@@ -75,8 +73,8 @@ namespace MathsEngine.Core.Menu.Pure
             try
             {
                 Console.Clear();
-                double? hypotenuse = Parsing.GetNullableDoubleInput("Enter the hypotenuse");
-                double? knownSide = Parsing.GetNullableDoubleInput("Enter the known side");
+                double? hypotenuse = Parsing.GetNullableDoubleInput("Enter the hypotenuse: ");
+                double? knownSide = Parsing.GetNullableDoubleInput("Enter the known side: ");
 
                 double unknownSide =
                     PythagorasTheorem.CalculateOtherSide(hypotenuse, knownSide);
@@ -95,13 +93,6 @@ namespace MathsEngine.Core.Menu.Pure
                 Console.WriteLine($"\nError: {ex.Message}");
                 Console.ResetColor();
             }
-            finally
-            {
-                Console.WriteLine("\nPress Enter to go back to the main menu.");
-                Console.ReadLine();
-
-                Menu.MainMenu();
-            }
         }
 
         private static void HandleCheckTheorem()
@@ -109,9 +100,9 @@ namespace MathsEngine.Core.Menu.Pure
             try
             {
                 Console.Clear();
-                double? hypotenuse = Parsing.GetNullableDoubleInput("Enter the hypotenuse");
-                double? firstSide = Parsing.GetNullableDoubleInput("Enter the first side.");
-                double? secondSide = Parsing.GetNullableDoubleInput("Enter the second side.");
+                double? hypotenuse = Parsing.GetNullableDoubleInput("Enter the hypotenuse: ");
+                double? firstSide = Parsing.GetNullableDoubleInput("Enter the first side: ");
+                double? secondSide = Parsing.GetNullableDoubleInput("Enter the second side: ");
 
                 bool validResult =
                     PythagorasTheorem.CheckValidCalculation(hypotenuse, firstSide, secondSide);
@@ -123,13 +114,6 @@ namespace MathsEngine.Core.Menu.Pure
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nError: Invalid input. Please enter valid numbers for the side lengths.");
                 Console.ResetColor();
-            }
-            finally
-            {
-                Console.WriteLine("\nPress Enter to return to the menu.");
-                Console.ReadLine();
-
-                Menu.MainMenu();
             }
         }
     }
