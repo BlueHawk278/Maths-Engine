@@ -7,25 +7,20 @@ namespace MathsEngine.Core.Menu.Mechanics
     {
         public static void menu()
         {
-            bool running = true;
-            while (running)
-            {
-                Console.WriteLine("Welcome to the Uniform Acceleration menu");
-                Console.WriteLine("1. Horizontal Motion");
-                Console.WriteLine("2. Main Menu");
-                int response = Parsing.GetMenuInput("Input: ", 2);
+            Console.WriteLine("Welcome to the Uniform Acceleration menu");
+            Console.WriteLine("1. Horizontal Motion");
+            Console.WriteLine("2. Back");
+            int response = Parsing.GetMenuInput("Input: ", 2);
 
-                switch (response)
-                {
-                    case 1:
-                        HorizontalMotionMenu();
-                        break;
-                    case 2:
-                        running = false;
-                        break;
-                }
+            switch (response)
+            {
+                case 1:
+                    HorizontalMotionMenu();
+                    break;
+                case 2:
+                    Menu.MechanicsMenu();
+                    break;
             }
-            Menu.MainMenu();
         }
 
         private static void HorizontalMotionMenu()

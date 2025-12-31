@@ -14,7 +14,7 @@ namespace MathsEngine.Core.Menu.Mechanics
         {
             Console.WriteLine("1. Calculate a missing value (F=ma)");
             Console.WriteLine("2. Check a calculation");
-            Console.WriteLine("3. Main Menu");
+            Console.WriteLine("3. Back");
             int response = Parsing.GetMenuInput("Input: ", 3);
 
             switch (response)
@@ -26,7 +26,7 @@ namespace MathsEngine.Core.Menu.Mechanics
                     HandleCheckCalculation();
                     break;
                 case 3:
-                    Menu.MainMenu();
+                    Menu.MechanicsMenu();
                     break;
             }
         }

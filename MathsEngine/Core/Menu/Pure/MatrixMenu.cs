@@ -17,7 +17,7 @@ namespace MathsEngine.Core.Menu.Pure
             Console.WriteLine("5. Solving simple matrix equations");
             Console.WriteLine("6. Multiply matrices by matrices");
             Console.WriteLine("7. Calculate the determinant of a square matrix");
-            Console.WriteLine("8. Main Menu");
+            Console.WriteLine("8. Back");
             int response = Parsing.GetMenuInput("Input: ", 8);
 
             switch (response)
@@ -44,11 +44,9 @@ namespace MathsEngine.Core.Menu.Pure
                     HandleDeterminant();
                     break;
                 case 8:
-                    Menu.MainMenu();
+                    Menu.PureMenu();
                     break;
             }
-            // After a calculation, return to the main menu
-            Menu.MainMenu();
         }
 
         private static void HandleAddMatrix()
@@ -111,7 +109,7 @@ namespace MathsEngine.Core.Menu.Pure
             int rows = Parsing.GetIntInput("How many rows in the matrix: ");
             int columns = Parsing.GetIntInput("How many columns in the matrix: ");
 
-            int number = Parsing.GetIntInput("What number would you like to multiply this matrix by: ");
+            int number = Parsing.GetIntInput("What number would you like to divide this matrix by: ");
 
             MatrixBase matrix = new MatrixBase(rows, columns);
             var result = MatrixCalculator.ScalarDivision(matrix, number);

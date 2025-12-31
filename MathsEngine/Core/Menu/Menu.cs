@@ -35,7 +35,7 @@ namespace MathsEngine.Core.Menu
                     return;
             }
         }
-        private static void PureMenu()
+        public static void PureMenu()
         {
             Console.Clear();
             Console.WriteLine("Welcome to the Pure Maths Menu");
@@ -62,7 +62,7 @@ namespace MathsEngine.Core.Menu
                     break;
             }
         }
-        private static void MechanicsMenu()
+        public static void MechanicsMenu()
         {
             Console.Clear();
             Console.WriteLine("Welcome to the Mechanics Menu");
@@ -85,7 +85,7 @@ namespace MathsEngine.Core.Menu
                     break;
             }
         }
-        private static void StatisticsMenu()
+        public static void StatisticsMenu()
         {
             Console.Clear();
             Console.WriteLine("Welcome to the Statistics Menu");

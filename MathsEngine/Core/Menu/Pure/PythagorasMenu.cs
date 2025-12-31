@@ -13,7 +13,7 @@ namespace MathsEngine.Core.Menu.Pure
             Console.WriteLine("1. Find the hypotenuse");
             Console.WriteLine("2. Find another side");
             Console.WriteLine("3. Check if calculation is valid");
-            Console.WriteLine("4. Main Menu");
+            Console.WriteLine("4. Back");
             int response = Parsing.GetMenuInput("Input: ", 4);
 
             switch (response)
@@ -28,11 +28,9 @@ namespace MathsEngine.Core.Menu.Pure
                     HandleCheckTheorem();
                     break;
                 case 4:
-                    Menu.MainMenu();
+                    Menu.PureMenu();
                     break;
             }
-            // Return to the main menu after a calculation is done.
-            Menu.MainMenu();
         }
 
         /// <summary>

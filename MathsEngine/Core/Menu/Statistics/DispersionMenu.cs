@@ -18,7 +18,7 @@ namespace MathsEngine.Core.Menu.Statistics
             Console.WriteLine("1. Calculate standard deviation from a set of numbers");
             Console.WriteLine("2. Calculate standard deviation from a frequency table with discontinuous values");
             Console.WriteLine("3. Calculate standard deviation from a frequency table with continuous values");
-            Console.WriteLine("4. Main Menu");
+            Console.WriteLine("4. Back");
             int response = Parsing.GetMenuInput("Input: ", 4);
             Console.Clear();
 
@@ -37,7 +37,7 @@ namespace MathsEngine.Core.Menu.Statistics
                     Menu.MainMenu();
                     break;
                 case 4:
-                    Menu.MainMenu();
+                    Menu.StatisticsMenu();
                     break;
             }
         }
