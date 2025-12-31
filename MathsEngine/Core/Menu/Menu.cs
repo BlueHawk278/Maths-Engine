@@ -1,5 +1,4 @@
-﻿using System;
-using MathsEngine.Core.Menu.Mechanics;
+﻿using MathsEngine.Core.Menu.Mechanics;
 using MathsEngine.Core.Menu.Pure;
 using MathsEngine.Core.Menu.Statistics;
 using MathsEngine.Modules.Statistics.BivariateAnalysis;

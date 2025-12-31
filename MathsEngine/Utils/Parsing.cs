@@ -20,11 +20,11 @@ public class Parsing
 
     public static double GetDoubleInput(string prompt)
     {
-        Console.Write(prompt);
-        string input = Console.ReadLine()?.Trim();
-
         while (true)
         {
+            Console.Write(prompt);
+            string input = Console.ReadLine()?.Trim();
+
             if (!string.IsNullOrEmpty(input))
                 return Convert.ToDouble(input);
             Console.WriteLine("Invalid input. Try again");

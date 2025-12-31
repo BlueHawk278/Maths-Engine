@@ -31,7 +31,7 @@ namespace MathsEngine.Modules.Pure.Matrices
             {
                 for(int j = 0; j < NumCols; j++)
                 {
-                    double value = Parsing.GetDoubleInput($"Enter Matrix index [{i},{j}]");
+                    double value = Parsing.GetDoubleInput($"Enter Matrix index [{i},{j}]: ");
                     Matrix[i, j] = value;
                 }
             }

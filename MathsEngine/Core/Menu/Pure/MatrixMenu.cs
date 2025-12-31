@@ -14,11 +14,10 @@ namespace MathsEngine.Core.Menu.Pure
             Console.WriteLine("2. Subtract matrices");
             Console.WriteLine("3. Multiply a matrix by a number");
             Console.WriteLine("4. Divide a matrix by a number");
-            Console.WriteLine("5. Solving simple matrix equations");
-            Console.WriteLine("6. Multiply matrices by matrices");
-            Console.WriteLine("7. Calculate the determinant of a square matrix");
-            Console.WriteLine("8. Back");
-            int response = Parsing.GetMenuInput("Input: ", 8);
+            Console.WriteLine("5. Multiply matrices by matrices");
+            Console.WriteLine("6. Calculate the determinant of a square matrix");
+            Console.WriteLine("7. Back");
+            int response = Parsing.GetMenuInput("Input: ", 7);
 
             switch (response)
             {
@@ -35,15 +34,12 @@ namespace MathsEngine.Core.Menu.Pure
                     HandleScalarDivision();
                     break;
                 case 5:
-                    HandleMatrixEquations();
-                    break;
-                case 6:
                     HandleMatrixMultiplication();
                     break;
-                case 7:
+                case 6:
                     HandleDeterminant();
                     break;
-                case 8:
+                case 7:
                     Menu.PureMenu();
                     break;
             }
@@ -116,27 +112,6 @@ namespace MathsEngine.Core.Menu.Pure
             DisplayMatrix(result);
 
             Console.WriteLine("\nPress Enter to return to the menu.");
-            Console.ReadLine();
-        }
-
-        private static void HandleMatrixEquations() //X - matrix = matrix
-        {
-            Console.Clear(); // Matrix1 - x = Matrix 2
-
-            int rows1 = Parsing.GetIntInput("First Matrix - How many rows: ");
-            int columns1 = Parsing.GetIntInput("First Matrix - How many columns: ");
-            MatrixBase matrix1 = new MatrixBase(rows1, columns1);
-
-            int x = Parsing.GetIntInput("What is the value of X: ");
-
-            int rows2 = Parsing.GetIntInput("Second Matrix - How many rows: ");
-            int columns2 = Parsing.GetIntInput("Second Matrix - How many columns: ");
-            MatrixBase matrix2 = new MatrixBase(rows2, columns2);
-
-            var result = MatrixCalculator.MatrixEquations(matrix1, matrix2, x);
-            DisplayMatrix(result);
-
-            Console.WriteLine("Press Enter to return to the main menu.");
             Console.ReadLine();
         }
 
