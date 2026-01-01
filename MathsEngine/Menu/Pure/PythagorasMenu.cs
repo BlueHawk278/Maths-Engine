@@ -1,8 +1,7 @@
-﻿using System;
-using MathsEngine.Modules.Pure.PythagorasTheorem;
+﻿using MathsEngine.Modules.Pure.PythagorasTheorem;
 using MathsEngine.Utils;
 
-namespace MathsEngine.Core.Menu.Pure
+namespace MathsEngine.Menu.Pure
 {
     internal static class PythagorasMenu
     {
@@ -60,6 +59,12 @@ namespace MathsEngine.Core.Menu.Pure
                 Console.WriteLine("\nError: Invalid input. Please enter valid numbers for the side lengths.");
                 Console.ResetColor();
             }
+            catch (NullInputException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Invalid input. Please enter valid numbers for the side lengths.");
+                Console.ResetColor();
+            }
             catch (NegativeSideLengthException ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -84,7 +89,13 @@ namespace MathsEngine.Core.Menu.Pure
             catch (FormatException)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: Invalid input.Please enter valid numbers for the side lengths.");
+                Console.WriteLine("\nError: Invalid input. Please enter valid numbers for the side lengths.");
+                Console.ResetColor();
+            }
+            catch (NullInputException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Invalid input. Please enter valid numbers for the side lengths.");
                 Console.ResetColor();
             }
             catch (Exception ex) when (ex is NegativeSideLengthException || ex is HypotenuseNotLongestSideException)
@@ -113,6 +124,18 @@ namespace MathsEngine.Core.Menu.Pure
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nError: Invalid input. Please enter valid numbers for the side lengths.");
+                Console.ResetColor();
+            }
+            catch (NullInputException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Invalid input. Please enter valid numbers for the side lengths.");
+                Console.ResetColor();
+            }
+            catch (Exception ex) when (ex is NegativeSideLengthException || ex is HypotenuseNotLongestSideException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nError: {ex.Message}");
                 Console.ResetColor();
             }
         }

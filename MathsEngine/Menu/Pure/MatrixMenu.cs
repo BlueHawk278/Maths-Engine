@@ -1,8 +1,7 @@
 ﻿using MathsEngine.Modules.Pure.Matrices;
 using MathsEngine.Utils;
-using System;
 
-namespace MathsEngine.Core.Menu.Pure
+namespace MathsEngine.Menu.Pure
 {
     internal class MatrixMenu
     {

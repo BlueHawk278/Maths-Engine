@@ -1,12 +1,11 @@
-﻿using System;
-using MathsEngine.Modules.Pure.Trigonometry;
+﻿using MathsEngine.Modules.Pure.Trigonometry;
 using MathsEngine.Utils;
 
-namespace MathsEngine.Core.Menu.Pure
+namespace MathsEngine.Menu.Pure
 {
-    public class TrigonometryMenu
+    public class TrigonometryMenu // Implement a check method to check for a valid triangle
     {
-        public static void menu()
+        public static void Menu()
         {
             Console.Clear();
 
@@ -24,14 +23,14 @@ namespace MathsEngine.Core.Menu.Pure
                     HandleMissingAngle();
                     break;
                 case 3:
-                    Menu.PureMenu();
+                    MathsEngine.Menu.Menu.PureMenu();
                     break;
             }
 
             Console.WriteLine("\nPress Enter to return...");
             Console.ReadLine();
 
-            Menu.MainMenu();
+            MathsEngine.Menu.Menu.MainMenu();
         }
 
         private static void HandleMissingSide()
@@ -60,12 +59,22 @@ namespace MathsEngine.Core.Menu.Pure
                     sideToFindType = Parsing.GetSideType("Which side do you want to find? (Adjacent, Opposite): ");
                     break;
                 default:
-                    menu();
+                    Menu();
                     return;
             }
 
-            double result = Trigonometry.CalculateMissingSide(knownSideLength, angle, sideKnown, sideToFindType);
-            DisplayCalculation(result, $"{sideToFindType}");
+            var teachingResult =
+                TrigonometryTutor.CalculateMissingSideWithSteps(knownSideLength, angle, sideKnown, sideToFindType);
+
+            Console.Clear();
+            Console.WriteLine("--- Worked Solution ---\n");
+
+            foreach(var step in teachingResult.Steps)
+                Console.WriteLine(step);
+
+            Console.WriteLine($"\nFinal Answer: {teachingResult.Value:F2}");
+            Console.WriteLine("\nPress Enter to return to the Menu.");
+            Console.ReadLine();
         }
 
         private static void HandleMissingAngle()
@@ -79,14 +88,20 @@ namespace MathsEngine.Core.Menu.Pure
             SideType side2Type = Parsing.GetSideType("Enter the second side you know (Opposite, Adjacent, Hypotenuse): ");
             double? side2Length = Parsing.GetNullableDoubleInput("Enter the length of the second side: ");
 
-            double result = Trigonometry.CalculateMissingAngle(side1Length, side1Type, side2Length, side2Type);
-            DisplayCalculation(result, "Angle");
-        }
+            var teachingResult =
+                TrigonometryTutor.CalculateMissingAngleWithSteps(
+                        side1Length, side1Type, side2Length, side2Type);
 
-        private static void DisplayCalculation(double result, string calculatedItem) //
-        {
-            Console.WriteLine($"\n--- Calculation Result ---");
-            Console.WriteLine($"{calculatedItem}: {result:F2}");
+            Console.Clear();
+            Console.WriteLine("--- Worked Solution ---\n");
+
+            foreach (var step in teachingResult.Steps)
+            {
+                Console.WriteLine(step);
+            }
+
+            Console.WriteLine($"\nFinal Answer: {teachingResult.Value:F2}");
+            Console.ReadLine();
         }
     }
 }

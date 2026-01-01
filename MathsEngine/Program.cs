@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Core.Menu.Menu.MainMenu();
+            Menu.Menu.MainMenu();
         }
     }
 }

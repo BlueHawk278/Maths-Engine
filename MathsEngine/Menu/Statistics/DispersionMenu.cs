@@ -2,13 +2,12 @@
 using MathsEngine.Modules.Statistics.Dispersion.ContinuousTable;
 using MathsEngine.Modules.Statistics.Dispersion.FrequencyTable;
 using MathsEngine.Utils;
-using System;
 
 // TODO: Support for continuous ranges e.g. 4-6 7-9
 //       Working backwards from the mean to find a missing frequency
 //       Combining sets of data to find new means and standard deviations
 
-namespace MathsEngine.Core.Menu.Statistics
+namespace MathsEngine.Menu.Statistics
 {
     public class DispersionMenu
     {

@@ -21,7 +21,7 @@ namespace MathsEngine.Modules.Pure.PythagorasTheorem
                 (b is null ? 1 : 0);
 
             if (missingCount != 0)
-                throw new ArgumentException("No values should be missing for this calculation");
+                throw new NullInputException("No values should be missing for this calculation");
 
             if (a <= 0 || b <= 0)
                 throw new NegativeSideLengthException("Side lengths must not be negative or 0");
