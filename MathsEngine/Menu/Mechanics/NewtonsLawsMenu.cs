@@ -45,7 +45,7 @@ namespace MathsEngine.Menu.Mechanics
                 Console.WriteLine($"Error: {ex.Message}");
                 Console.ResetColor();
             }
-            catch (NullValuesException ex)
+            catch (NullMassException ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Error: {ex.Message}");

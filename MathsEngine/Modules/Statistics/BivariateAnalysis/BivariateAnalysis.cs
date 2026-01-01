@@ -1,45 +1,60 @@
-﻿using MathsEngine.Utils;
+﻿        using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 {
-    /// <summary>
-    /// Handles the user interface for the Bivariate Analysis feature.
-    /// </summary>
-    internal static class BivariateAnalysis
+    public class BivariateAnalysis
     {
         public static void Start()
         {
-            Console.Clear();
-            // --- 1. Handle all user input here ---
-            int numDataPoints = GetNumberOfDataPoints();
-            var scores1 = GetScoresFromUser(numDataPoints, "Score Set 1");
-            var scores2 = GetScoresFromUser(numDataPoints, "Score Set 2");
-
-            // --- 2. Create an INSTANCE of the calculator and run it ---
-            var calculator = new BivariateAnalysisCalculator(scores1, scores2);
-            calculator.Run();
-
-            // --- 3. Display the results from the calculator object ---
-            DisplayResults(calculator);
-
-            Console.WriteLine("\nPress Enter to return to the menu.");
-            Console.ReadLine();
-        }
-
-        private static int GetNumberOfDataPoints()
-        {
-            return Parsing.GetIntInput("How many data points would you like to enter?");
-        }
-
-        private static List<int> GetScoresFromUser(int count, string scoreName)
-        {
-            var scores = new List<int>();
-            Console.WriteLine($"\n--- Entering scores for {scoreName} ---");
-            for (int i = 0; i < count; i++)
+            try
             {
-                scores.Add(Parsing.GetIntInput($"Enter point {i + 1}: "));
+                Console.Clear();
+                Console.WriteLine("Bivariate Analysis - Spearman's Rank");
+                var scores1 = GetScores("Enter the first set of scores, separated by commas:");
+                var scores2 = GetScores("Enter the second set of scores, separated by commas:");
+
+                var calculator = new BivariateAnalysisCalculator(scores1, scores2);
+                calculator.Run();
+
+                DisplayResults(calculator);
             }
-            return scores;
+            catch (FormatException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Invalid input. Please ensure you enter only numbers separated by commas.");
+                Console.ResetColor();
+            }
+            catch (NullInputException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: One or both of the score sets were empty. Please provide data.");
+                Console.ResetColor();
+            }
+            catch (ListsNotSameSizeException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: The two sets of scores must contain the same number of values.");
+                Console.ResetColor();
+            }
+            catch (InsufficientDataException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: At least two pairs of scores are required to perform the analysis.");
+                Console.ResetColor();
+            }
+        }
+
+        private static List<int> GetScores(string prompt)
+        {
+            Console.WriteLine(prompt);
+            string input = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(input))
+                throw new NullInputException();
+
+            return input.Split(',')
+                        .Select(s => int.Parse(s.Trim()))
+                        .ToList();
         }
 
         private static void DisplayResults(BivariateAnalysisCalculator calc)

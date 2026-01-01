@@ -30,9 +30,13 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         public BivariateAnalysisCalculator(List<int> scores1, List<int> scores2)
         {
             if (scores1 == null || scores2 == null)
-                throw new NullInputException("Side lengths must not be negative");
+                throw new NullInputException();
+
             if (scores1.Count != scores2.Count)
-                throw new ListsNotSameSizeException("Side lengths must not be negative");
+                throw new ListsNotSameSizeException();
+
+            if (scores1.Count < 2)
+                throw new InsufficientDataException();
 
             _scores1 = scores1;
             _scores2 = scores2;
@@ -117,16 +121,15 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             double topLine = SumDifferenceSquared * 6;
             double bottomLine = _scores1.Count * (Math.Pow(_scores1.Count, 2) - 1);
 
-            if (bottomLine == 0) return 0;
-
+            // This check is safe now because the constructor ensures Count is >= 2
             return 1 - (topLine / bottomLine);
         }
-        
+
         private Correlation GetCorrelation()
         {
             return CorrelationExtensions.getCorrelation(CorrelationCoefficient);
         }
-        
+
         private string GetCorrelationString()
         {
             return CorrelationExtensions.displayString(Correlation);

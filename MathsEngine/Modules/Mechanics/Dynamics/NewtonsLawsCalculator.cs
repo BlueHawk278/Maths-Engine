@@ -13,7 +13,7 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
                 (a is null ? 1 : 0);
 
             if (missingCount != 1)
-                throw new ArgumentException();
+                throw new NullInputException("Must be ONE missing value to perform the calculation");
 
             if (m <= 0)
                 throw new NullMassException("Mass must be a positive number.");
