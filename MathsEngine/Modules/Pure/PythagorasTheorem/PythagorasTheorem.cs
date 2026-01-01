@@ -21,10 +21,10 @@ namespace MathsEngine.Modules.Pure.PythagorasTheorem
                 (b is null ? 1 : 0);
 
             if (missingCount != 0)
-                throw new NullInputException("No values should be missing for this calculation");
+                throw new NullInputException();
 
             if (a <= 0 || b <= 0)
-                throw new NegativeSideLengthException("Side lengths must not be negative or 0");
+                throw new NegativeSideLengthException();
 
             double aSquared = Math.Pow(Convert.ToDouble(a), 2);
             double bSquared = Math.Pow(Convert.ToDouble(b), 2);
@@ -46,13 +46,13 @@ namespace MathsEngine.Modules.Pure.PythagorasTheorem
                 (knownSide is null ? 1 : 0);
 
             if (missingCount != 0)
-                throw new ArgumentException("No values should be missing for this calculation");
+                throw new ArgumentException();
 
             if (hypotenuse <= 0 || knownSide <= 0)
-                throw new NegativeSideLengthException("Side lengths must not be negative or 0");
+                throw new NegativeSideLengthException();
 
             if (knownSide >= hypotenuse)
-                throw new HypotenuseNotLongestSideException("Hypotenuse must be the longest side");
+                throw new HypotenuseNotLongestSideException();
 
             double hSquared = Math.Pow(Convert.ToDouble(hypotenuse), 2);
             double aSquared = Math.Pow(Convert.ToDouble(knownSide), 2);
@@ -75,13 +75,13 @@ namespace MathsEngine.Modules.Pure.PythagorasTheorem
                 (b is null ? 1 : 0);
 
             if (missingCount != 0)
-                throw new ArgumentException("No values should be missing for this calculation");
+                throw new ArgumentException();
 
             if (hypotenuse <= 0 || a <= 0 || b <= 0)
-                throw new NegativeSideLengthException("Side lengths must not be negative or 0");
+                throw new NegativeSideLengthException();
 
             if (hypotenuse <= a || hypotenuse <= b)
-                throw new HypotenuseNotLongestSideException("Hypotenuse must be the longest side");
+                throw new HypotenuseNotLongestSideException();
 
             double A = Convert.ToDouble(a);
             double B = Convert.ToDouble(b);

@@ -81,7 +81,7 @@ namespace MathsEngine.Utils
     // Dynamics
     public class NullMassException : Exception
     {
-        public NullMassException() : base("Mass cannot be 0") { }
+        public NullMassException() : base("Mass must be a positive number") { }
         public NullMassException(string message) : base(message) { }
     }
 }

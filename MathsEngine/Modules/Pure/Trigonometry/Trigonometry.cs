@@ -20,7 +20,7 @@ namespace MathsEngine.Modules.Pure.Trigonometry
                 (angle is null ? 1 : 0);
 
             if (missingCount != 0)
-                throw new NullInputException("There should be no missing values");
+                throw new NullInputException();
 
             if (knownSideLength <= 0)
                 throw new NegativeSideLengthException();
@@ -82,7 +82,7 @@ namespace MathsEngine.Modules.Pure.Trigonometry
                 (side2Length is null ? 1 : 0);
 
             if (missingCount != 0)
-                throw new NullInputException("There should be no missing values");
+                throw new NullInputException();
 
             if (side1Length  <= 0 || side2Length <= 0)
                 throw new NegativeSideLengthException();

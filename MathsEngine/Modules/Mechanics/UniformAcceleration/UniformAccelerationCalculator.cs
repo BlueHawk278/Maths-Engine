@@ -8,7 +8,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
         public static double CalculateAverageVelocity(double? initialVelocity, double? finalVelocity)
         {
             if (initialVelocity is null || finalVelocity is null)
-                throw new NullInputException("Side lengths must not be negative");
+                throw new NullInputException();
 
             return (Convert.ToDouble(initialVelocity) + Convert.ToDouble(finalVelocity)) / 2;
         }
@@ -22,7 +22,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 (t is null ? 1 : 0);
 
             if (missingCount > 1)
-                throw new Exception("Too many invalid inputs to calculate.");
+                throw new Exception();
 
             if (v == null) // v = u + at 
                 return Convert.ToDouble(Convert.ToDouble(u) + Convert.ToDouble(a) * Convert.ToDouble(t));
@@ -47,7 +47,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 (s is null ? 1 : 0);
 
             if (missingCount > 1)
-                throw new Exception("Too many invalid inputs to calculate.");
+                throw new Exception();
 
             if (v == null) // v^2 = u^2 + 2as
                 return Convert.ToDouble(Math.Sqrt(Math.Pow(Convert.ToDouble(u), 2) + 2 * (Convert.ToDouble(a) * Convert.ToDouble(s))));
@@ -79,7 +79,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 (t is null ? 1 : 0);
 
             if (missingCount > 1)
-                throw new Exception("Too many invalid inputs to calculate.");
+                throw new Exception();
 
             if (s == null) // s = 0.5 * (u + v) * t
                 return Convert.ToDouble((Convert.ToDouble(u) + Convert.ToDouble(v)) * Convert.ToDouble(t) / 2);
@@ -116,7 +116,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 (t is null ? 1 : 0);
 
             if (missingCount > 1)
-                throw new Exception("Too many invalid inputs to calculate.");
+                throw new Exception();
 
             if (s == null) // s = ut + 0.5at^2
             {
