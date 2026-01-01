@@ -51,7 +51,7 @@ namespace MathsEngine.Menu
                     PythagorasMenu.menu();
                     break;
                 case 2:
-                    TrigonometryMenu.menu();
+                    TrigonometryMenu.Menu();
                     break;
                 case 3:
                     MatrixMenu.menu();

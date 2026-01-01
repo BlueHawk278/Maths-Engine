@@ -63,18 +63,55 @@ namespace MathsEngine.Menu.Pure
                     return;
             }
 
-            var teachingResult =
-                TrigonometryTutor.CalculateMissingSideWithSteps(knownSideLength, angle, sideKnown, sideToFindType);
+            try
+            {
+                /*
+                var teachingResult =
+                    TrigonometryTutor.CalculateMissingSideWithSteps(knownSideLength, angle, sideKnown, sideToFindType);
 
-            Console.Clear();
-            Console.WriteLine("--- Worked Solution ---\n");
+                Console.Clear();
+                Console.WriteLine("--- Worked Solution ---\n");
 
-            foreach(var step in teachingResult.Steps)
-                Console.WriteLine(step);
+                foreach(var step in teachingResult.Steps)
+                    Console.WriteLine(step);
 
-            Console.WriteLine($"\nFinal Answer: {teachingResult.Value:F2}");
-            Console.WriteLine("\nPress Enter to return to the Menu.");
-            Console.ReadLine();
+                Console.WriteLine($"\nFinal Answer: {teachingResult.Value:F2}");
+                Console.WriteLine("\nPress Enter to return to the Menu.");
+                Console.ReadLine();
+                */
+            }
+            catch (DuplicateSideException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(
+                    $"\nError: You cannot find the side you already know. Please choose a different side to find.");
+                Console.ResetColor();
+            }
+            catch (AcuteAngleException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(
+                    $"\nError: The angle in a right-angled triangle must be greater than 0 and less than 90 degrees.");
+                Console.ResetColor();
+            }
+            catch (NegativeSideLengthException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nError: The length of a side cannot be negative or zero.");
+                Console.ResetColor();
+            }
+            catch (NullInputException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nError: You must provide a value for all inputs.");
+                Console.ResetColor();
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nAn unexpected error occurred: {e.Message}");
+                Console.ResetColor();
+            }
         }
 
         private static void HandleMissingAngle()
@@ -88,20 +125,55 @@ namespace MathsEngine.Menu.Pure
             SideType side2Type = Parsing.GetSideType("Enter the second side you know (Opposite, Adjacent, Hypotenuse): ");
             double? side2Length = Parsing.GetNullableDoubleInput("Enter the length of the second side: ");
 
-            var teachingResult =
-                TrigonometryTutor.CalculateMissingAngleWithSteps(
-                        side1Length, side1Type, side2Length, side2Type);
-
-            Console.Clear();
-            Console.WriteLine("--- Worked Solution ---\n");
-
-            foreach (var step in teachingResult.Steps)
+            try
             {
-                Console.WriteLine(step);
-            }
+                /*
+                var teachingResult =
+                    TrigonometryTutor.CalculateMissingAngleWithSteps(
+                            side1Length, side1Type, side2Length, side2Type);
 
-            Console.WriteLine($"\nFinal Answer: {teachingResult.Value:F2}");
-            Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine("--- Worked Solution ---\n");
+
+                foreach (var step in teachingResult.Steps)
+                {
+                    Console.WriteLine(step);
+                }
+
+                Console.WriteLine($"\nFinal Answer: {teachingResult.Value:F2}");
+                Console.ReadLine();
+                */
+            }
+            catch (DuplicateSideException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(
+                    $"\nError: You cannot find the side you already know. Please choose a different side to find.");
+                Console.ResetColor();
+            }
+            catch (NegativeSideLengthException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nError: The length of a side cannot be negative or zero.");
+                Console.ResetColor();
+            }
+            catch (NullInputException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nError: You must provide a value for all inputs.");
+                Console.ResetColor();
+            }
+            catch (HypotenuseNotLongestSideException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nError: The hypotenuse must be the longest side");
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nAn unexpected error occurred: {e.Message}");
+                Console.ResetColor();
+            }
         }
     }
 }

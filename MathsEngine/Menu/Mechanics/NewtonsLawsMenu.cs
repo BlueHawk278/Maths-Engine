@@ -8,7 +8,7 @@ namespace MathsEngine.Menu.Mechanics
 {
     public class NewtonsLawsMenu
     {
-        public static void Menu()
+        public static void menu()
         {
             Console.WriteLine("1. Calculate a missing value (F=ma)");
             Console.WriteLine("2. Check a calculation");
@@ -29,13 +29,54 @@ namespace MathsEngine.Menu.Mechanics
             }
         }
 
-        
-
         private static void HandleFMA_Equations()
-        
+        {
+            try
+            {
+                double? force = Parsing.GetNullableDoubleInput("Enter the force");
+                double? mass = Parsing.GetNullableDoubleInput("Enter the mass");
+                double? acceleration = Parsing.GetNullableDoubleInput("Enter the acceleration");
+
+                PerformCalculation(force, mass, acceleration);
+            }
+            catch (NullInputException ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.ResetColor();
+            }
+            catch (NullValuesException ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.ResetColor();
+            }
+            catch (FormatException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error: Invalid input. Please enter valid numbers.");
+                Console.ResetColor();
+            }
+            // A general catch for any other unexpected errors
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                Console.ResetColor();
+            }
+            finally
+            {
+                Console.WriteLine("\nPress any key to return to the main menu...");
+                Console.ReadKey();
+
+                Menu.MainMenu();
+            }
+        }
 
         private static void HandleCheckCalculation()
-                    {
+        {
+            try
+            {
                 double? force = Parsing.GetNullableDoubleInput("Enter the force");
                 double? mass = Parsing.GetNullableDoubleInput("Enter the mass");
                 double? acceleration = Parsing.GetNullableDoubleInput("Enter the acceleration");
@@ -75,9 +116,41 @@ namespace MathsEngine.Menu.Mechanics
             }
         }
 
-        private static void
-
         private static void PerformCalculation(double? F, double? M, double? A)
-        
+        {
+            int missingCount =
+                (F is null ? 1 : 0) +
+                (M is null ? 1 : 0) +
+                (A is null ? 1 : 0);
+
+            if (missingCount > 1)
+                throw new ArgumentException("Calculation is not possible. Only one value can be unknown.");
+
+            if (missingCount == 0)
+            {
+                Console.WriteLine("\nAll values provided. Use 'Check a calculation' to verify them.");
+                return;
+            }
+
+            double? calculatedValue = Modules.Mechanics.Dynamics.NewtonsLawsCalculator.CalculateFma(F, M, A);
+
+            if (F is null) F = calculatedValue;
+            else if (M is null) M = calculatedValue;
+            else if (A is null) A = calculatedValue;
+
+            Dictionary<string, double?> resultDictionary = new Dictionary<string, double?>()
+            {
+                {"Resultant Force (F)", F},
+                {"Mass (M)", M},
+                {"Acceleration (A)", A}
+            };
+
+            Display.DisplayResult(resultDictionary);
+
+            Console.WriteLine("\nPress Enter to return to the main menu.");
+            Console.ReadLine();
+
+            Menu.MainMenu();
+        }
     }
 }

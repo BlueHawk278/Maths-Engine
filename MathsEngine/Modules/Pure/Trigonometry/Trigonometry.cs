@@ -20,7 +20,7 @@ namespace MathsEngine.Modules.Pure.Trigonometry
                 (angle is null ? 1 : 0);
 
             if (missingCount != 0)
-                throw new Exception("There should be no missing values");
+                throw new NullInputException("There should be no missing values");
 
             if (knownSideLength <= 0)
                 throw new NegativeSideLengthException();
@@ -82,10 +82,13 @@ namespace MathsEngine.Modules.Pure.Trigonometry
                 (side2Length is null ? 1 : 0);
 
             if (missingCount != 0)
-                throw new Exception("There should be no missing values");
+                throw new NullInputException("There should be no missing values");
 
             if (side1Length  <= 0 || side2Length <= 0)
                 throw new NegativeSideLengthException();
+
+            if (side1Type == side2Type)
+                throw new DuplicateSideException();
 
             if (side1Type == SideType.Hypotenuse && side1Length <= side2Length)
                 throw new HypotenuseNotLongestSideException();

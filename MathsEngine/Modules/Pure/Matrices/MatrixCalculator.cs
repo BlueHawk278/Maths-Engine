@@ -173,7 +173,7 @@ namespace MathsEngine.Modules.Pure.Matrices
                 throw new NullInputException("Side lengths must not be negative");
 
             if (matrix.NumCols != 2 || matrix.NumRows != 2)
-                throw new ArgumentException("Must be a 2x2 Square matrix");
+                throw new NotSquareMatrixException("Must be a 2x2 Square matrix");
 
             double ad = matrix.Matrix[0, 0] * matrix.Matrix[1, 1];
             double bc = matrix.Matrix[0, 1] * matrix.Matrix[1, 0];

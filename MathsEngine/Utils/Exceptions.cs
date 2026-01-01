@@ -62,6 +62,11 @@ namespace MathsEngine.Utils
         public IncompatibleMatrixMultiplicationException(string message) : base(message) { }
     }
 
+    public class NotSquareMatrixException : Exception
+    {
+        public NotSquareMatrixException(string message) : base(message) { }
+    }
+
     ///// Statistics
 
     // Bivariate Analysis
