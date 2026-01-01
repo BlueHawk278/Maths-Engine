@@ -62,6 +62,11 @@ namespace MathsEngine.Utils
         public IncompatibleMatrixMultiplicationException(string message) : base(message) { }
     }
 
+    public class NotSquareMatrixException : Exception
+    {
+        public NotSquareMatrixException(string message) : base(message) { }
+    }
+
     ///// Statistics
 
     // Bivariate Analysis
@@ -71,12 +76,35 @@ namespace MathsEngine.Utils
         public ListsNotSameSizeException(string message) : base(message) { }
     }
 
+    public class InsufficientDataException : Exception
+    {
+        public InsufficientDataException() : base("There is insufficient input to perform a calculation"){ }
+        public InsufficientDataException(string message) : base(message){ }
+    }
+
+    // Dispersion
+
+    /// <summary>
+    /// Exception thrown when a calculation is attempted on an empty set of data.
+    /// </summary>
+    public class EmptyDataSetException : Exception { }
+
+    /// <summary>
+    /// Exception thrown when a frequency is negative.
+    /// </summary>
+    public class InvalidFrequencyException : Exception { }
+
+    /// <summary>
+    /// Exception thrown when a class interval string is in an invalid format.
+    /// </summary>
+    public class InvalidClassIntervalFormatException : Exception { }
+
     ///// Mechanics
 
     // Dynamics
     public class NullMassException : Exception
     {
-        public NullMassException() : base("Mass cannot be 0") { }
+        public NullMassException() : base("Mass must be a positive number") { }
         public NullMassException(string message) : base(message) { }
     }
 }

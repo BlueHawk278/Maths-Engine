@@ -46,7 +46,7 @@ namespace MathsEngine.Modules.Pure.Matrices
         public static MatrixBase GetIdentityMatrix(int size)
         {
             if (size <= 0)
-                throw new ArgumentException("Size must be a positive integer.");
+                throw new ArgumentException();
 
             var identityMatrix = new MatrixBase(size, size);
 

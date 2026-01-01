@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using MathsEngine.Utils;
+﻿using MathsEngine.Utils;
 
-namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
+namespace MathsEngine.Modules.Statistics.Dispersion
 {
     public class ArrayOfNumbersCalculator : IStandardDeviation
     {
@@ -20,9 +17,12 @@ namespace MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers
 
         public ArrayOfNumbersCalculator(List<double> originalValues)
         {
-            if (originalValues == null || originalValues.Count() == 0)
-                throw new NullInputException("Side lengths must not be negative");
-            
+            if (originalValues == null)
+                throw new NullInputException();
+
+            if (originalValues.Count == 0)
+                throw new EmptyDataSetException();
+
             _originalValues = originalValues;
             _sortedValues = new List<double>(originalValues);
             _sortedValues.Sort();

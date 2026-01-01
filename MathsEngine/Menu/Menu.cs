@@ -1,10 +1,10 @@
-﻿using MathsEngine.Core.Menu.Mechanics;
-using MathsEngine.Core.Menu.Pure;
-using MathsEngine.Core.Menu.Statistics;
+﻿using MathsEngine.Menu.Mechanics;
+using MathsEngine.Menu.Pure;
+using MathsEngine.Menu.Statistics;
 using MathsEngine.Modules.Statistics.BivariateAnalysis;
 using MathsEngine.Utils;
 
-namespace MathsEngine.Core.Menu
+namespace MathsEngine.Menu
 {
     internal static class Menu // check, also test everything in the menu
     {
@@ -51,7 +51,7 @@ namespace MathsEngine.Core.Menu
                     PythagorasMenu.menu();
                     break;
                 case 2:
-                    TrigonometryMenu.menu();
+                    TrigonometryMenu.Menu();
                     break;
                 case 3:
                     MatrixMenu.menu();

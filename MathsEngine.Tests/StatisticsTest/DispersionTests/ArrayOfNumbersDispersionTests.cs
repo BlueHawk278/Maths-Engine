@@ -1,4 +1,4 @@
-using MathsEngine.Modules.Statistics.Dispersion.ArrayOfNumbers;
+using MathsEngine.Modules.Statistics.Dispersion;
 using MathsEngine.Utils;
 using Xunit;
 

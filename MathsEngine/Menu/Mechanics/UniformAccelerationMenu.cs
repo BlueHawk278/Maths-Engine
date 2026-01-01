@@ -1,7 +1,7 @@
 ﻿using MathsEngine.Modules.Mechanics.UniformAcceleration;
 using MathsEngine.Utils;
 
-namespace MathsEngine.Core.Menu.Mechanics
+namespace MathsEngine.Menu.Mechanics
 {
     public class UniformAccelerationMenu
     {

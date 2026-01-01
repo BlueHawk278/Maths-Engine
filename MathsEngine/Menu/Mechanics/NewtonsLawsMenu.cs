@@ -4,7 +4,7 @@
 // Newton's 2nd Law: The resultant force is proportional to the acceleration - F = m*a
 // Newton's 3rd Law: Every action has an equal but opposite reaction.
 
-namespace MathsEngine.Core.Menu.Mechanics
+namespace MathsEngine.Menu.Mechanics
 {
     public class NewtonsLawsMenu
     {
@@ -45,7 +45,7 @@ namespace MathsEngine.Core.Menu.Mechanics
                 Console.WriteLine($"Error: {ex.Message}");
                 Console.ResetColor();
             }
-            catch (NullValuesException ex)
+            catch (NullMassException ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Error: {ex.Message}");
@@ -135,8 +135,8 @@ namespace MathsEngine.Core.Menu.Mechanics
             double? calculatedValue = Modules.Mechanics.Dynamics.NewtonsLawsCalculator.CalculateFma(F, M, A);
 
             if (F is null) F = calculatedValue;
-            else if(M is null) M = calculatedValue;
-            else if(A is null) A = calculatedValue;
+            else if (M is null) M = calculatedValue;
+            else if (A is null) A = calculatedValue;
 
             Dictionary<string, double?> resultDictionary = new Dictionary<string, double?>()
             {

@@ -1,8 +1,7 @@
 ﻿using MathsEngine.Modules.Pure.Matrices;
 using MathsEngine.Utils;
-using System;
 
-namespace MathsEngine.Core.Menu.Pure
+namespace MathsEngine.Menu.Pure
 {
     internal class MatrixMenu
     {
@@ -62,8 +61,22 @@ namespace MathsEngine.Core.Menu.Pure
             int columns2 = Parsing.GetIntInput("Second Matrix - How many columns: ");
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
-            var result = MatrixCalculator.AddMatrix(matrix1, matrix2);
-            DisplayMatrix(result);
+            try
+            {
+                var result = MatrixCalculator.AddMatrix(matrix1, matrix2);
+                DisplayMatrix(result);
+            }
+            catch (NullInputException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Empty Input - Please enter values for the matrices.");
+                Console.ResetColor();
+            }
+            catch (IncompatibleMatrixAdditionException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Matrices are not the same size.");
+            }
         }
         private static void HandleSubtractMatrix()
         {
@@ -77,8 +90,22 @@ namespace MathsEngine.Core.Menu.Pure
             int columns2 = Parsing.GetIntInput("Second Matrix - How many columns: ");
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
-            var result = MatrixCalculator.SubtractMatrix(matrix1, matrix2);
-            DisplayMatrix(result);
+            try
+            {
+                var result = MatrixCalculator.SubtractMatrix(matrix1, matrix2);
+                DisplayMatrix(result);
+            }
+            catch (NullInputException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Empty Input - Please enter values for the matrices.");
+                Console.ResetColor();
+            }
+            catch (IncompatibleMatrixAdditionException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Matrices are not the same size.");
+            }
         }
 
         private static void HandleScalarMultiplication()
@@ -91,8 +118,18 @@ namespace MathsEngine.Core.Menu.Pure
             int number = Parsing.GetIntInput("What number would you like to multiply this matrix by: ");
 
             MatrixBase matrix = new MatrixBase(rows, columns);
-            var result = MatrixCalculator.ScalarMultiplication(matrix, number);
-            DisplayMatrix(result);
+
+            try
+            {
+                var result = MatrixCalculator.ScalarMultiplication(matrix, number);
+                DisplayMatrix(result);
+            }
+            catch (NullInputException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Empty Input - Please enter values for the matrices.");
+                Console.ResetColor();
+            }
         }
         private static void HandleScalarDivision()
         {
@@ -104,8 +141,18 @@ namespace MathsEngine.Core.Menu.Pure
             int number = Parsing.GetIntInput("What number would you like to divide this matrix by: ");
 
             MatrixBase matrix = new MatrixBase(rows, columns);
-            var result = MatrixCalculator.ScalarDivision(matrix, number);
-            DisplayMatrix(result);
+
+            try
+            {
+                var result = MatrixCalculator.ScalarDivision(matrix, number);
+                DisplayMatrix(result);
+            }
+            catch (NullInputException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Empty Input - Please enter values for the matrices.");
+                Console.ResetColor();
+            }
         }
 
         private static void HandleMatrixMultiplication()
@@ -120,8 +167,17 @@ namespace MathsEngine.Core.Menu.Pure
             int columns2 = Parsing.GetIntInput("Second Matrix - How many columns: ");
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
 
-            var result = MatrixCalculator.MatrixMultiplication(matrix1, matrix2);
-            DisplayMatrix(result);
+            try
+            {
+                var result = MatrixCalculator.MatrixMultiplication(matrix1, matrix2);
+                DisplayMatrix(result);
+            }
+            catch (IncompatibleMatrixMultiplicationException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: These matrices are not compatible for multiplication");
+                Console.ResetColor();
+            }
         }
 
         private static void HandleDeterminant()
@@ -130,22 +186,47 @@ namespace MathsEngine.Core.Menu.Pure
 
             MatrixBase matrix = new MatrixBase(2, 2);
 
-            var determinant = MatrixCalculator.CalculateDeterminant(matrix);
-            Console.WriteLine($"Determinant: {determinant}");
+            try
+            {
+                var determinant = MatrixCalculator.CalculateDeterminant(matrix);
+                Console.WriteLine($"Determinant: {determinant}");
+            }
+            catch (NullInputException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Null Input - Please enter a valid matrix please");
+                Console.ResetColor();
+            }
         }
 
         private static void DisplayMatrix(double[,] matrix)
         {
-            Console.WriteLine("\nResult Matrix: ");
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            try
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    Console.Write(matrix[i, j] + " ");
-                }
 
-                Console.WriteLine();
+                Console.WriteLine("\nResult Matrix: ");
+
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    for (int j = 0; j < matrix.GetLength(1); j++)
+                    {
+                        Console.Write(matrix[i, j] + " ");
+                    }
+
+                    Console.WriteLine();
+                }
+            }
+            catch (NullInputException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Null Input - Please enter a valid matrix please");
+                Console.ResetColor();
+            }
+            catch (NotSquareMatrixException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nError: Must be a square matrix to calculate the determinant");
+                Console.ResetColor();
             }
         }
     }

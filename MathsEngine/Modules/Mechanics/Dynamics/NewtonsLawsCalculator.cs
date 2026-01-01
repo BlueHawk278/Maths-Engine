@@ -13,10 +13,10 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
                 (a is null ? 1 : 0);
 
             if (missingCount != 1)
-                throw new ArgumentException("Exactly one value must be null to perform a calculation.");
+                throw new NullInputException("Must be ONE missing value to perform the calculation");
 
             if (m <= 0)
-                throw new ArgumentException("Mass must be a positive number.");
+                throw new NullMassException("Mass must be a positive number.");
 
             if (f is null) // F = m * a
                 return m.Value * a.Value;
@@ -45,7 +45,7 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
                 throw new ArgumentException("All values must be provided to check a calculation.");
 
             if (m <= 0)
-                throw new ArgumentException("Mass must be a positive number.");
+                throw new NullMassException("Mass must be a positive number.");
 
             return Math.Abs(f.Value - (m.Value * a.Value)) < 1e-9;
         }
