@@ -2,9 +2,18 @@
 
 namespace MathsEngine.Modules.Mechanics.UniformAcceleration
 {
+    /// <summary>
+    /// Provides methods for calculations involving uniform acceleration, commonly known as the SUVAT equations.
+    /// </summary>
     public class UniformAccelerationCalculator
     {
-
+        /// <summary>
+        /// Calculates the average velocity given an initial and final velocity.
+        /// </summary>
+        /// <param name="initialVelocity">The initial velocity (u).</param>
+        /// <param name="finalVelocity">The final velocity (v).</param>
+        /// <returns>The average velocity.</returns>
+        /// <exception cref="NullInputException">Thrown when either initial or final velocity is null.</exception>
         public static double CalculateAverageVelocity(double? initialVelocity, double? finalVelocity)
         {
             if (initialVelocity is null || finalVelocity is null)
@@ -13,6 +22,16 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
             return (Convert.ToDouble(initialVelocity) + Convert.ToDouble(finalVelocity)) / 2;
         }
 
+        /// <summary>
+        /// Solves the equation of motion v = u + at for the single unknown variable.
+        /// </summary>
+        /// <param name="v">Final velocity. Can be null if it's the value to be calculated.</param>
+        /// <param name="u">Initial velocity. Can be null if it's the value to be calculated.</param>
+        /// <param name="a">Acceleration. Can be null if it's the value to be calculated.</param>
+        /// <param name="t">Time. Can be null if it's the value to be calculated.</param>
+        /// <returns>The calculated value of the missing variable, or null if all variables are provided.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if more than one input is null.</exception>
+        /// <exception cref="DivideByZeroException">Thrown if a division by zero occurs during calculation.</exception>
         public static double? CalculateVUAT(double? v, double? u, double? a, double? t)
         {
             int missingCount =
@@ -22,7 +41,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 (t is null ? 1 : 0);
 
             if (missingCount > 1)
-                throw new Exception();
+                throw new InvalidOperationException("Exactly one parameter must be null to be calculated.");
 
             if (v == null) // v = u + at 
                 return Convert.ToDouble(Convert.ToDouble(u) + Convert.ToDouble(a) * Convert.ToDouble(t));
@@ -31,13 +50,34 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
                 return Convert.ToDouble(Convert.ToDouble(v) - Convert.ToDouble(a) * Convert.ToDouble(t));
 
             if (a == null) // a = v - u / t
-                return Convert.ToDouble((Convert.ToDouble(v) - Convert.ToDouble(u)) / Convert.ToDouble(t));
+            {
+                double time = Convert.ToDouble(t);
+                if (time == 0)
+                    throw new DivideByZeroException("Time (t) cannot be zero when calculating acceleration.");
+                return Convert.ToDouble((Convert.ToDouble(v) - Convert.ToDouble(u)) / time);
+            }
 
             if (t == null) // t = v - u / a
-                return Convert.ToDouble((Convert.ToDouble(v) - Convert.ToDouble(u)) / Convert.ToDouble(a));
+            {
+                double acceleration = Convert.ToDouble(a);
+                if (acceleration == 0)
+                    throw new DivideByZeroException("Acceleration (a) cannot be zero when calculating time.");
+                return Convert.ToDouble((Convert.ToDouble(v) - Convert.ToDouble(u)) / acceleration);
+            }
 
             return null;
         }
+
+        /// <summary>
+        /// Solves the equation of motion v^2 = u^2 + 2as for the single unknown variable.
+        /// </summary>
+        /// <param name="v">Final velocity. Can be null if it's the value to be calculated.</param>
+        /// <param name="u">Initial velocity. Can be null if it's the value to be calculated.</param>
+        /// <param name="a">Acceleration. Can be null if it's the value to be calculated.</param>
+        /// <param name="s">Displacement. Can be null if it's the value to be calculated.</param>
+        /// <returns>The calculated value of the missing variable, or null if all variables are provided.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if more than one input is null.</exception>
+        /// <exception cref="DivideByZeroException">Thrown if a division by zero occurs during calculation.</exception>
         public static double? CalculateVUAS(double? v, double? u, double? a, double? s)
         {
             int missingCount =
@@ -70,6 +110,17 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
 
             return null;
         }
+
+        /// <summary>
+        /// Solves the equation of motion s = 0.5 * (u + v) * t for the single unknown variable.
+        /// </summary>
+        /// <param name="s">Displacement. Can be null if it's the value to be calculated.</param>
+        /// <param name="u">Initial velocity. Can be null if it's the value to be calculated.</param>
+        /// <param name="v">Final velocity. Can be null if it's the value to be calculated.</param>
+        /// <param name="t">Time. Can be null if it's the value to be calculated.</param>
+        /// <returns>The calculated value of the missing variable, or null if all variables are provided.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if more than one input is null.</exception>
+        /// <exception cref="DivideByZeroException">Thrown if a division by zero occurs during calculation.</exception>
         public static double? CalculateSUVT(double? s, double? u, double? v, double? t)
         {
             int missingCount =
@@ -107,6 +158,17 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
 
             return null;
         }
+
+        /// <summary>
+        /// Solves the equation of motion s = ut + 0.5at^2 for the single unknown variable.
+        /// </summary>
+        /// <param name="s">Displacement. Can be null if it's the value to be calculated.</param>
+        /// <param name="u">Initial velocity. Can be null if it's the value to be calculated.</param>
+        /// <param name="a">Acceleration. Can be null if it's the value to be calculated.</param>
+        /// <param name="t">Time. Can be null if it's the value to be calculated.</param>
+        /// <returns>The calculated value of the missing variable, or null if all variables are provided. When calculating time (t), returns the positive, non-zero solution.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if more than one input is null, or if no real solution exists for time (t).</exception>
+        /// <exception cref="DivideByZeroException">Thrown if a division by zero occurs during calculation.</exception>
         public static double? CalculateSUTAT(double? s, double? u, double? a, double? t)
         {
             int missingCount =
