@@ -2,22 +2,30 @@
 
 namespace MathsEngine.Utils
 {
-    // General
+    ///// General
+
+    /// <summary>
+    /// Exception thrown when the input entered to a function is null or empty.
+    /// </summary>
     public class NullInputException : Exception
     {
         public NullInputException() : base("Values entered must not be null") { }
         public NullInputException(string message) : base(message) { }
     }
 
+    /// <summary>
+    /// Exception thrown when the input entered has too many null values for a calculation.
+    /// </summary>
     public class NullValuesException : Exception
     {
-        public NullValuesException() : base("Cannot have more than one null value") { }
+        public NullValuesException() : base("Too many null values") { }
         public NullValuesException(string message) : base(message) { }
     }
 
     ///// PURE
     
     // Pythagoras Theorem
+
     public class NegativeSideLengthException : Exception
     {
         public NegativeSideLengthException() : base("Side lengths must be positive.") { }
@@ -31,12 +39,19 @@ namespace MathsEngine.Utils
     }
 
     // Trigonometry
+
+    /// <summary>
+    /// Exception thrown when an acute angle isn't between 0 and 90.
+    /// </summary>
     public class AcuteAngleException : Exception
     {
         public AcuteAngleException() : base("Angle must be between 0 and 90 degrees") { }
         public AcuteAngleException(string message) : base(message) { }
     }
 
+    /// <summary>
+    /// Exception thrown when the same side is entered to a calculation twice.
+    /// </summary>
     public class DuplicateSideException : Exception
     {
         public DuplicateSideException() : base("Known side and the side to find cannot be the same") { }
@@ -44,24 +59,33 @@ namespace MathsEngine.Utils
     }
 
     // Matrices
+
+    /// <summary>
+    /// Exceptions thrown when the matrices are not the same size.
+    /// </summary>
     public class IncompatibleMatrixAdditionException : Exception
     {
         public IncompatibleMatrixAdditionException() : base("Matrices can't be added, they are not the same size") { }
         public IncompatibleMatrixAdditionException(string message) : base(message) { }
     }
-
     public class IncompatibleSubtractionMatricesException : Exception
     {
         public IncompatibleSubtractionMatricesException() : base("Matrices can't be subtracted, they are not the same size") { }
         public IncompatibleSubtractionMatricesException(string message) : base(message) { }
     }
 
+    /// <summary>
+    /// Exception thrown when the matrices are not compatible for multiplication.
+    /// </summary>
     public class IncompatibleMatrixMultiplicationException : Exception
     {
         public IncompatibleMatrixMultiplicationException() : base("Cannot multiply these matrices") { }
         public IncompatibleMatrixMultiplicationException(string message) : base(message) { }
     }
 
+    /// <summary>
+    /// Exception thrown when the user tries to calculate the determinant of a non-square matrix.
+    /// </summary>
     public class NotSquareMatrixException : Exception
     {
         public NotSquareMatrixException(string message) : base(message) { }
@@ -102,6 +126,10 @@ namespace MathsEngine.Utils
     ///// Mechanics
 
     // Dynamics
+
+    /// <summary>
+    /// Exception thrown when the mass is inputted as 0.
+    /// </summary>
     public class NullMassException : Exception
     {
         public NullMassException() : base("Mass must be a positive number") { }

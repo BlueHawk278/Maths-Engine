@@ -76,6 +76,7 @@ namespace MathsEngine.Menu.Pure
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nError: Matrices are not the same size.");
+                Console.ResetColor();
             }
         }
         private static void HandleSubtractMatrix()
@@ -105,6 +106,7 @@ namespace MathsEngine.Menu.Pure
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nError: Matrices are not the same size.");
+                Console.ResetColor();
             }
         }
 
