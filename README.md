@@ -21,6 +21,17 @@ Current Modules:
   - UVATS Equations
   - Newton's Laws Calculations 
 
+## Documentation
+
+📖 **[Code Review and Future Development Roadmap](CODE_REVIEW_AND_ROADMAP.md)**
+
+A comprehensive analysis of the codebase including:
+- Detailed code review findings (critical bugs, quality issues, build warnings)
+- Strategic roadmap for WPF, async/await, generics, and delegates implementation
+- Database integration planning
+- Expanded mathematical features roadmap
+- Code examples and best practices
+
 Planned Features
 Coming as I develop the project further:
 -	More statistical measures
