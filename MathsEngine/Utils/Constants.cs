@@ -27,7 +27,7 @@ namespace MathsEngine.Utils
     public static class MenuConstants
     {
         public const int MAIN_MENU_OPTIONS = 4;
-        public const int PURE_MENU_OPTIONS = 4;
+        public const int PURE_MENU_OPTIONS = 5;
         public const int MECHANICS_MENU_OPTIONS = 3;
         public const int STATISTICS_MENU_OPTIONS = 3;
         public const int PYTHAGORAS_MENU_OPTIONS = 4;

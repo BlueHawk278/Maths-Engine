@@ -42,8 +42,9 @@ namespace MathsEngine.Menu
             Console.WriteLine("1. Pythagoras Theorem");
             Console.WriteLine("2. Trigonometry");
             Console.WriteLine("3. Matrices");
-            Console.WriteLine("4. Main Menu");
-            int response = Parsing.GetMenuInput("Input: ", PURE_MENU_OPTIONS);
+            Console.WriteLine("4. Algebra");
+            Console.WriteLine("5. Main Menu");
+            int response = Parsing.GetMenuInput("Input: ", 5);
             Console.Clear();
 
             switch (response)
@@ -58,6 +59,9 @@ namespace MathsEngine.Menu
                     MatrixMenu.menu();
                     break;
                 case 4:
+                    AlgebraMenu.Menu();
+                    break;
+                case 5:
                     MainMenu();
                     break;
             }

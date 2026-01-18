@@ -135,4 +135,42 @@ namespace MathsEngine.Utils
         public NullMassException() : base("Mass must be a positive number") { }
         public NullMassException(string message) : base(message) { }
     }
+
+    ///// Algebra
+
+    /// <summary>
+    /// Exception thrown when a linear equation has a zero coefficient for the variable.
+    /// </summary>
+    public class ZeroCoefficientException : Exception
+    {
+        public ZeroCoefficientException() : base("Coefficient cannot be zero") { }
+        public ZeroCoefficientException(string message) : base(message) { }
+    }
+
+    /// <summary>
+    /// Exception thrown when a quadratic equation has zero leading coefficient.
+    /// </summary>
+    public class NotQuadraticException : Exception
+    {
+        public NotQuadraticException() : base("Not a quadratic equation - leading coefficient is zero") { }
+        public NotQuadraticException(string message) : base(message) { }
+    }
+
+    /// <summary>
+    /// Exception thrown when simultaneous equations have no unique solution.
+    /// </summary>
+    public class NoSolutionException : Exception
+    {
+        public NoSolutionException() : base("No solution exists") { }
+        public NoSolutionException(string message) : base(message) { }
+    }
+
+    /// <summary>
+    /// Exception thrown when simultaneous equations have infinite solutions.
+    /// </summary>
+    public class InfiniteSolutionsException : Exception
+    {
+        public InfiniteSolutionsException() : base("Infinite solutions exist") { }
+        public InfiniteSolutionsException(string message) : base(message) { }
+    }
 }
