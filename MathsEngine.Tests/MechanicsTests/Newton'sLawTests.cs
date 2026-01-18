@@ -59,13 +59,15 @@ namespace MathsEngine.Tests.MechanicsTests
         [Fact]
         public void CheckValidCalculation_ValidInputs_ReturnsTrue()
         {
-            var result = NewtonsLawsCalculator.CheckValidCalculation(100, 10, 5);
+            // F = m × a: 50 = 10 × 5 ✓
+            var result = NewtonsLawsCalculator.CheckValidCalculation(50, 10, 5);
             Assert.True(result);
         }
 
         [Fact]
         public void CheckValidCalculation_InvalidInputs_ReturnsFalse()
         {
+            // F ≠ m × a: 100 ≠ 10 × 5 (which equals 50) ✓
             var result = NewtonsLawsCalculator.CheckValidCalculation(100, 10, 5);
             Assert.False(result);
         }
@@ -73,7 +75,7 @@ namespace MathsEngine.Tests.MechanicsTests
         [Fact]
         public void CheckValidCalculation_MissingValue_ThrowsException()
         {
-            Assert.Throws<NullValuesException>(() => NewtonsLawsCalculator.CheckValidCalculation(100, 10, 5));
+            Assert.Throws<NullValuesException>(() => NewtonsLawsCalculator.CheckValidCalculation(100, 10, null));
         }
     }
 }

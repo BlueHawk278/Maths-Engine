@@ -30,24 +30,28 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
             if (missingCount > 1)
                 throw new NullValuesException("Cannot calculate - too many missing values. Expected exactly one missing value to solve for.");
 
-            if (m <= 0)
-                throw new NullMassException("Mass must be a positive number.");
-
             if (f is null) // F = m * a
-                return m.Value * a.Value;
+            {
+                // Validate mass when we're using it in multiplication
+                if (m is not null && m <= 0)
+                    throw new NullMassException("Mass must be a positive number.");
+                return m!.Value * a!.Value;
+            }
 
             if (m is null) // m = F / a
             {
-                if (a.Value == 0)
+                if (a!.Value == 0)
                     throw new DivideByZeroException("Acceleration cannot be zero when calculating mass.");
                 return f.Value / a.Value;
             }
 
             if (a is null) // a = F / m
             {
-                // This check is technically redundant due to the check at the start, but good for safety.
-                if (m.Value == 0)
+                // Check for division by zero BEFORE validating mass range
+                if (m!.Value == 0)
                     throw new DivideByZeroException("Mass cannot be zero when calculating acceleration.");
+                if (m.Value < 0)
+                    throw new NullMassException("Mass must be a positive number.");
                 return f.Value / m.Value;
             }
 
