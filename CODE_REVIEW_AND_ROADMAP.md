@@ -912,11 +912,12 @@ public static class GenericStatistics
 {
     public static T Mean<T>(IEnumerable<T> values) where T : INumber<T>
     {
-        if (!values.Any())
+        var valuesList = values.ToList();
+        if (valuesList.Count == 0)
             throw new ArgumentException("Collection cannot be empty");
             
-        var sum = values.Aggregate((a, b) => a + b);
-        var count = T.CreateChecked(values.Count());
+        var sum = valuesList.Aggregate((a, b) => a + b);
+        var count = T.CreateChecked(valuesList.Count);
         return sum / count;
     }
     
