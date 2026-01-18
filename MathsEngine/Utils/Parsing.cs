@@ -46,17 +46,17 @@ public class Parsing
         }
     }
 
-    public static int GetMenuInput(string prompt, int maxNum)
+    public static int GetMenuInput(string prompt, int maxNum, int minNum = 1)
     {
         while (true)
         {
             Console.Write(prompt);
             string? input = Console.ReadLine()?.Trim();
 
-            if (int.TryParse(input, out int value) && value >= 1 && value <= maxNum)
+            if (int.TryParse(input, out int value) && value >= minNum && value <= maxNum)
                 return value;
 
-            Console.WriteLine("Invalid input. Try again.");
+            Console.WriteLine($"Invalid input. Please enter a number between {minNum} and {maxNum}.");
         }
     }
 

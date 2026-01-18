@@ -25,10 +25,10 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
                 (a is null ? 1 : 0);
 
             if (missingCount == 0)
-                throw new NullValuesException("All values provided. Must be ONE missing value to perform the calculation");
+                throw new NullValuesException("Cannot calculate - no missing values. Expected exactly one missing value to solve for.");
                 
             if (missingCount > 1)
-                throw new NullValuesException("Too many missing values. Must be ONE missing value to perform the calculation");
+                throw new NullValuesException("Cannot calculate - too many missing values. Expected exactly one missing value to solve for.");
 
             if (m <= 0)
                 throw new NullMassException("Mass must be a positive number.");
