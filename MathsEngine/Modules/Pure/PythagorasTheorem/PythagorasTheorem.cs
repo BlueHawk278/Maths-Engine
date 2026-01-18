@@ -1,5 +1,6 @@
 ﻿using System;
 using MathsEngine.Utils;
+using static MathsEngine.Utils.MathConstants;
 
 namespace MathsEngine.Modules.Pure.PythagorasTheorem
 {
@@ -87,7 +88,7 @@ namespace MathsEngine.Modules.Pure.PythagorasTheorem
             double B = Convert.ToDouble(b);
             double Hypotenuse = Convert.ToDouble(hypotenuse);
 
-            return Math.Abs((A * A + B * B) - (Hypotenuse * Hypotenuse)) < 1e-9;
+            return Math.Abs((A * A + B * B) - (Hypotenuse * Hypotenuse)) < EQUALITY_TOLERANCE;
         }
     }
 }

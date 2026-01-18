@@ -1,5 +1,6 @@
 ﻿using System;
 using MathsEngine.Utils;
+using static MathsEngine.Utils.MathConstants;
 
 namespace MathsEngine.Modules.Mechanics.Dynamics
 {
@@ -23,8 +24,11 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
                 (m is null ? 1 : 0) +
                 (a is null ? 1 : 0);
 
-            if (missingCount != 1)
-                throw new NullInputException("Must be ONE missing value to perform the calculation");
+            if (missingCount == 0)
+                throw new NullValuesException("All values provided. Must be ONE missing value to perform the calculation");
+                
+            if (missingCount > 1)
+                throw new NullValuesException("Too many missing values. Must be ONE missing value to perform the calculation");
 
             if (m <= 0)
                 throw new NullMassException("Mass must be a positive number.");
@@ -52,13 +56,18 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
 
         public static bool CheckValidCalculation(double? f, double? m, double? a)
         {
-            if (f is null || m is null || a is null)
-                throw new ArgumentException("All values must be provided to check a calculation.");
+            int missingCount =
+                (f is null ? 1 : 0) +
+                (m is null ? 1 : 0) +
+                (a is null ? 1 : 0);
+
+            if (missingCount > 0)
+                throw new NullValuesException("All values must be provided to check a calculation.");
 
             if (m <= 0)
                 throw new NullMassException("Mass must be a positive number.");
 
-            return Math.Abs(f.Value - (m.Value * a.Value)) < 1e-9;
+            return Math.Abs(f.Value - (m.Value * a.Value)) < EQUALITY_TOLERANCE;
         }
     }
 }

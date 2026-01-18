@@ -13,10 +13,10 @@ namespace MathsEngine.Tests.StatisticsTest.DispersionTests
         }
 
         [Fact]
-        public void Constructor_EmptyList_ThrowsNullInputException()
+        public void Constructor_EmptyList_ThrowsEmptyDataSetException()
         {
             var values = new List<double>();
-            Assert.Throws<NullInputException>(() => new ArrayOfNumbersCalculator(values));
+            Assert.Throws<EmptyDataSetException>(() => new ArrayOfNumbersCalculator(values));
         }
 
         [Theory]

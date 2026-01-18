@@ -3,6 +3,7 @@ using MathsEngine.Menu.Pure;
 using MathsEngine.Menu.Statistics;
 using MathsEngine.Modules.Statistics.BivariateAnalysis;
 using MathsEngine.Utils;
+using static MathsEngine.Utils.MenuConstants;
 
 namespace MathsEngine.Menu
 {
@@ -42,7 +43,7 @@ namespace MathsEngine.Menu
             Console.WriteLine("2. Trigonometry");
             Console.WriteLine("3. Matrices");
             Console.WriteLine("4. Main Menu");
-            int response = Parsing.GetMenuInput("Input: ", 4);
+            int response = Parsing.GetMenuInput("Input: ", PURE_MENU_OPTIONS);
             Console.Clear();
 
             switch (response)
@@ -68,7 +69,7 @@ namespace MathsEngine.Menu
             Console.WriteLine("1. Uniform Acceleration");
             Console.WriteLine("2. Newton's Laws Calculations");
             Console.WriteLine("3. Main Menu");
-            int response = Parsing.GetMenuInput("Input: ", 3);
+            int response = Parsing.GetMenuInput("Input: ", MECHANICS_MENU_OPTIONS);
             Console.Clear();
 
             switch (response)
@@ -91,7 +92,7 @@ namespace MathsEngine.Menu
             Console.WriteLine("1. Bivariate Analysis");
             Console.WriteLine("2. Standard Deviation");
             Console.WriteLine("3. Main Menu");
-            int response = Parsing.GetMenuInput("Input: ", 3);
+            int response = Parsing.GetMenuInput("Input: ", STATISTICS_MENU_OPTIONS);
             Console.Clear();
 
             switch (response)
