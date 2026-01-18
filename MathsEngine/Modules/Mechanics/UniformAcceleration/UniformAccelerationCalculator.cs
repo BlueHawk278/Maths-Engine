@@ -5,7 +5,7 @@ namespace MathsEngine.Modules.Mechanics.UniformAcceleration
     /// <summary>
     /// Provides methods for calculations involving uniform acceleration, commonly known as the SUVAT equations.
     /// </summary>
-    public class UniformAccelerationCalculator
+    public static class UniformAccelerationCalculator
     {
         /// <summary>
         /// Calculates the average velocity given an initial and final velocity.

@@ -3,7 +3,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Pure.Trigonometry
 {
-    public class Trigonometry
+    public static class Trigonometry
     {
         /// <summary>
         /// Calculates the length of a missing side in a right-angled triangle.

@@ -1,11 +1,13 @@
 ﻿using MathsEngine.Modules.Pure.Matrices;
 using MathsEngine.Utils;
+using System.Diagnostics.Metrics;
+using System.Numerics;
 
 namespace MathsEngine.Menu.Pure
 {
     internal class MatrixMenu
     {
-        public static void menu()
+        public static void Menu()
         {
             Console.Clear();
             Console.WriteLine("Matrices Calculator");
@@ -39,14 +41,14 @@ namespace MathsEngine.Menu.Pure
                     HandleDeterminant();
                     break;
                 case 7:
-                    Menu.PureMenu();
+                    MathsEngine.Menu.Menu.PureMenu();
                     break;
             }
 
             Console.WriteLine("\nPress Enter to return...");
             Console.ReadLine();
 
-            Menu.MainMenu();
+            MathsEngine.Menu.Menu.MainMenu();
         }
 
         private static void HandleAddMatrix()
@@ -68,15 +70,11 @@ namespace MathsEngine.Menu.Pure
             }
             catch (NullInputException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: Empty Input - Please enter values for the matrices.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: Empty Input - Please enter values for the matrices.");
             }
             catch (IncompatibleMatrixAdditionException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: Matrices are not the same size.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: Matrices are not the same size.");
             }
         }
         private static void HandleSubtractMatrix()
@@ -98,15 +96,11 @@ namespace MathsEngine.Menu.Pure
             }
             catch (NullInputException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: Empty Input - Please enter values for the matrices.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("\nError: Empty Input - Please enter values for the matrices.");
             }
             catch (IncompatibleMatrixAdditionException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: Matrices are not the same size.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: Matrices are not the same size.");
             }
         }
 
@@ -128,9 +122,7 @@ namespace MathsEngine.Menu.Pure
             }
             catch (NullInputException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: Empty Input - Please enter values for the matrices.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("\nError: Empty Input - Please enter values for the matrices.");
             }
         }
         private static void HandleScalarDivision()
@@ -151,9 +143,7 @@ namespace MathsEngine.Menu.Pure
             }
             catch (NullInputException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: Empty Input - Please enter values for the matrices.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("\nError: Empty Input - Please enter values for the matrices.");
             }
         }
 
@@ -176,9 +166,7 @@ namespace MathsEngine.Menu.Pure
             }
             catch (IncompatibleMatrixMultiplicationException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: These matrices are not compatible for multiplication");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: These matrices are not compatible for multiplication");
             }
         }
 
@@ -195,9 +183,7 @@ namespace MathsEngine.Menu.Pure
             }
             catch (NullInputException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: Null Input - Please enter a valid matrix please");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("\nError: Empty Input - Please enter values for the matrices.");
             }
         }
 
@@ -220,15 +206,11 @@ namespace MathsEngine.Menu.Pure
             }
             catch (NullInputException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: Null Input - Please enter a valid matrix please");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("\nError: Empty Input - Please enter values for the matrices.");
             }
             catch (NotSquareMatrixException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: Must be a square matrix to calculate the determinant");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: Must be a square matrix to calculate the determinant");
             }
         }
     }

@@ -5,9 +5,9 @@ namespace MathsEngine.Menu.Mechanics
 {
     public class UniformAccelerationMenu
     {
-        public static void menu()
+        public static void Menu()
         {
-            Console.WriteLine("Welcome to the Uniform Acceleration menu");
+            Console.WriteLine("Welcome to the Uniform Acceleration Menu");
             Console.WriteLine("1. Horizontal Motion");
             Console.WriteLine("2. Back");
             int response = Parsing.GetMenuInput("Input: ", 2);
@@ -18,14 +18,14 @@ namespace MathsEngine.Menu.Mechanics
                     HorizontalMotionMenu();
                     break;
                 case 2:
-                    Menu.MechanicsMenu();
+                    MathsEngine.Menu.Menu.MechanicsMenu();
                     break;
             }
 
             Console.WriteLine("\nPress Enter to return...");
             Console.ReadLine();
 
-            Menu.MainMenu();
+            MathsEngine.Menu.Menu.MainMenu();
         }
 
         private static void HorizontalMotionMenu()
@@ -51,7 +51,7 @@ namespace MathsEngine.Menu.Mechanics
             Console.WriteLine("\nPress Enter to return...");
             Console.ReadLine();
 
-            Menu.MainMenu();
+            MathsEngine.Menu.Menu.MainMenu();
         }
 
         private static void HandleAverageVelocity()
@@ -66,9 +66,7 @@ namespace MathsEngine.Menu.Mechanics
             }
             catch (Exception ex) when (ex is FormatException || ex is NullInputException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\nError: {ex.Message}");
-                Console.ResetColor();
+                ErrorDisplay.ShowError(ex.Message);
             }
         }
 
@@ -86,9 +84,7 @@ namespace MathsEngine.Menu.Mechanics
             }
             catch (Exception ex)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\nError: {ex.Message}");
-                Console.ResetColor();
+                ErrorDisplay.ShowError(ex.Message);
             }
         }
 

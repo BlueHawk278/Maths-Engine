@@ -1,5 +1,6 @@
 ﻿using MathsEngine.Modules.Pure.Trigonometry;
 using MathsEngine.Utils;
+using System.Drawing;
 
 namespace MathsEngine.Menu.Pure
 {
@@ -89,10 +90,7 @@ namespace MathsEngine.Menu.Pure
             }
             catch (AcuteAngleException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(
-                    $"\nError: The angle in a right-angled triangle must be greater than 0 and less than 90 degrees.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("The angle in a right-angled triangle must be greater than 0 and less than 90 degrees.");
             }
             catch (NegativeSideLengthException)
             {
@@ -146,33 +144,23 @@ namespace MathsEngine.Menu.Pure
             }
             catch (DuplicateSideException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(
-                    $"\nError: You cannot find the side you already know. Please choose a different side to find.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: You cannot find the side you already know.Please choose a different side to find.");
             }
             catch (NegativeSideLengthException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\nError: The length of a side cannot be negative or zero.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: The length of a side cannot be negative or zero.");
             }
             catch (NullInputException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\nError: You must provide a value for all inputs.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: You must provide a value for all inputs.");
             }
             catch (HypotenuseNotLongestSideException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\nError: The hypotenuse must be the longest side");
+                ErrorDisplay.ShowError("The hypotenuse must be the longest side");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\nAn unexpected error occurred: {e.Message}");
-                Console.ResetColor();
+                ErrorDisplay.ShowError(ex.Message);
             }
         }
     }

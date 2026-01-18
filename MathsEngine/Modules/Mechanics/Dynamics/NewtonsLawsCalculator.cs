@@ -3,7 +3,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Mechanics.Dynamics
 {
-    public class NewtonsLawsCalculator
+    public static class NewtonsLawsCalculator
     {
         /// <summary>
         /// Solves the equation of F = ma for inputted values.
@@ -50,6 +50,15 @@ namespace MathsEngine.Modules.Mechanics.Dynamics
             throw new InvalidOperationException("Could not perform calculation with the provided values.");
         }
 
+        /// <summary>
+        /// Takes in all the parameters for an 'F=ma' equation accounting for floating point inaccuracy.
+        /// </summary>
+        /// <param name="f"> Value for force (Calculate this value if null)</param>
+        /// <param name="m"> Value for mass (Calculate this value if null)</param>
+        /// <param name="a"> Value for acceleration (Calculate this value if null) </param>
+        /// <returns> True if the equation is valid.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="NullMassException"></exception>
         public static bool CheckValidCalculation(double? f, double? m, double? a)
         {
             if (f is null || m is null || a is null)

@@ -26,12 +26,18 @@ namespace MathsEngine.Utils
     
     // Pythagoras Theorem
 
+    /// <summary>
+    /// Exception thrown when a negative length is entered for a side.
+    /// </summary>
     public class NegativeSideLengthException : Exception
     {
         public NegativeSideLengthException() : base("Side lengths must be positive.") { }
         public NegativeSideLengthException(string message) : base(message) { }
     }
 
+    /// <summary>
+    /// Exception thrown when the hypotenuse is not the longest side entered.
+    /// </summary>
     public class HypotenuseNotLongestSideException : Exception
     {
         public HypotenuseNotLongestSideException() : base("Hypotenuse must be the longest side") { }
@@ -61,7 +67,7 @@ namespace MathsEngine.Utils
     // Matrices
 
     /// <summary>
-    /// Exceptions thrown when the matrices are not the same size.
+    /// Exceptions thrown when the matrices are not the same size so they can't be added or subtracted.
     /// </summary>
     public class IncompatibleMatrixAdditionException : Exception
     {
@@ -100,6 +106,9 @@ namespace MathsEngine.Utils
         public ListsNotSameSizeException(string message) : base(message) { }
     }
 
+    /// <summary>
+    /// Exception thrown when the used has not inputted enough variables to perform a calculation.
+    /// </summary>
     public class InsufficientDataException : Exception
     {
         public InsufficientDataException() : base("There is insufficient input to perform a calculation"){ }

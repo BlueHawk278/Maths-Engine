@@ -56,8 +56,11 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             CorrelationString = GetCorrelationString();
         }
 
-        // --- 3. All calculation logic is now private to this class ---
-
+        /// <summary>
+        /// Ranks a list of numbers from highest to lowest
+        /// </summary>
+        /// <param name="scores"> The list of values to be ranked</param>
+        /// <returns></returns>
         private List<double> CalculateRanksFor(List<int> scores)
         {
             var sorted = new List<int>(scores);
@@ -92,6 +95,10 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             return ranks.ToList();
         }
 
+        /// <summary>
+        /// Calculates the difference between the ranks of the two data sets for each index
+        /// </summary>
+        /// <returns> The list of differences. </returns>
         private List<double> CalculateDifference()
         {
             var differences = new List<double>();
@@ -116,6 +123,10 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             return diffsSquared;
         }
 
+        /// <summary>
+        /// Calculates the decimal value for the correlation between the two data sets
+        /// </summary>
+        /// <returns></returns>
         private double CalculateCorrelationValue()
         {
             double topLine = SumDifferenceSquared * 6;

@@ -7,7 +7,7 @@ public class Parsing
     public static double? GetNullableDoubleInput(string prompt)
     {
         Console.Write(prompt);
-        string input = Console.ReadLine()?.Trim();
+        string? input = Console.ReadLine()?.Trim();
 
         if (string.IsNullOrEmpty(input))
             return null;
@@ -23,11 +23,12 @@ public class Parsing
         while (true)
         {
             Console.Write(prompt);
-            string input = Console.ReadLine()?.Trim();
+            string? input = Console.ReadLine()?.Trim();
 
-            if (!string.IsNullOrEmpty(input))
-                return Convert.ToDouble(input);
-            Console.WriteLine("Invalid input. Try again");
+            if (!string.IsNullOrEmpty(input) && double.TryParse(input, out double value))
+                return value;
+
+            Console.WriteLine("Invalid input. Please enter a valid number.");
         }
     }
 
@@ -36,11 +37,12 @@ public class Parsing
         while (true)
         {
             Console.Write(prompt);
-            string input = Console.ReadLine()?.Trim();
+            string? input = Console.ReadLine()?.Trim();
 
-            if (!string.IsNullOrEmpty(input))
-                return Convert.ToInt32(input);
-            Console.WriteLine("Invalid input. Try again");
+            if (!string.IsNullOrEmpty(input) && int.TryParse(input, out int value))
+                return value;
+
+            Console.WriteLine("Invalid input. Please enter a valid number");
         }
     }
 
@@ -52,7 +54,7 @@ public class Parsing
             var input = Console.ReadLine()?.Trim();
 
             if (int.TryParse(input, out int value))
-                if(value <= maxNum)
+                if (value <= maxNum && value > 0)
                     return value;
 
             Console.WriteLine("Invalid input. Try again.");
@@ -64,7 +66,7 @@ public class Parsing
         while (true)
         {
             Console.WriteLine(prompt);
-            string input = Console.ReadLine()?.Trim();
+            string? input = Console.ReadLine()?.Trim();
 
             if (input == "Hypotenuse" || input == "hypotenuse")
                 return SideType.Hypotenuse;
@@ -74,5 +76,29 @@ public class Parsing
                 return SideType.Adjacent;
             Console.WriteLine("You have not entered a valid side. Try Again");
         }
+    }
+
+    public static List<double> GetDoubleList(string prompt)
+    {
+        Console.WriteLine(prompt);
+        string? input = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(input)) return null;
+        return input.Split(',').Select(s => double.Parse(s.Trim())).ToList();
+    }
+
+    public static List<int> GetIntList(string prompt)
+    {
+        Console.WriteLine(prompt);
+        string? input = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(input)) return null;
+        return input.Split(',').Select(s => int.Parse(s.Trim())).ToList();
+    }
+
+    public static List<string> GetStringList(string prompt)
+    {
+        Console.WriteLine(prompt);
+        string? input = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(input)) return null;
+        return input.Split(',').Select(s => s.Trim()).ToList();
     }
 }

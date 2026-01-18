@@ -3,7 +3,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Pure.Matrices
 {
-    public class MatrixCalculator
+    public static class MatrixCalculator
     {
         /// <summary>
         /// A method to take add or subtract matrices together based on user input
@@ -94,21 +94,6 @@ namespace MathsEngine.Modules.Pure.Matrices
                     result[i, j] = matrix.Matrix[i, j] / number;
                 }
             }
-            return result;
-        }
-
-        public static double[,] MatrixEquations(MatrixBase matrix1, MatrixBase matrix2, int number)
-        {
-            if (matrix1 == null || matrix2 == null)
-                throw new NullInputException();
-
-            if (matrix1.NumRows != matrix2.NumRows || matrix1.NumCols != matrix2.NumCols)
-                throw new IncompatibleSubtractionMatricesException();
-
-            var result = SubtractMatrix(matrix1, matrix2);
-            MatrixBase Matrix = new MatrixBase(result);
-            result = ScalarDivision(Matrix, 2);
-
             return result;
         }
 

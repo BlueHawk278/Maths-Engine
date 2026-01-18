@@ -2,7 +2,7 @@
 
 namespace MathsEngine.Modules.Statistics.BivariateAnalysis
 {
-    public class BivariateAnalysis
+    public static class BivariateAnalysis
     {
         public static void Start()
         {
@@ -20,34 +20,26 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             }
             catch (FormatException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: Invalid input. Please ensure you enter only numbers separated by commas.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: Invalid input. Please ensure you enter only numbers separated by commas.");
             }
             catch (NullInputException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: One or both of the score sets were empty. Please provide data.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: One or both of the score sets were empty. Please provide data.");
             }
             catch (ListsNotSameSizeException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: The two sets of scores must contain the same number of values.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: The two sets of scores must contain the same number of values.");
             }
             catch (InsufficientDataException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nError: At least two pairs of scores are required to perform the analysis.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: At least two pairs of scores are required to perform the analysis.");
             }
         }
 
         private static List<int> GetScores(string prompt)
         {
             Console.WriteLine(prompt);
-            string input = Console.ReadLine();
+            string? input = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(input))
                 throw new NullInputException();

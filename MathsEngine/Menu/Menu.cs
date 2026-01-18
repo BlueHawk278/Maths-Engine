@@ -6,7 +6,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Menu
 {
-    internal static class Menu // check, also test everything in the menu
+    internal static class Menu // check, also test everything in the Menu
     {
         public static void MainMenu()
         {
@@ -48,13 +48,13 @@ namespace MathsEngine.Menu
             switch (response)
             {
                 case 1:
-                    PythagorasMenu.menu();
+                    PythagorasMenu.Menu();
                     break;
                 case 2:
                     TrigonometryMenu.Menu();
                     break;
                 case 3:
-                    MatrixMenu.menu();
+                    MatrixMenu.Menu();
                     break;
                 case 4:
                     MainMenu();
@@ -74,10 +74,10 @@ namespace MathsEngine.Menu
             switch (response)
             {
                 case 1:
-                    UniformAccelerationMenu.menu();
+                    UniformAccelerationMenu.Menu();
                     break;
                 case 2:
-                    NewtonsLawsMenu.menu();
+                    NewtonsLawsMenu.Menu();
                     break;
                 case 3:
                     MainMenu();
@@ -100,7 +100,7 @@ namespace MathsEngine.Menu
                     BivariateAnalysis.Start(); // 
                     break;
                 case 2:
-                    DispersionMenu.menu();
+                    DispersionMenu.Menu();
                     break;
                 case 3:
                     MainMenu();

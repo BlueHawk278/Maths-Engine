@@ -8,7 +8,7 @@ namespace MathsEngine.Menu.Mechanics
 {
     public class NewtonsLawsMenu
     {
-        public static void menu()
+        public static void Menu()
         {
             Console.WriteLine("1. Calculate a missing value (F=ma)");
             Console.WriteLine("2. Check a calculation");
@@ -24,7 +24,7 @@ namespace MathsEngine.Menu.Mechanics
                     HandleCheckCalculation();
                     break;
                 case 3:
-                    Menu.MechanicsMenu();
+                    MathsEngine.Menu.Menu.MechanicsMenu();
                     break;
             }
         }
@@ -41,35 +41,26 @@ namespace MathsEngine.Menu.Mechanics
             }
             catch (NullInputException ex)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Error: {ex.Message}");
-                Console.ResetColor();
+                ErrorDisplay.ShowError(ex.Message);
             }
             catch (NullMassException ex)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Error: {ex.Message}");
-                Console.ResetColor();
+                ErrorDisplay.ShowError(ex.Message);
             }
             catch (FormatException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Error: Invalid input. Please enter valid numbers.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: Invalid input. Please enter valid numbers.");
             }
-            // A general catch for any other unexpected errors
             catch (Exception ex)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
-                Console.ResetColor();
+                ErrorDisplay.ShowError($"An unexpected error occurred: {ex.Message}");
             }
             finally
             {
-                Console.WriteLine("\nPress any key to return to the main menu...");
+                Console.WriteLine("\nPress any key to return to the main Menu...");
                 Console.ReadKey();
 
-                Menu.MainMenu();
+                MathsEngine.Menu.Menu.MainMenu();
             }
         }
 
@@ -97,22 +88,18 @@ namespace MathsEngine.Menu.Mechanics
             }
             catch (NullValuesException ex)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Error: {ex.Message}");
-                Console.ResetColor();
+                ErrorDisplay.ShowError(ex.Message);
             }
             catch (FormatException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Error: Invalid input. Please enter valid numbers.");
-                Console.ResetColor();
+                ErrorDisplay.ShowError("Error: Invalid input. Please enter valid numbers.");
             }
             finally
             {
-                Console.WriteLine("\nPress any key to return to the main menu...");
+                Console.WriteLine("\nPress any key to return to the main Menu...");
                 Console.ReadKey();
 
-                Menu.MainMenu();
+                MathsEngine.Menu.Menu.MainMenu();
             }
         }
 
@@ -147,10 +134,10 @@ namespace MathsEngine.Menu.Mechanics
 
             Display.DisplayResult(resultDictionary);
 
-            Console.WriteLine("\nPress Enter to return to the main menu.");
+            Console.WriteLine("\nPress Enter to return to the main Menu.");
             Console.ReadLine();
 
-            Menu.MainMenu();
+            MathsEngine.Menu.Menu.MainMenu();
         }
     }
 }
