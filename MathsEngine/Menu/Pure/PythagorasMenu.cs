@@ -7,34 +7,30 @@ namespace MathsEngine.Menu.Pure
     {
         public static void Menu()
         {
-            Console.Clear();
-            Console.WriteLine("Pythagoras Theorem Calculator");
-            Console.WriteLine("1. Find the hypotenuse");
-            Console.WriteLine("2. Find another side");
-            Console.WriteLine("3. Check if calculation is valid");
-            Console.WriteLine("4. Back");
-            int response = Parsing.GetMenuInput("Input: ", 4);
-
-            switch (response)
+            while (true)
             {
-                case 1:
-                    HandleFindHypotenuse();
-                    break;
-                case 2:
-                    HandleFindOtherSide();
-                    break;
-                case 3:
-                    HandleCheckTheorem();
-                    break;
-                case 4:
-                    MathsEngine.Menu.Menu.PureMenu();
-                    break;
+                Console.Clear();
+                Console.WriteLine("Pythagoras Theorem Calculator");
+                Console.WriteLine("1. Find the hypotenuse");
+                Console.WriteLine("2. Find another side");
+                Console.WriteLine("3. Check if calculation is valid");
+                Console.WriteLine("4. Back");
+                int response = Parsing.GetMenuInput("Input: ", 4);
+
+                switch (response)
+                {
+                    case 1:
+                        HandleFindHypotenuse();
+                        break;
+                    case 2:
+                        HandleFindOtherSide();
+                        break;
+                    case 3:
+                        HandleCheckTheorem();
+                        break;
+                    case 4: return;
+                }
             }
-
-            Console.WriteLine("\nPress Enter to return...");
-            Console.ReadLine();
-
-            MathsEngine.Menu.Menu.MainMenu();
         }
 
         /// <summary>
@@ -61,9 +57,13 @@ namespace MathsEngine.Menu.Pure
             {
                 ErrorDisplay.ShowError("Error: Invalid input. Please enter valid numbers for the side lengths.");
             }
-            catch (NegativeSideLengthException ex)
+            catch (NegativeSideLengthException)
             {
-                ErrorDisplay.ShowError(ex.Message);
+                ErrorDisplay.ShowError("Error: Cannot have negative sides.");
+            }
+            catch (Exception e)
+            {
+                ErrorDisplay.ShowError($"\nError: {e.Message}");
             }
         }
 
@@ -92,6 +92,10 @@ namespace MathsEngine.Menu.Pure
             {
                 ErrorDisplay.ShowError(ex.Message);
             }
+            catch (Exception e)
+            {
+                ErrorDisplay.ShowError($"\nError: {e.Message}");
+            }
         }
 
         private static void HandleCheckTheorem()
@@ -119,6 +123,10 @@ namespace MathsEngine.Menu.Pure
             catch (Exception ex) when (ex is NegativeSideLengthException || ex is HypotenuseNotLongestSideException)
             {
                 ErrorDisplay.ShowError(ex.Message);
+            }
+            catch (Exception e)
+            {
+                ErrorDisplay.ShowError($"\nError: {e.Message}");
             }
         }
     }

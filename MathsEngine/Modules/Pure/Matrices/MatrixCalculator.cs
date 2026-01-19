@@ -39,7 +39,7 @@ namespace MathsEngine.Modules.Pure.Matrices
                 throw new NullInputException();
 
             if (matrix1.NumRows != matrix2.NumRows || matrix1.NumCols != matrix2.NumCols)
-                throw new IncompatibleMatrixAdditionException();
+                throw new IncompatibleMatrixSubtractionException();
 
             var result = new double[matrix1.NumRows, matrix1.NumCols];
 
@@ -61,7 +61,7 @@ namespace MathsEngine.Modules.Pure.Matrices
         /// <param name="number"> The number to multiply the matrix by. </param>
         /// <returns> The result of the matrix * number.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public static double[,] ScalarMultiplication(MatrixBase matrix, int number)
+        public static double[,] ScalarMultiplication(MatrixBase matrix, double number)
         {
             if (matrix == null || MatrixBase.CheckEmptyMatrix(matrix))
                 throw new NullInputException();
@@ -77,7 +77,7 @@ namespace MathsEngine.Modules.Pure.Matrices
             }
             return result;
         }
-        public static double[,] ScalarDivision(MatrixBase matrix, int number)
+        public static double[,] ScalarDivision(MatrixBase matrix, double number)
         {
             if (matrix == null || MatrixBase.CheckEmptyMatrix(matrix))
                 throw new NullInputException();

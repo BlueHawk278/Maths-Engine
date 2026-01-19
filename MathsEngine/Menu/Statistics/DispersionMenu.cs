@@ -7,28 +7,29 @@ namespace MathsEngine.Menu.Statistics
     {
         public static void Menu()
         {
-            Console.Clear();
-            Console.WriteLine("Welcome to the Dispersion Menu");
-            Console.WriteLine("1. Calculate from an array of numbers");
-            Console.WriteLine("2. Calculate from a frequency table");
-            Console.WriteLine("3. Calculate from a continuous table");
-            Console.WriteLine("4. Back");
-            int response = Parsing.GetMenuInput("Input: ", 4);
-
-            switch (response)
+            while (true)
             {
-                case 1:
-                    HandleArrayOfNumbers();
-                    break;
-                case 2:
-                    HandleFrequencyTable();
-                    break;
-                case 3:
-                    HandleContinuousTable();
-                    break;
-                case 4:
-                    MathsEngine.Menu.Menu.StatisticsMenu();
-                    break;
+                Console.Clear();
+                Console.WriteLine("Welcome to the Dispersion Menu");
+                Console.WriteLine("1. Calculate from an array of numbers");
+                Console.WriteLine("2. Calculate from a frequency table");
+                Console.WriteLine("3. Calculate from a continuous table");
+                Console.WriteLine("4. Back");
+                int response = Parsing.GetMenuInput("Input: ", 4);
+
+                switch (response)
+                {
+                    case 1:
+                        HandleArrayOfNumbers();
+                        break;
+                    case 2:
+                        HandleFrequencyTable();
+                        break;
+                    case 3:
+                        HandleContinuousTable();
+                        break;
+                    case 4: return;
+                }
             }
         }
 
@@ -49,7 +50,7 @@ namespace MathsEngine.Menu.Statistics
             }
             catch (NullInputException)
             {
-                ErrorDisplay.ShowError("Error: No data was entered. Please provide a set of numbers.");
+                ErrorDisplay.ShowError("Error: No data was entered. Please ensure you enter a set of numbers.");
             }
             catch (EmptyDataSetException)
             {

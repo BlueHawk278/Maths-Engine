@@ -8,30 +8,25 @@ namespace MathsEngine.Menu.Pure
     {
         public static void Menu()
         {
-            Console.Clear();
-
-            Console.WriteLine("1. Calculate a missing side");
-            Console.WriteLine("2. Calculate a missing angle");
-            Console.WriteLine("3. Back");
-            int response = Parsing.GetMenuInput("Input: ", 3);
-
-            switch (response)
+            while (true)
             {
-                case 1:
-                    HandleMissingSide();
-                    break;
-                case 2:
-                    HandleMissingAngle();
-                    break;
-                case 3:
-                    MathsEngine.Menu.Menu.PureMenu();
-                    break;
+                Console.Clear();
+                Console.WriteLine("1. Calculate a missing side");
+                Console.WriteLine("2. Calculate a missing angle");
+                Console.WriteLine("3. Back");
+                int response = Parsing.GetMenuInput("Input: ", 3);
+
+                switch (response)
+                {
+                    case 1:
+                        HandleMissingSide();
+                        break;
+                    case 2:
+                        HandleMissingAngle();
+                        break;
+                    case 3: return;
+                }
             }
-
-            Console.WriteLine("\nPress Enter to return...");
-            Console.ReadLine();
-
-            MathsEngine.Menu.Menu.MainMenu();
         }
 
         private static void HandleMissingSide()

@@ -40,13 +40,14 @@
         }
         internal static Correlation getCorrelation(double correlationValue)
         {
-            if (correlationValue == 1) return Correlation.PerfectPositive;
-            if (correlationValue >= 0.7) return Correlation.StrongPositive;
-            if (correlationValue > 0) return Correlation.WeakPositive;
-            if (correlationValue == 0) return Correlation.NoCorrelation;
-            if (correlationValue == -1) return Correlation.PerfectNegative;
-            if (correlationValue <= -0.7) return Correlation.StrongNegative;
-            if (correlationValue < 0) return Correlation.WeakNegative;
+            if(!(correlationValue > 1.0) && !(correlationValue < 0.0))
+                if (correlationValue == 1) return Correlation.PerfectPositive;
+                if (correlationValue >= 0.7) return Correlation.StrongPositive;
+                if (correlationValue > 0) return Correlation.WeakPositive;
+                if (correlationValue == 0) return Correlation.NoCorrelation;
+                if (correlationValue == -1) return Correlation.PerfectNegative;
+                if (correlationValue <= -0.7) return Correlation.StrongNegative;
+                if (correlationValue < 0) return Correlation.WeakNegative;
 
             // Default case for any value outside the -1 to 1 range, though this shouldn't be hit
             // with a valid correlation coefficient.

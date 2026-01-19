@@ -1,7 +1,5 @@
 ﻿using MathsEngine.Modules.Pure.Matrices;
 using MathsEngine.Utils;
-using System.Diagnostics.Metrics;
-using System.Numerics;
 
 namespace MathsEngine.Menu.Pure
 {
@@ -9,46 +7,44 @@ namespace MathsEngine.Menu.Pure
     {
         public static void Menu()
         {
-            Console.Clear();
-            Console.WriteLine("Matrices Calculator");
-            Console.WriteLine("1. Adding matrices");
-            Console.WriteLine("2. Subtract matrices");
-            Console.WriteLine("3. Multiply a matrix by a number");
-            Console.WriteLine("4. Divide a matrix by a number");
-            Console.WriteLine("5. Multiply matrices by matrices");
-            Console.WriteLine("6. Calculate the determinant of a square matrix");
-            Console.WriteLine("7. Back");
-            int response = Parsing.GetMenuInput("Input: ", 7);
-
-            switch (response)
+            while (true)
             {
-                case 1:
-                    HandleAddMatrix();
-                    break;
-                case 2:
-                    HandleSubtractMatrix();
-                    break;
-                case 3:
-                    HandleScalarMultiplication();
-                    break;
-                case 4:
-                    HandleScalarDivision();
-                    break;
-                case 5:
-                    HandleMatrixMultiplication();
-                    break;
-                case 6:
-                    HandleDeterminant();
-                    break;
-                case 7:
-                    MathsEngine.Menu.Menu.PureMenu();
-                    break;
+                Console.Clear();
+                Console.WriteLine("Matrices Calculator");
+                Console.WriteLine("1. Adding matrices");
+                Console.WriteLine("2. Subtract matrices");
+                Console.WriteLine("3. Multiply a matrix by a number");
+                Console.WriteLine("4. Divide a matrix by a number");
+                Console.WriteLine("5. Multiply matrices by matrices");
+                Console.WriteLine("6. Calculate the determinant of a square matrix");
+                Console.WriteLine("7. Back");
+                int response = Parsing.GetMenuInput("Input: ", 7);
+
+                switch (response)
+                {
+                    case 1:
+                        HandleAddMatrix();
+                        break;
+                    case 2:
+                        HandleSubtractMatrix();
+                        break;
+                    case 3:
+                        HandleScalarMultiplication();
+                        break;
+                    case 4:
+                        HandleScalarDivision();
+                        break;
+                    case 5:
+                        HandleMatrixMultiplication();
+                        break;
+                    case 6:
+                        HandleDeterminant();
+                        break;
+                    case 7: return;
+                }
+                Console.WriteLine("\nPress Enter to continue...");
+                Console.ReadLine();
             }
-
-            Console.WriteLine("\nPress Enter to return...");
-            Console.ReadLine();
-
-            MathsEngine.Menu.Menu.MainMenu();
         }
 
         private static void HandleAddMatrix()
@@ -98,7 +94,7 @@ namespace MathsEngine.Menu.Pure
             {
                 ErrorDisplay.ShowError("\nError: Empty Input - Please enter values for the matrices.");
             }
-            catch (IncompatibleMatrixAdditionException)
+            catch (IncompatibleMatrixSubtractionException)
             {
                 ErrorDisplay.ShowError("Error: Matrices are not the same size.");
             }
@@ -140,6 +136,10 @@ namespace MathsEngine.Menu.Pure
             {
                 var result = MatrixCalculator.ScalarDivision(matrix, number);
                 DisplayMatrix(result);
+            }
+            catch (DivideByZeroException)
+            {
+                ErrorDisplay.ShowError("\nError: Cannot divide by 0");
             }
             catch (NullInputException)
             {
@@ -191,7 +191,6 @@ namespace MathsEngine.Menu.Pure
         {
             try
             {
-
                 Console.WriteLine("\nResult Matrix: ");
 
                 for (int i = 0; i < matrix.GetLength(0); i++)
@@ -207,10 +206,6 @@ namespace MathsEngine.Menu.Pure
             catch (NullInputException)
             {
                 ErrorDisplay.ShowError("\nError: Empty Input - Please enter values for the matrices.");
-            }
-            catch (NotSquareMatrixException)
-            {
-                ErrorDisplay.ShowError("Error: Must be a square matrix to calculate the determinant");
             }
         }
     }

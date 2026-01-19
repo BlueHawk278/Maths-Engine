@@ -10,22 +10,23 @@ namespace MathsEngine.Menu.Mechanics
     {
         public static void Menu()
         {
-            Console.WriteLine("1. Calculate a missing value (F=ma)");
-            Console.WriteLine("2. Check a calculation");
-            Console.WriteLine("3. Back");
-            int response = Parsing.GetMenuInput("Input: ", 3);
-
-            switch (response)
+            while (true)
             {
-                case 1:
-                    HandleFMA_Equations();
-                    break;
-                case 2:
-                    HandleCheckCalculation();
-                    break;
-                case 3:
-                    MathsEngine.Menu.Menu.MechanicsMenu();
-                    break;
+                Console.WriteLine("1. Calculate a missing value (F=ma)");
+                Console.WriteLine("2. Check a calculation");
+                Console.WriteLine("3. Back");
+                int response = Parsing.GetMenuInput("Input: ", 3);
+
+                switch (response)
+                {
+                    case 1:
+                        HandleFMA_Equations();
+                        break;
+                    case 2:
+                        HandleCheckCalculation();
+                        break;
+                    case 3: return;
+                }
             }
         }
 
@@ -90,6 +91,10 @@ namespace MathsEngine.Menu.Mechanics
             {
                 ErrorDisplay.ShowError(ex.Message);
             }
+            catch (NullMassException ex)
+            {
+                ErrorDisplay.ShowError(ex.Message);
+            }
             catch (FormatException)
             {
                 ErrorDisplay.ShowError("Error: Invalid input. Please enter valid numbers.");
@@ -125,7 +130,8 @@ namespace MathsEngine.Menu.Mechanics
             else if (M is null) M = calculatedValue;
             else if (A is null) A = calculatedValue;
 
-            Dictionary<string, double?> resultDictionary = new Dictionary<string, double?>()
+            /// FIX PLEASE
+            var resultDictionary = new Dictionary<string, double?>()
             {
                 {"Resultant Force (F)", F},
                 {"Mass (M)", M},
@@ -133,11 +139,6 @@ namespace MathsEngine.Menu.Mechanics
             };
 
             Display.DisplayResult(resultDictionary);
-
-            Console.WriteLine("\nPress Enter to return to the main Menu.");
-            Console.ReadLine();
-
-            MathsEngine.Menu.Menu.MainMenu();
         }
     }
 }

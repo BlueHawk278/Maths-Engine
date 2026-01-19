@@ -74,10 +74,10 @@ namespace MathsEngine.Utils
         public IncompatibleMatrixAdditionException() : base("Matrices can't be added, they are not the same size") { }
         public IncompatibleMatrixAdditionException(string message) : base(message) { }
     }
-    public class IncompatibleSubtractionMatricesException : Exception
+    public class IncompatibleMatrixSubtractionException : Exception
     {
-        public IncompatibleSubtractionMatricesException() : base("Matrices can't be subtracted, they are not the same size") { }
-        public IncompatibleSubtractionMatricesException(string message) : base(message) { }
+        public IncompatibleMatrixSubtractionException() : base("Matrices can't be subtracted, they are not the same size") { }
+        public IncompatibleMatrixSubtractionException(string message) : base(message) { }
     }
 
     /// <summary>

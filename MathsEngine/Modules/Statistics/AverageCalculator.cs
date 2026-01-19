@@ -14,7 +14,7 @@ namespace MathsEngine.Modules.Statistics
         /// <returns>The mean of the values in the list. Returns 0 if the list is empty.</returns>
         internal static double CalculateMean(List<double> nums)
         {
-            if (nums.Count == 0 || nums == null) 
+            if (nums == null || nums.Count == 0) 
                 throw new NullInputException("Side lengths must not be negative");
 
             double sum = 0;
@@ -34,7 +34,7 @@ namespace MathsEngine.Modules.Statistics
         /// <returns>The median of the values of the list. Returns 0 if the list is empty.</returns>
         internal static double CalculateMedian(List<double> nums)
         {
-            if (nums.Count == 0 || nums == null)
+            if (nums == null || nums.Count == 0)
                 throw new NullInputException("Side lengths must not be negative");
 
             var sortedNums = new List<double>(nums);

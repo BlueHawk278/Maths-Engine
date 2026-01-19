@@ -7,51 +7,49 @@ namespace MathsEngine.Menu.Mechanics
     {
         public static void Menu()
         {
-            Console.WriteLine("Welcome to the Uniform Acceleration Menu");
-            Console.WriteLine("1. Horizontal Motion");
-            Console.WriteLine("2. Back");
-            int response = Parsing.GetMenuInput("Input: ", 2);
-
-            switch (response)
+            while (true)
             {
-                case 1:
-                    HorizontalMotionMenu();
-                    break;
-                case 2:
-                    MathsEngine.Menu.Menu.MechanicsMenu();
-                    break;
+                Console.WriteLine("Welcome to the Uniform Acceleration Menu");
+                Console.WriteLine("1. Horizontal Motion");
+                Console.WriteLine("2. Back");
+                int response = Parsing.GetMenuInput("Input: ", 2);
+
+                switch (response)
+                {
+                    case 1:
+                        HorizontalMotionMenu();
+                        break;
+                    case 2: return;
+                }
             }
-
-            Console.WriteLine("\nPress Enter to return...");
-            Console.ReadLine();
-
-            MathsEngine.Menu.Menu.MainMenu();
         }
 
         private static void HorizontalMotionMenu()
         {
-            Console.WriteLine("1. Average Velocity");
-            Console.WriteLine("2. UVATS equations");
-            Console.WriteLine("3. Back");
-            int response = Parsing.GetMenuInput("Input: ", 3);
-            Console.Clear();
-
-            switch (response)
+            while (true)
             {
-                case 1:
-                    HandleAverageVelocity();
-                    break;
-                case 2:
-                    HandleUVATS();
-                    break;
-                case 3:
-                    return;
+                Console.Clear();
+                Console.WriteLine("1. Average Velocity");
+                Console.WriteLine("2. UVATS equations");
+                Console.WriteLine("3. Back");
+                int response = Parsing.GetMenuInput("Input: ", 3);
+
+                switch (response)
+                {
+                    case 1:
+                        HandleAverageVelocity();
+                        Console.WriteLine("\nPress Enter to continue...");
+                        Console.ReadLine();
+                        break;
+                    case 2:
+                        HandleUVATS();
+                        Console.WriteLine("\nPress Enter to continue...");
+                        Console.ReadLine();
+                        break;
+                    case 3:
+                        return;
+                }
             }
-
-            Console.WriteLine("\nPress Enter to return...");
-            Console.ReadLine();
-
-            MathsEngine.Menu.Menu.MainMenu();
         }
 
         private static void HandleAverageVelocity()
@@ -142,7 +140,7 @@ namespace MathsEngine.Menu.Mechanics
                     t = UniformAccelerationCalculator.CalculateSUTAT(s, u, a, null);
             }
 
-            Dictionary<string, double?> Values = new Dictionary<string, double?>
+            Dictionary<string, double?> values = new Dictionary<string, double?>
             {
                 { "Initial Velocity (U)", u },
                 { "Final Velocity (V)", v},
@@ -151,7 +149,7 @@ namespace MathsEngine.Menu.Mechanics
                 { "Displacement", s}
             };
 
-            Display.DisplayResult(Values);
+            Display.DisplayResult(values);
         }
     }
 }

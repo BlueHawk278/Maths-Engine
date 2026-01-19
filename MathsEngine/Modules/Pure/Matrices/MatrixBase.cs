@@ -11,11 +11,14 @@ namespace MathsEngine.Modules.Pure.Matrices
 
         public MatrixBase(int rows, int cols)
         {
-            NumRows = rows;
-            NumCols = cols;
-            Matrix = new double[NumRows, NumCols];
-
-            PopulateMatrix();
+            if (rows > 0 && cols > 0)
+            {
+                NumRows = rows;
+                NumCols = cols;
+                Matrix = new double[NumRows, NumCols];
+            }
+            else
+                throw new ArgumentException("Matrix cannot have negative side");
         }
 
         public MatrixBase(double[,] array)
@@ -25,7 +28,7 @@ namespace MathsEngine.Modules.Pure.Matrices
             Matrix = array;
         }
 
-        private void PopulateMatrix()
+        public void PopulateMatrix()
         {
             for(int i = 0; i < NumRows; i++)
             {
