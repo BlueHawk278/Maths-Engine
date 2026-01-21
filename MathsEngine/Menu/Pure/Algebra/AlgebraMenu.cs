@@ -9,7 +9,7 @@ public class AlgebraMenu
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("Algebra");
+            Console.WriteLine("-----Algebra-----");
             Console.WriteLine("1. Factorising");
             int response = Parsing.GetMenuInput("Input: ", 1);
         }

@@ -1,4 +1,5 @@
-﻿using MathsEngine.Modules.Pure.Trigonometry;
+﻿using MathsEngine.Modules.Pure.Algebra.General;
+using MathsEngine.Modules.Pure.Trigonometry;
 
 namespace MathsEngine.Utils;
 
@@ -75,6 +76,59 @@ public static class Parsing
             if (input == "Adjacent" || input == "adjacent")
                 return SideType.Adjacent;
             Console.WriteLine("You have not entered a valid side. Try Again");
+        }
+    }
+
+    public static List<double> GetDoubleList(string prompt)
+    {
+        Console.WriteLine(prompt);
+        string? input = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(input)) return new List<double>();
+        return input.Split(',').Select(s => double.Parse(s.Trim())).ToList();
+    }
+
+    public static List<int> GetIntList(string prompt)
+    {
+        Console.WriteLine(prompt);
+        string? input = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(input)) return new List<int>();
+        return input.Split(',').Select(s => int.Parse(s.Trim())).ToList();
+    }
+
+    public static List<string> GetStringList(string prompt)
+    {
+        Console.WriteLine(prompt);
+        string? input = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(input)) return new List<string>();
+        return input.Split(',').Select(s => s.Trim()).ToList();
+    }
+
+    /// <summary>
+    /// Parses a string representation of an algebraic term into a Term object.
+    /// Handles coefficients, variables and powers e.g. "12x^2y", "-z", "15".
+    /// </summary>
+    /// <param name="prompt"> The output for user to respond to.</param>
+    /// <returns> A new Term object.</returns>
+    public static Term ParseTerm(string prompt)
+    {
+        while (true)
+        {
+            Console.WriteLine(prompt);
+            string? input = Console.ReadLine();
+            if(string.IsNullOrWhiteSpace(input))
+                Console.WriteLine("Error: Invalid input. Try again.");
+            else
+            {
+                int i = 0;
+
+                string coefficientString = "";
+
+                if (input[i] == '+' || input[i] == '-')
+                {
+                    coefficientString += input[i];
+                    i++;
+                }
+            }
         }
     }
 }

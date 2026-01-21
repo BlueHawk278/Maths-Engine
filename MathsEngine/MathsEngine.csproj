@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Folder Include="Modules\Pure\Algebra\" />
+	  <Folder Include="Modules\Pure\Algebra\General\" />
 	  <Folder Include="Properties\" />
 	</ItemGroup>
 
