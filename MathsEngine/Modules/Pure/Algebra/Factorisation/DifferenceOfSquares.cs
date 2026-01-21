@@ -38,12 +38,12 @@ public static class DifferenceOfSquares
     }
 
     /// <summary>
-    /// Factorises a difference of two squares expression ax² - c
+    /// Factorises a difference of two squares expression ax² - c (where a > 0 and c > 0)
     /// Returns the factors as (coefficient1, constant1, coefficient2, constant2)
     /// representing (coefficient1·x + constant1)(coefficient2·x + constant2)
     /// </summary>
     /// <param name="a">Coefficient of x² (must be positive perfect square)</param>
-    /// <param name="c">Constant term (must be negative perfect square)</param>
+    /// <param name="c">Constant term (must be negative, representing -c where c is positive)</param>
     /// <returns>Tuple of (coeff1, const1, coeff2, const2) representing the factors</returns>
     /// <exception cref="ArgumentException">Thrown when expression is not a difference of squares</exception>
     public static (int Coeff1, int Const1, int Coeff2, int Const2) Factorise(int a, int c)
@@ -51,22 +51,14 @@ public static class DifferenceOfSquares
         if (!IsDifferenceOfSquares(a, 0, c))
             throw new ArgumentException("Expression is not a difference of two squares");
 
-        int sqrtA = (int)Math.Sqrt(Math.Abs(a));
-        int sqrtC = (int)Math.Sqrt(Math.Abs(c));
+        if (a < 0 || c >= 0)
+            throw new ArgumentException("For difference of squares, 'a' must be positive and 'c' must be negative");
 
-        // For a² - b², factors are (a + b)(a - b)
-        // Here: (√a·x)² - (√c)² = (√a·x + √c)(√a·x - √c)
-        
-        if (a > 0 && c < 0)
-        {
-            // ax² - c = (√a·x + √c)(√a·x - √c)
-            return (sqrtA, sqrtC, sqrtA, -sqrtC);
-        }
-        else // a < 0 && c > 0
-        {
-            // -ax² + c = -(ax² - c) but we need to handle this case
-            // This would be c - ax² = (√c + √a·x)(√c - √a·x)
-            return (sqrtA, sqrtC, -sqrtA, sqrtC);
-        }
+        int sqrtA = (int)Math.Sqrt(a);
+        int sqrtC = (int)Math.Sqrt(-c);  // c is negative, so -c is positive
+
+        // For ax² - c where a > 0, c < 0 (so -c > 0)
+        // ax² - c = (√a·x)² - (√(-c))² = (√a·x + √(-c))(√a·x - √(-c))
+        return (sqrtA, sqrtC, sqrtA, -sqrtC);
     }
 }

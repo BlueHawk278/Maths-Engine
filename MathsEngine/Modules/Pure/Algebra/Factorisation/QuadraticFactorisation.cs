@@ -18,58 +18,53 @@ public static class QuadraticFactorisation
         if (a == 0)
             throw new ArgumentException("Coefficient 'a' cannot be zero for a quadratic expression");
 
-        // Special case: perfect square trinomial
+        // Special case: perfect square trinomial (only when a > 0)
         // a²x² + 2abx + b² = (ax + b)²
-        int sqrtA = (int)Math.Sqrt(Math.Abs(a));
-        if (sqrtA * sqrtA == Math.Abs(a))
+        if (a > 0)
         {
-            int sqrtC = (int)Math.Sqrt(Math.Abs(c));
-            if (sqrtC * sqrtC == Math.Abs(c))
+            int sqrtA = (int)Math.Sqrt(a);
+            if (sqrtA * sqrtA == a)
             {
-                if (b == 2 * sqrtA * sqrtC || b == -2 * sqrtA * sqrtC)
+                int sqrtC = (int)Math.Sqrt(Math.Abs(c));
+                if (sqrtC * sqrtC == Math.Abs(c))
                 {
-                    int sign = b / (2 * sqrtA * sqrtC);
-                    return (sqrtA, sign * sqrtC, sqrtA, sign * sqrtC);
+                    if (sqrtA != 0 && sqrtC != 0 && (b == 2 * sqrtA * sqrtC || b == -2 * sqrtA * sqrtC))
+                    {
+                        int sign = b / (2 * sqrtA * sqrtC);
+                        return (sqrtA, sign * sqrtC, sqrtA, sign * sqrtC);
+                    }
                 }
             }
         }
 
-        // Try to find factors using the AC method
-        // We need to find two numbers that multiply to a*c and add to b
-        int ac = a * c;
-        
-        // Find all factor pairs of ac
-        for (int i = -Math.Abs(ac); i <= Math.Abs(ac); i++)
+        // Try direct factorisation approach
+        // For each divisor pair (p, q) where p*q = a
+        for (int p = 1; p <= Math.Abs(a); p++)
         {
-            if (i == 0) continue;
-            if (ac % i != 0) continue;
+            if (a % p != 0) continue;
+            int q = a / p;
             
-            int j = ac / i;
-            
-            // Check if i + j = b
-            if (i + j == b)
+            // Ensure correct sign for negative a
+            if (a < 0)
             {
-                // Found the pair! Now we can factorise
-                // ax² + bx + c = ax² + ix + jx + c
-                // Group: (ax² + ix) + (jx + c)
-                // Factor each group and find the common binomial
+                q = -q;
+            }
+            
+            // Get divisors of c
+            int absC = Math.Abs(c);
+            for (int absR = 1; absR <= absC; absR++)
+            {
+                if (absC % absR != 0) continue;
+                int absS = absC / absR;
                 
-                // Using the formula for factoring ax² + bx + c
-                // where we found i and j such that i*j = a*c and i + j = b
-                
-                // Try direct factorisation approach
-                // For each divisor pair (p, q) where p*q = a
-                for (int p = 1; p <= Math.Abs(a); p++)
+                // Try both positive and negative combinations
+                foreach (int signR in new[] { 1, -1 })
                 {
-                    if (a % p != 0) continue;
-                    int q = a / p;
+                    int r = signR * absR;
                     
-                    // For each divisor pair (r, s) where r*s = c
-                    for (int r = -Math.Abs(c); r <= Math.Abs(c); r++)
+                    foreach (int signS in new[] { 1, -1 })
                     {
-                        if (r == 0) continue;
-                        if (c % r != 0) continue;
-                        int s = c / r;
+                        int s = signS * absS;
                         
                         // Check if (px + r)(qx + s) = ax² + bx + c
                         // Expanding: pqx² + psx + qrx + rs
