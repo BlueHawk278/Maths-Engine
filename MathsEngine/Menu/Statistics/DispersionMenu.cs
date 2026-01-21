@@ -38,10 +38,13 @@ namespace MathsEngine.Menu.Statistics
             try
             {
                 Console.Clear();
-                var values = Parsing.GetDoubleList("Enter the values separated by a comma: ");
+                var values = GetDoubleList("Enter the values separated by a comma: ");
                 var calculator = new ArrayOfNumbersCalculator(values);
                 calculator.Run();
                 calculator.DisplayData();
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (FormatException)
             {
@@ -63,11 +66,14 @@ namespace MathsEngine.Menu.Statistics
             try
             {
                 Console.Clear();
-                var values = Parsing.GetDoubleList("Enter the values (x) separated by a comma: ");
-                var frequencies = Parsing.GetIntList("Enter the frequencies (f) for each value, separated by a comma: ");
+                var values = GetDoubleList("Enter the values (x) separated by a comma: ");
+                var frequencies = GetIntList("Enter the frequencies (f) for each value, separated by a comma: ");
                 var calculator = new FrequencyTableCalculator(values, frequencies);
                 calculator.Run();
                 calculator.DisplayData();
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (FormatException)
             {
@@ -97,11 +103,14 @@ namespace MathsEngine.Menu.Statistics
             try
             {
                 Console.Clear();
-                var intervals = Parsing.GetStringList("Enter the class intervals (e.g., 10-20) separated by a comma: ");
-                var frequencies = Parsing.GetIntList("Enter the frequencies (f) for each interval, separated by a comma: ");
+                var intervals = GetStringList("Enter the class intervals (e.g., 10-20) separated by a comma: ");
+                var frequencies = GetIntList("Enter the frequencies (f) for each interval, separated by a comma: ");
                 var calculator = new ContinuousTableCalculator(intervals, frequencies);
                 calculator.Run();
                 calculator.DisplayData();
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (FormatException)
             {
@@ -129,6 +138,30 @@ namespace MathsEngine.Menu.Statistics
                 ErrorDisplay.ShowError(
                     "Error: Invalid class interval format. Please use the format 'lower-upper' (e.g., '10-20').");
             }
+        }
+
+        private static List<double> GetDoubleList(string prompt)
+        {
+            Console.WriteLine(prompt);
+            string? input = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(input)) return new List<double>();
+            return input.Split(',').Select(s => double.Parse(s.Trim())).ToList();
+        }
+
+        private static List<int> GetIntList(string prompt)
+        {
+            Console.WriteLine(prompt);
+            string? input = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(input)) return new List<int>();
+            return input.Split(',').Select(s => int.Parse(s.Trim())).ToList();
+        }
+
+        private static List<string> GetStringList(string prompt)
+        {
+            Console.WriteLine(prompt);
+            string? input = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(input)) return new List<string>();
+            return input.Split(',').Select(s => s.Trim()).ToList();
         }
     }
 }

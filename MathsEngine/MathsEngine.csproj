@@ -9,6 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Folder Include="Modules\Pure\Algebra\" />
 	  <Folder Include="Properties\" />
 	</ItemGroup>
 
