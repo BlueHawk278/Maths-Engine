@@ -2,7 +2,7 @@
 
 namespace MathsEngine.Utils;
 
-public class Parsing
+public static class Parsing
 {
     public static double? GetNullableDoubleInput(string prompt)
     {
@@ -76,29 +76,5 @@ public class Parsing
                 return SideType.Adjacent;
             Console.WriteLine("You have not entered a valid side. Try Again");
         }
-    }
-
-    public static List<double> GetDoubleList(string prompt)
-    {
-        Console.WriteLine(prompt);
-        string? input = Console.ReadLine();
-        if (string.IsNullOrWhiteSpace(input)) return null;
-        return input.Split(',').Select(s => double.Parse(s.Trim())).ToList();
-    }
-
-    public static List<int> GetIntList(string prompt)
-    {
-        Console.WriteLine(prompt);
-        string? input = Console.ReadLine();
-        if (string.IsNullOrWhiteSpace(input)) return null;
-        return input.Split(',').Select(s => int.Parse(s.Trim())).ToList();
-    }
-
-    public static List<string> GetStringList(string prompt)
-    {
-        Console.WriteLine(prompt);
-        string? input = Console.ReadLine();
-        if (string.IsNullOrWhiteSpace(input)) return null;
-        return input.Split(',').Select(s => s.Trim()).ToList();
     }
 }

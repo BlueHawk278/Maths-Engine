@@ -4,12 +4,12 @@ namespace MathsEngine.Modules.Statistics.Dispersion
 {
     public class ArrayOfNumbersCalculator : IStandardDeviation
     {
-        private readonly List<double> _originalValues = new List<double>();
-        private readonly List<double> _sortedValues = new List<double>();
+        private readonly List<double> _originalValues = [];
+        private readonly List<double> _sortedValues = [];
         private readonly int _numValues;
 
         private double _mean, _median, _range, _q1, _q3, _iqr;
-        private List<double> _modeList = new List<double>();
+        private List<double> _modeList = [];
 
         public double Variance { get; private set; }
         public double StandardDeviation { get; private set; }
@@ -35,12 +35,14 @@ namespace MathsEngine.Modules.Statistics.Dispersion
         }
         private void CalculateAverages()
         {
-            _mean = AverageCalculator.CalculateMean(_originalValues);
-            _median = AverageCalculator.CalculateMedian(_originalValues);
-            _modeList = AverageCalculator.CalculateMode(_originalValues);
-            _range = AverageCalculator.CalculateRange(_originalValues);
+            AverageCalculator<double> averageCalculator = new AverageCalculator<double>();
 
-            var quartiles = AverageCalculator.GetInterQuartileRange(_originalValues);
+            _mean = averageCalculator.CalculateMean(_originalValues);
+            _median = averageCalculator.CalculateMedian(_originalValues);
+            _modeList = averageCalculator.CalculateMode(_originalValues);
+            _range = averageCalculator.CalculateRange(_originalValues);
+
+            var quartiles = averageCalculator.GetInterQuartileRange(_originalValues);
             _q1 = quartiles[0];
             _q3 = quartiles[1];
             _iqr = quartiles[2];
@@ -59,15 +61,15 @@ namespace MathsEngine.Modules.Statistics.Dispersion
         }
         public void DisplayData()
         {
-            Console.WriteLine("\nOriginal values: ");
+            Console.Write("\nOriginal values: ");
             foreach (double value in _originalValues)
                 Console.Write(value + ", ");
 
-            Console.WriteLine("Sorted values: ");
+            Console.Write("\nSorted values: ");
             foreach (double value in _sortedValues)
                 Console.Write(value + ", ");
 
-            Console.WriteLine("Mean: " + Math.Round(Mean, 3));
+            Console.WriteLine("\nMean: " + Math.Round(Mean, 3));
             Console.WriteLine("Median: " + _median);
 
             Console.Write("Mode: ");

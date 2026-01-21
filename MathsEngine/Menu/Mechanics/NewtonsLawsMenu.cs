@@ -39,6 +39,9 @@ namespace MathsEngine.Menu.Mechanics
                 double? acceleration = Parsing.GetNullableDoubleInput("Enter the acceleration");
 
                 PerformCalculation(force, mass, acceleration);
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (NullInputException ex)
             {
@@ -86,6 +89,9 @@ namespace MathsEngine.Menu.Mechanics
                     Console.WriteLine("\nThis is not a valid calculation.");
                 }
                 Console.ResetColor();
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (NullValuesException ex)
             {
@@ -130,7 +136,6 @@ namespace MathsEngine.Menu.Mechanics
             else if (M is null) M = calculatedValue;
             else if (A is null) A = calculatedValue;
 
-            /// FIX PLEASE
             var resultDictionary = new Dictionary<string, double?>()
             {
                 {"Resultant Force (F)", F},

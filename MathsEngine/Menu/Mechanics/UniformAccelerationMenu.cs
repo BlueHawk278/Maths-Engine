@@ -61,6 +61,9 @@ namespace MathsEngine.Menu.Mechanics
 
                 double averageVelocity = UniformAccelerationCalculator.CalculateAverageVelocity(initialVelocity, finalVelocity);
                 Console.WriteLine($"\nAverage Velocity: {averageVelocity:F2}");
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (Exception ex) when (ex is FormatException || ex is NullInputException)
             {
@@ -79,6 +82,9 @@ namespace MathsEngine.Menu.Mechanics
                 double? displacement = Parsing.GetNullableDoubleInput("Enter the displacement (s): ");
 
                 CheckCalculation(initialVelocity, finalVelocity, acceleration, timeTaken, displacement);
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (Exception ex)
             {

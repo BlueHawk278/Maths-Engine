@@ -63,6 +63,9 @@ namespace MathsEngine.Menu.Pure
             {
                 var result = MatrixCalculator.AddMatrix(matrix1, matrix2);
                 DisplayMatrix(result);
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (NullInputException)
             {
@@ -89,6 +92,9 @@ namespace MathsEngine.Menu.Pure
             {
                 var result = MatrixCalculator.SubtractMatrix(matrix1, matrix2);
                 DisplayMatrix(result);
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (NullInputException)
             {
@@ -115,6 +121,9 @@ namespace MathsEngine.Menu.Pure
             {
                 var result = MatrixCalculator.ScalarMultiplication(matrix, number);
                 DisplayMatrix(result);
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (NullInputException)
             {
@@ -136,6 +145,9 @@ namespace MathsEngine.Menu.Pure
             {
                 var result = MatrixCalculator.ScalarDivision(matrix, number);
                 DisplayMatrix(result);
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (DivideByZeroException)
             {
@@ -163,6 +175,9 @@ namespace MathsEngine.Menu.Pure
             {
                 var result = MatrixCalculator.MatrixMultiplication(matrix1, matrix2);
                 DisplayMatrix(result);
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (IncompatibleMatrixMultiplicationException)
             {
@@ -180,6 +195,9 @@ namespace MathsEngine.Menu.Pure
             {
                 var determinant = MatrixCalculator.CalculateDeterminant(matrix);
                 Console.WriteLine($"Determinant: {determinant}");
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (NullInputException)
             {
@@ -202,6 +220,9 @@ namespace MathsEngine.Menu.Pure
 
                     Console.WriteLine();
                 }
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (NullInputException)
             {

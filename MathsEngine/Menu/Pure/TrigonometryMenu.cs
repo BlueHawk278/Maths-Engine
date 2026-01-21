@@ -72,8 +72,8 @@ namespace MathsEngine.Menu.Pure
                     Console.WriteLine(step);
 
                 Console.WriteLine($"\nFinal Answer: {teachingResult.Value:F2}");
-                Console.WriteLine("\nPress Enter to return to the Menu.");
-                Console.ReadLine();
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
                 */
             }
             catch (DuplicateSideException)
@@ -134,7 +134,9 @@ namespace MathsEngine.Menu.Pure
                 }
 
                 Console.WriteLine($"\nFinal Answer: {teachingResult.Value:F2}");
-                Console.ReadLine();
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
                 */
             }
             catch (DuplicateSideException)

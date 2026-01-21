@@ -48,6 +48,9 @@ namespace MathsEngine.Menu.Pure
                 double hypotenuse = PythagorasTheorem.CalculateHypotenuse(sideA, sideB);
 
                 Console.WriteLine("\nHypotenuse: " + hypotenuse);
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (FormatException)
             {
@@ -79,6 +82,9 @@ namespace MathsEngine.Menu.Pure
                     PythagorasTheorem.CalculateOtherSide(hypotenuse, knownSide);
 
                 Console.WriteLine("\nUnknown side: " + unknownSide);
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (FormatException)
             {
@@ -111,6 +117,9 @@ namespace MathsEngine.Menu.Pure
                     PythagorasTheorem.CheckValidCalculation(hypotenuse, firstSide, secondSide);
 
                 Console.WriteLine((validResult) ? "\nThis is a valid equation" : "\nThis is not a valid equation");
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
             }
             catch (FormatException)
             {
