@@ -2,7 +2,7 @@
 
 namespace MathsEngine.Menu.Pure.Algebra;
 
-public class AlgebraMenu
+public class AlgebraMenu : IMenu
 {
     public static void Menu()
     {
@@ -11,7 +11,16 @@ public class AlgebraMenu
             Console.Clear();
             Console.WriteLine("-----Algebra-----");
             Console.WriteLine("1. Factorising");
-            int response = Parsing.GetMenuInput("Input: ", 1);
+            Console.WriteLine("2. Back");
+            int response = Parsing.GetMenuInput("Input: ", 2);
+
+            switch (response)
+            {
+                case 1:
+                    FactorisationMenu.Menu();
+                    break;
+                case 2: return;
+            }
         }
     }
 }

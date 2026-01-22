@@ -113,21 +113,96 @@ public static class Parsing
     {
         while (true)
         {
-            Console.WriteLine(prompt);
-            string? input = Console.ReadLine();
-            if(string.IsNullOrWhiteSpace(input))
-                Console.WriteLine("Error: Invalid input. Try again.");
-            else
+            Console.Write(prompt);
+            string? input = Console.ReadLine()?.Trim();
+
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                ErrorDisplay.ShowError("Input cannot be empty.");
+                continue;
+            }
+
+            try
             {
                 int i = 0;
+                int originalLength = input.Length;
 
+                // 1. Parse the Coefficient
                 string coefficientString = "";
-
-                if (input[i] == '+' || input[i] == '-')
+                if (i < input.Length && (input[i] == '+' || input[i] == '-'))
                 {
                     coefficientString += input[i];
                     i++;
                 }
+                while (i < input.Length && (char.IsDigit(input[i]) || input[i] == '.'))
+                {
+                    coefficientString += input[i];
+                    i++;
+                }
+
+                int  coefficient;
+                if (coefficientString == "" || coefficientString == "+") coefficient = 1;
+                else if (coefficientString == "-") coefficient = -1;
+                else if (!int.TryParse(coefficientString, out coefficient))
+                {
+                    throw new FormatException($"Invalid coefficient format: '{coefficientString}'.");
+                }
+
+                // 2. Parse variables and powers
+                var variables = new Dictionary<char, int>();
+                while (i < input.Length)
+                {
+                    if (!char.IsLetter(input[i]))
+                    {
+                        throw new FormatException($"Unexpected character '{input[i]}' found. Expected a variable.");
+                    }
+                    char variable = input[i];
+                    i++;
+
+                    int power = 1;
+                    if (i < input.Length && input[i] == '^')
+                    {
+                        i++; // Move past '^'
+                        string powerString = "";
+                        if (i < input.Length && input[i] == '-')
+                        {
+                            powerString += input[i];
+                            i++;
+                        }
+                        while (i < input.Length && (char.IsDigit(input[i]) || input[i] == '.'))
+                        {
+                            powerString += input[i];
+                            i++;
+                        }
+
+                        if (string.IsNullOrEmpty(powerString) || !int.TryParse(powerString, out power))
+                        {
+                            throw new FormatException($"Invalid power format for variable '{variable}'.");
+                        }
+                    }
+
+                    if (variables.ContainsKey(variable))
+                    {
+                        variables[variable] += power;
+                    }
+                    else
+                    {
+                        variables.Add(variable, power);
+                    }
+                }
+
+                // 3. Final validation: Ensure all characters were parsed
+                if (i != originalLength)
+                {
+                    throw new FormatException("Term contains invalid characters at the end.");
+                }
+
+                return new Term(coefficient, variables);
+            }
+            catch (Exception e)
+            {
+                ErrorDisplay.ShowError(e.Message);
+                Console.WriteLine("   Please try again.");
             }
         }
     }

@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace MathsEngine.Menu.Pure
 {
-    public class TrigonometryMenu // Implement a check method to check for a valid triangle
+    public class TrigonometryMenu : IMenu // Implement a check method to check for a valid triangle
     {
         public static void Menu()
         {

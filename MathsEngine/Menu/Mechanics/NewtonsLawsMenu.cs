@@ -6,7 +6,7 @@
 
 namespace MathsEngine.Menu.Mechanics
 {
-    public class NewtonsLawsMenu
+    public class NewtonsLawsMenu : IMenu
     {
         public static void Menu()
         {

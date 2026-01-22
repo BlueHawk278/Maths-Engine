@@ -3,7 +3,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Menu.Pure
 {
-    internal static class PythagorasMenu
+    internal class PythagorasMenu : IMenu
     {
         public static void Menu()
         {

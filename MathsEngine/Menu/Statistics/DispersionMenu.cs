@@ -3,7 +3,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Menu.Statistics
 {
-    public class DispersionMenu
+    public class DispersionMenu : IMenu
     {
         public static void Menu()
         {

@@ -3,7 +3,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Menu.Mechanics
 {
-    public class UniformAccelerationMenu
+    public class UniformAccelerationMenu : IMenu
     {
         public static void Menu()
         {
