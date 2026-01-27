@@ -137,6 +137,80 @@ Final Answer:
   The hypotenuse is 5.00 units
 ```
 
+#### MatrixTutor
+
+Provides step-by-step explanations for matrix operations:
+
+- `AddMatrixWithSteps()` - Matrix addition with element-by-element breakdown
+- `SubtractMatrixWithSteps()` - Matrix subtraction with element-by-element breakdown
+- `ScalarMultiplicationWithSteps()` - Scalar multiplication showing each element
+- `ScalarDivisionWithSteps()` - Scalar division showing each element
+- `MatrixMultiplicationWithSteps()` - Matrix multiplication with detailed calculation steps
+- `CalculateDeterminantWithSteps()` - Determinant calculation (2×2 matrices)
+
+**Example:**
+```csharp
+using MathsEngine.Modules.Explanations.Pure;
+using MathsEngine.Modules.Pure.Matrices;
+
+var matrix1 = new MatrixBase(new double[,] { { 1, 2 }, { 3, 4 } });
+var matrix2 = new MatrixBase(new double[,] { { 2, 0 }, { 1, 2 } });
+
+var result = MatrixTutor.MatrixMultiplicationWithSteps(matrix1, matrix2);
+
+Console.WriteLine("Result:");
+Console.WriteLine(result.GetStepsAsString());
+```
+
+### Mechanics
+
+#### NewtonsLawsTutor
+
+Provides step-by-step explanations for Newton's Second Law (F = ma):
+
+- `CalculateFmaWithSteps()` - Calculate Force, Mass, or Acceleration
+
+**Example:**
+```csharp
+using MathsEngine.Modules.Explanations.Mechanics;
+
+var result = NewtonsLawsTutor.CalculateFmaWithSteps(
+    f: null,  // Force to calculate
+    m: 10,    // Mass in kg
+    a: 5      // Acceleration in m/s²
+);
+
+Console.WriteLine($"Force: {result.Value:F2} N");
+Console.WriteLine("\nSteps:");
+Console.WriteLine(result.GetStepsAsString());
+```
+
+#### UniformAccelerationTutor
+
+Provides step-by-step explanations for SUVAT equations (uniform acceleration):
+
+- `CalculateAverageVelocityWithSteps()` - Calculate average velocity
+- `CalculateVUATWithSteps()` - v = u + at equation
+- `CalculateVUASWithSteps()` - v² = u² + 2as equation
+- `CalculateSUVTWithSteps()` - s = 0.5(u + v)t equation
+- `CalculateSUTATWithSteps()` - s = ut + 0.5at² equation
+
+**Example:**
+```csharp
+using MathsEngine.Modules.Explanations.Mechanics;
+
+var result = UniformAccelerationTutor.CalculateVUATWithSteps(
+    v: null,  // Final velocity to calculate
+    u: 10,    // Initial velocity
+    a: 2,     // Acceleration
+    t: 5      // Time
+);
+
+Console.WriteLine($"Final velocity: {result.Value:F2} m/s");
+Console.WriteLine("\nSteps:");
+Console.WriteLine(result.GetStepsAsString());
+```
+
 ## Running the Demo
 
 A complete demonstration is available in the `Examples/ExplanationsDemo.cs` file. To run it:
@@ -153,14 +227,23 @@ ExplanationsDemo.RunDemo();
 2. **Consistent**: Step format is consistent across all tutors
 3. **Informative**: Steps include formulas, intermediate values, and final answers
 4. **Type-safe**: Reuses existing type definitions (e.g., `SideType`)
-5. **Well-tested**: Comprehensive unit test coverage
+5. **Well-tested**: Comprehensive unit test coverage (74 tests)
+
+## Test Coverage
+
+- TrigonometryTutor: 17 tests
+- PythagorasTheoremTutor: 17 tests
+- MatrixTutor: 17 tests
+- NewtonsLawsTutor: 8 tests
+- UniformAccelerationTutor: 15 tests
+
+**Total: 74 tests, all passing ✅**
 
 ## Future Expansion
 
 The Explanations module can be extended to cover:
 - Statistics calculations (mean, standard deviation, correlation)
-- Mechanics calculations (Newton's laws, UVATS equations)
-- Matrix operations (multiplication, inversion, determinants)
+- Additional matrix operations (inverse, transpose, etc.)
 - Other Pure mathematics topics (algebra, calculus)
 
 ## Note on the "Teaching" vs "Explanations" Naming

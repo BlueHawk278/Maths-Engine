@@ -1,6 +1,8 @@
 using System;
 using MathsEngine.Modules.Explanations.Pure;
+using MathsEngine.Modules.Explanations.Mechanics;
 using MathsEngine.Modules.Pure.Trigonometry;
+using MathsEngine.Modules.Pure.Matrices;
 
 namespace MathsEngine.Examples;
 
@@ -54,5 +56,46 @@ public static class ExplanationsDemo
         Console.WriteLine($"Answer: {angleResult.Value:F2}°");
         Console.WriteLine("\nSteps:");
         Console.WriteLine(angleResult.GetStepsAsString());
+        Console.WriteLine("\n");
+
+        // Example 4: Newton's Laws - Calculate Force
+        Console.WriteLine("Example 4: Calculate force using Newton's Second Law (F = ma)");
+        Console.WriteLine("-----------------------------------------------------------");
+        var forceResult = NewtonsLawsTutor.CalculateFmaWithSteps(
+            f: null,  // Force to calculate
+            m: 10,    // Mass in kg
+            a: 5      // Acceleration in m/s²
+        );
+
+        Console.WriteLine($"Answer: {forceResult.Value:F2} N");
+        Console.WriteLine("\nSteps:");
+        Console.WriteLine(forceResult.GetStepsAsString());
+        Console.WriteLine("\n");
+
+        // Example 5: Uniform Acceleration - SUVAT equation
+        Console.WriteLine("Example 5: Calculate final velocity using SUVAT (v = u + at)");
+        Console.WriteLine("-----------------------------------------------------------");
+        var velocityResult = UniformAccelerationTutor.CalculateVUATWithSteps(
+            v: null,  // Final velocity to calculate
+            u: 10,    // Initial velocity
+            a: 2,     // Acceleration
+            t: 5      // Time
+        );
+
+        Console.WriteLine($"Answer: {velocityResult.Value:F2} m/s");
+        Console.WriteLine("\nSteps:");
+        Console.WriteLine(velocityResult.GetStepsAsString());
+        Console.WriteLine("\n");
+
+        // Example 6: Matrix Multiplication
+        Console.WriteLine("Example 6: Multiply two 2×2 matrices");
+        Console.WriteLine("------------------------------------");
+        var matrix1 = new MatrixBase(new double[,] { { 1, 2 }, { 3, 4 } });
+        var matrix2 = new MatrixBase(new double[,] { { 2, 0 }, { 1, 2 } });
+
+        var matrixResult = MatrixTutor.MatrixMultiplicationWithSteps(matrix1, matrix2);
+
+        Console.WriteLine("Steps:");
+        Console.WriteLine(matrixResult.GetStepsAsString());
     }
 }
