@@ -15,6 +15,11 @@ namespace MathsEngine.Modules.Explanations.Pure
             SideType knownSideType,
             SideType sideToFind)
         {
+            // Validate inputs early to provide better error messages
+            // The underlying calculation will also validate, but we access .Value before calling it
+            if (knownSideLength is null || angle is null)
+                throw new Utils.NullInputException();
+
             var steps = new List<string>();
 
             // Step 1: Identify known values
@@ -61,6 +66,10 @@ namespace MathsEngine.Modules.Explanations.Pure
             double? side2Length,
             SideType side2Type)
         {
+            // Validate inputs early to provide better error messages
+            if (side1Length is null || side2Length is null)
+                throw new Utils.NullInputException();
+
             var steps = new List<string>();
 
             // Step 1: Identify known sides

@@ -11,6 +11,10 @@ namespace MathsEngine.Modules.Explanations.Pure
     {
         public static CalculationResult CalculateHypotenuseWithSteps(double? sideA, double? sideB)
         {
+            // Validate inputs early to provide better error messages
+            if (sideA is null || sideB is null)
+                throw new Utils.NullInputException();
+
             var steps = new List<string>();
 
             // Step 1: Identify known values
@@ -54,6 +58,10 @@ namespace MathsEngine.Modules.Explanations.Pure
 
         public static CalculationResult CalculateOtherSideWithSteps(double? hypotenuse, double? knownSide)
         {
+            // Validate inputs early to provide better error messages
+            if (hypotenuse is null || knownSide is null)
+                throw new Utils.NullInputException();
+
             var steps = new List<string>();
 
             // Step 1: Identify known values
