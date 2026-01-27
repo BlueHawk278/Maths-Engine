@@ -211,6 +211,43 @@ Console.WriteLine("\nSteps:");
 Console.WriteLine(result.GetStepsAsString());
 ```
 
+### Statistics
+
+#### StandardDeviationTutor
+
+Provides step-by-step explanations for calculating variance and standard deviation:
+
+- `CalculateStandardDeviationWithSteps()` - Calculate standard deviation with detailed breakdown
+- `CalculateVarianceWithSteps()` - Calculate variance showing all intermediate steps
+
+**Example:**
+```csharp
+using MathsEngine.Modules.Explanations.Statistics;
+
+var values = new List<double> { 2, 4, 4, 4, 5, 5, 7, 9 };
+var result = StandardDeviationTutor.CalculateStandardDeviationWithSteps(values);
+
+Console.WriteLine($"Standard Deviation: {result.Value:F2}");
+```
+
+#### BivariateAnalysisTutor
+
+Provides step-by-step explanations for Spearman's Rank Correlation:
+
+- `CalculateSpearmanRankWithSteps()` - Calculate Spearman's rank correlation coefficient with detailed ranking and calculation steps
+
+**Example:**
+```csharp
+using MathsEngine.Modules.Explanations.Statistics;
+
+var scores1 = new List<int> { 10, 20, 30, 40, 50 };
+var scores2 = new List<int> { 15, 25, 35, 45, 55 };
+
+var result = BivariateAnalysisTutor.CalculateSpearmanRankWithSteps(scores1, scores2);
+
+Console.WriteLine($"Correlation: {result.Value:F4}");
+```
+
 ## Running the Demo
 
 A complete demonstration is available in the `Examples/ExplanationsDemo.cs` file. To run it:
@@ -236,15 +273,17 @@ ExplanationsDemo.RunDemo();
 - MatrixTutor: 17 tests
 - NewtonsLawsTutor: 8 tests
 - UniformAccelerationTutor: 15 tests
+- StandardDeviationTutor: 3 tests
+- BivariateAnalysisTutor: 8 tests
 
-**Total: 74 tests, all passing ✅**
+**Total: 85 tests, all passing ✅**
 
 ## Future Expansion
 
 The Explanations module can be extended to cover:
-- Statistics calculations (mean, standard deviation, correlation)
 - Additional matrix operations (inverse, transpose, etc.)
 - Other Pure mathematics topics (algebra, calculus)
+- More statistics calculations (hypothesis testing, regression analysis)
 
 ## Note on the "Teaching" vs "Explanations" Naming
 
