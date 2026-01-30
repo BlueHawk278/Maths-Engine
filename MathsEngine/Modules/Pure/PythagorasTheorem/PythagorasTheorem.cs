@@ -75,7 +75,7 @@ namespace MathsEngine.Modules.Pure.PythagorasTheorem
                 (b is null ? 1 : 0);
 
             if (missingCount != 0)
-                throw new ArgumentException();
+                throw new NullInputException("Must not be any null values to check for a valid triangle");
 
             if (hypotenuse <= 0 || a <= 0 || b <= 0)
                 throw new NegativeSideLengthException();
