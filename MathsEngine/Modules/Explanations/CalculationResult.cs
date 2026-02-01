@@ -1,5 +1,7 @@
+using MathsEngine.Modules.Pure.CoordinateGeometry;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace MathsEngine.Modules.Explanations
 {
@@ -10,21 +12,35 @@ namespace MathsEngine.Modules.Explanations
     {
         public double Value { get; }
         public double[,]? MatrixValue { get; }
+        public Coordinate? CoordinateValue { get; }
+        public StraightLine? StraightLineValue { get; }
         public IReadOnlyList<string> Steps { get; }
-        public bool IsMatrix { get; }
+        public bool IsMatrix => MatrixValue != null;
+        public bool IsCoordinate => CoordinateValue != null;
+        public bool IsStraightLine => StraightLineValue != null;
 
         public CalculationResult(double value, List<string> steps)
         {
             Value = value;
             Steps = steps.AsReadOnly();
-            IsMatrix = false;
         }
 
         public CalculationResult(double[,] matrixValue, List<string> steps)
         {
             MatrixValue = matrixValue;
             Steps = steps.AsReadOnly();
-            IsMatrix = true;
+        }
+
+        public CalculationResult(Coordinate coordinate, List<string> steps)
+        {
+            CoordinateValue = coordinate;
+            Steps = steps;
+        }
+
+        public CalculationResult(StraightLine straightLine, List<String> steps)
+        {
+            StraightLineValue = straightLine;
+            Steps = steps;
         }
 
         /// <summary>
@@ -32,7 +48,12 @@ namespace MathsEngine.Modules.Explanations
         /// </summary>
         public string GetStepsAsString()
         {
-            return string.Join(Environment.NewLine, Steps);
+            var builder = new StringBuilder();
+            foreach (var step in Steps)
+            {
+                builder.AppendLine(step);
+            }
+            return builder.ToString();
         }
     }
 }

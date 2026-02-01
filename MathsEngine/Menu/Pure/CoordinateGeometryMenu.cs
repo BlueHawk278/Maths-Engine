@@ -1,9 +1,11 @@
-﻿using MathsEngine.Modules.Pure.CoordinateGeometry;
+﻿using MathsEngine.Modules.Explanations;
+using MathsEngine.Modules.Explanations.Pure;
+using MathsEngine.Modules.Pure.CoordinateGeometry;
 using MathsEngine.Utils;
 
 namespace MathsEngine.Menu.Pure;
 
-public class CoordinateGeometryMenu
+public static class CoordinateGeometryMenu
 {
     public static void Menu()
     {
@@ -13,11 +15,10 @@ public class CoordinateGeometryMenu
             Console.WriteLine("--- Coordinate Geometry ---");
             Console.WriteLine("1. Calculate length of a line segment");
             Console.WriteLine("2. Calculate midpoint of a line segment");
-            Console.WriteLine("3. Calculate gradient of a line");
-            Console.WriteLine("4. Find equation from gradient and a point");
-            Console.WriteLine("5. Find equation from two points");
-            Console.WriteLine("6. Back");
-            var response = Parsing.GetMenuInput("Input: ", 6);
+            Console.WriteLine("3. Find equation from gradient and a point");
+            Console.WriteLine("4. Find equation from two points");
+            Console.WriteLine("5. Back");
+            var response = Parsing.GetMenuInput("Input: ", 5);
 
             switch (response)
             {
@@ -28,64 +29,103 @@ public class CoordinateGeometryMenu
                     HandleCalculateMidpoint();
                     break;
                 case 3:
-                    HandleCalculateGradient();
-                    break;
-                case 4:
                     HandleFindEquationFromGradientAndPoint();
                     break;
-                case 5:
+                case 4:
                     HandleFindEquationFromTwoPoints();
                     break;
-                case 6:
+                case 5:
                     return;
             }
 
-            Console.WriteLine("\nPress Enter to continue...");
-            Console.ReadLine();
+            Console.WriteLine("\nPress any key to continue...");
+            Console.ReadKey();
         }
     }
 
     private static void HandleCalculateLength()
     {
-        var coordA = Parsing.ParseCoordinate("Enter coordinate A (x,y): ");
-        var coordB = Parsing.ParseCoordinate("Enter coordinate B (x,y): ");
-        var length = CoordinateGeometryCalculator.CalculateLengthOfStraightLine(coordA, coordB);
-        Console.WriteLine($"\nThe length of the line segment is: {length:F4}");
+        try
+        {
+            var coordA = Parsing.ParseCoordinate("Enter coordinate A: ");
+            var coordB = Parsing.ParseCoordinate("Enter coordinate B: ");
+
+            var result = CoordinateGeometryTutor.CalculateLengthOfStraightLineWithSteps(coordA, coordB);
+
+            Console.WriteLine($"\nResult: The length of the line is {result.Value:F2} units.");
+            DisplaySteps(result);
+        }
+        catch (FormatException e)
+        {
+            ErrorDisplay.ShowError(e.Message);
+        }
     }
 
     private static void HandleCalculateMidpoint()
     {
-        var coordA = Parsing.ParseCoordinate("Enter coordinate A (x,y): ");
-        var coordB = Parsing.ParseCoordinate("Enter coordinate B (x,y): ");
-        var midpoint = CoordinateGeometryCalculator.CalculateMidpointOfStraightLine(coordA, coordB);
-        Console.WriteLine($"\nThe midpoint is: {midpoint}");
-    }
+        try
+        {
+            var coordA = Parsing.ParseCoordinate("Enter coordinate A: ");
+            var coordB = Parsing.ParseCoordinate("Enter coordinate B: ");
 
-    private static void HandleCalculateGradient()
-    {
-        var coordA = Parsing.ParseCoordinate("Enter coordinate A (x,y): ");
-        var coordB = Parsing.ParseCoordinate("Enter coordinate B (x,y): ");
-        var gradient = CoordinateGeometryCalculator.CalculateGradientBetweenTwoCoordinates(coordA, coordB);
+            var result = CoordinateGeometryTutor.CalculateMidpointOfStraightLineWithSteps(coordA, coordB);
 
-        if (double.IsPositiveInfinity(gradient))
-            Console.WriteLine("\nThe line is vertical, so the gradient is undefined (infinite).");
-        else
-            Console.WriteLine($"\nThe gradient of the line is: {gradient}");
+            Console.WriteLine($"\nResult: The midpoint is {result.CoordinateValue}.");
+            DisplaySteps(result);
+        }
+        catch (FormatException e)
+        {
+            ErrorDisplay.ShowError(e.Message);
+        }
     }
 
     private static void HandleFindEquationFromGradientAndPoint()
     {
-        var gradient = Parsing.GetDoubleInput("Enter the gradient (m): ");
-        var point = Parsing.ParseCoordinate("Enter a coordinate on the line (x,y): ");
-        var equation = CoordinateGeometryCalculator.FindEquationFromGradientAndCoordinate(gradient, point);
-        Console.WriteLine($"\nThe equation of the line is: {equation}");
+        try
+        {
+            var gradient = Parsing.GetDoubleInput("Enter the gradient (m): ");
+            var point = Parsing.ParseCoordinate("Enter the coordinate on the line: ");
+
+            var result = CoordinateGeometryTutor.FindEquationFromGradientAndCoordinateWithSteps(gradient, point);
+
+            Console.WriteLine($"\nResult: The equation of the line is {result.StraightLineValue}.");
+            DisplaySteps(result);
+        }
+        catch (FormatException e)
+        {
+            ErrorDisplay.ShowError(e.Message);
+        }
     }
 
     private static void HandleFindEquationFromTwoPoints()
     {
-        var coordA = Parsing.ParseCoordinate("Enter coordinate A (x,y): ");
-        var coordB = Parsing.ParseCoordinate("Enter coordinate B (x,y): ");
-        var equation = CoordinateGeometryCalculator.FindEquationFromTwoCoordinates(coordA, coordB);
-        Console.WriteLine($"\nThe equation of the line is: {equation}");
+        try
+        {
+            var coordA = Parsing.ParseCoordinate("Enter coordinate A: ");
+            var coordB = Parsing.ParseCoordinate("Enter coordinate B: ");
+
+            var result = CoordinateGeometryTutor.FindEquationFromTwoCoordinatesWithSteps(coordA, coordB);
+
+            Console.WriteLine($"\nResult: The equation of the line is {result.StraightLineValue}.");
+            DisplaySteps(result);
+        }
+        catch (FormatException e)
+        {
+            ErrorDisplay.ShowError(e.Message);
+        }
+    }
+
+    /// <summary>
+    /// Asks the user if they want to see the steps and displays them if requested.
+    /// </summary>
+    private static void DisplaySteps(CalculationResult result)
+    {
+        Console.Write("\nDo you want to see the steps? (y/n): ");
+        var response = Console.ReadLine()?.Trim().ToLower();
+        if (response == "y")
+        {
+            Console.WriteLine("\n--- Steps ---");
+            Console.WriteLine(result.GetStepsAsString());
+        }
     }
 }
