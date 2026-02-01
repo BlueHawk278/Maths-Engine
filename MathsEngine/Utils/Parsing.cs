@@ -1,4 +1,5 @@
-﻿using MathsEngine.Modules.Pure.Trigonometry;
+﻿using MathsEngine.Modules.Pure.CoordinateGeometry;
+using MathsEngine.Modules.Pure.Trigonometry;
 
 namespace MathsEngine.Utils;
 
@@ -76,5 +77,18 @@ public static class Parsing
                 return SideType.Adjacent;
             Console.WriteLine("You have not entered a valid side. Try Again");
         }
+    }
+
+    /// <summary>
+    /// Prompts the user to enter the X and Y values for a coordinate separately.
+    /// </summary>
+    /// <param name="prompt">The message to display to the user to give context for the coordinate.</param>
+    /// <returns>A Coordinate object.</returns>
+    public static Coordinate ParseCoordinate(string prompt)
+    {
+        Console.WriteLine(prompt); // e.g., "Enter coordinate A:"
+        var x = GetDoubleInput("  Enter X value: ");
+        var y = GetDoubleInput("  Enter Y value: ");
+        return new Coordinate(x, y);
     }
 }
