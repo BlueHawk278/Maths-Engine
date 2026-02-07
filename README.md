@@ -1,6 +1,8 @@
 # Maths Engine
 
-A C# console application providing computational tools for GCSE and Further Mathematics topics. The engine supports Pure Mathematics, Statistics, and Mechanics calculations with optional step-by-step explanations for educational purposes.
+A C# application providing computational tools for GCSE and Further Mathematics topics. The engine supports Pure Mathematics, Statistics, and Mechanics calculations with optional step-by-step explanations for educational purposes.
+
+**Now supporting both CLI and WinForms interfaces!**
 
 ## Purpose
 
@@ -8,6 +10,7 @@ This project provides:
 - Reliable implementations of common mathematical algorithms for students and educators
 - A modular architecture suitable for extension with additional mathematical topics
 - Step-by-step calculation breakdowns for learning and verification
+- Multiple user interfaces (Console and WinForms) sharing the same core logic
 
 ## Intended Users
 
@@ -21,6 +24,7 @@ This project provides:
 - **Pythagoras Theorem**: Calculate hypotenuse or missing sides in right triangles
 - **Trigonometry**: Solve for missing sides and angles using SOH-CAH-TOA ratios
 - **Matrices**: Addition, subtraction, scalar operations, multiplication, and determinant calculation (2×2)
+- **Coordinate Geometry**: Distance, midpoint, gradient, and straight line calculations
 
 ### Statistics
 - **Averages**: Mean, median, mode, and range for raw data and frequency tables
@@ -36,25 +40,32 @@ All core calculations have optional step-by-step explanations available through 
 
 ## System Structure
 
+The solution is now organized into multiple projects:
+
 ```
 MathsEngine/
-├── Menu/              # Console interface organized by mathematical topic
-│   ├── Pure/          # Menus for Pure Mathematics topics
-│   ├── Statistics/    # Menus for Statistics topics
-│   └── Mechanics/     # Menus for Mechanics topics
-├── Modules/           # Core calculation logic
-│   ├── Pure/          # Trigonometry, Matrices, Pythagoras implementations
-│   ├── Statistics/    # Statistical calculation classes
-│   ├── Mechanics/     # Dynamics and kinematics solvers
-│   └── Explanations/  # Step-by-step wrappers for educational use
-├── Utils/             # Input parsing, validation, and custom exceptions
-├── Examples/          # Demonstration code for Explanations module
-└── Program.cs         # Application entry point
+├── MathsEngine.Core/        # Core business logic (calculator classes)
+│   ├── Modules/             # Calculation implementations
+│   │   ├── Pure/            # Pure maths (Pythagoras, Trig, Matrices, etc.)
+│   │   ├── Statistics/      # Statistical calculations
+│   │   ├── Mechanics/       # Physics calculations
+│   │   └── Explanations/    # Step-by-step calculation explanations
+│   └── Utils/               # Core exceptions
+├── MathsEngine.CLI/         # Console user interface
+│   ├── Menu/                # Console menus organized by topic
+│   ├── Utils/               # Console-specific helpers (Parsing, Display)
+│   └── Program.cs           # CLI entry point
+├── MathsEngine.WinForms/    # Windows Forms user interface (stub)
+│   └── README.md            # WinForms development guide
+├── MathsEngine.Tests/       # Unit tests for core logic
+└── MathsEngine/             # Legacy project (deprecated)
 ```
 
 ### Architectural Principles
 
-**Separation of Concerns**: User interface code (`Menu/`) is isolated from calculation logic (`Modules/`). This allows the calculation classes to be reused in different contexts (GUI, web service, unit tests) without modification.
+**Multi-Interface Architecture**: The core calculation logic in `MathsEngine.Core` is completely UI-agnostic, allowing it to be used by multiple interfaces (CLI, WinForms, or any future interface) without modification.
+
+**Separation of Concerns**: User interface code is isolated from calculation logic. The CLI and WinForms projects contain only UI code, while all mathematical operations are in the Core library.
 
 **Wrapper Pattern for Explanations**: The `Explanations` module provides step-by-step breakdowns without modifying existing calculation classes. This maintains backward compatibility and keeps educational features optional.
 
@@ -63,25 +74,35 @@ MathsEngine/
 ## Running the Application
 
 ### Prerequisites
-- .NET Framework 4.x or .NET 6+ SDK
-- Visual Studio or compatible C# IDE
+- .NET 8.0 SDK or later
+- For WinForms: Windows OS (or cross-platform development with EnableWindowsTargeting)
 
-### Execution
+### Running the CLI Application
+
+From the command line:
+```bash
+dotnet run --project MathsEngine.CLI
+```
+
+Or build and run from Visual Studio:
 1. Open `MathsEngine.sln` in Visual Studio
-2. Build the solution (Build → Build Solution)
+2. Set `MathsEngine.CLI` as the startup project
 3. Run the project (F5 or Start)
-4. Navigate using numeric menu inputs
 
-The application presents a hierarchical menu system:
+The CLI presents a hierarchical menu system:
 1. Select a category (Pure, Mechanics, Statistics)
 2. Select a specific topic (e.g., Trigonometry, Matrices)
 3. Select a calculation type
 4. Enter required values
 5. View result and return to menu
 
+### Running the WinForms Application
+
+**Note**: The WinForms project is currently a stub/placeholder. See `MathsEngine.WinForms/README.md` for details on future development.
+
 ### Programmatic Usage
 
-To use calculation classes directly:
+To use calculation classes directly in your own projects, reference `MathsEngine.Core`:
 
 ```csharp
 using MathsEngine.Modules.Pure.Trigonometry;
@@ -112,7 +133,7 @@ Console.WriteLine(calculation.GetStepsAsString());
 
 ### Adding a New Calculation Topic
 
-1. **Create calculation class** in `Modules/[Category]/`:
+1. **Create calculation class** in `MathsEngine.Core/Modules/[Category]/`:
    ```csharp
    public static class NewTopicCalculator
    {
@@ -120,7 +141,7 @@ Console.WriteLine(calculation.GetStepsAsString());
    }
    ```
 
-2. **Create menu class** in `Menu/[Category]/`:
+2. **Create menu class** in `MathsEngine.CLI/Menu/[Category]/`:
    ```csharp
    internal class NewTopicMenu
    {
@@ -128,9 +149,9 @@ Console.WriteLine(calculation.GetStepsAsString());
    }
    ```
 
-3. **Add custom exceptions** to `Utils/Exceptions.cs` if needed
+3. **Add custom exceptions** to `MathsEngine.Core/Utils/Exceptions.cs` if needed
 
-4. **(Optional) Create explanation wrapper** in `Modules/Explanations/[Category]/`:
+4. **(Optional) Create explanation wrapper** in `MathsEngine.Core/Modules/Explanations/[Category]/`:
    ```csharp
    public static class NewTopicTutor
    {
@@ -146,16 +167,40 @@ Console.WriteLine(calculation.GetStepsAsString());
 
 5. **Register in parent menu** by adding a menu option
 
+### Adding WinForms UI
+
+The WinForms project is set up and references `MathsEngine.Core`. To add UI:
+
+1. Create forms for each mathematical topic
+2. Reference calculation classes from `MathsEngine.Core`
+3. Handle user input and display results using WinForms controls
+4. All calculation logic is already available in the Core library
+
 ### Testing
 
 Tests are organized in the `MathsEngine.Tests` project. To add tests for new functionality:
 
 1. Create a test class matching the module structure
-2. Test calculation accuracy against known mathematical results
-3. Test edge cases (zero values, invalid inputs, boundary conditions)
-4. Verify custom exceptions are thrown correctly
+2. Reference `MathsEngine.Core` (tests only test core logic, not UI)
+3. Test calculation accuracy against known mathematical results
+4. Test edge cases (zero values, invalid inputs, boundary conditions)
+5. Verify custom exceptions are thrown correctly
+
+Run tests with:
+```bash
+dotnet test
+```
 
 ## Design Rationale
+
+### Why Multiple Projects?
+The solution is split into:
+- **Core**: Pure calculation logic, no UI dependencies
+- **CLI**: Console-specific UI implementation
+- **WinForms**: Windows Forms UI (future development)
+- **Tests**: Unit tests for core logic
+
+This allows the same calculation logic to be used by different interfaces without duplication.
 
 ### Why Static Methods for Calculations?
 Most calculation methods are stateless transformations (input → output). Static methods make this explicit and avoid unnecessary object instantiation.
@@ -171,12 +216,29 @@ Integrating step-by-step explanations into calculation classes would:
 
 The wrapper pattern keeps explanations opt-in while reusing existing calculation code.
 
-## Limitations
+## Project Status
 
-- Console-only interface (no graphical plotting or interactive visualization)
+### Current State
+- ✅ **MathsEngine.Core**: Complete - all calculation logic extracted and UI-independent
+- ✅ **MathsEngine.CLI**: Complete - fully functional console interface
+- ⚠️ **MathsEngine.WinForms**: Stub/placeholder - ready for development
+- ⚠️ **MathsEngine** (legacy): Deprecated - kept for reference, use MathsEngine.CLI instead
+
+### Limitations
+
+- WinForms interface not yet implemented (structure in place)
+- No graphical plotting or interactive visualization
 - No persistent storage of calculation history
 - Limited to numeric computation (no symbolic algebra or equation solving)
 - Matrix operations currently support 2×2 determinants only
+
+## Migration Guide
+
+If you were using the original `MathsEngine` project:
+
+1. **For CLI usage**: Use `MathsEngine.CLI` instead - it provides the exact same console interface
+2. **For library usage**: Reference `MathsEngine.Core` - all calculation classes are in the same namespaces
+3. **For testing**: Tests now reference `MathsEngine.Core` only
 
 ## License
 

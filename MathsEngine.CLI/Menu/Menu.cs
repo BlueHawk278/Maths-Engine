@@ -1,0 +1,118 @@
+﻿using MathsEngine.Menu.Mechanics;
+using MathsEngine.Menu.Pure;
+using MathsEngine.Menu.Statistics;
+using MathsEngine.Utils;
+
+namespace MathsEngine.Menu
+{
+    internal static class Menu
+    {
+        public static void MainMenu()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Welcome to the Maths Engine");
+                Console.WriteLine("1. Pure");
+                Console.WriteLine("2. Mechanics");
+                Console.WriteLine("3. Statistics");
+                Console.WriteLine("4. Exit Program");
+                int response = Parsing.GetMenuInput("Input: ", 4);
+
+                switch (response)
+                {
+                    case 1:
+                        PureMenu();
+                        break;
+                    case 2:
+                        MechanicsMenu();
+                        break;
+                    case 3:
+                        StatisticsMenu();
+                        break;
+                    case 4: return;
+                }
+            }
+        }
+        private static void PureMenu()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Welcome to the Pure Maths Menu");
+                Console.WriteLine("1. Pythagoras Theorem");
+                Console.WriteLine("2. Trigonometry");
+                Console.WriteLine("3. Matrices");
+                Console.WriteLine("4. Algebra");
+                Console.WriteLine("5. Coordinate Geometry");
+                Console.WriteLine("6. Back");
+                int response = Parsing.GetMenuInput("Input: ", 6);
+
+                switch (response)
+                {
+                    case 1:
+                        PythagorasMenu.Menu();
+                        break;
+                    case 2:
+                        TrigonometryMenu.Menu();
+                        break;
+                    case 3:
+                        MatrixMenu.Menu();
+                        break;
+                    case 5:
+                        CoordinateGeometryMenu.Menu();
+                        break;
+                    case 6: return;
+                }
+            }
+        }
+        private static void MechanicsMenu()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Welcome to the Mechanics Menu");
+                Console.WriteLine("1. Uniform Acceleration");
+                Console.WriteLine("2. Newton's Laws Calculations");
+                Console.WriteLine("3. Main Menu");
+                int response = Parsing.GetMenuInput("Input: ", 3);
+                Console.Clear();
+
+                switch (response)
+                {
+                    case 1:
+                        UniformAccelerationMenu.Menu();
+                        break;
+                    case 2:
+                        NewtonsLawsMenu.Menu();
+                        break;
+                    case 3: return;
+                }
+            }
+        }
+        private static void StatisticsMenu()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Welcome to the Statistics Menu");
+                Console.WriteLine("1. Bivariate Analysis");
+                Console.WriteLine("2. Standard Deviation");
+                Console.WriteLine("3. Main Menu");
+                int response = Parsing.GetMenuInput("Input: ", 3);
+                Console.Clear();
+
+                switch (response)
+                {
+                    case 1:
+                        BivariateAnalysisMenu.Start();
+                        break;
+                    case 2:
+                        DispersionMenu.Menu();
+                        break;
+                    case 3: return;
+                }
+            }
+        }
+    }
+}
