@@ -15,7 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\MathsEngine\MathsEngine.csproj" />
+		<ProjectReference Include="..\MathsEngine.Core\MathsEngine.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
