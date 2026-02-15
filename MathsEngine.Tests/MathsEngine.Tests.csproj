@@ -15,11 +15,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\MathsEngine\MathsEngine.csproj" />
+	  <Folder Include="PureTests\PythagorasTests\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="PureTests\PythagorasTests\" />
+	  <ProjectReference Include="..\MathsEngine.Models\MathsEngine.Models.csproj" />
 	</ItemGroup>
 
 </Project>
