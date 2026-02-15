@@ -1,0 +1,164 @@
+﻿using MathsEngine.Modules.Pure.Trigonometry;
+using MathsEngine.Utils;
+using System.Drawing;
+
+namespace MathsEngine.Menu.Pure
+{
+    public class TrigonometryMenu // Implement a check method to check for a valid triangle
+    {
+        public static void Menu()
+        {
+            while (true)
+            {
+                System.Console.Clear();
+                System.Console.WriteLine("1. Calculate a missing side");
+                System.Console.WriteLine("2. Calculate a missing angle");
+                System.Console.WriteLine("3. Back");
+                int response = Parsing.GetMenuInput("Input: ", 3);
+
+                switch (response)
+                {
+                    case 1:
+                        HandleMissingSide();
+                        break;
+                    case 2:
+                        HandleMissingAngle();
+                        break;
+                    case 3: return;
+                }
+            }
+        }
+
+        private static void HandleMissingSide()
+        {
+            System.Console.Clear();
+            System.Console.WriteLine("Calculating a missing Side");
+
+            double? angle = Parsing.GetNullableDoubleInput("Enter the angle you know in degrees: ");
+
+            SideType sideKnown =
+                Parsing.GetSideType("Which side do you know? (Opposite, Adjacent, Hypotenuse): ");
+
+            double? knownSideLength = Parsing.GetNullableDoubleInput("Enter the length of the known side: ");
+
+            SideType sideToFindType;
+
+            switch (sideKnown)
+            {
+                case SideType.Opposite:
+                    sideToFindType = Parsing.GetSideType("Which side do you want to find? (Adjacent, Hypotenuse): ");
+                    break;
+                case SideType.Adjacent:
+                    sideToFindType = Parsing.GetSideType("Which side do you want to find? (Opposite, Hypotenuse): ");
+                    break;
+                case SideType.Hypotenuse:
+                    sideToFindType = Parsing.GetSideType("Which side do you want to find? (Adjacent, Opposite): ");
+                    break;
+                default:
+                    Menu();
+                    return;
+            }
+
+            try
+            {
+                /*
+                var teachingResult =
+                    TrigonometryTutor.CalculateMissingSideWithSteps(knownSideLength, angle, sideKnown, sideToFindType);
+
+                Console.Clear();
+                Console.WriteLine("--- Worked Solution ---\n");
+
+                foreach(var step in teachingResult.Steps)
+                    Console.WriteLine(step);
+
+                Console.WriteLine($"\nFinal Answer: {teachingResult.Value:F2}");
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
+                */
+            }
+            catch (DuplicateSideException)
+            {
+                System.Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine(
+                    $"\nError: You cannot find the side you already know. Please choose a different side to find.");
+                System.Console.ResetColor();
+            }
+            catch (AcuteAngleException)
+            {
+                ErrorDisplay.ShowError("The angle in a right-angled triangle must be greater than 0 and less than 90 degrees.");
+            }
+            catch (NegativeSideLengthException)
+            {
+                System.Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine($"\nError: The length of a side cannot be negative or zero.");
+                System.Console.ResetColor();
+            }
+            catch (NullInputException)
+            {
+                System.Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine($"\nError: You must provide a value for all inputs.");
+                System.Console.ResetColor();
+            }
+            catch (Exception e)
+            {
+                System.Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine($"\nAn unexpected error occurred: {e.Message}");
+                System.Console.ResetColor();
+            }
+        }
+
+        private static void HandleMissingAngle()
+        {
+            System.Console.Clear();
+            System.Console.WriteLine("Calculating a missing Angle\n");
+
+            SideType side1Type = Parsing.GetSideType("Enter the first side you know (Opposite, Adjacent, Hypotenuse): ");
+            double? side1Length = Parsing.GetNullableDoubleInput("Enter the length of the first side: ");
+
+            SideType side2Type = Parsing.GetSideType("Enter the second side you know (Opposite, Adjacent, Hypotenuse): ");
+            double? side2Length = Parsing.GetNullableDoubleInput("Enter the length of the second side: ");
+
+            try
+            {
+                /*
+                var teachingResult =
+                    TrigonometryTutor.CalculateMissingAngleWithSteps(
+                            side1Length, side1Type, side2Length, side2Type);
+
+                Console.Clear();
+                Console.WriteLine("--- Worked Solution ---\n");
+
+                foreach (var step in teachingResult.Steps)
+                {
+                    Console.WriteLine(step);
+                }
+
+                Console.WriteLine($"\nFinal Answer: {teachingResult.Value:F2}");
+
+                Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
+                Console.ReadKey();
+                */
+            }
+            catch (DuplicateSideException)
+            {
+                ErrorDisplay.ShowError("Error: You cannot find the side you already know.Please choose a different side to find.");
+            }
+            catch (NegativeSideLengthException)
+            {
+                ErrorDisplay.ShowError("Error: The length of a side cannot be negative or zero.");
+            }
+            catch (NullInputException)
+            {
+                ErrorDisplay.ShowError("Error: You must provide a value for all inputs.");
+            }
+            catch (HypotenuseNotLongestSideException)
+            {
+                ErrorDisplay.ShowError("The hypotenuse must be the longest side");
+            }
+            catch (Exception ex)
+            {
+                ErrorDisplay.ShowError(ex.Message);
+            }
+        }
+    }
+}

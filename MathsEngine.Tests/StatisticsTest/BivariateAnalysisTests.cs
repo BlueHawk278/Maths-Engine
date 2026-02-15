@@ -10,30 +10,30 @@ namespace MathsEngine.Tests.StatisticsTests
         [Fact]
         public void Constructor_NullFirstScoreList_ThrowsNullInputException()
         {
-            var scores2 = new List<int> { 1, 2, 3 };
+            var scores2 = new List<double> { 1, 2, 3 };
             Assert.Throws<NullInputException>(() => new BivariateAnalysisCalculator(null, scores2));
         }
 
         [Fact]
         public void Constructor_NullSecondScoreList_ThrowsNullInputException()
         {
-            var scores1 = new List<int> { 1, 2, 3 };
+            var scores1 = new List<double> { 1, 2, 3 };
             Assert.Throws<NullInputException>(() => new BivariateAnalysisCalculator(scores1, null));
         }
 
         [Fact]
         public void Constructor_MismatchedListSizes_ThrowsListsNotSameSizeException()
         {
-            var scores1 = new List<int> { 1, 2, 3 };
-            var scores2 = new List<int> { 1, 2 };
+            var scores1 = new List<double> { 1, 2, 3 };
+            var scores2 = new List<double> { 1, 2 };
             Assert.Throws<ListsNotSameSizeException>(() => new BivariateAnalysisCalculator(scores1, scores2));
         }
 
         [Theory]
         [MemberData(nameof(BivariateAnalysisTestData))]
         public void Run_CalculatesCorrectBivariateAnalysisResults(
-            List<int> scores1,
-            List<int> scores2,
+            List<double> scores1,
+            List<double> scores2,
             double expectedSumDifferenceSquared,
             double expectedCorrelationCoefficient,
             Correlation expectedCorrelation)

@@ -2,10 +2,10 @@
 
 public class Display
 {
-    public static void DisplayResult(Dictionary<string, double?> ResultDict)
+    public static void DisplayResult(Dictionary<string, double?> resultDict)
     {
         Console.WriteLine("#----- Calculation Result -----#");
-        foreach (KeyValuePair<string, double?> kvp in ResultDict)
+        foreach (KeyValuePair<string, double?> kvp in resultDict)
             Console.WriteLine($"{kvp.Key}: {FormatValue(kvp.Value)}");
     }
 
