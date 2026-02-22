@@ -28,57 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            menuStrip1 = new MenuStrip();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            editToolStripMenuItem = new ToolStripMenuItem();
-            viewToolStripMenuItem = new ToolStripMenuItem();
-            toolsToolStripMenuItem = new ToolStripMenuItem();
-            helpToolStripMenuItem = new ToolStripMenuItem();
             PureButton = new Button();
             MechanicsButton = new Button();
             StatisticsButton = new Button();
             label1 = new Label();
-            menuStrip1.SuspendLayout();
             SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, editToolStripMenuItem, viewToolStripMenuItem, toolsToolStripMenuItem, helpToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(634, 24);
-            menuStrip1.TabIndex = 0;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(37, 20);
-            toolStripMenuItem1.Text = "File";
-            // 
-            // editToolStripMenuItem
-            // 
-            editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(39, 20);
-            editToolStripMenuItem.Text = "Edit";
-            // 
-            // viewToolStripMenuItem
-            // 
-            viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            viewToolStripMenuItem.Size = new Size(44, 20);
-            viewToolStripMenuItem.Text = "View";
-            // 
-            // toolsToolStripMenuItem
-            // 
-            toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            toolsToolStripMenuItem.Size = new Size(47, 20);
-            toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // helpToolStripMenuItem
-            // 
-            helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            helpToolStripMenuItem.Size = new Size(44, 20);
-            helpToolStripMenuItem.Text = "Help";
             // 
             // PureButton
             // 
@@ -88,6 +42,7 @@
             PureButton.TabIndex = 2;
             PureButton.Text = "📐 Pure Mathematics\r\n\r\nPythagoras Theorem\r\nTrigonometry\r\nMatrices\r\nAlgebra\r\nCoordinate Geometry\r\n";
             PureButton.UseVisualStyleBackColor = true;
+            PureButton.Click += PureButton_Click;
             // 
             // MechanicsButton
             // 
@@ -97,6 +52,7 @@
             MechanicsButton.TabIndex = 3;
             MechanicsButton.Text = "⚙️ Mechanics \r\n\r\nUVATS Equations\r\nNewton's Laws\r\n";
             MechanicsButton.UseVisualStyleBackColor = true;
+            MechanicsButton.Click += MechanicsButton_Click;
             // 
             // StatisticsButton
             // 
@@ -106,12 +62,13 @@
             StatisticsButton.TabIndex = 4;
             StatisticsButton.Text = "📊 Statistics\r\n\r\nAverages\r\nBivariate Analysis\r\nStandard Deviation\r\n";
             StatisticsButton.UseVisualStyleBackColor = true;
+            StatisticsButton.Click += StatisticsButton_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 28F);
-            label1.Location = new Point(12, 36);
+            label1.Location = new Point(12, 120);
             label1.Name = "label1";
             label1.Size = new Size(605, 51);
             label1.TabIndex = 5;
@@ -126,25 +83,18 @@
             Controls.Add(StatisticsButton);
             Controls.Add(MechanicsButton);
             Controls.Add(PureButton);
-            Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
             Name = "MainForm";
-            Text = "Maths Engine";
             Load += MainForm_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            Controls.SetChildIndex(BackButton, 0);
+            Controls.SetChildIndex(PureButton, 0);
+            Controls.SetChildIndex(MechanicsButton, 0);
+            Controls.SetChildIndex(StatisticsButton, 0);
+            Controls.SetChildIndex(label1, 0);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem editToolStripMenuItem;
-        private ToolStripMenuItem viewToolStripMenuItem;
-        private ToolStripMenuItem toolsToolStripMenuItem;
-        private ToolStripMenuItem helpToolStripMenuItem;
         private Button PureButton;
         private Button MechanicsButton;
         private Button StatisticsButton;
