@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MathsEngine.WinForms.Forms.Pure
 {
-    public partial class PythagorasForm : Form
+    public partial class TrigonometryForm : Form
     {
-        public PythagorasForm()
+        public TrigonometryForm()
         {
             InitializeComponent();
         }

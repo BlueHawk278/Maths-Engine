@@ -54,10 +54,12 @@ namespace MathsEngine.Menu.Pure
             int rows1 = Parsing.GetIntInput("First Matrix - How many rows: ");
             int columns1 = Parsing.GetIntInput("First Matrix - How many columns: ");
             MatrixBase matrix1 = new MatrixBase(rows1, columns1);
+            PopulateMatrixFromInput(matrix1);
 
             int rows2 = Parsing.GetIntInput("Second Matrix - How many rows: ");
             int columns2 = Parsing.GetIntInput("Second Matrix - How many columns: ");
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
+            PopulateMatrixFromInput(matrix2);
 
             try
             {
@@ -83,10 +85,12 @@ namespace MathsEngine.Menu.Pure
             int rows1 = Parsing.GetIntInput("First Matrix - How many rows: ");
             int columns1 = Parsing.GetIntInput("First Matrix - How many columns: ");
             MatrixBase matrix1 = new MatrixBase(rows1, columns1);
+            PopulateMatrixFromInput(matrix1);
 
             int rows2 = Parsing.GetIntInput("Second Matrix - How many rows: ");
             int columns2 = Parsing.GetIntInput("Second Matrix - How many columns: ");
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
+            PopulateMatrixFromInput(matrix2);
 
             try
             {
@@ -116,6 +120,7 @@ namespace MathsEngine.Menu.Pure
             int number = Parsing.GetIntInput("What number would you like to multiply this matrix by: ");
 
             MatrixBase matrix = new MatrixBase(rows, columns);
+            PopulateMatrixFromInput(matrix);
 
             try
             {
@@ -140,6 +145,7 @@ namespace MathsEngine.Menu.Pure
             int number = Parsing.GetIntInput("What number would you like to divide this matrix by: ");
 
             MatrixBase matrix = new MatrixBase(rows, columns);
+            PopulateMatrixFromInput(matrix);
 
             try
             {
@@ -166,10 +172,12 @@ namespace MathsEngine.Menu.Pure
             int rows1 = Parsing.GetIntInput("First Matrix - How many rows: ");
             int columns1 = Parsing.GetIntInput("First Matrix - How many columns: ");
             MatrixBase matrix1 = new MatrixBase(rows1, columns1);
+            PopulateMatrixFromInput(matrix1);
 
             int rows2 = Parsing.GetIntInput("Second Matrix - How many rows: ");
             int columns2 = Parsing.GetIntInput("Second Matrix - How many columns: ");
             MatrixBase matrix2 = new MatrixBase(rows2, columns2);
+            PopulateMatrixFromInput(matrix2);
 
             try
             {
@@ -190,6 +198,7 @@ namespace MathsEngine.Menu.Pure
             System.Console.Clear();
 
             MatrixBase matrix = new MatrixBase(2, 2);
+            PopulateMatrixFromInput(matrix);
 
             try
             {
@@ -202,6 +211,18 @@ namespace MathsEngine.Menu.Pure
             catch (NullInputException)
             {
                 ErrorDisplay.ShowError("\nError: Empty Input - Please enter values for the matrices.");
+            }
+        }
+
+        private static void PopulateMatrixFromInput(MatrixBase matrix)
+        {
+            System.Console.WriteLine("Enter the matrix values:");
+            for (int i = 0; i < matrix.NumRows; i++)
+            {
+                for (int j = 0; j < matrix.NumCols; j++)
+                {
+                    matrix.Matrix[i, j] = Parsing.GetDoubleInput($"Enter value for [{i + 1},{j + 1}]: ");
+                }
             }
         }
 

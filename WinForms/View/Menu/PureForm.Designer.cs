@@ -52,6 +52,7 @@
             PythagorasButton.TabIndex = 0;
             PythagorasButton.Text = "Pythagoras Theorem";
             PythagorasButton.UseVisualStyleBackColor = true;
+            PythagorasButton.Click += PythagorasButton_Click;
             // 
             // TrigonometryButton
             // 
@@ -59,7 +60,7 @@
             TrigonometryButton.Name = "TrigonometryButton";
             TrigonometryButton.Size = new Size(400, 50);
             TrigonometryButton.TabIndex = 1;
-            TrigonometryButton.Text = "Trigonometry";
+            TrigonometryButton.Text = "TrigonometryForm";
             TrigonometryButton.UseVisualStyleBackColor = true;
             // 
             // MatricesButton

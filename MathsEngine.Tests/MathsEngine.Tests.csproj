@@ -19,7 +19,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\MathsEngine.Models\MathsEngine.Models.csproj" />
+	  <ProjectReference Include="..\MathsEngine.Models\MathsEngine.Core.csproj" />
 	</ItemGroup>
 
 </Project>

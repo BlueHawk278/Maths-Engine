@@ -39,6 +39,7 @@ namespace MathsEngine.Modules.Pure.Matrices
             if (size <= 0)
                 throw new ArgumentException();
 
+            // This constructor will now create an un-filled matrix.
             var identityMatrix = new MatrixBase(size, size);
 
             for (int i = 0; i < size; i++)
@@ -53,9 +54,9 @@ namespace MathsEngine.Modules.Pure.Matrices
 
         public static bool CheckEmptyMatrix(MatrixBase matrix)
         {
-            if(matrix.Matrix.GetLength(0) == 0)
+            if (matrix.Matrix.GetLength(0) == 0)
                 return true;
-            if(matrix.Matrix.GetLength(1) == 0)
+            if (matrix.Matrix.GetLength(1) == 0)
                 return true;
             return false;
         }

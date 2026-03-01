@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            menuStrip1 = new MenuStrip();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            editToolStripMenuItem = new ToolStripMenuItem();
-            viewToolStripMenuItem = new ToolStripMenuItem();
-            toolsToolStripMenuItem = new ToolStripMenuItem();
-            helpToolStripMenuItem = new ToolStripMenuItem();
             PythagorasLabel = new Label();
             InputPanel = new Panel();
             TextBoxHypotenuse = new TextBox();
@@ -45,54 +39,16 @@
             FindOtherSideRadioButton = new RadioButton();
             FindHypotenuseRadioButton = new RadioButton();
             ResultPanel = new Panel();
-            ResultValueLabel = new Label();
-            ResultNameLabel = new Label();
-            StepsPanel = new Panel();
+            ResultLabel = new Label();
+            ResultPanelLabel = new Label();
             CalculateButton = new Button();
             ClearButton = new Button();
-            menuStrip1.SuspendLayout();
+            pictureBox1 = new PictureBox();
+            richTextBox1 = new RichTextBox();
             InputPanel.SuspendLayout();
             ResultPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, editToolStripMenuItem, viewToolStripMenuItem, toolsToolStripMenuItem, helpToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(634, 24);
-            menuStrip1.TabIndex = 1;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(37, 20);
-            toolStripMenuItem1.Text = "File";
-            // 
-            // editToolStripMenuItem
-            // 
-            editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(39, 20);
-            editToolStripMenuItem.Text = "Edit";
-            // 
-            // viewToolStripMenuItem
-            // 
-            viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            viewToolStripMenuItem.Size = new Size(44, 20);
-            viewToolStripMenuItem.Text = "View";
-            // 
-            // toolsToolStripMenuItem
-            // 
-            toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            toolsToolStripMenuItem.Size = new Size(47, 20);
-            toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // helpToolStripMenuItem
-            // 
-            helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            helpToolStripMenuItem.Size = new Size(44, 20);
-            helpToolStripMenuItem.Text = "Help";
             // 
             // PythagorasLabel
             // 
@@ -116,7 +72,7 @@
             InputPanel.Controls.Add(FindHypotenuseRadioButton);
             InputPanel.Location = new Point(12, 116);
             InputPanel.Name = "InputPanel";
-            InputPanel.Size = new Size(610, 200);
+            InputPanel.Size = new Size(273, 215);
             InputPanel.TabIndex = 3;
             // 
             // TextBoxHypotenuse
@@ -177,6 +133,7 @@
             FindOtherSideRadioButton.TabStop = true;
             FindOtherSideRadioButton.Text = "Find Other Side";
             FindOtherSideRadioButton.UseVisualStyleBackColor = true;
+            FindOtherSideRadioButton.CheckedChanged += FindOtherSideRadioButton_CheckedChanged;
             // 
             // FindHypotenuseRadioButton
             // 
@@ -188,93 +145,106 @@
             FindHypotenuseRadioButton.TabStop = true;
             FindHypotenuseRadioButton.Text = "Find Hypotenuse";
             FindHypotenuseRadioButton.UseVisualStyleBackColor = true;
+            FindHypotenuseRadioButton.CheckedChanged += FindHypotenuseRadioButton_CheckedChanged;
             // 
             // ResultPanel
             // 
-            ResultPanel.Controls.Add(ResultValueLabel);
-            ResultPanel.Controls.Add(ResultNameLabel);
+            ResultPanel.Controls.Add(ResultLabel);
+            ResultPanel.Controls.Add(ResultPanelLabel);
             ResultPanel.Location = new Point(12, 337);
             ResultPanel.Name = "ResultPanel";
-            ResultPanel.Size = new Size(610, 62);
+            ResultPanel.Size = new Size(610, 77);
             ResultPanel.TabIndex = 4;
             // 
-            // ResultValueLabel
+            // ResultLabel
             // 
-            ResultValueLabel.AutoSize = true;
-            ResultValueLabel.Location = new Point(166, 24);
-            ResultValueLabel.Name = "ResultValueLabel";
-            ResultValueLabel.Size = new Size(38, 15);
-            ResultValueLabel.TabIndex = 1;
-            ResultValueLabel.Text = "label1";
+            ResultLabel.AutoSize = true;
+            ResultLabel.Location = new Point(23, 46);
+            ResultLabel.Name = "ResultLabel";
+            ResultLabel.Size = new Size(0, 15);
+            ResultLabel.TabIndex = 3;
             // 
-            // ResultNameLabel
+            // ResultPanelLabel
             // 
-            ResultNameLabel.AutoSize = true;
-            ResultNameLabel.Location = new Point(18, 24);
-            ResultNameLabel.Name = "ResultNameLabel";
-            ResultNameLabel.Size = new Size(128, 15);
-            ResultNameLabel.TabIndex = 0;
-            ResultNameLabel.Text = "Hypotenuse/OtherSide";
-            // 
-            // StepsPanel
-            // 
-            StepsPanel.Location = new Point(12, 420);
-            StepsPanel.Name = "StepsPanel";
-            StepsPanel.Size = new Size(610, 155);
-            StepsPanel.TabIndex = 5;
+            ResultPanelLabel.AutoSize = true;
+            ResultPanelLabel.Location = new Point(18, 18);
+            ResultPanelLabel.Name = "ResultPanelLabel";
+            ResultPanelLabel.Size = new Size(39, 15);
+            ResultPanelLabel.TabIndex = 2;
+            ResultPanelLabel.Text = "Result";
             // 
             // CalculateButton
             // 
             CalculateButton.Font = new Font("Segoe UI", 15F);
-            CalculateButton.Location = new Point(252, 610);
+            CalculateButton.Location = new Point(348, 689);
             CalculateButton.Name = "CalculateButton";
-            CalculateButton.Size = new Size(144, 62);
+            CalculateButton.Size = new Size(150, 60);
             CalculateButton.TabIndex = 6;
             CalculateButton.Text = "Calculate";
             CalculateButton.UseVisualStyleBackColor = true;
+            CalculateButton.Click += CalculateButton_Click;
             // 
             // ClearButton
             // 
             ClearButton.Font = new Font("Segoe UI", 15F);
-            ClearButton.Location = new Point(252, 688);
+            ClearButton.Location = new Point(147, 688);
             ClearButton.Name = "ClearButton";
-            ClearButton.Size = new Size(144, 61);
+            ClearButton.Size = new Size(150, 60);
             ClearButton.TabIndex = 7;
             ClearButton.Text = "Clear";
             ClearButton.UseVisualStyleBackColor = true;
+            ClearButton.Click += ClearButton_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(291, 116);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(331, 215);
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(12, 420);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.ReadOnly = true;
+            richTextBox1.ScrollBars = RichTextBoxScrollBars.Vertical;
+            richTextBox1.Size = new Size(610, 262);
+            richTextBox1.TabIndex = 9;
+            richTextBox1.Text = "";
             // 
             // PythagorasForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(634, 761);
+            Controls.Add(richTextBox1);
+            Controls.Add(pictureBox1);
             Controls.Add(ClearButton);
             Controls.Add(CalculateButton);
-            Controls.Add(StepsPanel);
             Controls.Add(ResultPanel);
             Controls.Add(InputPanel);
             Controls.Add(PythagorasLabel);
-            Controls.Add(menuStrip1);
             Name = "PythagorasForm";
-            Text = "Maths Engine";
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            Controls.SetChildIndex(PythagorasLabel, 0);
+            Controls.SetChildIndex(InputPanel, 0);
+            Controls.SetChildIndex(ResultPanel, 0);
+            Controls.SetChildIndex(CalculateButton, 0);
+            Controls.SetChildIndex(ClearButton, 0);
+            Controls.SetChildIndex(pictureBox1, 0);
+            Controls.SetChildIndex(richTextBox1, 0);
+            Controls.SetChildIndex(BackButton, 0);
             InputPanel.ResumeLayout(false);
             InputPanel.PerformLayout();
             ResultPanel.ResumeLayout(false);
             ResultPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem editToolStripMenuItem;
-        private ToolStripMenuItem viewToolStripMenuItem;
-        private ToolStripMenuItem toolsToolStripMenuItem;
-        private ToolStripMenuItem helpToolStripMenuItem;
         private Label PythagorasLabel;
         private Panel InputPanel;
         private RadioButton FindOtherSideRadioButton;
@@ -286,10 +256,11 @@
         private TextBox TextBoxHypotenuse;
         private TextBox TextBoxSideB;
         private Panel ResultPanel;
-        private Label ResultValueLabel;
-        private Label ResultNameLabel;
-        private Panel StepsPanel;
         private Button CalculateButton;
         private Button ClearButton;
+        private PictureBox pictureBox1;
+        private Label ResultPanelLabel;
+        private Label ResultLabel;
+        private RichTextBox richTextBox1;
     }
 }
