@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinForms.Forms
+namespace MathsEngine.WinForms.Forms.Pure
 {
-    public partial class MainForm : Form
+    public partial class TrigonometryForm : Form
     {
-        public MainForm()
+        public TrigonometryForm()
         {
             InitializeComponent();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

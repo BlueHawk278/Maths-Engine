@@ -14,8 +14,8 @@ namespace MathsEngine.Modules.Statistics
         /// <returns>The mean of the values in the list. Returns 0 if the list is empty.</returns>
         internal T CalculateMean(List<T> numbers)
         {
-            if (numbers == null || numbers.Count == 0) 
-                throw new NullInputException("Side lengths must not be negative");
+            if (numbers == null || numbers.Count == 0)
+                throw new NullInputException("Input list cannot be null or empty.");
 
             T sum = T.Zero;
 
@@ -35,7 +35,7 @@ namespace MathsEngine.Modules.Statistics
         internal T CalculateMedian(List<T> numbers)
         {
             if (numbers == null || numbers.Count == 0)
-                throw new NullInputException("Side lengths must not be negative");
+                throw new NullInputException("Input list cannot be null or empty.");
 
             var sortedNumbers = new List<T>(numbers);
             sortedNumbers.Sort();
@@ -67,8 +67,8 @@ namespace MathsEngine.Modules.Statistics
         internal List<T> CalculateMode(List<T> numbers)
         {
             // If the list is empty or has only one value, there can be no mode.
-            if (numbers == null || numbers.Count <= 1) 
-                throw new NullInputException("Too many null values");
+            if (numbers == null || numbers.Count <= 1)
+                throw new InsufficientDataException("List must contain more than one value to find a mode.");
 
             // Use a Dictionary to count the frequency of each number.
             // Key: the number, Value: its frequency.
@@ -148,7 +148,7 @@ namespace MathsEngine.Modules.Statistics
             sortedValues.Sort();
 
             if (sortedValues == null || numValues < 4)
-                throw new NullInputException("Side lengths must not be negative");
+                throw new InsufficientDataException("List must contain at least four elements to calculate IQR.");
 
             if (numValues % 2 == 0) // 0 | Q1 | 1 | Q2 | 2 | Q3 |3
             {
@@ -174,7 +174,7 @@ namespace MathsEngine.Modules.Statistics
                 Q3 = CalculateMedian(upperHalf);
                 IQR = Q3 - Q1;
 
-                return new List<T> {Q1, Q3, IQR};
+                return new List<T> { Q1, Q3, IQR };
             }
 
             return null;

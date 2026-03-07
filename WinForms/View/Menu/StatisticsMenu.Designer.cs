@@ -1,6 +1,6 @@
-﻿namespace WinForms.Forms
+﻿namespace MathsEngine.WinForms.Forms
 {
-    partial class MainForm
+    partial class StatisticsMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -34,10 +34,11 @@
             viewToolStripMenuItem = new ToolStripMenuItem();
             toolsToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
-            PureButton = new Button();
-            MechanicsButton = new Button();
-            StatisticsButton = new Button();
-            label1 = new Label();
+            TitleLabel = new Label();
+            BivariateAnalysisButton = new Button();
+            DispersionButton = new Button();
+            AveragesButton = new Button();
+            BackButton = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(634, 24);
-            menuStrip1.TabIndex = 0;
+            menuStrip1.TabIndex = 7;
             menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
@@ -80,57 +81,66 @@
             helpToolStripMenuItem.Size = new Size(44, 20);
             helpToolStripMenuItem.Text = "Help";
             // 
-            // PureButton
+            // TitleLabel
             // 
-            PureButton.Location = new Point(12, 473);
-            PureButton.Name = "PureButton";
-            PureButton.Size = new Size(168, 164);
-            PureButton.TabIndex = 2;
-            PureButton.Text = "📐 Pure Mathematics\r\n\r\nPythagoras Theorem\r\nTrigonometry\r\nMatrices\r\nAlgebra\r\nCoordinate Geometry\r\n";
-            PureButton.UseVisualStyleBackColor = true;
+            TitleLabel.AutoSize = true;
+            TitleLabel.Font = new Font("Segoe UI", 25F);
+            TitleLabel.Location = new Point(202, 120);
+            TitleLabel.Name = "TitleLabel";
+            TitleLabel.Size = new Size(246, 46);
+            TitleLabel.TabIndex = 8;
+            TitleLabel.Text = "Statistics Menu";
             // 
-            // MechanicsButton
+            // BivariateAnalysisButton
             // 
-            MechanicsButton.Location = new Point(227, 473);
-            MechanicsButton.Name = "MechanicsButton";
-            MechanicsButton.Size = new Size(168, 164);
-            MechanicsButton.TabIndex = 3;
-            MechanicsButton.Text = "⚙️ Mechanics \r\n\r\nUVATS Equations\r\nNewton's Laws\r\n";
-            MechanicsButton.UseVisualStyleBackColor = true;
+            BivariateAnalysisButton.Location = new Point(125, 200);
+            BivariateAnalysisButton.Name = "BivariateAnalysisButton";
+            BivariateAnalysisButton.Size = new Size(400, 50);
+            BivariateAnalysisButton.TabIndex = 9;
+            BivariateAnalysisButton.Text = "Bivariate Analysis";
+            BivariateAnalysisButton.UseVisualStyleBackColor = true;
             // 
-            // StatisticsButton
+            // DispersionButton
             // 
-            StatisticsButton.Location = new Point(449, 473);
-            StatisticsButton.Name = "StatisticsButton";
-            StatisticsButton.Size = new Size(168, 164);
-            StatisticsButton.TabIndex = 4;
-            StatisticsButton.Text = "📊 Statistics\r\n\r\nAverages\r\nBivariate Analysis\r\nStandard Deviation\r\n";
-            StatisticsButton.UseVisualStyleBackColor = true;
+            DispersionButton.Location = new Point(125, 280);
+            DispersionButton.Name = "DispersionButton";
+            DispersionButton.Size = new Size(400, 50);
+            DispersionButton.TabIndex = 10;
+            DispersionButton.Text = "Dispersion / Standard Deviation";
+            DispersionButton.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // AveragesButton
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 28F);
-            label1.Location = new Point(12, 36);
-            label1.Name = "label1";
-            label1.Size = new Size(605, 51);
-            label1.TabIndex = 5;
-            label1.Text = "WELCOME TO THE MATHS ENGINE";
+            AveragesButton.Location = new Point(125, 360);
+            AveragesButton.Name = "AveragesButton";
+            AveragesButton.Size = new Size(400, 50);
+            AveragesButton.TabIndex = 11;
+            AveragesButton.Text = "Averages / Measures of Dispersion";
+            AveragesButton.UseVisualStyleBackColor = true;
             // 
-            // MainForm
+            // BackButton
+            // 
+            BackButton.Location = new Point(12, 50);
+            BackButton.Name = "BackButton";
+            BackButton.Size = new Size(100, 30);
+            BackButton.TabIndex = 12;
+            BackButton.Text = "Back";
+            BackButton.UseVisualStyleBackColor = true;
+            BackButton.Click += BackButton_Click;
+            // 
+            // StatisticsMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(634, 761);
-            Controls.Add(label1);
-            Controls.Add(StatisticsButton);
-            Controls.Add(MechanicsButton);
-            Controls.Add(PureButton);
+            Controls.Add(BackButton);
+            Controls.Add(AveragesButton);
+            Controls.Add(DispersionButton);
+            Controls.Add(BivariateAnalysisButton);
+            Controls.Add(TitleLabel);
             Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
-            Name = "MainForm";
-            Text = "Maths Engine";
-            Load += MainForm_Load;
+            Name = "StatisticsMenu";
+            Text = "StatisticsMenu";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -145,9 +155,10 @@
         private ToolStripMenuItem viewToolStripMenuItem;
         private ToolStripMenuItem toolsToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
-        private Button PureButton;
-        private Button MechanicsButton;
-        private Button StatisticsButton;
-        private Label label1;
+        private Label TitleLabel;
+        private Button BivariateAnalysisButton;
+        private Button DispersionButton;
+        private Button AveragesButton;
+        private Button BackButton;
     }
 }
