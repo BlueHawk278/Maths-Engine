@@ -1,4 +1,4 @@
-# Explanations Module
+﻿# Explanations Module
 
 The Explanations module provides step-by-step explanations for mathematical calculations. Unlike the standard calculation modules that return only numeric results, the Explanations module returns both the answer and a detailed breakdown of the steps taken to reach that answer.
 
