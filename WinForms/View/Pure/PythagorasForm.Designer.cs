@@ -44,7 +44,7 @@
             CalculateButton = new Button();
             ClearButton = new Button();
             pictureBox1 = new PictureBox();
-            richTextBox1 = new RichTextBox();
+            StepsTextBox = new RichTextBox();
             InputPanel.SuspendLayout();
             ResultPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -133,7 +133,6 @@
             FindOtherSideRadioButton.TabStop = true;
             FindOtherSideRadioButton.Text = "Find Other Side";
             FindOtherSideRadioButton.UseVisualStyleBackColor = true;
-            FindOtherSideRadioButton.CheckedChanged += FindOtherSideRadioButton_CheckedChanged;
             // 
             // FindHypotenuseRadioButton
             // 
@@ -145,7 +144,6 @@
             FindHypotenuseRadioButton.TabStop = true;
             FindHypotenuseRadioButton.Text = "Find Hypotenuse";
             FindHypotenuseRadioButton.UseVisualStyleBackColor = true;
-            FindHypotenuseRadioButton.CheckedChanged += FindHypotenuseRadioButton_CheckedChanged;
             // 
             // ResultPanel
             // 
@@ -203,22 +201,22 @@
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
             // 
-            // richTextBox1
+            // StepsTextBox
             // 
-            richTextBox1.Location = new Point(12, 420);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.ReadOnly = true;
-            richTextBox1.ScrollBars = RichTextBoxScrollBars.Vertical;
-            richTextBox1.Size = new Size(610, 262);
-            richTextBox1.TabIndex = 9;
-            richTextBox1.Text = "";
+            StepsTextBox.Location = new Point(12, 420);
+            StepsTextBox.Name = "StepsTextBox";
+            StepsTextBox.ReadOnly = true;
+            StepsTextBox.ScrollBars = RichTextBoxScrollBars.Vertical;
+            StepsTextBox.Size = new Size(610, 262);
+            StepsTextBox.TabIndex = 9;
+            StepsTextBox.Text = "";
             // 
             // PythagorasForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(634, 761);
-            Controls.Add(richTextBox1);
+            Controls.Add(StepsTextBox);
             Controls.Add(pictureBox1);
             Controls.Add(ClearButton);
             Controls.Add(CalculateButton);
@@ -232,7 +230,7 @@
             Controls.SetChildIndex(CalculateButton, 0);
             Controls.SetChildIndex(ClearButton, 0);
             Controls.SetChildIndex(pictureBox1, 0);
-            Controls.SetChildIndex(richTextBox1, 0);
+            Controls.SetChildIndex(StepsTextBox, 0);
             Controls.SetChildIndex(BackButton, 0);
             InputPanel.ResumeLayout(false);
             InputPanel.PerformLayout();
@@ -261,6 +259,7 @@
         private PictureBox pictureBox1;
         private Label ResultPanelLabel;
         private Label ResultLabel;
-        private RichTextBox richTextBox1;
+        private RichTextBox StepsTextBox;
+        private RadioButton CheckCalculationButton;
     }
 }

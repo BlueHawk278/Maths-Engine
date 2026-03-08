@@ -10,7 +10,7 @@
 
 	<ItemGroup>
 		<Folder Include="Controls\" />
-		<Folder Include="Presenters\" />
+		<Folder Include="Presenters\Pure\PythagorasTheorem\" />
 	</ItemGroup>
 
 	<ItemGroup>
