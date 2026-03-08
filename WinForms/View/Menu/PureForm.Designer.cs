@@ -60,7 +60,7 @@
             TrigonometryButton.Name = "TrigonometryButton";
             TrigonometryButton.Size = new Size(400, 50);
             TrigonometryButton.TabIndex = 1;
-            TrigonometryButton.Text = "TrigonometryForm";
+            TrigonometryButton.Text = "Trigonometry\r\n";
             TrigonometryButton.UseVisualStyleBackColor = true;
             // 
             // MatricesButton
