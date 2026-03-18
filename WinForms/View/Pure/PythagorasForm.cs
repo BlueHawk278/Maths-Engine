@@ -1,48 +1,49 @@
-﻿using OpenTK.Audio.OpenAL;
-using WinForms.Forms;
+﻿using System;
+using System.Windows.Forms;
 using WinForms.Presenters.Pure.PythagorasTheorem;
+using WinForms.View;
 
 namespace MathsEngine.WinForms.Forms.Pure
 {
-    public partial class PythagorasForm : BaseForm, IPythagorasView
+    public partial class PythagorasForm : BaseCalculatorForm, IPythagorasView
     {
-        private PythagorasPresenter _presenter;
+        private readonly PythagorasPresenter _presenter;
 
         public PythagorasForm()
         {
             InitializeComponent();
+
+            // Use the base calculator chrome
+            Title = "Pythagoras Theorem";
+
+            // Bridge base events -> view events expected by presenter
+            CalculateAttempted += (_, __) => CalculateAttemptedView?.Invoke(this, EventArgs.Empty);
+            ClearAttempted += (_, __) => ClearAttemptedView?.Invoke(this, EventArgs.Empty);
+
             _presenter = new PythagorasPresenter(this);
         }
 
-        private void CalculateButton_Click(object sender, EventArgs e)
-        {
-            CalculateAttempted?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void ClearButton_Click(object sender, EventArgs e)
-        {
-            ClearAttempted?.Invoke(this, EventArgs.Empty);
-        }
-
-        public void ShowError(string message) => MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        public void ShowError(string message) =>
+            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         public double? SideA
         {
-            get => double.TryParse(TextBoxSideA.Text, out double a) ? a : null;
+            get => double.TryParse(TextBoxSideA.Text, out var a) ? a : null;
             set => TextBoxSideA.Text = Convert.ToString(value);
         }
 
         public double? SideB
         {
-            get => double.TryParse(TextBoxSideB.Text, out double b) ? b : null;
+            get => double.TryParse(TextBoxSideB.Text, out var b) ? b : null;
             set => TextBoxSideB.Text = Convert.ToString(value);
         }
 
         public double? Hypotenuse
         {
-            get => double.TryParse(TextBoxHypotenuse.Text, out double h) ? h : null;
+            get => double.TryParse(TextBoxHypotenuse.Text, out var h) ? h : null;
             set => TextBoxHypotenuse.Text = Convert.ToString(value);
         }
+
         public bool FindHypotenuseChecked
         {
             get => FindHypotenuseRadioButton.Checked;
@@ -55,10 +56,25 @@ namespace MathsEngine.WinForms.Forms.Pure
             set => FindOtherSideRadioButton.Checked = value;
         }
 
-        public string Result { get => ResultLabel.Text; set => ResultLabel.Text = value; }
-        public string Steps { get => StepsTextBox.Text; set => StepsTextBox.Text = value; }
+        // Map to BaseCalculatorForm's labels/textbox
+        public string Result
+        {
+            get => ResultText;
+            set => ResultText = value;
+        }
 
-        public event EventHandler CalculateAttempted;
-        public event EventHandler ClearAttempted;
+        public string Steps
+        {
+            get => StepsText;
+            set => StepsText = value;
+        }
+
+        // IPythagorasView events (kept distinct name to avoid clashing with base events)
+        public event EventHandler? CalculateAttemptedView;
+        public event EventHandler? ClearAttemptedView;
+
+        // If your IPythagorasView interface specifically requires these exact names,
+        // rename the two events above to CalculateAttempted / ClearAttempted and
+        // remove the BaseCalculatorForm events (or make BaseCalculatorForm expose protected raisers instead).
     }
 }

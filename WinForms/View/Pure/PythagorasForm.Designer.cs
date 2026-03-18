@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            PythagorasLabel = new Label();
-            InputPanel = new Panel();
             TextBoxHypotenuse = new TextBox();
             TextBoxSideB = new TextBox();
             TextBoxSideA = new TextBox();
@@ -38,27 +36,10 @@
             LabelSideA = new Label();
             FindOtherSideRadioButton = new RadioButton();
             FindHypotenuseRadioButton = new RadioButton();
-            ResultPanel = new Panel();
-            ResultLabel = new Label();
-            ResultPanelLabel = new Label();
-            CalculateButton = new Button();
-            ClearButton = new Button();
             pictureBox1 = new PictureBox();
-            StepsTextBox = new RichTextBox();
             InputPanel.SuspendLayout();
-            ResultPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // PythagorasLabel
-            // 
-            PythagorasLabel.AutoSize = true;
-            PythagorasLabel.Font = new Font("Segoe UI", 18F);
-            PythagorasLabel.Location = new Point(206, 48);
-            PythagorasLabel.Name = "PythagorasLabel";
-            PythagorasLabel.Size = new Size(234, 32);
-            PythagorasLabel.TabIndex = 2;
-            PythagorasLabel.Text = "Pythagoras Theorem";
             // 
             // InputPanel
             // 
@@ -70,10 +51,6 @@
             InputPanel.Controls.Add(LabelSideA);
             InputPanel.Controls.Add(FindOtherSideRadioButton);
             InputPanel.Controls.Add(FindHypotenuseRadioButton);
-            InputPanel.Location = new Point(12, 116);
-            InputPanel.Name = "InputPanel";
-            InputPanel.Size = new Size(273, 215);
-            InputPanel.TabIndex = 3;
             // 
             // TextBoxHypotenuse
             // 
@@ -145,54 +122,6 @@
             FindHypotenuseRadioButton.Text = "Find Hypotenuse";
             FindHypotenuseRadioButton.UseVisualStyleBackColor = true;
             // 
-            // ResultPanel
-            // 
-            ResultPanel.Controls.Add(ResultLabel);
-            ResultPanel.Controls.Add(ResultPanelLabel);
-            ResultPanel.Location = new Point(12, 337);
-            ResultPanel.Name = "ResultPanel";
-            ResultPanel.Size = new Size(610, 77);
-            ResultPanel.TabIndex = 4;
-            // 
-            // ResultLabel
-            // 
-            ResultLabel.AutoSize = true;
-            ResultLabel.Location = new Point(23, 46);
-            ResultLabel.Name = "ResultLabel";
-            ResultLabel.Size = new Size(0, 15);
-            ResultLabel.TabIndex = 3;
-            // 
-            // ResultPanelLabel
-            // 
-            ResultPanelLabel.AutoSize = true;
-            ResultPanelLabel.Location = new Point(18, 18);
-            ResultPanelLabel.Name = "ResultPanelLabel";
-            ResultPanelLabel.Size = new Size(39, 15);
-            ResultPanelLabel.TabIndex = 2;
-            ResultPanelLabel.Text = "Result";
-            // 
-            // CalculateButton
-            // 
-            CalculateButton.Font = new Font("Segoe UI", 15F);
-            CalculateButton.Location = new Point(348, 689);
-            CalculateButton.Name = "CalculateButton";
-            CalculateButton.Size = new Size(150, 60);
-            CalculateButton.TabIndex = 6;
-            CalculateButton.Text = "Calculate";
-            CalculateButton.UseVisualStyleBackColor = true;
-            CalculateButton.Click += CalculateButton_Click;
-            // 
-            // ClearButton
-            // 
-            ClearButton.Font = new Font("Segoe UI", 15F);
-            ClearButton.Location = new Point(147, 688);
-            ClearButton.Name = "ClearButton";
-            ClearButton.Size = new Size(150, 60);
-            ClearButton.TabIndex = 7;
-            ClearButton.Text = "Clear";
-            ClearButton.UseVisualStyleBackColor = true;
-            ClearButton.Click += ClearButton_Click;
-            // 
             // pictureBox1
             // 
             pictureBox1.Location = new Point(291, 116);
@@ -201,41 +130,17 @@
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
             // 
-            // StepsTextBox
-            // 
-            StepsTextBox.Location = new Point(12, 420);
-            StepsTextBox.Name = "StepsTextBox";
-            StepsTextBox.ReadOnly = true;
-            StepsTextBox.ScrollBars = RichTextBoxScrollBars.Vertical;
-            StepsTextBox.Size = new Size(610, 262);
-            StepsTextBox.TabIndex = 9;
-            StepsTextBox.Text = "";
-            // 
             // PythagorasForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(634, 761);
-            Controls.Add(StepsTextBox);
             Controls.Add(pictureBox1);
-            Controls.Add(ClearButton);
-            Controls.Add(CalculateButton);
-            Controls.Add(ResultPanel);
-            Controls.Add(InputPanel);
-            Controls.Add(PythagorasLabel);
             Name = "PythagorasForm";
-            Controls.SetChildIndex(PythagorasLabel, 0);
-            Controls.SetChildIndex(InputPanel, 0);
-            Controls.SetChildIndex(ResultPanel, 0);
-            Controls.SetChildIndex(CalculateButton, 0);
-            Controls.SetChildIndex(ClearButton, 0);
             Controls.SetChildIndex(pictureBox1, 0);
-            Controls.SetChildIndex(StepsTextBox, 0);
             Controls.SetChildIndex(BackButton, 0);
             InputPanel.ResumeLayout(false);
             InputPanel.PerformLayout();
-            ResultPanel.ResumeLayout(false);
-            ResultPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -243,8 +148,6 @@
 
         #endregion
 
-        private Label PythagorasLabel;
-        private Panel InputPanel;
         private RadioButton FindOtherSideRadioButton;
         private RadioButton FindHypotenuseRadioButton;
         private Label HypotenuseLabel;
@@ -253,13 +156,6 @@
         private TextBox TextBoxSideA;
         private TextBox TextBoxHypotenuse;
         private TextBox TextBoxSideB;
-        private Panel ResultPanel;
-        private Button CalculateButton;
-        private Button ClearButton;
         private PictureBox pictureBox1;
-        private Label ResultPanelLabel;
-        private Label ResultLabel;
-        private RichTextBox StepsTextBox;
-        private RadioButton CheckCalculationButton;
     }
 }
