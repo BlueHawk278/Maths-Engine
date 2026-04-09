@@ -1,6 +1,6 @@
 ﻿namespace MathsEngine.WinForms.Forms
 {
-    partial class PureForm
+    partial class PureMenu
     {
         /// <summary>
         /// Required designer variable.

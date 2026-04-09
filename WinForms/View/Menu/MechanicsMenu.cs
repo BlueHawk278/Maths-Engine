@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MathsEngine.WinForms.View.Mechanics;
 using WinForms.Forms;
 
 namespace MathsEngine.WinForms.Forms
@@ -23,7 +24,15 @@ namespace MathsEngine.WinForms.Forms
             var mainForm = new MainForm();
             mainForm.Show();
 
-            this.Hide();
+            Hide();
+        }
+
+        private void NewtonsLawsButton_Click(object sender, EventArgs e)
+        {
+            var newtonsLawForm = new NewtonsLawsForm();
+            newtonsLawForm.Show();
+
+            Hide();
         }
     }
 }

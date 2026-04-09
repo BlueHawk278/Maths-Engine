@@ -26,6 +26,11 @@ namespace MathsEngine.WinForms.Forms.Pure
         public void ShowError(string message) =>
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public double? SideA
         {
             get => double.TryParse(TextBoxSideA.Text, out var a) ? a : null;

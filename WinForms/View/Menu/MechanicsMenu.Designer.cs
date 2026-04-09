@@ -30,7 +30,7 @@
         {
             TitleLabel = new Label();
             UniformAccelerationButton = new Button();
-            button1 = new Button();
+            NewtonsLawsButton = new Button();
             menuStrip1 = new MenuStrip();
             toolStripMenuItem1 = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
@@ -60,14 +60,15 @@
             UniformAccelerationButton.Text = "Uniform Acceleration";
             UniformAccelerationButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // NewtonsLawsButton
             // 
-            button1.Location = new Point(125, 280);
-            button1.Name = "button1";
-            button1.Size = new Size(400, 50);
-            button1.TabIndex = 2;
-            button1.Text = "Newton's Laws";
-            button1.UseVisualStyleBackColor = true;
+            NewtonsLawsButton.Location = new Point(125, 280);
+            NewtonsLawsButton.Name = "NewtonsLawsButton";
+            NewtonsLawsButton.Size = new Size(400, 50);
+            NewtonsLawsButton.TabIndex = 2;
+            NewtonsLawsButton.Text = "Newton's Laws";
+            NewtonsLawsButton.UseVisualStyleBackColor = true;
+            NewtonsLawsButton.Click += NewtonsLawsButton_Click;
             // 
             // menuStrip1
             // 
@@ -125,7 +126,7 @@
             ClientSize = new Size(634, 761);
             Controls.Add(BackButton);
             Controls.Add(menuStrip1);
-            Controls.Add(button1);
+            Controls.Add(NewtonsLawsButton);
             Controls.Add(UniformAccelerationButton);
             Controls.Add(TitleLabel);
             Name = "MechanicsMenu";
@@ -148,5 +149,6 @@
         private ToolStripMenuItem toolsToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
         private Button BackButton;
+        private Button NewtonsLawsButton;
     }
 }

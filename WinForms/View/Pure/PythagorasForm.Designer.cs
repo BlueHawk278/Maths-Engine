@@ -38,6 +38,7 @@
             FindHypotenuseRadioButton = new RadioButton();
             pictureBox1 = new PictureBox();
             InputPanel.SuspendLayout();
+            ResultPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -51,6 +52,10 @@
             InputPanel.Controls.Add(LabelSideA);
             InputPanel.Controls.Add(FindOtherSideRadioButton);
             InputPanel.Controls.Add(FindHypotenuseRadioButton);
+            // 
+            // BackButton
+            // 
+            BackButton.Click += BackButton_Click;
             // 
             // TextBoxHypotenuse
             // 
@@ -85,7 +90,7 @@
             // LabelSideB
             // 
             LabelSideB.AutoSize = true;
-            LabelSideB.Location = new Point(19, 131);
+            LabelSideB.Location = new Point(18, 128);
             LabelSideB.Name = "LabelSideB";
             LabelSideB.Size = new Size(42, 15);
             LabelSideB.TabIndex = 3;
@@ -137,10 +142,18 @@
             ClientSize = new Size(634, 761);
             Controls.Add(pictureBox1);
             Name = "PythagorasForm";
+            Controls.SetChildIndex(TitleLabel, 0);
+            Controls.SetChildIndex(InputPanel, 0);
+            Controls.SetChildIndex(ResultPanel, 0);
+            Controls.SetChildIndex(CalculateButton, 0);
+            Controls.SetChildIndex(ClearButton, 0);
+            Controls.SetChildIndex(StepsTextBox, 0);
             Controls.SetChildIndex(pictureBox1, 0);
             Controls.SetChildIndex(BackButton, 0);
             InputPanel.ResumeLayout(false);
             InputPanel.PerformLayout();
+            ResultPanel.ResumeLayout(false);
+            ResultPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

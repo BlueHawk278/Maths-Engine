@@ -12,9 +12,9 @@ using WinForms.Forms;
 
 namespace MathsEngine.WinForms.Forms
 {
-    public partial class PureForm : Form
+    public partial class PureMenu : Form
     {
-        public PureForm()
+        public PureMenu()
         {
             InitializeComponent();
         }

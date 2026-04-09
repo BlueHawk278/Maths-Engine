@@ -27,7 +27,7 @@ namespace WinForms.Forms
 
         private void PureButton_Click(object sender, EventArgs e)
         {
-            var pureForm = new PureForm();
+            var pureForm = new PureMenu();
             pureForm.Show();
 
             this.Hide();
