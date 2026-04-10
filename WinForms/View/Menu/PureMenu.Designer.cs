@@ -62,6 +62,7 @@
             TrigonometryButton.TabIndex = 1;
             TrigonometryButton.Text = "Trigonometry\r\n";
             TrigonometryButton.UseVisualStyleBackColor = true;
+            TrigonometryButton.Click += TrigonometryButton_Click;
             // 
             // MatricesButton
             // 
@@ -149,7 +150,7 @@
             BackButton.UseVisualStyleBackColor = true;
             BackButton.Click += BackButton_Click;
             // 
-            // PureForm
+            // PureMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -162,7 +163,7 @@
             Controls.Add(MatricesButton);
             Controls.Add(TrigonometryButton);
             Controls.Add(PythagorasButton);
-            Name = "PureForm";
+            Name = "PureMenu";
             Text = "PureForm";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

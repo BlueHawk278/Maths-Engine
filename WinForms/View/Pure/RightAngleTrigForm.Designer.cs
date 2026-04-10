@@ -1,6 +1,6 @@
 ﻿namespace MathsEngine.WinForms.Forms.Pure
 {
-    partial class TrigonometryForm
+    partial class RightAngleTrigForm
     {
         /// <summary>
         /// Required designer variable.

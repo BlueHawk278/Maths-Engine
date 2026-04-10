@@ -28,7 +28,10 @@ namespace MathsEngine.WinForms.Forms.Pure
 
         private void BackButton_Click(object sender, EventArgs e)
         {
+            var pureMenuForm = new PureMenu();
+            pureMenuForm.Show();
 
+            Hide();
         }
 
         public double? SideA

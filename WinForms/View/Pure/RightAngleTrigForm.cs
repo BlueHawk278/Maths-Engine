@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MathsEngine.WinForms.Forms.Pure
 {
-    public partial class TrigonometryForm : Form
+    public partial class RightAngleTrigForm : Form
     {
-        public TrigonometryForm()
+        public RightAngleTrigForm()
         {
             InitializeComponent();
         }

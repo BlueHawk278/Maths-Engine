@@ -59,6 +59,7 @@
             UniformAccelerationButton.TabIndex = 1;
             UniformAccelerationButton.Text = "Uniform Acceleration";
             UniformAccelerationButton.UseVisualStyleBackColor = true;
+            UniformAccelerationButton.Click += UniformAccelerationButton_Click;
             // 
             // NewtonsLawsButton
             // 

@@ -34,5 +34,13 @@ namespace MathsEngine.WinForms.Forms
 
             Hide();
         }
+
+        private void UniformAccelerationButton_Click(object sender, EventArgs e)
+        {
+            var uniformAccelerationForm = new UniformAccelerationForm();
+            uniformAccelerationForm.Show();
+
+            Hide();
+        }
     }
 }
