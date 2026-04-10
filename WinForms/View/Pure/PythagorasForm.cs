@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
+using MathsEngine.WinForms.View;
+using WinForms.Forms;
 using WinForms.Presenters.Pure.PythagorasTheorem;
-using WinForms.View;
 
 namespace MathsEngine.WinForms.Forms.Pure
 {
-    public partial class PythagorasForm : BaseCalculatorForm, IPythagorasView
+    public partial class PythagorasForm : BaseCalculatorControl, IPythagorasView
     {
         private readonly PythagorasPresenter _presenter;
+        protected readonly MainForm mainForm;
 
-        public PythagorasForm()
+        public PythagorasForm(MainForm mainForm) : base(mainForm)
         {
             InitializeComponent();
 
@@ -28,10 +30,7 @@ namespace MathsEngine.WinForms.Forms.Pure
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-            var pureMenuForm = new PureMenu();
-            pureMenuForm.Show();
-
-            Hide();
+            mainForm.LoadView(new PureMenu(mainForm));
         }
 
         public double? SideA

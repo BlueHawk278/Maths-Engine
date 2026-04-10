@@ -11,42 +11,64 @@ using MathsEngine.WinForms.Forms;
 
 namespace WinForms.Forms
 {
-    public partial class MainForm : BaseForm
+    public partial class MainForm : Form
     {
         public MainForm()
         {
             InitializeComponent();
+        }
 
-            this.BackButton.Visible = false;
+        public void LoadView(UserControl view)
+        {
+            ContentPanel.SuspendLayout();
+
+            // Dispose the current control if one exists
+            if (ContentPanel.Controls.Count > 0)
+            {
+                var old = ContentPanel.Controls[0];
+                ContentPanel.Controls.Clear();
+                old.Dispose();
+            }
+
+            // Size the new control to fill the panel
+            view.Dock = DockStyle.Fill;
+            ContentPanel.Controls.Add(view);
+            ContentPanel.ResumeLayout();
+        }
+
+        public void GoHome()
+        {
+            if (ContentPanel.Controls.Count > 0)
+            {
+                var old = ContentPanel.Controls[0];
+                ContentPanel.Controls.Clear();
+                old.Dispose();
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            LoadView(new PureMenu(this));
         }
 
         private void PureButton_Click(object sender, EventArgs e)
         {
-            var pureForm = new PureMenu();
-            pureForm.Show();
-
-            this.Hide();
+            LoadView(new PureMenu(this));
         }
 
         private void MechanicsButton_Click(object sender, EventArgs e)
         {
-            var mechanicsForm = new MechanicsMenu();
-            mechanicsForm.Show();
-
-            this.Hide();
+            LoadView(new MechanicsMenu(this));
         }
 
         private void StatisticsButton_Click(object sender, EventArgs e)
         {
-            var statisticsForm = new StatisticsMenu();
-            statisticsForm.Show();
+            LoadView(new StatisticsMenu(this));
+        }
 
-            this.Hide();
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

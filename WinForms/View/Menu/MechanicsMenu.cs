@@ -12,35 +12,29 @@ using WinForms.Forms;
 
 namespace MathsEngine.WinForms.Forms
 {
-    public partial class MechanicsMenu : Form
+    public partial class MechanicsMenu : UserControl
     {
-        public MechanicsMenu()
+        private readonly MainForm _mainForm;
+
+        public MechanicsMenu(MainForm mainForm)
         {
             InitializeComponent();
+            _mainForm = mainForm;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-            var mainForm = new MainForm();
-            mainForm.Show();
-
-            Hide();
+            _mainForm.GoHome();
         }
 
         private void NewtonsLawsButton_Click(object sender, EventArgs e)
         {
-            var newtonsLawForm = new NewtonsLawsForm();
-            newtonsLawForm.Show();
-
-            Hide();
+            _mainForm.LoadView(new NewtonsLawsForm(_mainForm));
         }
 
         private void UniformAccelerationButton_Click(object sender, EventArgs e)
         {
-            var uniformAccelerationForm = new UniformAccelerationForm();
-            uniformAccelerationForm.Show();
-
-            Hide();
+            _mainForm.LoadView(new UniformAccelerationForm(_mainForm));
         }
     }
 }

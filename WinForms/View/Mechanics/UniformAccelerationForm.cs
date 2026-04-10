@@ -9,23 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MathsEngine.WinForms.Forms;
 using WinForms.Forms;
-using WinForms.View;
 
 namespace MathsEngine.WinForms.View.Mechanics
 {
-    public partial class UniformAccelerationForm : BaseCalculatorForm
+    public partial class UniformAccelerationForm : BaseCalculatorControl
     {
-        public UniformAccelerationForm()
+        public UniformAccelerationForm(MainForm mainForm) : base(mainForm)
         {
             InitializeComponent();
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-            var mechanicsMenuForm = new MechanicsMenu();
-            mechanicsMenuForm.Show();
-
-            Hide();
+            MainForm.LoadView(new MechanicsMenu(MainForm));
         }
     }
 }

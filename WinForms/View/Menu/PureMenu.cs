@@ -13,35 +13,29 @@ using WinForms.Forms;
 
 namespace MathsEngine.WinForms.Forms
 {
-    public partial class PureMenu : Form
+    public partial class PureMenu : UserControl
     {
-        public PureMenu()
+        private readonly MainForm _mainForm;
+
+        public PureMenu(MainForm mainForm)
         {
             InitializeComponent();
+            _mainForm = mainForm;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-            var mainForm = new MainForm();
-            mainForm.Show();
-
-            Hide();
+            _mainForm.GoHome();
         }
 
         private void PythagorasButton_Click(object sender, EventArgs e)
         {
-            var pythagorasForm = new PythagorasForm();
-            pythagorasForm.Show();
-
-            Hide();
+            _mainForm.LoadView(new PythagorasForm(_mainForm));
         }
 
         private void TrigonometryButton_Click(object sender, EventArgs e)
         {
-            var trigonometryMenuForm = new TrigonometryMenu();
-            trigonometryMenuForm.Show();
-
-            Hide();
+            _mainForm.LoadView(new TrigonometryMenu(_mainForm));
         }
     }
 }

@@ -34,10 +34,6 @@
             trigGraphsButton = new Button();
             SuspendLayout();
             // 
-            // BackButton
-            // 
-            BackButton.Click += BackButton_Click;
-            // 
             // titleLabel
             // 
             titleLabel.AutoSize = true;
@@ -87,7 +83,6 @@
             Controls.Add(titleLabel);
             Name = "TrigonometryMenu";
             Text = "TrigonometryMenu";
-            Controls.SetChildIndex(BackButton, 0);
             Controls.SetChildIndex(titleLabel, 0);
             Controls.SetChildIndex(rightAngleButton, 0);
             Controls.SetChildIndex(nonRightAngleButton, 0);

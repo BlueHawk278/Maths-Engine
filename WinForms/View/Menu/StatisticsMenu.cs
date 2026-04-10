@@ -11,19 +11,19 @@ using WinForms.Forms;
 
 namespace MathsEngine.WinForms.Forms
 {
-    public partial class StatisticsMenu : Form
+    public partial class StatisticsMenu : UserControl
     {
-        public StatisticsMenu()
+        private readonly MainForm _mainForm;
+
+        public StatisticsMenu(MainForm mainForm)
         {
             InitializeComponent();
+            _mainForm = mainForm;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-            var mainForm = new MainForm();
-            mainForm.Show();
-
-            this.Hide();
+            _mainForm.GoHome();
         }
     }
 }

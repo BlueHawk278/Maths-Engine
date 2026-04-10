@@ -13,27 +13,24 @@ using WinForms.Forms;
 
 namespace MathsEngine.WinForms.View.Menu
 {
-    public partial class TrigonometryMenu : BaseForm
+    public partial class TrigonometryMenu : UserControl
     {
-        public TrigonometryMenu()
+        private readonly MainForm _mainForm;
+
+        public TrigonometryMenu(MainForm mainForm)
         {
             InitializeComponent();
+            _mainForm = mainForm;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-            var pureMenuForm = new PureMenu();
-            pureMenuForm.Show();
-
-            Hide();
+            _mainForm.LoadView(new PureMenu(_mainForm));
         }
 
         private void rightAngleButton_Click(object sender, EventArgs e)
         {
-            var rightAngleTrigForm = new RightAngleTrigForm();
-            rightAngleTrigForm.Show();
-
-            Hide();
+            _mainForm.LoadView(new RightAngleTrigForm(_mainForm));
         }
     }
 }

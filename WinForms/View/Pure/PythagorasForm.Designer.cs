@@ -53,10 +53,6 @@
             InputPanel.Controls.Add(FindOtherSideRadioButton);
             InputPanel.Controls.Add(FindHypotenuseRadioButton);
             // 
-            // BackButton
-            // 
-            BackButton.Click += BackButton_Click;
-            // 
             // TextBoxHypotenuse
             // 
             TextBoxHypotenuse.Location = new Point(166, 160);
@@ -149,7 +145,6 @@
             Controls.SetChildIndex(ClearButton, 0);
             Controls.SetChildIndex(StepsTextBox, 0);
             Controls.SetChildIndex(pictureBox1, 0);
-            Controls.SetChildIndex(BackButton, 0);
             InputPanel.ResumeLayout(false);
             InputPanel.PerformLayout();
             ResultPanel.ResumeLayout(false);

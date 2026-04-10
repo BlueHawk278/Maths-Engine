@@ -62,10 +62,6 @@
             ResultPanel.Controls.SetChildIndex(ResultValueLabel, 0);
             ResultPanel.Controls.SetChildIndex(ResultLabel, 0);
             // 
-            // BackButton
-            // 
-            BackButton.Click += BackButton_Click;
-            // 
             // ForceRadioButton
             // 
             ForceRadioButton.AutoSize = true;

@@ -1,42 +1,29 @@
-﻿using ScottPlot.Panels;
-using System;
-using System.Windows.Forms;
-using WinForms.Forms;
+﻿using WinForms.Forms;
 
-namespace WinForms.View
+namespace MathsEngine.WinForms.View
 {
-    /// <summary>
-    /// Base calculator layout: InputPanel, ResultPanel, StepsTextBox, Calculate/Clear buttons.
-    /// Intended to be inherited by calculator-style forms (e.g., Pythagoras).
-    /// </summary>
-    public partial class BaseCalculatorForm : BaseForm
+    public partial class BaseCalculatorControl : UserControl
     {
-        public BaseCalculatorForm()
+        protected readonly MainForm MainForm;
+
+        public BaseCalculatorControl(MainForm mainForm)
         {
             InitializeComponent();
+            MainForm = mainForm;
         }
 
-        /// <summary>
-        /// Derived forms can set the title label text.
-        /// </summary>
         public string Title
         {
             get => TitleLabel.Text;
             set => TitleLabel.Text = value;
         }
 
-        /// <summary>
-        /// Derived forms typically bind their "Result" output to this.
-        /// </summary>
         public string ResultText
         {
             get => ResultValueLabel.Text;
             set => ResultValueLabel.Text = value;
         }
 
-        /// <summary>
-        /// Derived forms typically bind their "Steps" output to this.
-        /// </summary>
         public string StepsText
         {
             get => StepsTextBox.Text;

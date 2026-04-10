@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MathsEngine.WinForms.View;
+using WinForms.Forms;
 
 namespace MathsEngine.WinForms.Forms.Pure
 {
-    public partial class RightAngleTrigForm : Form
+    public partial class RightAngleTrigForm : BaseCalculatorControl
     {
-        public RightAngleTrigForm()
+        public RightAngleTrigForm(MainForm mainForm) : base(mainForm)
         {
             InitializeComponent();
         }
