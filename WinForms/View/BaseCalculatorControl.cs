@@ -6,6 +6,11 @@ namespace MathsEngine.WinForms.View
     {
         protected readonly MainForm MainForm;
 
+        public BaseCalculatorControl()
+        {
+            InitializeComponent();
+        }
+
         public BaseCalculatorControl(MainForm mainForm)
         {
             InitializeComponent();

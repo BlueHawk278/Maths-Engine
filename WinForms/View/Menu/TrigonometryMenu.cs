@@ -30,7 +30,7 @@ namespace MathsEngine.WinForms.View.Menu
 
         private void rightAngleButton_Click(object sender, EventArgs e)
         {
-            _mainForm.LoadView(new RightAngleTrigForm(_mainForm));
+            _mainForm.LoadView(new RightAngleTrigControl(_mainForm));
         }
     }
 }

@@ -6,12 +6,17 @@ using WinForms.Presenters.Pure.PythagorasTheorem;
 
 namespace MathsEngine.WinForms.Forms.Pure
 {
-    public partial class PythagorasForm : BaseCalculatorControl, IPythagorasView
+    public partial class PythagorasControl : BaseCalculatorControl, IPythagorasView
     {
         private readonly PythagorasPresenter _presenter;
         protected readonly MainForm mainForm;
 
-        public PythagorasForm(MainForm mainForm) : base(mainForm)
+        public PythagorasControl()
+        {
+            InitializeComponent();
+        }
+
+        public PythagorasControl(MainForm mainForm) : base(mainForm)
         {
             InitializeComponent();
 

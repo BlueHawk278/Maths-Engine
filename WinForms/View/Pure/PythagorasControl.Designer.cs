@@ -1,6 +1,6 @@
 ﻿namespace MathsEngine.WinForms.Forms.Pure
 {
-    partial class PythagorasForm
+    partial class PythagorasControl
     {
         /// <summary>
         /// Required designer variable.

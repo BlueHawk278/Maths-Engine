@@ -12,9 +12,14 @@ using WinForms.Forms;
 
 namespace MathsEngine.WinForms.Forms.Pure
 {
-    public partial class RightAngleTrigForm : BaseCalculatorControl
+    public partial class RightAngleTrigControl : BaseCalculatorControl
     {
-        public RightAngleTrigForm(MainForm mainForm) : base(mainForm)
+        public RightAngleTrigControl()
+        {
+            InitializeComponent();
+        }
+
+        public RightAngleTrigControl(MainForm mainForm) : base(mainForm)
         {
             InitializeComponent();
         }

@@ -30,7 +30,7 @@ namespace MathsEngine.WinForms.Forms
 
         private void PythagorasButton_Click(object sender, EventArgs e)
         {
-            _mainForm.LoadView(new PythagorasForm(_mainForm));
+            _mainForm.LoadView(new PythagorasControl(_mainForm));
         }
 
         private void TrigonometryButton_Click(object sender, EventArgs e)
