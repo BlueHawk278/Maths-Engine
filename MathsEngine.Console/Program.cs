@@ -19,13 +19,3 @@ Term term3 = new Term(20, new Dictionary<char, double>
     { 'y', 1 },
     { 'z', 3}
 });
-
-Console.WriteLine(term1.ToString());
-Console.WriteLine(term2.ToString());
-Console.WriteLine(term3.ToString());
-
-Console.WriteLine();
-
-Console.WriteLine(Term.IsLikeTerm(term1, term2));
-Console.WriteLine(Term.IsLikeTerm(term1, term3));
-Console.WriteLine(Term.IsLikeTerm(term2, term3));
