@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MathsEngine.WinForms.Forms;
+using MathsEngine.WinForms.View.Menu;
 
 namespace WinForms.Forms
 {
@@ -48,7 +49,7 @@ namespace WinForms.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            LoadView(new PureMenu(this));
+            LoadView(new MainMenu(this));
         }
 
         private void PureButton_Click(object sender, EventArgs e)
