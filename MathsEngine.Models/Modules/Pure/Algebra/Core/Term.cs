@@ -1,69 +1,82 @@
-﻿using System.Text;
+﻿namespace MathsEngine.Core.Modules.Pure.Algebra.Core;
 
-namespace MathsEngine.Core.Modules.Pure.Algebra.Core;
-
-public class Term
+public sealed class Term
 {
-    public double Coefficient { get; set; }
-    public Dictionary<char, double> Variables { get; set; }
+    public double Coefficient { get; }
+    public int Power { get; }
 
-    public Term(double coefficient, Dictionary<char, double> variables)
+    public Term(double coefficient, int power)
     {
         Coefficient = coefficient;
-
-        if (variables != null) Variables = variables;
-        else Variables = new Dictionary<char, double>();
+        Power = power;
     }
 
     public bool IsLikeTerm(Term other)
     {
-        var variables1 = Variables.OrderBy(x => x.Key);
-        var variables2 = other.Variables.OrderBy(x => x.Key);
-
-        if (Variables is null) throw new ArgumentNullException();
-        if (other is null) throw new ArgumentNullException();
-
-        // Normalize: ignore variables with exponent 0 (x^0 == 1)
-        var vars1 = Variables.Where(kvp => kvp.Value != 0).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-        var vars2 = other.Variables.Where(kvp => kvp.Value != 0).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-
-        if (vars1.Count != vars2.Count) return false;
-
-        foreach (var (variable, exponent1) in vars1)
-        {
-            if (!vars2.TryGetValue(variable, out var exponent2)) return false;
-            if (exponent1 != exponent2) return false;
-        }
-
-        return true;
+        if (other is null) throw new ArgumentNullException(nameof(other));
+        return Power == other.Power;
     }
 
-    public static Term Add(Term other){}
-    public static Term Subtract(Term other){}
-    public static Term Multiply(Term other){}
+    public Term Add(Term other)
+    {
+        if (other is null) throw new ArgumentNullException(nameof(other));
+        if (!IsLikeTerm(other))
+            throw new InvalidOperationException("Cannot add unlike terms.");
+
+        return new Term(Coefficient + other.Coefficient, Power);
+    }
+
+    public Term Subtract(Term other)
+    {
+        if (other is null) throw new ArgumentNullException(nameof(other));
+        if (!IsLikeTerm(other))
+            throw new InvalidOperationException("Cannot subtract unlike terms.");
+
+        return new Term(Coefficient - other.Coefficient, Power);
+    }
+
+    public Term Multiply(Term other)
+    {
+        if (other is null) throw new ArgumentNullException(nameof(other));
+
+        return new Term(
+            Coefficient * other.Coefficient,
+            Power + other.Power
+        );
+    }
+
+    public double Evaluate(double x)
+    {
+        if (x == 0 && Power < 0)
+            throw new DivideByZeroException("Cannot evaluate negative powers at x = 0.");
+
+        return Coefficient * Math.Pow(x, Power);
+    }
 
     public override string ToString()
     {
         if (Coefficient == 0) return "0";
 
-        StringBuilder sb = new StringBuilder();
+        // Constant
+        if (Power == 0)
+            return Coefficient.ToString();
 
-        if (Coefficient == -1 && Variables.Count > 0)
-            sb.Append("-");
-        else if (Coefficient != 1 || Variables.Count == 0)
-            sb.Append(Coefficient);
+        string coeffPart;
 
-        foreach (var (variable, exponent) in Variables.OrderBy(x => x.Key))
-        {
-            if (exponent == 0) continue; // x^0 is 1, so skip it
+        if (Coefficient == 1)
+            coeffPart = "";
+        else if (Coefficient == -1)
+            coeffPart = "-";
+        else
+            coeffPart = Coefficient.ToString();
 
-            sb.Append(variable);
+        string powerPart;
 
-            if (exponent != 1)
-                sb.Append($"^{exponent}");
-        }
+        if (Power == 1)
+            powerPart = "x";
+        else
+            powerPart = $"x^{Power}";
 
-        return sb.ToString();
+        return $"{coeffPart}{powerPart}";
     }
-    public static void Evaluate(){}
 }
