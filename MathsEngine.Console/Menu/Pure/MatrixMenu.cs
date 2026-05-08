@@ -3,7 +3,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Menu.Pure
 {
-    internal class MatrixMenu
+    internal class MatrixMenu : IMenu
     {
         public static void Menu()
         {

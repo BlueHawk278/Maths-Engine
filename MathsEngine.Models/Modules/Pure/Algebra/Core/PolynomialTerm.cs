@@ -94,11 +94,16 @@ public sealed class Term
     {
         if (other is null) throw new ArgumentNullException();
 
+        if (Variable != other.Variable)
+            throw new InvalidOperationException("Multivariable multiplication not supported yet...");
+
         return new Term(
             Coefficient * other.Coefficient,
             Power + other.Power
         );
     }
+
+    public Term ScalarMultiply(int constant) => new Term(Coefficient * constant, Variable, Power);
 
     public double Evaluate(double variable)
     {

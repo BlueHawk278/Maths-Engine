@@ -1,9 +1,10 @@
-﻿using MathsEngine.Modules.Statistics.Dispersion;
+﻿/*
+using MathsEngine.Modules.Statistics.Dispersion;
 using MathsEngine.Utils;
 
 namespace MathsEngine.Console.Menu.Statistics
 {
-    public class DispersionMenu
+    public class DispersionMenu : IMenu
     {
         public static void Menu()
         {
@@ -37,7 +38,8 @@ namespace MathsEngine.Console.Menu.Statistics
         {
             try
             {
-                System.Console.Clear();
+                //Console.Clear();
+                /*
                 var values = GetDoubleList("Enter the values separated by a comma: ");
                 var calculator = new ArrayOfNumbersCalculator(values);
                 calculator.Run();
@@ -57,31 +59,18 @@ namespace MathsEngine.Console.Menu.Statistics
 
                 System.Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
                 System.Console.ReadKey();
-            }
-            catch (FormatException)
-            {
-                ErrorDisplay.ShowError(
-                    "Error: Invalid input.Please ensure you enter only numbers separated by commas.");
-            }
-            catch (NullInputException)
-            {
-                ErrorDisplay.ShowError("Error: No data was entered. Please ensure you enter a set of numbers.");
-            }
-            catch (EmptyDataSetException)
-            {
-                ErrorDisplay.ShowError("Error: The data set cannot be empty.Please provide a set of numbers.");
-            }
-        }
+                */
 
+        /*
         private static void HandleFrequencyTable()
         {
             try
             {
-                System.Console.Clear();
-                var values = GetDoubleList("Enter the values (x) separated by a comma: ");
-                var frequencies = GetIntList("Enter the frequencies (f) for each value, separated by a comma: ");
-                var calculator = new FrequencyTableCalculator(values, frequencies);
-                calculator.Run();
+                Console.Clear();
+                //var values = GetDoubleList("Enter the values (x) separated by a comma: ");
+                //var frequencies = GetIntList("Enter the frequencies (f) for each value, separated by a comma: ");
+                //var calculator = new FrequencyTableCalculator(values, frequencies);
+                //calculator.Run();
 
                 System.Console.WriteLine("\n--- Results ---");
                 System.Console.WriteLine($"Mean: {calculator.Mean:F3}");
@@ -118,10 +107,10 @@ namespace MathsEngine.Console.Menu.Statistics
         {
             try
             {
-                System.Console.Clear();
+                Console.Clear();
                 var intervals = GetStringList("Enter the class intervals (e.g., 10-20) separated by a comma: ");
                 var frequencies = GetIntList("Enter the frequencies (f) for each interval, separated by a comma: ");
-                var calculator = new ContinuousTableCalculator(intervals, frequencies);
+                /*var calculator = new ContinuousTableCalculator(intervals, frequencies);
                 calculator.Run();
 
                 System.Console.WriteLine("\n--- Results ---");
@@ -131,6 +120,7 @@ namespace MathsEngine.Console.Menu.Statistics
 
                 System.Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
                 System.Console.ReadKey();
+                
             }
             catch (FormatException)
             {
@@ -160,28 +150,32 @@ namespace MathsEngine.Console.Menu.Statistics
             }
         }
 
+        
         private static List<double> GetDoubleList(string prompt)
         {
-            System.Console.WriteLine(prompt);
-            string? input = System.Console.ReadLine();
+            Console.WriteLine(prompt);
+            string? input = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(input)) return new List<double>();
             return input.Split(',').Select(s => double.Parse(s.Trim())).ToList();
         }
 
         private static List<int> GetIntList(string prompt)
         {
-            System.Console.WriteLine(prompt);
-            string? input = System.Console.ReadLine();
+            Console.WriteLine(prompt);
+            string? input = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(input)) return new List<int>();
             return input.Split(',').Select(s => int.Parse(s.Trim())).ToList();
         }
 
         private static List<string> GetStringList(string prompt)
         {
-            System.Console.WriteLine(prompt);
-            string? input = System.Console.ReadLine();
+            Console.WriteLine(prompt);
+            string? input = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(input)) return new List<string>();
             return input.Split(',').Select(s => s.Trim()).ToList();
         }
+        
+
     }
 }
+        */
