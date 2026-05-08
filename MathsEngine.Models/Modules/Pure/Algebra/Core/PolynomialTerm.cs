@@ -57,6 +57,13 @@ public sealed class Term
 
     public bool IsValidVariable(string variable) => variable.Length == 1;
 
+    public bool IsEqualTerm(Term other)
+    {
+        if (Coefficient == other.Coefficient && Variable == other.Variable && Power == other.Power) 
+            return true;
+        return false;
+    }
+
     /// <summary>
     /// This method provides the degree of the term. This is just the exponent.
     /// This can be used in polynomials by sorting the presentation of the terms in descending degree order.
@@ -67,7 +74,7 @@ public sealed class Term
 
     public Term Add(Term other)
     {
-        if (other is null) throw new ArgumentNullException(nameof(other));
+        if (other is null) throw new ArgumentNullException();
         if (!IsLikeTerm(other))
             throw new InvalidOperationException("Cannot add unlike terms.");
 
@@ -76,7 +83,7 @@ public sealed class Term
 
     public Term Subtract(Term other)
     {
-        if (other is null) throw new ArgumentNullException(nameof(other));
+        if (other is null) throw new ArgumentNullException();
         if (!IsLikeTerm(other))
             throw new InvalidOperationException("Cannot subtract unlike terms.");
 
@@ -85,7 +92,7 @@ public sealed class Term
 
     public Term Multiply(Term other)
     {
-        if (other is null) throw new ArgumentNullException(nameof(other));
+        if (other is null) throw new ArgumentNullException();
 
         return new Term(
             Coefficient * other.Coefficient,
