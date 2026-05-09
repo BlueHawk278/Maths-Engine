@@ -8,7 +8,7 @@ public sealed class Term
     /// <summary>
     /// Gets the numeric coefficient of the term.
     /// </summary>
-    public double Coefficient { get; }
+    public double Coefficient { get; set; }
     /// <summary>
     /// Gets the variable symbol for the term (for example, <c>x</c>).
     /// </summary>
@@ -16,7 +16,9 @@ public sealed class Term
     /// <summary>
     /// Gets the exponent (power) applied to <see cref="Variable"/>.
     /// </summary>
-    public int Power { get; }
+    public int Power { get; set; }
+
+
 
     /// <summary>
     /// Initializes a new <see cref="Term"/> using a specified variable.
@@ -49,6 +51,14 @@ public sealed class Term
         Power = power;
     }
 
+    public Term()
+    {
+        Coefficient = 0;
+        Power = 0;
+    }
+
+
+
     public bool IsLikeTerm(Term other)
     {
         if (other is null) throw new ArgumentNullException(nameof(other));
@@ -70,7 +80,7 @@ public sealed class Term
     /// For example: 5x^2 + 3x - 5
     /// </summary>
     /// <returns> The exponent of the Term</returns>
-    public double Degree() => Coefficient;
+    public int Degree() => Power;
 
     public Term Add(Term other)
     {
@@ -111,6 +121,29 @@ public sealed class Term
             throw new DivideByZeroException("Cannot evaluate negative powers at x = 0.");
 
         return Coefficient * Math.Pow(variable, Power);
+    }
+
+    public static string FormatTermForDisplay(Term term, bool isFirst)
+    {
+        double coeff = Math.Abs(term.Coefficient);
+
+        if (coeff == 0) return "";
+
+        string coeffPart = "";
+        if (term.Power == 0)
+            coeffPart = coeff.ToString();
+        else if (coeff != 1)
+            coeffPart = coeff.ToString();
+
+        string powerPart = "";
+        if (term.Power == 0)
+            powerPart = "";
+        else if (term.Power == 1)
+            powerPart = "x";
+        else
+            powerPart = $"x^{term.Power}";
+
+        return $"{coeffPart}{powerPart}";
     }
 
     public override string ToString()
