@@ -14,11 +14,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.Tests", "MathsE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.Console", "MathsEngine.Console\MathsEngine.Console.csproj", "{AA7F593E-230F-413D-84DE-10E555604F14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.WinForms", "WinForms\MathsEngine.WinForms.csproj", "{C20B3448-1E76-43E5-AF70-83A2EF937FE5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.Core", "MathsEngine.Models\MathsEngine.Core.csproj", "{D32E34D6-B517-AF25-BF4C-85D96F2FAC4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.Application", "MathsEngine.Application\MathsEngine.Application.csproj", "{D81A8CEC-B9E5-4EC9-AD3B-A00C21007E01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.WinForms", "MathsEngine.WinForms\MathsEngine.WinForms.csproj", "{97B400B9-827D-4FE9-BE2D-B311259CA9A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +34,6 @@ Global
 		{AA7F593E-230F-413D-84DE-10E555604F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA7F593E-230F-413D-84DE-10E555604F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA7F593E-230F-413D-84DE-10E555604F14}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C20B3448-1E76-43E5-AF70-83A2EF937FE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C20B3448-1E76-43E5-AF70-83A2EF937FE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C20B3448-1E76-43E5-AF70-83A2EF937FE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C20B3448-1E76-43E5-AF70-83A2EF937FE5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D32E34D6-B517-AF25-BF4C-85D96F2FAC4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D32E34D6-B517-AF25-BF4C-85D96F2FAC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D32E34D6-B517-AF25-BF4C-85D96F2FAC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -46,6 +42,10 @@ Global
 		{D81A8CEC-B9E5-4EC9-AD3B-A00C21007E01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D81A8CEC-B9E5-4EC9-AD3B-A00C21007E01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D81A8CEC-B9E5-4EC9-AD3B-A00C21007E01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97B400B9-827D-4FE9-BE2D-B311259CA9A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97B400B9-827D-4FE9-BE2D-B311259CA9A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97B400B9-827D-4FE9-BE2D-B311259CA9A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97B400B9-827D-4FE9-BE2D-B311259CA9A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
