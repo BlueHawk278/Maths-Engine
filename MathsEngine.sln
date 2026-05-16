@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.WinForms", "Win
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.Core", "MathsEngine.Models\MathsEngine.Core.csproj", "{D32E34D6-B517-AF25-BF4C-85D96F2FAC4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.Application", "MathsEngine.Application\MathsEngine.Application.csproj", "{D81A8CEC-B9E5-4EC9-AD3B-A00C21007E01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{D32E34D6-B517-AF25-BF4C-85D96F2FAC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D32E34D6-B517-AF25-BF4C-85D96F2FAC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D32E34D6-B517-AF25-BF4C-85D96F2FAC4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D81A8CEC-B9E5-4EC9-AD3B-A00C21007E01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81A8CEC-B9E5-4EC9-AD3B-A00C21007E01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81A8CEC-B9E5-4EC9-AD3B-A00C21007E01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81A8CEC-B9E5-4EC9-AD3B-A00C21007E01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
