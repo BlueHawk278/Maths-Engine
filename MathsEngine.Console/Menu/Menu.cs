@@ -30,10 +30,12 @@ namespace MathsEngine.Console.Menu
                     case 3:
                         StatisticsMenu();
                         break;
-                    case 4: return;
+                    case 4:
+                        return;
                 }
             }
         }
+
         private static void PureMenu()
         {
             while (true)
@@ -43,10 +45,9 @@ namespace MathsEngine.Console.Menu
                 System.Console.WriteLine("1. Pythagoras Theorem");
                 System.Console.WriteLine("2. Trigonometry");
                 System.Console.WriteLine("3. Matrices");
-                System.Console.WriteLine("4. Algebra");
-                System.Console.WriteLine("5. Coordinate Geometry");
-                System.Console.WriteLine("6. Back");
-                int response = Parsing.GetMenuInput("Input: ", 6);
+                System.Console.WriteLine("4. Coordinate Geometry");
+                System.Console.WriteLine("5. Back");
+                int response = Parsing.GetMenuInput("Input: ", 5);
 
                 switch (response)
                 {
@@ -59,13 +60,15 @@ namespace MathsEngine.Console.Menu
                     case 3:
                         MatrixMenu.Menu();
                         break;
-                    case 5:
+                    case 4:
                         CoordinateGeometryMenu.Menu();
                         break;
-                    case 6: return;
+                    case 5:
+                        return;
                 }
             }
         }
+
         private static void MechanicsMenu()
         {
             while (true)
@@ -86,10 +89,12 @@ namespace MathsEngine.Console.Menu
                     case 2:
                         NewtonsLawsMenu.Menu();
                         break;
-                    case 3: return;
+                    case 3:
+                        return;
                 }
             }
         }
+
         private static void StatisticsMenu()
         {
             while (true)
@@ -105,12 +110,13 @@ namespace MathsEngine.Console.Menu
                 switch (response)
                 {
                     case 1:
-                        BivariateAnalysisMenu.Menu(); // 
+                        BivariateAnalysisMenu.Menu();
                         break;
                     case 2:
-                        DispersionMenu.Menu();
+                        //DispersionMenu.Menu();
                         break;
-                    case 3: return;
+                    case 3:
+                        return;
                 }
             }
         }
