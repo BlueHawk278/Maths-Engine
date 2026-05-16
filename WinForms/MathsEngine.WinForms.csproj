@@ -15,14 +15,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Presenters\Pure\PythagorasTheorem\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="ScottPlot.WinForms" Version="5.1.57" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\MathsEngine.Application\MathsEngine.Application.csproj" />
 		<ProjectReference Include="..\MathsEngine.Models\MathsEngine.Core.csproj" />
 	</ItemGroup>
 

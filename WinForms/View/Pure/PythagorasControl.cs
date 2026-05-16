@@ -1,8 +1,6 @@
-﻿using System;
-using System.Windows.Forms;
-using MathsEngine.WinForms.View;
+﻿using MathsEngine.WinForms.View;
 using WinForms.Forms;
-using WinForms.Presenters.Pure.PythagorasTheorem;
+using MathsEngine.Application.Presenters.Pure.PythagorasTheorem;
 
 namespace MathsEngine.WinForms.Forms.Pure
 {
@@ -20,10 +18,8 @@ namespace MathsEngine.WinForms.Forms.Pure
         {
             InitializeComponent();
 
-            // Use the base calculator chrome
             Title = "Pythagoras Theorem";
 
-            // Bridge base events -> view events expected by presenter
             CalculateAttempted += (_, __) => CalculateAttemptedView?.Invoke(this, EventArgs.Empty);
             ClearAttempted += (_, __) => ClearAttemptedView?.Invoke(this, EventArgs.Empty);
 
@@ -68,7 +64,6 @@ namespace MathsEngine.WinForms.Forms.Pure
             set => FindOtherSideRadioButton.Checked = value;
         }
 
-        // Map to BaseCalculatorForm's labels/textbox
         public string Result
         {
             get => ResultText;
@@ -81,12 +76,7 @@ namespace MathsEngine.WinForms.Forms.Pure
             set => StepsText = value;
         }
 
-        // IPythagorasView events (kept distinct name to avoid clashing with base events)
         public event EventHandler? CalculateAttemptedView;
         public event EventHandler? ClearAttemptedView;
-
-        // If your IPythagorasView interface specifically requires these exact names,
-        // rename the two events above to CalculateAttempted / ClearAttempted and
-        // remove the BaseCalculatorForm events (or make BaseCalculatorForm expose protected raisers instead).
     }
 }
