@@ -94,6 +94,7 @@
             homeButton.TabIndex = 0;
             homeButton.Text = "Home";
             homeButton.UseVisualStyleBackColor = true;
+            homeButton.Click += this.homeButton_Click;
             // 
             // mainContentPanel
             // 
@@ -115,7 +116,7 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Maths Engine";
-            Load += Form1_Load;
+            Load += MainForm_Load;
             sideBarPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
