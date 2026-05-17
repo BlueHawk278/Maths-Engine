@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MathsEngine.Application\MathsEngine.Presentation.csproj" />
+    <ProjectReference Include="..\MathsEngine.Presentation\MathsEngine.Presentation.csproj" />
   </ItemGroup>
 
   <ItemGroup>
