@@ -28,7 +28,7 @@ public class TermArithmeticTests
         Term term2 = new Term(term2Coeff, term2Expo);
         Term expectedTerm = new Term(expectedCoeff, expectedExpo);
 
-        var resultTerm = term1.Add(term2);
+        var resultTerm = term1 + term2;
 
         Assert.True(expectedTerm.IsEqualTerm(resultTerm));
     }
@@ -56,7 +56,7 @@ public class TermArithmeticTests
         Term term2 = new Term(term2Coeff, term2Expo);
         Term expectedTerm = new Term(expectedCoeff, expectedExpo);
 
-        var resultTerm = term1.Subtract(term2);
+        var resultTerm = term1 - term2;
 
         Assert.True(expectedTerm.IsEqualTerm(resultTerm));
     }
@@ -84,9 +84,19 @@ public class TermArithmeticTests
         Term term2 = new Term(term2Coeff, term2Expo);
         Term expectedTerm = new Term(expectedCoeff, expectedExpo);
 
-        var resultTerm = term1.Multiply(term2);
+        var resultTerm = term1 * term2;
 
         Assert.True(expectedTerm.IsEqualTerm(resultTerm));
+    }
+    
+    [Theory]
+    public void ScalarMultiply_ShouldOutputCorrectResult(double termCoefficient, int termExponent, int constant, Term expectedTerm)
+    {
+        Term term = new Term(termCoefficient, termExponent);
+        
+        var resultTerm = term * constant;
+        
+        Assert.True(resultTerm.IsEqualTerm(expectedTerm));
     }
 
 
@@ -100,7 +110,7 @@ public class TermArithmeticTests
         Term term1 = new Term(term1Coeff, term1Expo);
         Term term2 = new Term(term2Coeff, term2Expo);
 
-        Assert.Throws<InvalidOperationException>(() => term1.Add(term2));
+        Assert.Throws<InvalidOperationException>(() => term1 + term2);
     }
 
     [Theory]
@@ -112,6 +122,6 @@ public class TermArithmeticTests
         Term term1 = new Term(term1Coeff, term1Expo);
         Term term2 = new Term(term2Coeff, term2Expo);
 
-        Assert.Throws<InvalidOperationException>(() => term1.Subtract(term2));
+        Assert.Throws<InvalidOperationException>(() => term1 - term2);
     }
 }

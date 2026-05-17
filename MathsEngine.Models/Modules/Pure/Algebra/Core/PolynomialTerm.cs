@@ -58,7 +58,11 @@ public sealed class Term
     }
 
 
-
+    public static bool IsLikeTerm(Term term1, Term term2)
+    {
+        if (term1 is null || term2 is null) return false;
+        return term1.Variable == term2.Variable && term1.Power == term2.Power;
+    }
     public bool IsLikeTerm(Term other)
     {
         if (other is null) throw new ArgumentNullException(nameof(other));
@@ -81,39 +85,48 @@ public sealed class Term
     /// </summary>
     /// <returns> The exponent of the Term</returns>
     public int Degree() => Power;
-
-    public Term Add(Term other)
+    
+    public static Term operator + (Term term1, Term term2)
     {
-        if (other is null) throw new ArgumentNullException();
-        if (!IsLikeTerm(other))
+        if (term1 is null || term2 is null) throw new ArgumentNullException();
+        if (!IsLikeTerm(term1, term2))
             throw new InvalidOperationException("Cannot add unlike terms.");
 
-        return new Term(Coefficient + other.Coefficient, Power);
+        return new Term(term1.Coefficient + term2.Coefficient, term1.Power);
     }
 
-    public Term Subtract(Term other)
+    public static Term operator - (Term term1, Term term2)
     {
-        if (other is null) throw new ArgumentNullException();
-        if (!IsLikeTerm(other))
+        if (term1 is null || term2 is null) throw new ArgumentNullException();
+        if (!IsLikeTerm(term1, term2))
             throw new InvalidOperationException("Cannot subtract unlike terms.");
 
-        return new Term(Coefficient - other.Coefficient, Power);
+        return new Term(term1.Coefficient - term2.Coefficient, term1.Power);
     }
 
-    public Term Multiply(Term other)
+    public static Term operator * (Term term1, Term term2)
     {
-        if (other is null) throw new ArgumentNullException();
+        if (term1 is null || term2 is null) throw new ArgumentNullException();
 
-        if (Variable != other.Variable)
+        if (term1.Variable != term2.Variable)
             throw new InvalidOperationException("Multivariable multiplication not supported yet...");
 
         return new Term(
-            Coefficient * other.Coefficient,
-            Power + other.Power
+            term1.Coefficient * term2.Coefficient,
+            term1.Power + term2.Power
         );
     }
 
-    public Term ScalarMultiply(int constant) => new Term(Coefficient * constant, Variable, Power);
+    public static Term operator * (Term term, int constant) => new Term(term.Coefficient * constant, term.Variable, term.Power);
+
+    public static Term operator /(Term term1, Term term2)
+    {
+        if (term1 is null || term2 is null) throw new ArgumentNullException();
+        if (!IsLikeTerm(term1, term2))
+            throw new InvalidOperationException("Cannot divide unlike terms.");
+
+        return new Term(term1.Coefficient / term2.Coefficient, term1.Power - term2.Power);
+    }
 
     public double Evaluate(double variable)
     {

@@ -21,7 +21,7 @@ public class PolynomialArithmetic
     {
         var multipliedTerms = new List<Term>();
         foreach (var term in other.Terms)
-            multipliedTerms.Add(term.ScalarMultiply(constant));
+            multipliedTerms.Add(term * constant);
 
         return new Polynomial(multipliedTerms);
     }
