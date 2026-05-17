@@ -31,7 +31,7 @@
             backButton1 = new MathsEngine.WinForms.Controls.Navigation.BackButton();
             viewTitleLabel = new Label();
             inputPanel = new Panel();
-            CalculateOtherSideButton = new RadioButton();
+            OtherSideButton = new RadioButton();
             CheckValidCalculationButton = new RadioButton();
             HypotenuseButton = new RadioButton();
             TextBoxHypotenuse = new TextBox();
@@ -41,9 +41,13 @@
             SideLabelB = new Label();
             sideLabelA = new Label();
             clearButton = new MathsEngine.WinForms.Controls.Navigation.ClearButton();
-            calculateButton1 = new MathsEngine.WinForms.Controls.Navigation.CalculateButton();
-            explanationTextBox = new RichTextBox();
+            calculateButton = new MathsEngine.WinForms.Controls.Navigation.CalculateButton();
+            StepsTextBox = new RichTextBox();
+            panel1 = new Panel();
+            ResultTextBox = new TextBox();
+            ResultLabel = new Label();
             inputPanel.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // backButton1
@@ -56,6 +60,7 @@
             backButton1.TabIndex = 0;
             backButton1.Text = "Back";
             backButton1.UseVisualStyleBackColor = true;
+            backButton1.Click += backButton1_Click;
             // 
             // viewTitleLabel
             // 
@@ -69,7 +74,7 @@
             // 
             // inputPanel
             // 
-            inputPanel.Controls.Add(CalculateOtherSideButton);
+            inputPanel.Controls.Add(OtherSideButton);
             inputPanel.Controls.Add(CheckValidCalculationButton);
             inputPanel.Controls.Add(HypotenuseButton);
             inputPanel.Controls.Add(TextBoxHypotenuse);
@@ -83,16 +88,16 @@
             inputPanel.Size = new Size(250, 200);
             inputPanel.TabIndex = 2;
             // 
-            // CalculateOtherSideButton
+            // OtherSideButton
             // 
-            CalculateOtherSideButton.AutoSize = true;
-            CalculateOtherSideButton.Location = new Point(15, 138);
-            CalculateOtherSideButton.Name = "CalculateOtherSideButton";
-            CalculateOtherSideButton.Size = new Size(132, 19);
-            CalculateOtherSideButton.TabIndex = 8;
-            CalculateOtherSideButton.TabStop = true;
-            CalculateOtherSideButton.Text = "Calculate Other Side";
-            CalculateOtherSideButton.UseVisualStyleBackColor = true;
+            OtherSideButton.AutoSize = true;
+            OtherSideButton.Location = new Point(15, 138);
+            OtherSideButton.Name = "OtherSideButton";
+            OtherSideButton.Size = new Size(132, 19);
+            OtherSideButton.TabIndex = 8;
+            OtherSideButton.TabStop = true;
+            OtherSideButton.Text = "Calculate Other Side";
+            OtherSideButton.UseVisualStyleBackColor = true;
             // 
             // CheckValidCalculationButton
             // 
@@ -169,48 +174,80 @@
             clearButton.FlatStyle = FlatStyle.Flat;
             clearButton.Font = new Font("Segoe UI", 15F);
             clearButton.ForeColor = Color.Black;
-            clearButton.Location = new Point(158, 322);
+            clearButton.Location = new Point(158, 397);
             clearButton.Name = "clearButton";
             clearButton.Size = new Size(250, 60);
             clearButton.TabIndex = 3;
             clearButton.Text = "Clear";
             clearButton.UseVisualStyleBackColor = true;
+            clearButton.Click += clearButton_Click;
             // 
-            // calculateButton1
+            // calculateButton
             // 
-            calculateButton1.FlatStyle = FlatStyle.Flat;
-            calculateButton1.Font = new Font("Segoe UI", 15F);
-            calculateButton1.ForeColor = Color.Black;
-            calculateButton1.Location = new Point(158, 397);
-            calculateButton1.Name = "calculateButton1";
-            calculateButton1.Size = new Size(250, 60);
-            calculateButton1.TabIndex = 4;
-            calculateButton1.Text = "Calculate";
-            calculateButton1.UseVisualStyleBackColor = true;
+            calculateButton.FlatStyle = FlatStyle.Flat;
+            calculateButton.Font = new Font("Segoe UI", 15F);
+            calculateButton.ForeColor = Color.Black;
+            calculateButton.Location = new Point(158, 472);
+            calculateButton.Name = "calculateButton";
+            calculateButton.Size = new Size(250, 60);
+            calculateButton.TabIndex = 4;
+            calculateButton.Text = "Calculate";
+            calculateButton.UseVisualStyleBackColor = true;
+            calculateButton.Click += calculateButton_Click;
             // 
-            // explanationTextBox
+            // StepsTextBox
             // 
-            explanationTextBox.Location = new Point(459, 90);
-            explanationTextBox.Name = "explanationTextBox";
-            explanationTextBox.ReadOnly = true;
-            explanationTextBox.Size = new Size(300, 367);
-            explanationTextBox.TabIndex = 5;
-            explanationTextBox.Text = "";
+            StepsTextBox.Location = new Point(459, 90);
+            StepsTextBox.Name = "StepsTextBox";
+            StepsTextBox.ReadOnly = true;
+            StepsTextBox.Size = new Size(300, 367);
+            StepsTextBox.TabIndex = 5;
+            StepsTextBox.Text = "";
             // 
-            // CalculatorView
+            // panel1
+            // 
+            panel1.Controls.Add(ResultTextBox);
+            panel1.Controls.Add(ResultLabel);
+            panel1.Location = new Point(158, 320);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(250, 45);
+            panel1.TabIndex = 6;
+            // 
+            // ResultTextBox
+            // 
+            ResultTextBox.Location = new Point(77, 15);
+            ResultTextBox.Name = "ResultTextBox";
+            ResultTextBox.ReadOnly = true;
+            ResultTextBox.Size = new Size(145, 23);
+            ResultTextBox.TabIndex = 1;
+            // 
+            // ResultLabel
+            // 
+            ResultLabel.AutoSize = true;
+            ResultLabel.Font = new Font("Segoe UI", 12F);
+            ResultLabel.Location = new Point(15, 13);
+            ResultLabel.Name = "ResultLabel";
+            ResultLabel.Size = new Size(56, 21);
+            ResultLabel.TabIndex = 0;
+            ResultLabel.Text = "Result:";
+            // 
+            // PythagorasCalculatorView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(explanationTextBox);
-            Controls.Add(calculateButton1);
+            Controls.Add(panel1);
+            Controls.Add(StepsTextBox);
+            Controls.Add(calculateButton);
             Controls.Add(clearButton);
             Controls.Add(inputPanel);
             Controls.Add(viewTitleLabel);
             Controls.Add(backButton1);
-            Name = "CalculatorView";
+            Name = "PythagorasCalculatorView";
             Size = new Size(1164, 657);
             inputPanel.ResumeLayout(false);
             inputPanel.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -220,7 +257,7 @@
         private Controls.Navigation.BackButton backButton1;
         private Label viewTitleLabel;
         private Panel inputPanel;
-        private RadioButton CalculateOtherSideButton;
+        private RadioButton OtherSideButton;
         private RadioButton CheckValidCalculationButton;
         private RadioButton HypotenuseButton;
         private TextBox TextBoxHypotenuse;
@@ -230,7 +267,10 @@
         private Label SideLabelB;
         private Label sideLabelA;
         private Controls.Navigation.ClearButton clearButton;
-        private Controls.Navigation.CalculateButton calculateButton1;
-        private RichTextBox explanationTextBox;
+        private Controls.Navigation.CalculateButton calculateButton;
+        private RichTextBox StepsTextBox;
+        private Panel panel1;
+        private TextBox ResultTextBox;
+        private Label ResultLabel;
     }
 }

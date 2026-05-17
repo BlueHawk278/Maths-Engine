@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.Console", "Math
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.Core", "MathsEngine.Models\MathsEngine.Core.csproj", "{D32E34D6-B517-AF25-BF4C-85D96F2FAC4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.Application", "MathsEngine.Application\MathsEngine.Application.csproj", "{D81A8CEC-B9E5-4EC9-AD3B-A00C21007E01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.Presentation", "MathsEngine.Application\MathsEngine.Presentation.csproj", "{D81A8CEC-B9E5-4EC9-AD3B-A00C21007E01}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsEngine.WinForms", "MathsEngine.WinForms\MathsEngine.WinForms.csproj", "{97B400B9-827D-4FE9-BE2D-B311259CA9A1}"
 EndProject

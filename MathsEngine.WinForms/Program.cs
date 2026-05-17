@@ -1,3 +1,6 @@
+using System;
+using System.Windows.Forms;
+
 namespace MathsEngine.WinForms
 {
     internal static class Program

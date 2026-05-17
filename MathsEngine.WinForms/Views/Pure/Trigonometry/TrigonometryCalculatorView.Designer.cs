@@ -34,18 +34,22 @@
             calculateButton1 = new MathsEngine.WinForms.Controls.Navigation.CalculateButton();
             clearButton = new MathsEngine.WinForms.Controls.Navigation.ClearButton();
             inputPanel = new Panel();
+            calculateMissingAngleButton = new RadioButton();
+            AngleTextBox = new TextBox();
+            angleLabel = new Label();
+            hypotenuseLabel = new Label();
             CalculateOtherSideButton = new RadioButton();
             CheckValidCalculationButton = new RadioButton();
-            this.AdjacentTextBox = new TextBox();
-            this.OppositeTextBox = new TextBox();
+            AdjacentTextBox = new TextBox();
+            OppositeTextBox = new TextBox();
             HypotenuseTextBox = new TextBox();
             adjacentLabel = new Label();
             oppositeLabel = new Label();
-            hypotenuseLabel = new Label();
-            angleLabel = new Label();
-            AngleTextBox = new TextBox();
-            calculateMissingAngleButton = new RadioButton();
+            panel1 = new Panel();
+            ResultTextBox = new TextBox();
+            ResultLabel = new Label();
             inputPanel.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // backButton1
@@ -83,7 +87,7 @@
             calculateButton1.FlatStyle = FlatStyle.Flat;
             calculateButton1.Font = new Font("Segoe UI", 15F);
             calculateButton1.ForeColor = Color.Black;
-            calculateButton1.Location = new Point(158, 397);
+            calculateButton1.Location = new Point(158, 472);
             calculateButton1.Name = "calculateButton1";
             calculateButton1.Size = new Size(250, 60);
             calculateButton1.TabIndex = 8;
@@ -95,7 +99,7 @@
             clearButton.FlatStyle = FlatStyle.Flat;
             clearButton.Font = new Font("Segoe UI", 15F);
             clearButton.ForeColor = Color.Black;
-            clearButton.Location = new Point(158, 322);
+            clearButton.Location = new Point(158, 397);
             clearButton.Name = "clearButton";
             clearButton.Size = new Size(250, 60);
             clearButton.TabIndex = 7;
@@ -110,8 +114,8 @@
             inputPanel.Controls.Add(hypotenuseLabel);
             inputPanel.Controls.Add(CalculateOtherSideButton);
             inputPanel.Controls.Add(CheckValidCalculationButton);
-            inputPanel.Controls.Add(this.AdjacentTextBox);
-            inputPanel.Controls.Add(this.OppositeTextBox);
+            inputPanel.Controls.Add(AdjacentTextBox);
+            inputPanel.Controls.Add(OppositeTextBox);
             inputPanel.Controls.Add(HypotenuseTextBox);
             inputPanel.Controls.Add(adjacentLabel);
             inputPanel.Controls.Add(oppositeLabel);
@@ -119,6 +123,43 @@
             inputPanel.Name = "inputPanel";
             inputPanel.Size = new Size(250, 226);
             inputPanel.TabIndex = 6;
+            // 
+            // calculateMissingAngleButton
+            // 
+            calculateMissingAngleButton.AutoSize = true;
+            calculateMissingAngleButton.Location = new Point(15, 163);
+            calculateMissingAngleButton.Name = "calculateMissingAngleButton";
+            calculateMissingAngleButton.Size = new Size(152, 19);
+            calculateMissingAngleButton.TabIndex = 12;
+            calculateMissingAngleButton.TabStop = true;
+            calculateMissingAngleButton.Text = "Calculate Missing Angle";
+            calculateMissingAngleButton.UseVisualStyleBackColor = true;
+            calculateMissingAngleButton.CheckedChanged += calculateMissingAngleButton_CheckedChanged;
+            // 
+            // AngleTextBox
+            // 
+            AngleTextBox.Location = new Point(122, 102);
+            AngleTextBox.Name = "AngleTextBox";
+            AngleTextBox.Size = new Size(100, 23);
+            AngleTextBox.TabIndex = 11;
+            // 
+            // angleLabel
+            // 
+            angleLabel.AutoSize = true;
+            angleLabel.Location = new Point(15, 105);
+            angleLabel.Name = "angleLabel";
+            angleLabel.Size = new Size(41, 15);
+            angleLabel.TabIndex = 10;
+            angleLabel.Text = "Angle:";
+            // 
+            // hypotenuseLabel
+            // 
+            hypotenuseLabel.AutoSize = true;
+            hypotenuseLabel.Location = new Point(15, 15);
+            hypotenuseLabel.Name = "hypotenuseLabel";
+            hypotenuseLabel.Size = new Size(74, 15);
+            hypotenuseLabel.TabIndex = 9;
+            hypotenuseLabel.Text = "Hypotenuse:";
             // 
             // CalculateOtherSideButton
             // 
@@ -130,7 +171,7 @@
             CalculateOtherSideButton.TabStop = true;
             CalculateOtherSideButton.Text = "Calculate Missing Side";
             CalculateOtherSideButton.UseVisualStyleBackColor = true;
-            CalculateOtherSideButton.CheckedChanged += this.CalculateOtherSideButton_CheckedChanged;
+            CalculateOtherSideButton.CheckedChanged += CalculateOtherSideButton_CheckedChanged;
             // 
             // CheckValidCalculationButton
             // 
@@ -145,17 +186,17 @@
             // 
             // AdjacentTextBox
             // 
-            this.AdjacentTextBox.Location = new Point(122, 72);
-            this.AdjacentTextBox.Name = "AdjacentTextBox";
-            this.AdjacentTextBox.Size = new Size(100, 23);
-            this.AdjacentTextBox.TabIndex = 5;
+            AdjacentTextBox.Location = new Point(122, 72);
+            AdjacentTextBox.Name = "AdjacentTextBox";
+            AdjacentTextBox.Size = new Size(100, 23);
+            AdjacentTextBox.TabIndex = 5;
             // 
             // OppositeTextBox
             // 
-            this.OppositeTextBox.Location = new Point(122, 42);
-            this.OppositeTextBox.Name = "OppositeTextBox";
-            this.OppositeTextBox.Size = new Size(100, 23);
-            this.OppositeTextBox.TabIndex = 4;
+            OppositeTextBox.Location = new Point(122, 42);
+            OppositeTextBox.Name = "OppositeTextBox";
+            OppositeTextBox.Size = new Size(100, 23);
+            OppositeTextBox.TabIndex = 4;
             // 
             // HypotenuseTextBox
             // 
@@ -182,47 +223,38 @@
             oppositeLabel.TabIndex = 1;
             oppositeLabel.Text = "Opposite:";
             // 
-            // hypotenuseLabel
+            // panel1
             // 
-            hypotenuseLabel.AutoSize = true;
-            hypotenuseLabel.Location = new Point(15, 15);
-            hypotenuseLabel.Name = "hypotenuseLabel";
-            hypotenuseLabel.Size = new Size(74, 15);
-            hypotenuseLabel.TabIndex = 9;
-            hypotenuseLabel.Text = "Hypotenuse:";
+            panel1.Controls.Add(ResultTextBox);
+            panel1.Controls.Add(ResultLabel);
+            panel1.Location = new Point(158, 330);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(250, 45);
+            panel1.TabIndex = 10;
             // 
-            // angleLabel
+            // ResultTextBox
             // 
-            angleLabel.AutoSize = true;
-            angleLabel.Location = new Point(15, 105);
-            angleLabel.Name = "angleLabel";
-            angleLabel.Size = new Size(41, 15);
-            angleLabel.TabIndex = 10;
-            angleLabel.Text = "Angle:";
+            ResultTextBox.Location = new Point(77, 15);
+            ResultTextBox.Name = "ResultTextBox";
+            ResultTextBox.ReadOnly = true;
+            ResultTextBox.Size = new Size(145, 23);
+            ResultTextBox.TabIndex = 1;
             // 
-            // AngleTextBox
+            // ResultLabel
             // 
-            AngleTextBox.Location = new Point(122, 102);
-            AngleTextBox.Name = "AngleTextBox";
-            AngleTextBox.Size = new Size(100, 23);
-            AngleTextBox.TabIndex = 11;
-            // 
-            // calculateMissingAngleButton
-            // 
-            calculateMissingAngleButton.AutoSize = true;
-            calculateMissingAngleButton.Location = new Point(15, 163);
-            calculateMissingAngleButton.Name = "calculateMissingAngleButton";
-            calculateMissingAngleButton.Size = new Size(152, 19);
-            calculateMissingAngleButton.TabIndex = 12;
-            calculateMissingAngleButton.TabStop = true;
-            calculateMissingAngleButton.Text = "Calculate Missing Angle";
-            calculateMissingAngleButton.UseVisualStyleBackColor = true;
-            calculateMissingAngleButton.CheckedChanged += this.calculateMissingAngleButton_CheckedChanged;
+            ResultLabel.AutoSize = true;
+            ResultLabel.Font = new Font("Segoe UI", 12F);
+            ResultLabel.Location = new Point(15, 13);
+            ResultLabel.Name = "ResultLabel";
+            ResultLabel.Size = new Size(56, 21);
+            ResultLabel.TabIndex = 0;
+            ResultLabel.Text = "Result:";
             // 
             // TrigonometryCalculatorView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(panel1);
             Controls.Add(explanationTextBox);
             Controls.Add(calculateButton1);
             Controls.Add(clearButton);
@@ -233,6 +265,8 @@
             Size = new Size(1164, 657);
             inputPanel.ResumeLayout(false);
             inputPanel.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -256,5 +290,8 @@
         private TextBox AngleTextBox;
         private Label angleLabel;
         private RadioButton calculateMissingAngleButton;
+        private Panel panel1;
+        private TextBox ResultTextBox;
+        private Label ResultLabel;
     }
 }

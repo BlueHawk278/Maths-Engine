@@ -1,7 +1,7 @@
 ﻿using MathsEngine.Modules.Explanations.Pure;
 using MathsEngine.Utils;
 
-namespace MathsEngine.Application.Presenters.Pure.PythagorasTheorem;
+namespace MathsEngine.Presentation.Presenters.Pure.PythagorasTheorem;
 
 public class PythagorasPresenter
 {
