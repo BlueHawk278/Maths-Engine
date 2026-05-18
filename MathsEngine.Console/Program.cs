@@ -18,7 +18,7 @@ internal static class Program
             System.Console.WriteLine(term.ToString());
 
         Polynomial p1 = new Polynomial(terms);
-        p1.Simplify();
+        PolynomialUtils.Simplify(p1);
         System.Console.WriteLine(p1.ToString());
         System.Console.WriteLine(p1.Evaluate(5));
     }

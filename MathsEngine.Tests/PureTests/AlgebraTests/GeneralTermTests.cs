@@ -133,7 +133,7 @@ namespace MathsEngine.Tests.PureTests.AlgebraTests
         public void Constructor_WithVariable_ShouldThrowOnInvalidVariable(string variable, double coeff, int power)
         {
             // The ctor throws Exception when the variable is not a single character.
-            Assert.ThrowsAny<Exception>(() => new Term(coeff, variable, power));
+            Assert.ThrowsAny<Exception>(() => new Term(coeff, power));
         }
 
         // --- IsEqualTerm tests (equality helper) ---

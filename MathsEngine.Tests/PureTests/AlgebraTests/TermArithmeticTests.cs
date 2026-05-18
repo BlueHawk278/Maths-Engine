@@ -201,7 +201,7 @@ public class TermArithmeticTests
     {
         // term1: default variable "x"
         var t1 = new Term(coeff1, 1); // variable "x"
-        var t2 = new Term(coeff2, var2, power2);
+        var t2 = new Term(coeff2, power2);
 
         Assert.Throws<InvalidOperationException>(() => { var r = t1 * t2; });
         Assert.Throws<InvalidOperationException>(() => { var r = t2 * t1; });

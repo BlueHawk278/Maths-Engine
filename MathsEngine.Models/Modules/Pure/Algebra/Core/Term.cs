@@ -11,34 +11,9 @@ public sealed class Term
     public double Coefficient { get; set; }
     
     /// <summary>
-    /// Gets the variable symbol for the term (for example, <c>x</c>).
-    /// </summary>
-    public string Variable { get; }
-    
-    /// <summary>
-    /// Gets the exponent (power) applied to <see cref="Variable"/>.
+    /// Gets the exponent (power) applied to <see cref="x"/>.
     /// </summary>
     public int Power { get; set; }
-    
-    
-    /// <summary>
-    /// Initializes a new <see cref="Term"/> using a specified variable.
-    /// </summary>
-    /// <param name="coefficient">The coefficient of the term.</param>
-    /// <param name="variable">The variable symbol. Must be a single character string.</param>
-    /// <param name="power">The exponent applied to <paramref name="variable"/>.</param>
-    /// <exception cref="Exception">Thrown when <paramref name="variable"/> is not a single character.</exception>
-    public Term(double coefficient, string variable, int power)
-    {
-        if (!IsValidVariable(variable))
-            throw new Exception("The term variable must be a single character");
-
-        Variable = variable;
-
-        Coefficient = coefficient;
-        
-        Power = power;
-    }
 
     /// <summary>
     /// Initializes a new <see cref="Term"/> using the default variable <c>x</c>.
@@ -48,7 +23,6 @@ public sealed class Term
     public Term(double coefficient, int power)
     {
         Coefficient = coefficient;
-        Variable = "x";
         Power = power;
     }
 
@@ -62,17 +36,17 @@ public sealed class Term
     public static bool IsLikeTerm(Term term1, Term term2)
     {
         if (term1 is null || term2 is null) return false;
-        return term1.Variable == term2.Variable && term1.Power == term2.Power;
+        return term1.Power == term2.Power;
     }
     public bool IsLikeTerm(Term other)
     {
         if (other is null) throw new ArgumentNullException(nameof(other));
-        return ((Power == other.Power) && (Variable == other.Variable));
+        return Power == other.Power;
     }
     public bool IsValidVariable(string variable) => variable.Length == 1;
     public bool IsEqualTerm(Term other)
     {
-        if (Coefficient == other.Coefficient && Variable == other.Variable && Power == other.Power) 
+        if (Coefficient == other.Coefficient && Power == other.Power) 
             return true;
         return false;
     }
@@ -106,15 +80,12 @@ public sealed class Term
     {
         if (term1 is null || term2 is null) throw new ArgumentNullException();
 
-        if (term1.Variable != term2.Variable)
-            throw new InvalidOperationException("Multivariable multiplication not supported yet...");
-
         return new Term(
             term1.Coefficient * term2.Coefficient,
             term1.Power + term2.Power
         );
     }
-    public static Term operator * (Term term, int constant) => new Term(term.Coefficient * constant, term.Variable, term.Power);
+    public static Term operator * (Term term, int constant) => new Term(term.Coefficient * constant, term.Power);
     public static Term operator / (Term term1, Term term2)
     {
         if (term1 is null || term2 is null) throw new ArgumentNullException();
@@ -174,9 +145,9 @@ public sealed class Term
         string powerPart;
 
         if (Power == 1)
-            powerPart = $"{Variable}";
+            powerPart = $"x";
         else
-            powerPart = $"{Variable}^{Power}";
+            powerPart = $"x^{Power}";
 
         return $"{coeffPart}{powerPart}";
     }
