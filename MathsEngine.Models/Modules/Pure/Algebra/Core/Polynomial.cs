@@ -18,12 +18,68 @@ public class Polynomial
     
     public static Polynomial operator + (Polynomial a, Polynomial b)
     {
-        return new Polynomial(new List<Term>());
+        if (a is null || b is null) throw new ArgumentNullException();
+        
+        Dictionary<int, double> map = new Dictionary<int, double>();
+
+        foreach (var term in a.Terms)
+        {
+            if(map.ContainsKey(term.Degree()))
+                map[term.Degree()] += term.Coefficient;
+            else
+                map[term.Degree()] = term.Coefficient;
+        }
+
+        foreach (var term in b.Terms)
+        {
+            if (map.ContainsKey(term.Degree()))
+                map[term.Degree()] += term.Coefficient;
+            else
+                map[term.Degree()] = term.Coefficient;
+        }
+        
+        List<Term> resultTerms = new List<Term>();
+
+        foreach (var pair in map)
+        {
+            if (pair.Value != 0)
+                resultTerms.Add(new Term(pair.Value, pair.Key));
+        }
+
+        return PolynomialUtils.RearrangePolynomial(new Polynomial(resultTerms));
     }
 
     public static Polynomial operator - (Polynomial a, Polynomial b)
     {
-        return new Polynomial(new List<Term>());
+        if (a is null ||  b is null) throw new ArgumentNullException();
+        
+        Dictionary<int, double> map = new Dictionary<int, double>();
+
+        foreach (var term in a.Terms)
+        {
+            if (map.ContainsKey(term.Degree()))
+                map[term.Degree()] -= term.Coefficient;
+            else
+                map[term.Degree()] = term.Coefficient;
+        }
+        
+        foreach (var term in b.Terms)
+        {
+            if (map.ContainsKey(term.Degree()))
+                map[term.Degree()] -= term.Coefficient;
+            else
+                map[term.Degree()] = -term.Coefficient;
+        }
+
+        List<Term> resultTerms = new List<Term>();
+
+        foreach (var pair in map)
+        {
+            if (pair.Value != 0)
+                resultTerms.Add(new Term(pair.Value, pair.Key));
+        }
+        
+        return PolynomialUtils.RearrangePolynomial(new Polynomial(resultTerms));
     }
 
     public static Polynomial operator * (Polynomial a, Polynomial b)

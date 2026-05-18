@@ -6,20 +6,34 @@ internal static class Program
 {
     private static void Main()
     {
-        List<Term> terms = new List<Term>
+        List<Term> terms1 = new List<Term>
         {
             new Term(5, 2),
             new Term(4, 3),
             new Term(2, 2),
             new Term(5, 3),
+            new Term(3, 4),
+            new Term(4, 5),
         };
-
-        foreach (var term  in terms)
-            System.Console.WriteLine(term.ToString());
-
-        Polynomial p1 = new Polynomial(terms);
+        Polynomial p1 = new Polynomial(terms1);
         PolynomialUtils.Simplify(p1);
-        System.Console.WriteLine(p1.ToString());
-        System.Console.WriteLine(p1.Evaluate(5));
+
+        List<Term> terms2 = new List<Term>
+        {
+            new Term(4, 2),
+            new Term(2, 3),
+            new Term(5, 2),
+            new Term(3, 3),
+            new Term(4, 5),
+            new Term(5, 7),
+        };
+        Polynomial p2 = new Polynomial(terms2);
+        PolynomialUtils.Simplify(p2);
+
+        Polynomial result1 = p1 + p2;
+        System.Console.WriteLine(result1.ToString());
+        
+        Polynomial result2 = p1 - p2;
+        System.Console.WriteLine(result2.ToString());
     }
 }
