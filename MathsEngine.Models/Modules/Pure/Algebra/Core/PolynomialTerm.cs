@@ -9,17 +9,18 @@ public sealed class Term
     /// Gets the numeric coefficient of the term.
     /// </summary>
     public double Coefficient { get; set; }
+    
     /// <summary>
     /// Gets the variable symbol for the term (for example, <c>x</c>).
     /// </summary>
     public string Variable { get; }
+    
     /// <summary>
     /// Gets the exponent (power) applied to <see cref="Variable"/>.
     /// </summary>
     public int Power { get; set; }
-
-
-
+    
+    
     /// <summary>
     /// Initializes a new <see cref="Term"/> using a specified variable.
     /// </summary>
@@ -68,15 +69,14 @@ public sealed class Term
         if (other is null) throw new ArgumentNullException(nameof(other));
         return ((Power == other.Power) && (Variable == other.Variable));
     }
-
     public bool IsValidVariable(string variable) => variable.Length == 1;
-
     public bool IsEqualTerm(Term other)
     {
         if (Coefficient == other.Coefficient && Variable == other.Variable && Power == other.Power) 
             return true;
         return false;
     }
+    
 
     /// <summary>
     /// This method provides the degree of the term. This is just the exponent.
@@ -94,7 +94,6 @@ public sealed class Term
 
         return new Term(term1.Coefficient + term2.Coefficient, term1.Power);
     }
-
     public static Term operator - (Term term1, Term term2)
     {
         if (term1 is null || term2 is null) throw new ArgumentNullException();
@@ -103,7 +102,6 @@ public sealed class Term
 
         return new Term(term1.Coefficient - term2.Coefficient, term1.Power);
     }
-
     public static Term operator * (Term term1, Term term2)
     {
         if (term1 is null || term2 is null) throw new ArgumentNullException();
@@ -116,10 +114,8 @@ public sealed class Term
             term1.Power + term2.Power
         );
     }
-
     public static Term operator * (Term term, int constant) => new Term(term.Coefficient * constant, term.Variable, term.Power);
-
-    public static Term operator /(Term term1, Term term2)
+    public static Term operator / (Term term1, Term term2)
     {
         if (term1 is null || term2 is null) throw new ArgumentNullException();
         if (!IsLikeTerm(term1, term2))
@@ -158,7 +154,6 @@ public sealed class Term
 
         return $"{coeffPart}{powerPart}";
     }
-
     public override string ToString()
     {
         if (Coefficient == 0) return "0";
