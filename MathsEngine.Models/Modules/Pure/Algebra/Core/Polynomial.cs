@@ -1,19 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace MathsEngine.Core.Modules.Pure.Algebra.Core;
 
 public class Polynomial
 {
-    public List<Term> Terms { get; set; }
+    public List<Term> Terms { get; private set; }
 
     public Polynomial(List<Term> terms)
     {
-        Terms = terms;
+        if (terms is null) throw new ArgumentNullException(nameof(terms));
+
+        Terms = new List<Term>(terms);
+        Simplify();
     }
     public Polynomial(string expression)
     {
-        Terms = PolynomialUtils.ParseExpression(expression);
+        if (expression is null) throw new ArgumentNullException(nameof(expression));
+        
+        Terms = ParseExpression(expression);
+        Simplify();
     }
     
     public static Polynomial operator + (Polynomial a, Polynomial b)
@@ -46,9 +51,9 @@ public class Polynomial
                 resultTerms.Add(new Term(pair.Value, pair.Key));
         }
 
-        return PolynomialUtils.RearrangePolynomial(new Polynomial(resultTerms));
+        return new Polynomial(resultTerms);
     }
-
+    
     public static Polynomial operator - (Polynomial a, Polynomial b)
     {
         if (a is null ||  b is null) throw new ArgumentNullException();
@@ -78,22 +83,81 @@ public class Polynomial
             if (pair.Value != 0)
                 resultTerms.Add(new Term(pair.Value, pair.Key));
         }
-        
-        return PolynomialUtils.RearrangePolynomial(new Polynomial(resultTerms));
+
+        return new Polynomial(resultTerms);
     }
 
     public static Polynomial operator * (Polynomial a, Polynomial b)
     {
-        return new Polynomial(new List<Term>());
+        if (a is null ||  b is null) throw new ArgumentNullException();
+
+        List<Term> resultTerms = new List<Term>();
+        
+        foreach(var termA in  a.Terms)
+            foreach (var termB in b.Terms)
+                resultTerms.Add(termA * termB);
+        
+        return new Polynomial(resultTerms);
     }
 
     public static Polynomial operator * (Polynomial polynomial, int constant)
     {
+        if (polynomial is null) throw new ArgumentNullException(nameof(polynomial));
+        
         var multipliedTerms = new List<Term>();
         foreach (var term in polynomial.Terms)
             multipliedTerms.Add(term * constant);
 
         return new Polynomial(multipliedTerms);
+    }
+    
+    public void Simplify()
+    {
+        // Dictionary to store the Exponent and Sum of Coefficients.
+        Dictionary<int, double> map = new Dictionary<int, double>();
+
+        foreach (Term term in Terms)
+        {
+            if (map.ContainsKey(term.Degree()))
+            {
+                map[term.Degree()] += term.Coefficient;
+            }
+            else
+            {
+                map[term.Degree()] = term.Coefficient;
+            }
+        }
+
+        Terms = new List<Term>();
+
+        foreach (var pair in map)
+        {
+            if (pair.Value != 0)
+                Terms.Add(new Term(pair.Value, pair.Key));
+        }
+
+        RearrangePolynomial();
+    }
+    
+    public void RearrangePolynomial()
+    {
+        for (int i = 0; i < Terms.Count; i++)
+        {
+            for (int j = 0; j < Terms.Count - 1; j++)
+            {
+                if (Terms[j].Degree() < Terms[j + 1].Degree())
+                {
+                    Term temp = Terms[j];
+                    Terms[j] = Terms[j + 1];
+                    Terms[j + 1] = temp;
+                }
+            }
+        }
+    }
+    
+    public static List<Term> ParseExpression(string expression)
+    {
+        return new List<Term>();
     }
 
     public double Evaluate(double value)

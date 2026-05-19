@@ -11,7 +11,7 @@ public sealed class Term
     public double Coefficient { get; set; }
     
     /// <summary>
-    /// Gets the exponent (power) applied to <see cref="x"/>.
+    /// Gets the exponent (power) applied to 'x'.
     /// </summary>
     public int Power { get; set; }
 
@@ -89,8 +89,8 @@ public sealed class Term
     public static Term operator / (Term term1, Term term2)
     {
         if (term1 is null || term2 is null) throw new ArgumentNullException();
-        if (!IsLikeTerm(term1, term2))
-            throw new InvalidOperationException("Cannot divide unlike terms.");
+        if (term2.Coefficient == 0)
+            throw new DivideByZeroException("Cannot divide by a term with a zero coefficient.");
 
         return new Term(term1.Coefficient / term2.Coefficient, term1.Power - term2.Power);
     }

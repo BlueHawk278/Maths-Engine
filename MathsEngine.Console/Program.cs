@@ -16,7 +16,6 @@ internal static class Program
             new Term(4, 5),
         };
         Polynomial p1 = new Polynomial(terms1);
-        PolynomialUtils.Simplify(p1);
 
         List<Term> terms2 = new List<Term>
         {
@@ -27,13 +26,10 @@ internal static class Program
             new Term(4, 5),
             new Term(5, 7),
         };
-        Polynomial p2 = new Polynomial(terms2);
-        PolynomialUtils.Simplify(p2);
-
-        Polynomial result1 = p1 + p2;
-        System.Console.WriteLine(result1.ToString());
         
-        Polynomial result2 = p1 - p2;
-        System.Console.WriteLine(result2.ToString());
+        Polynomial p2 = new Polynomial(terms2);
+
+        System.Console.WriteLine(p1.ToString());
+        System.Console.WriteLine(p2.ToString());
     }
 }
