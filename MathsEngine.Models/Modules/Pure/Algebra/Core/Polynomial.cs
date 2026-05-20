@@ -5,6 +5,12 @@ namespace MathsEngine.Core.Modules.Pure.Algebra.Core;
 public class Polynomial
 {
     public List<Term> Terms { get; private set; }
+    public Term LeadingTerm => Terms[0];
+    public double LeadingCoefficient => Terms[0].Coefficient;
+    public int Degree { get; }
+    public int TermCount => Terms.Count;
+    public bool IsLinear => Degree < 2;
+    public bool IsQuadratic => Degree == 2;
 
     public Polynomial(List<Term> terms)
     {
@@ -12,15 +18,48 @@ public class Polynomial
 
         Terms = new List<Term>(terms);
         Simplify();
+
+        Degree = Terms[0].Degree();
     }
+
     public Polynomial(string expression)
     {
         if (expression is null) throw new ArgumentNullException(nameof(expression));
-        
+
         Terms = ParseExpression(expression);
         Simplify();
     }
-    
+
+    public static bool IsLikePolynomial(Polynomial p1, Polynomial p2)
+    {
+        if  (p1 is null || p2 is null) throw new ArgumentNullException();
+        
+        if (p1.Terms.Count != p2.Terms.Count) return false;
+        
+        for (int i = 0; i < p1.TermCount; i++)
+        {
+            if (!p1.Terms[i].IsLikeTerm(p2.Terms[i]))
+                return false;
+        }
+
+        return true;
+    }
+
+    public bool IsLikePolynomial(Polynomial other)
+    {
+        if  (other is null) throw new ArgumentNullException(nameof(other));
+        
+        if  (Terms.Count != other.Terms.Count) return false;
+        
+        for(int i = 0; i < TermCount; i++)
+        {
+            if (!Terms[i].IsLikeTerm(other.Terms[i]))
+                return false;
+        }
+
+        return true;
+    }
+
     public static Polynomial operator + (Polynomial a, Polynomial b)
     {
         if (a is null || b is null) throw new ArgumentNullException();
