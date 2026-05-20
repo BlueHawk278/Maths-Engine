@@ -28,8 +28,9 @@ internal static class Program
         };
         
         Polynomial p2 = new Polynomial(terms2);
-
-        System.Console.WriteLine(p1.ToString());
-        System.Console.WriteLine(p2.ToString());
+        
+        Polynomial p3 = new Polynomial(PolynomialParser.ParsePolynomial("2x^2 + 5x - 4"));
+        System.Console.WriteLine(p3.ToString());
+        
     }
 }
