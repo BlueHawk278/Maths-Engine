@@ -21,23 +21,18 @@ public class TrigonometryTutorTests
         SideType sideToFind,
         double expected)
     {
-        // Act
         var result = TrigonometryTutor.CalculateMissingSideWithSteps(
             knownSideLength, angle, knownSideType, sideToFind);
 
-        // Assert
         Assert.Equal(expected, result.Value, 2);
-        Assert.False(result.IsMatrix);
     }
 
     [Fact]
     public void CalculateMissingSideWithSteps_GeneratesSteps()
     {
-        // Act
         var result = TrigonometryTutor.CalculateMissingSideWithSteps(
             10, 30, SideType.Adjacent, SideType.Opposite);
 
-        // Assert
         Assert.NotEmpty(result.Steps);
         Assert.Contains(result.Steps, s => s.Contains("Step 1"));
         Assert.Contains(result.Steps, s => s.Contains("Step 2"));
@@ -50,11 +45,9 @@ public class TrigonometryTutorTests
     [Fact]
     public void CalculateMissingSideWithSteps_IncludesKnownValues()
     {
-        // Act
         var result = TrigonometryTutor.CalculateMissingSideWithSteps(
             10, 30, SideType.Adjacent, SideType.Opposite);
 
-        // Assert
         string stepsText = result.GetStepsAsString();
         Assert.Contains("Adjacent = 10", stepsText);
         Assert.Contains("30°", stepsText);
@@ -63,11 +56,9 @@ public class TrigonometryTutorTests
     [Fact]
     public void CalculateMissingSideWithSteps_IncludesTrigRule()
     {
-        // Act
         var result = TrigonometryTutor.CalculateMissingSideWithSteps(
             10, 30, SideType.Adjacent, SideType.Opposite);
 
-        // Assert
         string stepsText = result.GetStepsAsString();
         Assert.Contains("TOA", stepsText);
         Assert.Contains("tan", stepsText);
@@ -76,11 +67,9 @@ public class TrigonometryTutorTests
     [Fact]
     public void CalculateMissingSideWithSteps_IncludesRadianConversion()
     {
-        // Act
         var result = TrigonometryTutor.CalculateMissingSideWithSteps(
             10, 45, SideType.Opposite, SideType.Adjacent);
 
-        // Assert
         string stepsText = result.GetStepsAsString();
         Assert.Contains("radians", stepsText);
         Assert.Contains("π", stepsText);
@@ -97,23 +86,18 @@ public class TrigonometryTutorTests
         SideType side2Type,
         double expected)
     {
-        // Act
         var result = TrigonometryTutor.CalculateMissingAngleWithSteps(
             side1Length, side1Type, side2Length, side2Type);
 
-        // Assert
         Assert.Equal(expected, result.Value, 2);
-        Assert.False(result.IsMatrix);
     }
 
     [Fact]
     public void CalculateMissingAngleWithSteps_GeneratesSteps()
     {
-        // Act
         var result = TrigonometryTutor.CalculateMissingAngleWithSteps(
             3, SideType.Opposite, 4, SideType.Adjacent);
 
-        // Assert
         Assert.NotEmpty(result.Steps);
         Assert.Contains(result.Steps, s => s.Contains("Step 1"));
         Assert.Contains(result.Steps, s => s.Contains("Step 2"));
@@ -125,11 +109,9 @@ public class TrigonometryTutorTests
     [Fact]
     public void CalculateMissingAngleWithSteps_IncludesKnownSides()
     {
-        // Act
         var result = TrigonometryTutor.CalculateMissingAngleWithSteps(
             3, SideType.Opposite, 4, SideType.Adjacent);
 
-        // Assert
         string stepsText = result.GetStepsAsString();
         Assert.Contains("Opposite = 3", stepsText);
         Assert.Contains("Adjacent = 4", stepsText);
@@ -138,11 +120,9 @@ public class TrigonometryTutorTests
     [Fact]
     public void CalculateMissingAngleWithSteps_IncludesInverseFunction()
     {
-        // Act
         var result = TrigonometryTutor.CalculateMissingAngleWithSteps(
             3, SideType.Opposite, 4, SideType.Adjacent);
 
-        // Assert
         string stepsText = result.GetStepsAsString();
         Assert.Contains("tan⁻¹", stepsText);
     }
@@ -150,12 +130,10 @@ public class TrigonometryTutorTests
     [Fact]
     public void GetStepsAsString_ReturnsFormattedString()
     {
-        // Act
         var result = TrigonometryTutor.CalculateMissingSideWithSteps(
             10, 30, SideType.Adjacent, SideType.Opposite);
         string stepsText = result.GetStepsAsString();
 
-        // Assert
         Assert.NotEmpty(stepsText);
         Assert.Contains("Step 1", stepsText);
         Assert.Contains(Environment.NewLine, stepsText);

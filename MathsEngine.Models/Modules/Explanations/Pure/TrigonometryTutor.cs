@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using MathsEngine.Core.Modules.Explanations;
 using MathsEngine.Modules.Pure.Trigonometry;
 
 namespace MathsEngine.Modules.Explanations.Pure
@@ -9,7 +10,7 @@ namespace MathsEngine.Modules.Explanations.Pure
     /// </summary>
     public static class TrigonometryTutor
     {
-        public static CalculationResult CalculateMissingSideWithSteps(
+        public static ScalarCalculationResult CalculateMissingSideWithSteps(
             double? knownSideLength,
             double? angle,
             SideType knownSideType,
@@ -57,10 +58,10 @@ namespace MathsEngine.Modules.Explanations.Pure
             steps.Add("Final Answer:");
             steps.Add($"  The {sideToFind} is {value:F2} units");
 
-            return new CalculationResult(value, steps);
+            return new ScalarCalculationResult(value, steps);
         }
 
-        public static CalculationResult CalculateMissingAngleWithSteps(
+        public static ScalarCalculationResult CalculateMissingAngleWithSteps(
             double? side1Length,
             SideType side1Type,
             double? side2Length,
@@ -101,7 +102,7 @@ namespace MathsEngine.Modules.Explanations.Pure
             steps.Add("Final Answer:");
             steps.Add($"  The angle is {angle:F2}°");
 
-            return new CalculationResult(angle, steps);
+            return new ScalarCalculationResult(angle, steps);
         }
 
         private static string GetTrigRule(SideType type1, SideType type2)

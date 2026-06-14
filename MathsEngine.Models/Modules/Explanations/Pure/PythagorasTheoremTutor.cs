@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using MathsEngine.Core.Modules.Explanations;
 using MathsEngine.Modules.Pure.PythagorasTheorem;
 
 namespace MathsEngine.Modules.Explanations.Pure
@@ -9,7 +10,7 @@ namespace MathsEngine.Modules.Explanations.Pure
     /// </summary>
     public static class PythagorasTheoremTutor
     {
-        public static CalculationResult CalculateHypotenuseWithSteps(double? sideA, double? sideB)
+        public static ScalarCalculationResult CalculateHypotenuseWithSteps(double? sideA, double? sideB)
         {
             // Validate inputs early to provide better error messages
             if (sideA is null || sideB is null)
@@ -53,10 +54,10 @@ namespace MathsEngine.Modules.Explanations.Pure
             steps.Add("Final Answer:");
             steps.Add($"  The hypotenuse is {value:F2} units");
 
-            return new CalculationResult(value, steps);
+            return new ScalarCalculationResult(value, steps);
         }
 
-        public static CalculationResult CalculateOtherSideWithSteps(double? hypotenuse, double? knownSide)
+        public static ScalarCalculationResult CalculateOtherSideWithSteps(double? hypotenuse, double? knownSide)
         {
             // Validate inputs early to provide better error messages
             if (hypotenuse is null || knownSide is null)
@@ -101,7 +102,7 @@ namespace MathsEngine.Modules.Explanations.Pure
             steps.Add("Final Answer:");
             steps.Add($"  The other side is {value:F2} units");
 
-            return new CalculationResult(value, steps);
+            return new ScalarCalculationResult(value, steps);
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿using MathsEngine.Modules.Pure.CoordinateGeometry;
+﻿using MathsEngine.Core.Modules.Explanations;
+using MathsEngine.Modules.Pure.CoordinateGeometry;
 
 namespace MathsEngine.Modules.Explanations.Pure;
 
 public static class CoordinateGeometryTutor
 {
-    public static CalculationResult CalculateLengthOfStraightLineWithSteps(Coordinate a, Coordinate b)
+    public static ScalarCalculationResult CalculateLengthOfStraightLineWithSteps(Coordinate a, Coordinate b)
     {
         var steps = new List<string>();
 
@@ -45,10 +46,10 @@ public static class CoordinateGeometryTutor
         steps.Add("Final Answer:");
         steps.Add($"  The length of the line is {length:F2} units.");
 
-        return new CalculationResult(length, steps);
+        return new ScalarCalculationResult(length, steps);
     }
 
-    public static CalculationResult CalculateMidpointOfStraightLineWithSteps(Coordinate a, Coordinate b)
+    public static CoordinateCalculationResult CalculateMidpointOfStraightLineWithSteps(Coordinate a, Coordinate b)
     {
         var steps = new List<string>();
 
@@ -78,10 +79,10 @@ public static class CoordinateGeometryTutor
         steps.Add("Final Answer:");
         steps.Add($"  The midpoint is {midpoint}.");
 
-        return new CalculationResult(midpoint, steps);
+        return new CoordinateCalculationResult(midpoint, steps);
     }
 
-    public static CalculationResult FindEquationFromTwoCoordinatesWithSteps(Coordinate a, Coordinate b)
+    public static StraightLineCalculationResult FindEquationFromTwoCoordinatesWithSteps(Coordinate a, Coordinate b)
     {
         var steps = new List<string>();
 
@@ -115,10 +116,10 @@ public static class CoordinateGeometryTutor
         steps.Add("Final Answer:");
         steps.Add($"  The equation of the line is {line}.");
 
-        return new CalculationResult(line, steps);
+        return new StraightLineCalculationResult(line, steps);
     }
 
-    public static CalculationResult FindEquationFromGradientAndCoordinateWithSteps(double gradient, Coordinate point)
+    public static StraightLineCalculationResult FindEquationFromGradientAndCoordinateWithSteps(double gradient, Coordinate point)
     {
         var steps = new List<string>();
 
@@ -143,6 +144,6 @@ public static class CoordinateGeometryTutor
         steps.Add("Final Answer:");
         steps.Add($"  The equation of the line is {line}.");
 
-        return new CalculationResult(line, steps);
+        return new StraightLineCalculationResult(line, steps);
     }
 }

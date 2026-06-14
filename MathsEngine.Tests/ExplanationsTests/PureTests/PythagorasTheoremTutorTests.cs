@@ -16,21 +16,16 @@ public class PythagorasTheoremTutorTests
         double sideB,
         double expected)
     {
-        // Act
         var result = PythagorasTheoremTutor.CalculateHypotenuseWithSteps(sideA, sideB);
 
-        // Assert
         Assert.Equal(expected, result.Value, 2);
-        Assert.False(result.IsMatrix);
     }
 
     [Fact]
     public void CalculateHypotenuseWithSteps_GeneratesSteps()
     {
-        // Act
         var result = PythagorasTheoremTutor.CalculateHypotenuseWithSteps(3, 4);
 
-        // Assert
         Assert.NotEmpty(result.Steps);
         Assert.Contains(result.Steps, s => s.Contains("Step 1"));
         Assert.Contains(result.Steps, s => s.Contains("Step 2"));
@@ -43,10 +38,8 @@ public class PythagorasTheoremTutorTests
     [Fact]
     public void CalculateHypotenuseWithSteps_IncludesKnownValues()
     {
-        // Act
         var result = PythagorasTheoremTutor.CalculateHypotenuseWithSteps(3, 4);
 
-        // Assert
         string stepsText = result.GetStepsAsString();
         Assert.Contains("Side A = 3", stepsText);
         Assert.Contains("Side B = 4", stepsText);
@@ -55,10 +48,8 @@ public class PythagorasTheoremTutorTests
     [Fact]
     public void CalculateHypotenuseWithSteps_IncludesFormula()
     {
-        // Act
         var result = PythagorasTheoremTutor.CalculateHypotenuseWithSteps(3, 4);
 
-        // Assert
         string stepsText = result.GetStepsAsString();
         Assert.Contains("c² = a² + b²", stepsText);
         Assert.Contains("Pythagorean Theorem", stepsText);
@@ -67,10 +58,8 @@ public class PythagorasTheoremTutorTests
     [Fact]
     public void CalculateHypotenuseWithSteps_ShowsSquareCalculations()
     {
-        // Act
         var result = PythagorasTheoremTutor.CalculateHypotenuseWithSteps(3, 4);
 
-        // Assert
         string stepsText = result.GetStepsAsString();
         Assert.Contains("3² = 9", stepsText);
         Assert.Contains("4² = 16", stepsText);
@@ -79,10 +68,8 @@ public class PythagorasTheoremTutorTests
     [Fact]
     public void CalculateHypotenuseWithSteps_ShowsSquareRoot()
     {
-        // Act
         var result = PythagorasTheoremTutor.CalculateHypotenuseWithSteps(3, 4);
 
-        // Assert
         string stepsText = result.GetStepsAsString();
         Assert.Contains("√", stepsText);
     }
@@ -96,21 +83,16 @@ public class PythagorasTheoremTutorTests
         double knownSide,
         double expected)
     {
-        // Act
         var result = PythagorasTheoremTutor.CalculateOtherSideWithSteps(hypotenuse, knownSide);
 
-        // Assert
         Assert.Equal(expected, result.Value, 2);
-        Assert.False(result.IsMatrix);
     }
 
     [Fact]
     public void CalculateOtherSideWithSteps_GeneratesSteps()
     {
-        // Act
         var result = PythagorasTheoremTutor.CalculateOtherSideWithSteps(5, 3);
 
-        // Assert
         Assert.NotEmpty(result.Steps);
         Assert.Contains(result.Steps, s => s.Contains("Step 1"));
         Assert.Contains(result.Steps, s => s.Contains("Step 2"));
@@ -123,10 +105,8 @@ public class PythagorasTheoremTutorTests
     [Fact]
     public void CalculateOtherSideWithSteps_IncludesKnownValues()
     {
-        // Act
         var result = PythagorasTheoremTutor.CalculateOtherSideWithSteps(5, 3);
 
-        // Assert
         string stepsText = result.GetStepsAsString();
         Assert.Contains("Hypotenuse (c) = 5", stepsText);
         Assert.Contains("Known Side (a) = 3", stepsText);
@@ -135,10 +115,8 @@ public class PythagorasTheoremTutorTests
     [Fact]
     public void CalculateOtherSideWithSteps_ShowsRearrangedFormula()
     {
-        // Act
         var result = PythagorasTheoremTutor.CalculateOtherSideWithSteps(5, 3);
 
-        // Assert
         string stepsText = result.GetStepsAsString();
         Assert.Contains("b² = c² - a²", stepsText);
         Assert.Contains("Rearrange", stepsText);
@@ -147,10 +125,8 @@ public class PythagorasTheoremTutorTests
     [Fact]
     public void CalculateOtherSideWithSteps_ShowsSubtraction()
     {
-        // Act
         var result = PythagorasTheoremTutor.CalculateOtherSideWithSteps(5, 3);
 
-        // Assert
         string stepsText = result.GetStepsAsString();
         Assert.Contains("25.00 - 9.00 = 16.00", stepsText);
     }
@@ -158,11 +134,9 @@ public class PythagorasTheoremTutorTests
     [Fact]
     public void GetStepsAsString_ReturnsFormattedString()
     {
-        // Act
         var result = PythagorasTheoremTutor.CalculateHypotenuseWithSteps(3, 4);
         string stepsText = result.GetStepsAsString();
 
-        // Assert
         Assert.NotEmpty(stepsText);
         Assert.Contains("Step 1", stepsText);
         Assert.Contains(Environment.NewLine, stepsText);

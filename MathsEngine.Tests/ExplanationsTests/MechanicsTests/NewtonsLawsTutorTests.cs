@@ -12,21 +12,16 @@ public class NewtonsLawsTutorTests
     public void CalculateFmaWithSteps_ReturnsCorrectValue(
         double? f, double? m, double? a, double expected)
     {
-        // Act
         var result = NewtonsLawsTutor.CalculateFmaWithSteps(f, m, a);
 
-        // Assert
         Assert.Equal(expected, result.Value, 2);
-        Assert.False(result.IsMatrix);
     }
 
     [Fact]
     public void CalculateFmaWithSteps_CalculateForce_GeneratesSteps()
     {
-        // Act
         var result = NewtonsLawsTutor.CalculateFmaWithSteps(null, 10.0, 5.0);
 
-        // Assert
         Assert.NotEmpty(result.Steps);
         Assert.Contains(result.Steps, s => s.Contains("Step 1"));
         Assert.Contains(result.Steps, s => s.Contains("Newton's Second Law"));
@@ -37,10 +32,8 @@ public class NewtonsLawsTutorTests
     [Fact]
     public void CalculateFmaWithSteps_CalculateMass_GeneratesSteps()
     {
-        // Act
         var result = NewtonsLawsTutor.CalculateFmaWithSteps(100.0, null, 5.0);
 
-        // Assert
         Assert.NotEmpty(result.Steps);
         string stepsText = result.GetStepsAsString();
         Assert.Contains("Mass (m)", stepsText);
@@ -50,10 +43,8 @@ public class NewtonsLawsTutorTests
     [Fact]
     public void CalculateFmaWithSteps_CalculateAcceleration_GeneratesSteps()
     {
-        // Act
         var result = NewtonsLawsTutor.CalculateFmaWithSteps(50.0, 10.0, null);
 
-        // Assert
         Assert.NotEmpty(result.Steps);
         string stepsText = result.GetStepsAsString();
         Assert.Contains("Acceleration (a)", stepsText);
@@ -63,7 +54,6 @@ public class NewtonsLawsTutorTests
     [Fact]
     public void CalculateFmaWithSteps_WithAllValues_ThrowsException()
     {
-        // Assert
         Assert.Throws<Utils.NullInputException>(() =>
             NewtonsLawsTutor.CalculateFmaWithSteps(50.0, 10.0, 5.0));
     }
@@ -71,7 +61,6 @@ public class NewtonsLawsTutorTests
     [Fact]
     public void CalculateFmaWithSteps_WithMultipleMissing_ThrowsException()
     {
-        // Assert
         Assert.Throws<Utils.NullInputException>(() =>
             NewtonsLawsTutor.CalculateFmaWithSteps(null, null, 5.0));
     }

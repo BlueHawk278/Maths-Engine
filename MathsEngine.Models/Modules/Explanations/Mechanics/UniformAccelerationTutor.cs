@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using MathsEngine.Core.Modules.Explanations;
 using MathsEngine.Modules.Mechanics.UniformAcceleration;
 
 namespace MathsEngine.Modules.Explanations.Mechanics
@@ -9,7 +10,7 @@ namespace MathsEngine.Modules.Explanations.Mechanics
     /// </summary>
     public static class UniformAccelerationTutor
     {
-        public static CalculationResult CalculateAverageVelocityWithSteps(double? initialVelocity, double? finalVelocity)
+        public static ScalarCalculationResult CalculateAverageVelocityWithSteps(double? initialVelocity, double? finalVelocity)
         {
             // Validate inputs
             if (initialVelocity is null || finalVelocity is null)
@@ -41,10 +42,10 @@ namespace MathsEngine.Modules.Explanations.Mechanics
             steps.Add("Final Answer:");
             steps.Add($"  Average velocity = {value:F2} m/s");
 
-            return new CalculationResult(value, steps);
+            return new ScalarCalculationResult(value, steps);
         }
 
-        public static CalculationResult CalculateVUATWithSteps(double? v, double? u, double? a, double? t)
+        public static ScalarCalculationResult CalculateVUATWithSteps(double? v, double? u, double? a, double? t)
         {
             int missingCount =
                 (v is null ? 1 : 0) +
@@ -116,10 +117,10 @@ namespace MathsEngine.Modules.Explanations.Mechanics
             steps.Add("Final Answer:");
             steps.Add($"  {calculationVariable} = {value:F2}");
 
-            return new CalculationResult(value, steps);
+            return new ScalarCalculationResult(value, steps);
         }
 
-        public static CalculationResult CalculateVUASWithSteps(double? v, double? u, double? a, double? s)
+        public static ScalarCalculationResult CalculateVUASWithSteps(double? v, double? u, double? a, double? s)
         {
             int missingCount =
                 (v is null ? 1 : 0) +
@@ -195,10 +196,10 @@ namespace MathsEngine.Modules.Explanations.Mechanics
             steps.Add("Final Answer:");
             steps.Add($"  {calculationVariable} = {value:F2}");
 
-            return new CalculationResult(value, steps);
+            return new ScalarCalculationResult(value, steps);
         }
 
-        public static CalculationResult CalculateSUVTWithSteps(double? s, double? u, double? v, double? t)
+        public static ScalarCalculationResult CalculateSUVTWithSteps(double? s, double? u, double? v, double? t)
         {
             int missingCount =
                 (s is null ? 1 : 0) +
@@ -270,10 +271,10 @@ namespace MathsEngine.Modules.Explanations.Mechanics
             steps.Add("Final Answer:");
             steps.Add($"  {calculationVariable} = {value:F2}");
 
-            return new CalculationResult(value, steps);
+            return new ScalarCalculationResult(value, steps);
         }
 
-        public static CalculationResult CalculateSUTATWithSteps(double? s, double? u, double? a, double? t)
+        public static ScalarCalculationResult CalculateSUTATWithSteps(double? s, double? u, double? a, double? t)
         {
             int missingCount =
                 (s is null ? 1 : 0) +
@@ -350,7 +351,7 @@ namespace MathsEngine.Modules.Explanations.Mechanics
             steps.Add("Final Answer:");
             steps.Add($"  {calculationVariable} = {value:F2}");
 
-            return new CalculationResult(value, steps);
+            return new ScalarCalculationResult(value, steps);
         }
     }
 }

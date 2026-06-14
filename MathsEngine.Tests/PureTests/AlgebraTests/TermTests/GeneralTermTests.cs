@@ -24,7 +24,6 @@ namespace MathsEngine.Tests.PureTests.AlgebraTests
             Assert.True(Math.Abs(expected - actual) < 1e-9, $"Expected {expected} but got {actual}");
         }
 
-        // --- Evaluate negative-power at zero throws ---
         [Theory]
         [InlineData(1, -1, 0)]
         [InlineData(2.5, -2, 0)]
@@ -42,7 +41,6 @@ namespace MathsEngine.Tests.PureTests.AlgebraTests
             Assert.Throws<DivideByZeroException>(() => term.Evaluate(x));
         }
 
-        // --- ToString() formatting ---
         [Theory]
         [InlineData(0, 3, "0")]
         [InlineData(5, 0, "5")]
@@ -60,7 +58,6 @@ namespace MathsEngine.Tests.PureTests.AlgebraTests
             Assert.Equal(expected, term.ToString());
         }
 
-        // --- FormatTermForDisplay(Term, bool) ---
         [Theory]
         [InlineData(0, 3, true, "")]
         [InlineData(5, 0, true, "5")]
@@ -79,7 +76,6 @@ namespace MathsEngine.Tests.PureTests.AlgebraTests
             Assert.Equal(expected, actual);
         }
 
-        // --- Helpers: IsLikeTerm (static + instance) ---
         [Theory]
         [InlineData(1, 2, 3, 2, true)]
         [InlineData(1, 2, 1, 2, true)]
@@ -100,7 +96,6 @@ namespace MathsEngine.Tests.PureTests.AlgebraTests
             Assert.Equal(expected, t1.IsLikeTerm(t2));
         }
 
-        // --- IsValidVariable (instance method) ---
         [Theory]
         [InlineData("x", true)]
         [InlineData("y", true)]
@@ -118,7 +113,6 @@ namespace MathsEngine.Tests.PureTests.AlgebraTests
             Assert.Equal(expected, dummy.IsValidVariable(variable));
         }
 
-        // --- Constructor (3-arg) should throw on invalid variable strings ---
         [Theory]
         [InlineData("", 1.0, 2)]
         [InlineData("xy", 1.0, 2)]
@@ -132,11 +126,9 @@ namespace MathsEngine.Tests.PureTests.AlgebraTests
         [InlineData(null, 7.0, 1)]
         public void Constructor_WithVariable_ShouldThrowOnInvalidVariable(string variable, double coeff, int power)
         {
-            // The ctor throws Exception when the variable is not a single character.
             Assert.ThrowsAny<Exception>(() => new Term(coeff, power));
         }
 
-        // --- IsEqualTerm tests (equality helper) ---
         [Theory]
         [InlineData(1.0, 2, 1.0, 2, true)]
         [InlineData(1.0, 2, 2.0, 2, false)]

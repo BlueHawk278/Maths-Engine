@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using MathsEngine.Core.Modules.Explanations;
 using MathsEngine.Modules.Mechanics.Dynamics;
 
 namespace MathsEngine.Modules.Explanations.Mechanics
@@ -9,7 +10,7 @@ namespace MathsEngine.Modules.Explanations.Mechanics
     /// </summary>
     public static class NewtonsLawsTutor
     {
-        public static CalculationResult CalculateFmaWithSteps(double? f, double? m, double? a)
+        public static ScalarCalculationResult CalculateFmaWithSteps(double? f, double? m, double? a)
         {
             // Validate inputs early
             int missingCount =
@@ -87,7 +88,7 @@ namespace MathsEngine.Modules.Explanations.Mechanics
             steps.Add("Final Answer:");
             steps.Add($"  {calculationVariable} = {value:F2}");
 
-            return new CalculationResult(value, steps);
+            return new ScalarCalculationResult(value, steps);
         }
     }
 }

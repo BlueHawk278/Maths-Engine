@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MathsEngine.Core.Modules.Explanations;
 using MathsEngine.Modules.Statistics.BivariateAnalysis;
 
 namespace MathsEngine.Modules.Explanations.Statistics
@@ -10,7 +11,7 @@ namespace MathsEngine.Modules.Explanations.Statistics
     /// </summary>
     public static class BivariateAnalysisTutor
     {
-        public static CalculationResult CalculateSpearmanRankWithSteps(List<double> scores1, List<double> scores2)
+        public static ScalarCalculationResult CalculateSpearmanRankWithSteps(List<double> scores1, List<double> scores2)
         {
             var steps = new List<string>();
 
@@ -91,7 +92,7 @@ namespace MathsEngine.Modules.Explanations.Statistics
             steps.Add($"  Spearman's Rank Correlation Coefficient = {calculator.CorrelationCoefficient:F4}");
             steps.Add($"  Interpretation: {calculator.CorrelationString}");
 
-            return new CalculationResult(calculator.CorrelationCoefficient, steps);
+            return new ScalarCalculationResult(calculator.CorrelationCoefficient, steps);
         }
 
         private static string GetCorrelationInterpretation(double rs)

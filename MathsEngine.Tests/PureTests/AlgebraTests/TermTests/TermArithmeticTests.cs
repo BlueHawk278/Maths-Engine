@@ -36,7 +36,6 @@ public class TermArithmeticTests
     }
 
     [Theory]
-    // Commutativity check: a + b == b + a (for like terms)
     [InlineData(5, 2, 7, 2)]
     [InlineData(-3, 1, 4, 1)]
     [InlineData(0, 0, 10, 0)]
@@ -61,7 +60,6 @@ public class TermArithmeticTests
     }
 
     [Theory]
-    // Associativity check: (a + b) + c == a + (b + c) for like terms
     [InlineData(1, 2, 2, 2, 3, 2)]
     [InlineData(5, 0, -2, 0, 3, 0)]
     [InlineData(2.5, 3, 1.5, 3, -4, 3)]
@@ -77,7 +75,6 @@ public class TermArithmeticTests
         double bCoeff, int _bExp,
         double cCoeff, int _cExp)
     {
-        // All provided exponents are the same (exp)
         var a = new Term(aCoeff, exp);
         var b = new Term(bCoeff, exp);
         var c = new Term(cCoeff, exp);
@@ -88,7 +85,6 @@ public class TermArithmeticTests
         Assert.True(left.IsEqualTerm(right));
     }
 
-    // --- Addition/Subtraction with unlike terms should throw ---
     [Theory]
     [InlineData(5, 2, 4, 3)]
     [InlineData(1, 1, 1, 2)]
@@ -180,7 +176,6 @@ public class TermArithmeticTests
         double term2Coeff, int term2Expo,
         double expectedCoeff, int expectedExpo)
     {
-        // Note: these tests use the two-arg constructor which sets the variable to "x".
         Term term1 = new Term(term1Coeff, term1Expo);
         Term term2 = new Term(term2Coeff, term2Expo);
         Term expectedTerm = new Term(expectedCoeff, expectedExpo);
@@ -191,7 +186,6 @@ public class TermArithmeticTests
     }
 
     [Theory]
-    // multiplication should throw when variables differ (e.g., default "x" vs custom "y")
     [InlineData(2, "y", 3, 1)]
     [InlineData(1.5, "z", -2, 3)]
     [InlineData(5, "a", 4, 2)]
@@ -199,7 +193,6 @@ public class TermArithmeticTests
     public void MultiplyTerms_ShouldThrow_OnDifferentVariables(
         double coeff1, string var2, double coeff2, int power2)
     {
-        // term1: default variable "x"
         var t1 = new Term(coeff1, 1); // variable "x"
         var t2 = new Term(coeff2, power2);
 
@@ -230,8 +223,6 @@ public class TermArithmeticTests
     }
 
     // --- Division (operator /) ---
-    // Division as implemented only allows "like terms" (same variable and same power),
-    // so power difference will be zero (power - same power = 0).
     [Theory]
     [InlineData(12, 2, 6, 2, 2, 0)]
     [InlineData(7, -1, 3.5, -1, 2, 0)]

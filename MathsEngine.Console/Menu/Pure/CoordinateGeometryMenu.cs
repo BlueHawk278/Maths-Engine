@@ -1,6 +1,5 @@
-﻿using MathsEngine.Modules.Explanations;
+﻿using MathsEngine.Core.Modules.Explanations;
 using MathsEngine.Modules.Explanations.Pure;
-using MathsEngine.Modules.Pure.CoordinateGeometry;
 using MathsEngine.Utils;
 
 namespace MathsEngine.Menu.Pure;
@@ -118,7 +117,7 @@ public static class CoordinateGeometryMenu
     /// <summary>
     /// Asks the user if they want to see the steps and displays them if requested.
     /// </summary>
-    private static void DisplaySteps(CalculationResult result)
+    private static void DisplaySteps(BaseCalculationResult result)
     {
         System.Console.Write("\nDo you want to see the steps? (y/n): ");
         var response = System.Console.ReadLine()?.Trim().ToLower();

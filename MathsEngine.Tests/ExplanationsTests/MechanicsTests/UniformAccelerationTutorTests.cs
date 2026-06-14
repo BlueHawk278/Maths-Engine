@@ -9,21 +9,16 @@ public class UniformAccelerationTutorTests
     [Fact]
     public void CalculateAverageVelocityWithSteps_ReturnsCorrectValue()
     {
-        // Act
         var result = UniformAccelerationTutor.CalculateAverageVelocityWithSteps(10.0, 20.0);
 
-        // Assert
         Assert.Equal(15, result.Value, 2);
-        Assert.False(result.IsMatrix);
     }
 
     [Fact]
     public void CalculateAverageVelocityWithSteps_GeneratesSteps()
     {
-        // Act
         var result = UniformAccelerationTutor.CalculateAverageVelocityWithSteps(10.0, 20.0);
 
-        // Assert
         Assert.NotEmpty(result.Steps);
         Assert.Contains(result.Steps, s => s.Contains("average velocity"));
         Assert.Contains(result.Steps, s => s.Contains("(u + v) / 2"));
@@ -37,21 +32,16 @@ public class UniformAccelerationTutorTests
     public void CalculateVUATWithSteps_ReturnsCorrectValue(
         double? v, double? u, double? a, double? t, double expected)
     {
-        // Act
         var result = UniformAccelerationTutor.CalculateVUATWithSteps(v, u, a, t);
 
-        // Assert
         Assert.Equal(expected, result.Value, 2);
-        Assert.False(result.IsMatrix);
     }
 
     [Fact]
     public void CalculateVUATWithSteps_GeneratesSteps()
     {
-        // Act
         var result = UniformAccelerationTutor.CalculateVUATWithSteps(null, 0, 2, 10);
 
-        // Assert
         Assert.NotEmpty(result.Steps);
         string stepsText = result.GetStepsAsString();
         Assert.Contains("v = u + at", stepsText);
@@ -66,21 +56,16 @@ public class UniformAccelerationTutorTests
     public void CalculateVUASWithSteps_ReturnsCorrectValue(
         double? v, double? u, double? a, double? s, double expected)
     {
-        // Act
         var result = UniformAccelerationTutor.CalculateVUASWithSteps(v, u, a, s);
 
-        // Assert
         Assert.Equal(expected, result.Value, 2);
-        Assert.False(result.IsMatrix);
     }
 
     [Fact]
     public void CalculateVUASWithSteps_GeneratesSteps()
     {
-        // Act
         var result = UniformAccelerationTutor.CalculateVUASWithSteps(null, 0, 2, 50);
 
-        // Assert
         Assert.NotEmpty(result.Steps);
         string stepsText = result.GetStepsAsString();
         Assert.Contains("v² = u² + 2as", stepsText);
@@ -94,21 +79,16 @@ public class UniformAccelerationTutorTests
     public void CalculateSUVTWithSteps_ReturnsCorrectValue(
         double? s, double? u, double? v, double? t, double expected)
     {
-        // Act
         var result = UniformAccelerationTutor.CalculateSUVTWithSteps(s, u, v, t);
 
-        // Assert
         Assert.Equal(expected, result.Value, 2);
-        Assert.False(result.IsMatrix);
     }
 
     [Fact]
     public void CalculateSUVTWithSteps_GeneratesSteps()
     {
-        // Act
         var result = UniformAccelerationTutor.CalculateSUVTWithSteps(null, 10, 20, 5);
 
-        // Assert
         Assert.NotEmpty(result.Steps);
         string stepsText = result.GetStepsAsString();
         Assert.Contains("s = 0.5", stepsText);
@@ -121,21 +101,16 @@ public class UniformAccelerationTutorTests
     public void CalculateSUTATWithSteps_ReturnsCorrectValue(
         double? s, double? u, double? a, double? t, double expected)
     {
-        // Act
         var result = UniformAccelerationTutor.CalculateSUTATWithSteps(s, u, a, t);
 
-        // Assert
         Assert.Equal(expected, result.Value, 2);
-        Assert.False(result.IsMatrix);
     }
 
     [Fact]
     public void CalculateSUTATWithSteps_GeneratesSteps()
     {
-        // Act
         var result = UniformAccelerationTutor.CalculateSUTATWithSteps(null, 10, 2, 5);
 
-        // Assert
         Assert.NotEmpty(result.Steps);
         string stepsText = result.GetStepsAsString();
         Assert.Contains("s = ut + 0.5at²", stepsText);

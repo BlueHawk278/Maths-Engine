@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MathsEngine.Core.Modules.Explanations;
 using MathsEngine.Modules.Statistics.Dispersion;
 
 namespace MathsEngine.Modules.Explanations.Statistics
@@ -10,7 +11,7 @@ namespace MathsEngine.Modules.Explanations.Statistics
     /// </summary>
     public static class StandardDeviationTutor
     {
-        public static CalculationResult CalculateStandardDeviationWithSteps(List<double> values)
+        public static ScalarCalculationResult CalculateStandardDeviationWithSteps(List<double> values)
         {
             var steps = new List<string>();
 
@@ -74,10 +75,10 @@ namespace MathsEngine.Modules.Explanations.Statistics
             steps.Add($"  Variance = {variance:F2}");
             steps.Add($"  Standard Deviation = {standardDeviation:F2}");
 
-            return new CalculationResult(standardDeviation, steps);
+            return new ScalarCalculationResult(standardDeviation, steps);
         }
 
-        public static CalculationResult CalculateVarianceWithSteps(List<double> values)
+        public static ScalarCalculationResult CalculateVarianceWithSteps(List<double> values)
         {
             var steps = new List<string>();
 
@@ -122,7 +123,7 @@ namespace MathsEngine.Modules.Explanations.Statistics
             steps.Add("Final Answer:");
             steps.Add($"  Variance = {variance:F2}");
 
-            return new CalculationResult(variance, steps);
+            return new ScalarCalculationResult(variance, steps);
         }
     }
 }

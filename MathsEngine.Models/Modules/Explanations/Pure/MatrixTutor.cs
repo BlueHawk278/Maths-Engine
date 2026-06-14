@@ -1,4 +1,5 @@
 using System.Text;
+using MathsEngine.Core.Modules.Explanations;
 using MathsEngine.Modules.Pure.Matrices;
 
 namespace MathsEngine.Modules.Explanations.Pure;
@@ -9,7 +10,7 @@ namespace MathsEngine.Modules.Explanations.Pure;
 /// 
 public static class MatrixTutor
 {
-    public static CalculationResult AddMatrixWithSteps(MatrixBase matrix1, MatrixBase matrix2)
+    public static MatrixCalculationResult AddMatrixWithSteps(MatrixBase matrix1, MatrixBase matrix2)
     {
         var steps = new List<string>();
 
@@ -40,10 +41,10 @@ public static class MatrixTutor
         steps.Add("Final Answer:");
         steps.Add(FormatMatrix(result));
 
-        return new CalculationResult(result, steps);
+        return new MatrixCalculationResult(result, steps);
     }
 
-    public static CalculationResult SubtractMatrixWithSteps(MatrixBase matrix1, MatrixBase matrix2)
+    public static MatrixCalculationResult SubtractMatrixWithSteps(MatrixBase matrix1, MatrixBase matrix2)
     {
         var steps = new List<string>();
 
@@ -74,10 +75,10 @@ public static class MatrixTutor
         steps.Add("Final Answer:");
         steps.Add(FormatMatrix(result));
 
-        return new CalculationResult(result, steps);
+        return new MatrixCalculationResult(result, steps);
     }
 
-    public static CalculationResult ScalarMultiplicationWithSteps(MatrixBase matrix, double scalar)
+    public static MatrixCalculationResult ScalarMultiplicationWithSteps(MatrixBase matrix, double scalar)
     {
         var steps = new List<string>();
 
@@ -103,10 +104,10 @@ public static class MatrixTutor
         steps.Add("Final Answer:");
         steps.Add(FormatMatrix(result));
 
-        return new CalculationResult(result, steps);
+        return new MatrixCalculationResult(result, steps);
     }
 
-    public static CalculationResult ScalarDivisionWithSteps(MatrixBase matrix, double scalar)
+    public static MatrixCalculationResult ScalarDivisionWithSteps(MatrixBase matrix, double scalar)
     {
         var steps = new List<string>();
 
@@ -138,10 +139,10 @@ public static class MatrixTutor
         steps.Add("Final Answer:");
         steps.Add(FormatMatrix(result));
 
-        return new CalculationResult(result, steps);
+        return new MatrixCalculationResult(result, steps);
     }
 
-    public static CalculationResult MatrixMultiplicationWithSteps(MatrixBase matrix1, MatrixBase matrix2)
+    public static MatrixCalculationResult MatrixMultiplicationWithSteps(MatrixBase matrix1, MatrixBase matrix2)
     {
         var steps = new List<string>();
 
@@ -190,10 +191,10 @@ public static class MatrixTutor
         steps.Add("Final Answer:");
         steps.Add(FormatMatrix(result));
 
-        return new CalculationResult(result, steps);
+        return new MatrixCalculationResult(result, steps);
     }
 
-    public static CalculationResult CalculateDeterminantWithSteps(MatrixBase matrix)
+    public static ScalarCalculationResult CalculateDeterminantWithSteps(MatrixBase matrix)
     {
         var steps = new List<string>();
 
@@ -236,7 +237,7 @@ public static class MatrixTutor
         steps.Add("Final Answer:");
         steps.Add($"  Determinant = {value:F2}");
 
-        return new CalculationResult(value, steps);
+        return new ScalarCalculationResult(value, steps);
     }
 
     private static string FormatMatrix(double[,] matrix)
