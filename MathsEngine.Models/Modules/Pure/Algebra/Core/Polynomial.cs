@@ -26,7 +26,7 @@ public class Polynomial
     {
         if (expression is null) throw new ArgumentNullException(nameof(expression));
 
-        Terms = ParseExpression(expression);
+        Terms = PolynomialParser.ParsePolynomial(expression);
         Simplify();
     }
 
@@ -192,11 +192,6 @@ public class Polynomial
                 }
             }
         }
-    }
-    
-    public static List<Term> ParseExpression(string expression)
-    {
-        return new List<Term>();
     }
 
     public double Evaluate(double value)

@@ -1,10 +1,10 @@
 namespace MathsEngine.Core.Modules.Pure.Algebra.Core;
 
-public class PolynomialParser
+public static class PolynomialParser
 {
     public static List<Term> ParsePolynomial(string expression)
     {
-        if (expression == null) throw new ArgumentNullException(nameof(expression));
+        if (expression == null) throw new ArgumentNullException();
 
         expression = expression.Replace(" ", "");
         
