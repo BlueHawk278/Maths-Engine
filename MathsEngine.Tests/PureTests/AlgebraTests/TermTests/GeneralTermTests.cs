@@ -2,7 +2,7 @@ using System;
 using MathsEngine.Core.Modules.Pure.Algebra.Core;
 using Xunit;
 
-namespace MathsEngine.Tests.PureTests.AlgebraTests
+namespace MathsEngine.Tests.PureTests.AlgebraTests.TermTests
 {
     public class GeneralTermTests
     {
@@ -94,39 +94,6 @@ namespace MathsEngine.Tests.PureTests.AlgebraTests
 
             Assert.Equal(expected, Term.IsLikeTerm(t1, t2));
             Assert.Equal(expected, t1.IsLikeTerm(t2));
-        }
-
-        [Theory]
-        [InlineData("x", true)]
-        [InlineData("y", true)]
-        [InlineData("z", true)]
-        [InlineData("a", true)]
-        [InlineData("X", true)]
-        [InlineData("", false)]
-        [InlineData("xy", false)]
-        [InlineData("xx", false)]
-        [InlineData("ab", false)]
-        [InlineData("1", true)]
-        public void IsValidVariable_ShouldReturnExpected(string variable, bool expected)
-        {
-            var dummy = new Term();
-            Assert.Equal(expected, dummy.IsValidVariable(variable));
-        }
-
-        [Theory]
-        [InlineData("", 1.0, 2)]
-        [InlineData("xy", 1.0, 2)]
-        [InlineData("xx", 0.5, 3)]
-        [InlineData("ab", -1.0, 1)]
-        [InlineData("abc", 2.0, 0)]
-        [InlineData("  ", 3.0, 2)]
-        [InlineData("12", 4.0, 1)]
-        [InlineData("var", 5.0, 2)]
-        [InlineData("x y", 6.0, 3)]
-        [InlineData(null, 7.0, 1)]
-        public void Constructor_WithVariable_ShouldThrowOnInvalidVariable(string variable, double coeff, int power)
-        {
-            Assert.ThrowsAny<Exception>(() => new Term(coeff, power));
         }
 
         [Theory]

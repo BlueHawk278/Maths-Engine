@@ -2,7 +2,7 @@
 using MathsEngine.Core.Modules.Pure.Algebra.Core;
 using Xunit;
 
-namespace MathsEngine.Tests.PureTests.AlgebraTests;
+namespace MathsEngine.Tests.PureTests.AlgebraTests.TermTests;
 
 public class TermArithmeticTests
 {
@@ -60,20 +60,19 @@ public class TermArithmeticTests
     }
 
     [Theory]
-    [InlineData(1, 2, 2, 2, 3, 2)]
-    [InlineData(5, 0, -2, 0, 3, 0)]
-    [InlineData(2.5, 3, 1.5, 3, -4, 3)]
-    [InlineData(-1, 1, -2, 1, 4, 1)]
-    [InlineData(0, 4, 0, 4, 1, 4)]
-    [InlineData(10, -2, -5, -2, 3, -2)]
-    [InlineData(0.1, 7, 0.2, 7, 0.3, 7)]
-    [InlineData(1000, 1, -999, 1, -1, 1)]
-    [InlineData(3, 5, 0, 5, 2, 5)]
-    [InlineData(4, 6, -4, 6, 0, 6)]
+    [InlineData(1, 2, 3, 2)]
+    [InlineData(5, 0, 3, 0)]
+    [InlineData(2.5, 3, -4, 3)]
+    [InlineData(-1, 1, 4, 1)]
+    [InlineData(0, 4, 1, 4)]
+    [InlineData(10, -2, 3, -2)]
+    [InlineData(0.1, 7, 0.3, 7)]
+    [InlineData(1000, 1, -1, 1)]
+    [InlineData(3, 5, 2, 5)]
+    [InlineData(4, 6, 0, 6)]
     public void AddTerms_Associative_ForLikeTerms(
         double aCoeff, int exp,
-        double bCoeff, int _bExp,
-        double cCoeff, int _cExp)
+        double bCoeff, double cCoeff)
     {
         var a = new Term(aCoeff, exp);
         var b = new Term(bCoeff, exp);
@@ -186,12 +185,12 @@ public class TermArithmeticTests
     }
 
     [Theory]
-    [InlineData(2, "y", 3, 1)]
-    [InlineData(1.5, "z", -2, 3)]
-    [InlineData(5, "a", 4, 2)]
-    [InlineData(-3, "b", 2, 2)]
+    [InlineData(2, 3, 1)]
+    [InlineData(1.5, -2, 3)]
+    [InlineData(5, 4, 2)]
+    [InlineData(-3, 2, 2)]
     public void MultiplyTerms_ShouldThrow_OnDifferentVariables(
-        double coeff1, string var2, double coeff2, int power2)
+        double coeff1, double coeff2, int power2)
     {
         var t1 = new Term(coeff1, 1); // variable "x"
         var t2 = new Term(coeff2, power2);

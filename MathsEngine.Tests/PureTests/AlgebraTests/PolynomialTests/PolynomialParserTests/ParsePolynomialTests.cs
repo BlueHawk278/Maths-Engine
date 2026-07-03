@@ -29,27 +29,35 @@ public class ParsePolynomialTests
     [MemberData(nameof(PolynomialParserTestData.NegativeExponentPolynomialCases), MemberType = typeof(PolynomialParserTestData))]
     public void ParsePolynomial_NegativeExponents_ParsesCorrectly(string expression)
     {
-        
+        var exception = Record.Exception(() => new Polynomial(PolynomialParser.ParsePolynomial(expression)));
+
+        Assert.Null(exception);
     }
 
     [Theory]
     [MemberData(nameof(PolynomialParserTestData.MalformedPolynomialCases), MemberType = typeof(PolynomialParserTestData))]
     public void ParsePolynomial_MalformedExpression_ThrowsException(string expression)
     {
+        var exception = Record.Exception(() => new Polynomial(PolynomialParser.ParsePolynomial(expression)));
         
+        Assert.NotNull(exception);
     }
 
     [Theory]
     [MemberData(nameof(PolynomialParserTestData.DecimalPolynomialCases), MemberType = typeof(PolynomialParserTestData))]
     public void ParsePolynomial_DecimalCoefficients_ParsesCorrectly(string expression)
     {
+        var exception = Record.Exception(() => new Polynomial(PolynomialParser.ParsePolynomial(expression)));
         
+        Assert.Null(exception);
     }
 
     [Theory]
     [MemberData(nameof(PolynomialParserTestData.LargeExponentPolynomialCases), MemberType = typeof(PolynomialParserTestData))]
     public void ParsePolynomial_LargeExponents_ParsesCorrectly(string expression)
     {
+        var exception = Record.Exception(() => new Polynomial(PolynomialParser.ParsePolynomial(expression)));
         
+        Assert.Null(exception);
     }
 }

@@ -1,13 +1,9 @@
-using System.Collections.Generic;
 using MathsEngine.Core.Modules.Pure.Algebra.Core;
 
-namespace MathsEngine.Tests.PureTests.AlgebraTests.PolynomialTests;
+namespace MathsEngine.Tests.PureTests.AlgebraTests.PolynomialTests.PolynomialParserTests;
 
 public static class PolynomialParserTestData
 {
-    // ----------------------------
-    // ParseTerm test data
-    // ----------------------------
 
     public static IEnumerable<object[]> ValidTermCases =>
     [

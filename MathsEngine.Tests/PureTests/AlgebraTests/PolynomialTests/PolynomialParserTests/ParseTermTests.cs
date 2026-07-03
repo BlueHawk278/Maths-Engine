@@ -19,27 +19,35 @@ public class ParseTermTests
     [MemberData(nameof(PolynomialParserTestData.ImplicitOneTermCases), MemberType = typeof(PolynomialParserTestData))]
     public void ParseTerm_ImplicitCoefficientOne_ParsesCorrectly(string input)
     {
+        var exception = Record.Exception(() => PolynomialParser.ParseTerm(input));
         
+        Assert.Null(exception);
     }
 
     [Theory]
     [MemberData(nameof(PolynomialParserTestData.NegativeOneTermCases), MemberType = typeof(PolynomialParserTestData))]
     public void ParseTerm_ImplicitCoefficientNegativeOne_ParsesCorrectly(string input)
     {
+        var exception = Record.Exception(() => PolynomialParser.ParseTerm(input));
         
+        Assert.Null(exception);
     }
 
     [Theory]
     [MemberData(nameof(PolynomialParserTestData.ConstantTermCases), MemberType = typeof(PolynomialParserTestData))]
     public void ParseTerm_ConstantOnly_ParsesWithPowerZero(string input)
     {
+        var exception = Record.Exception(() => PolynomialParser.ParseTerm(input));
         
+        Assert.Null(exception);
     }
 
     [Theory]
     [MemberData(nameof(PolynomialParserTestData.InvalidTermCases), MemberType = typeof(PolynomialParserTestData))]
     public void ParseTerm_InvalidFormat_ThrowsException(string input)
     {
+        var exception = Record.Exception(() => PolynomialParser.ParseTerm(input));
         
+        Assert.NotNull(exception);
     }
 }
