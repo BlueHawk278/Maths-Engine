@@ -1,8 +1,8 @@
 ﻿using MathsEngine.Core.Modules.Explanations;
 using MathsEngine.Modules.Explanations.Pure;
-using MathsEngine.Utils;
+using MathsEngine.Console.Utils;
 
-namespace MathsEngine.Menu.Pure;
+namespace MathsEngine.Console.Menu.Pure;
 
 public static class CoordinateGeometryMenu
 {
