@@ -1,7 +1,7 @@
 ﻿using MathsEngine.Modules.Pure.CoordinateGeometry;
 using MathsEngine.Modules.Pure.Trigonometry;
 
-namespace MathsEngine.Utils;
+namespace MathsEngine.Console.Utils;
 
 public static class Parsing
 {
