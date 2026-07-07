@@ -1,181 +1,202 @@
-﻿/*
+﻿using MathsEngine.Console.Utils;
 using MathsEngine.Modules.Statistics.Dispersion;
 using MathsEngine.Utils;
 
-namespace MathsEngine.Console.Menu.Statistics
+namespace MathsEngine.Console.Menu.Statistics;
+
+public static class DispersionMenu
 {
-    public class DispersionMenu : IMenu
+    public static void Menu()
     {
-        public static void Menu()
+        while (true)
         {
-            while (true)
-            {
-                System.Console.Clear();
-                System.Console.WriteLine("Welcome to the Dispersion Menu");
-                System.Console.WriteLine("1. Calculate from an array of numbers");
-                System.Console.WriteLine("2. Calculate from a frequency table");
-                System.Console.WriteLine("3. Calculate from a continuous table");
-                System.Console.WriteLine("4. Back");
-                int response = Parsing.GetMenuInput("Input: ", 4);
+            System.Console.Clear();
+            System.Console.WriteLine("Welcome to the Dispersion Menu");
+            System.Console.WriteLine("1. Calculate from an array of numbers");
+            System.Console.WriteLine("2. Calculate from a frequency table");
+            System.Console.WriteLine("3. Calculate from a continuous table");
+            System.Console.WriteLine("4. Back");
+            int response = Parsing.GetMenuInput("Input: ", 4);
 
-                switch (response)
-                {
-                    case 1:
-                        HandleArrayOfNumbers();
-                        break;
-                    case 2:
-                        HandleFrequencyTable();
-                        break;
-                    case 3:
-                        HandleContinuousTable();
-                        break;
-                    case 4: return;
-                }
+            switch (response)
+            {
+                case 1:
+                    HandleArrayOfNumbers();
+                    break;
+                case 2:
+                    HandleFrequencyTable();
+                    break;
+                case 3:
+                    HandleContinuousTable();
+                    break;
+                case 4:
+                    return;
             }
         }
+    }
 
-        private static void HandleArrayOfNumbers()
+    private static void HandleArrayOfNumbers()
+    {
+        try
         {
-            try
-            {
-                //Console.Clear();
-                /*
-                var values = GetDoubleList("Enter the values separated by a comma: ");
-                var calculator = new ArrayOfNumbersCalculator(values);
-                calculator.Run();
+            var values = GetDoubleList("Enter the values separated by commas: ");
+            var calculator = new ArrayOfNumbersCalculator(values);
+            calculator.Run();
 
-                System.Console.WriteLine("\n--- Results ---");
-                System.Console.WriteLine($"Original values: {string.Join(", ", calculator.OriginalValues)}");
-                System.Console.WriteLine($"Sorted values: {string.Join(", ", calculator.SortedValues)}");
-                System.Console.WriteLine($"Mean: {calculator.Mean:F3}");
-                System.Console.WriteLine($"Median: {calculator.Median}");
-                System.Console.WriteLine($"Mode: {string.Join(", ", calculator.Mode)}");
-                System.Console.WriteLine($"Range: {calculator.Range}");
-                System.Console.WriteLine($"Q1: {calculator.Q1}");
-                System.Console.WriteLine($"Q3: {calculator.Q3}");
-                System.Console.WriteLine($"IQR: {calculator.Iqr}");
-                System.Console.WriteLine($"Standard Deviation: {calculator.StandardDeviation:F2}");
-                System.Console.WriteLine($"Variance: {calculator.Variance:F2}");
-
-                System.Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
-                System.Console.ReadKey();
-                */
-
-        /*
-        private static void HandleFrequencyTable()
-        {
-            try
-            {
-                Console.Clear();
-                //var values = GetDoubleList("Enter the values (x) separated by a comma: ");
-                //var frequencies = GetIntList("Enter the frequencies (f) for each value, separated by a comma: ");
-                //var calculator = new FrequencyTableCalculator(values, frequencies);
-                //calculator.Run();
-
-                System.Console.WriteLine("\n--- Results ---");
-                System.Console.WriteLine($"Mean: {calculator.Mean:F3}");
-                System.Console.WriteLine($"Standard Deviation: {calculator.StandardDeviation:F2}");
-                System.Console.WriteLine($"Variance: {calculator.Variance:F2}");
-
-                System.Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
-                System.Console.ReadKey();
-            }
-            catch (FormatException)
-            {
-                ErrorDisplay.ShowError(
-                    "\nError: Invalid input. Please ensure you enter only numbers separated by commas.");
-            }
-            catch (NullInputException)
-            {
-                ErrorDisplay.ShowError("Error: Both values and frequencies must be provided.");
-            }
-            catch (EmptyDataSetException)
-            {
-                ErrorDisplay.ShowError("Error: The data sets cannot be empty.");
-            }
-            catch (ListsNotSameSizeException)
-            {
-                ErrorDisplay.ShowError("Error: The number of values must match the number of frequencies.");
-            }
-            catch (InvalidFrequencyException)
-            {
-                ErrorDisplay.ShowError("Error: Frequencies cannot be negative.");
-            }
+            System.Console.WriteLine("\n--- Results ---");
+            System.Console.WriteLine($"Original values: {string.Join(", ", calculator.OriginalValues)}");
+            System.Console.WriteLine($"Sorted values: {string.Join(", ", calculator.SortedValues)}");
+            System.Console.WriteLine($"Mean: {calculator.Mean:F3}");
+            System.Console.WriteLine($"Median: {calculator.Median:F3}");
+            System.Console.WriteLine($"Mode: {string.Join(", ", calculator.Mode)}");
+            System.Console.WriteLine($"Range: {calculator.Range:F3}");
+            System.Console.WriteLine($"Q1: {calculator.Q1:F3}");
+            System.Console.WriteLine($"Q3: {calculator.Q3:F3}");
+            System.Console.WriteLine($"IQR: {calculator.Iqr:F3}");
+            System.Console.WriteLine($"Variance: {calculator.Variance:F3}");
+            System.Console.WriteLine($"Standard Deviation: {calculator.StandardDeviation:F3}");
         }
-
-        private static void HandleContinuousTable()
+        catch (FormatException)
         {
-            try
-            {
-                Console.Clear();
-                var intervals = GetStringList("Enter the class intervals (e.g., 10-20) separated by a comma: ");
-                var frequencies = GetIntList("Enter the frequencies (f) for each interval, separated by a comma: ");
-                /*var calculator = new ContinuousTableCalculator(intervals, frequencies);
-                calculator.Run();
-
-                System.Console.WriteLine("\n--- Results ---");
-                System.Console.WriteLine($"Mean: {calculator.Mean:F3}");
-                System.Console.WriteLine($"Standard Deviation: {calculator.StandardDeviation:F2}");
-                System.Console.WriteLine($"Variance: {calculator.Variance:F2}");
-
-                System.Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
-                System.Console.ReadKey();
-                
-            }
-            catch (FormatException)
-            {
-                ErrorDisplay.ShowError(
-                    "Error: Invalid number format in frequencies. Please ensure you enter only numbers separated by commas.");
-            }
-            catch (NullInputException)
-            {
-                ErrorDisplay.ShowError("Error: Both class intervals and frequencies must be provided.");
-            }
-            catch (EmptyDataSetException)
-            {
-                ErrorDisplay.ShowError("Error: The data sets cannot be empty.");
-            }
-            catch (ListsNotSameSizeException)
-            {
-                ErrorDisplay.ShowError("Error: The number of class intervals must match the number of frequencies.");
-            }
-            catch (InvalidFrequencyException)
-            {
-                ErrorDisplay.ShowError("Error: Frequencies cannot be negative.");
-            }
-            catch (InvalidClassIntervalFormatException)
-            {
-                ErrorDisplay.ShowError(
-                    "Error: Invalid class interval format. Please use the format 'lower-upper' (e.g., '10-20').");
-            }
+            ErrorDisplay.ShowError("Invalid input. Please enter only numbers separated by commas.");
         }
-
-        
-        private static List<double> GetDoubleList(string prompt)
+        catch (NullInputException)
         {
-            Console.WriteLine(prompt);
-            string? input = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(input)) return new List<double>();
-            return input.Split(',').Select(s => double.Parse(s.Trim())).ToList();
+            ErrorDisplay.ShowError("Please provide at least one value.");
         }
-
-        private static List<int> GetIntList(string prompt)
+        catch (EmptyDataSetException)
         {
-            Console.WriteLine(prompt);
-            string? input = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(input)) return new List<int>();
-            return input.Split(',').Select(s => int.Parse(s.Trim())).ToList();
+            ErrorDisplay.ShowError("The data set cannot be empty.");
         }
-
-        private static List<string> GetStringList(string prompt)
+        finally
         {
-            Console.WriteLine(prompt);
-            string? input = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(input)) return new List<string>();
-            return input.Split(',').Select(s => s.Trim()).ToList();
+            WaitForContinue();
         }
-        
+    }
 
+    private static void HandleFrequencyTable()
+    {
+        try
+        {
+            var values = GetDoubleList("Enter the values separated by commas: ");
+            var frequencies = GetIntList("Enter the frequencies for each value, separated by commas: ");
+
+            var calculator = new FrequencyTableCalculator(values, frequencies);
+            calculator.Run();
+
+            System.Console.WriteLine("\n--- Results ---");
+            calculator.DisplayData();
+        }
+        catch (FormatException)
+        {
+            ErrorDisplay.ShowError("Invalid input. Please ensure the lists contain only numbers separated by commas.");
+        }
+        catch (NullInputException)
+        {
+            ErrorDisplay.ShowError("Both values and frequencies must be provided.");
+        }
+        catch (EmptyDataSetException)
+        {
+            ErrorDisplay.ShowError("The data sets cannot be empty.");
+        }
+        catch (ListsNotSameSizeException)
+        {
+            ErrorDisplay.ShowError("The number of values must match the number of frequencies.");
+        }
+        catch (InvalidFrequencyException)
+        {
+            ErrorDisplay.ShowError("Frequencies cannot be negative.");
+        }
+        finally
+        {
+            WaitForContinue();
+        }
+    }
+
+    private static void HandleContinuousTable()
+    {
+        try
+        {
+            var intervals = GetStringList("Enter the class intervals (e.g. 10-20) separated by commas: ");
+            var frequencies = GetIntList("Enter the frequencies for each interval, separated by commas: ");
+
+            var calculator = new ContinuousTableCalculator(intervals, frequencies);
+            calculator.Run();
+
+            System.Console.WriteLine("\n--- Results ---");
+            calculator.DisplayData();
+        }
+        catch (FormatException)
+        {
+            ErrorDisplay.ShowError("Invalid input. Please ensure the lists contain only numbers separated by commas.");
+        }
+        catch (NullInputException)
+        {
+            ErrorDisplay.ShowError("Both class intervals and frequencies must be provided.");
+        }
+        catch (EmptyDataSetException)
+        {
+            ErrorDisplay.ShowError("The data sets cannot be empty.");
+        }
+        catch (ListsNotSameSizeException)
+        {
+            ErrorDisplay.ShowError("The number of class intervals must match the number of frequencies.");
+        }
+        catch (InvalidFrequencyException)
+        {
+            ErrorDisplay.ShowError("Frequencies cannot be negative.");
+        }
+        catch (InvalidClassIntervalFormatException)
+        {
+            ErrorDisplay.ShowError("Invalid class interval format. Please use 'lower-upper' (for example, 10-20).");
+        }
+        finally
+        {
+            WaitForContinue();
+        }
+    }
+
+    private static void WaitForContinue()
+    {
+        System.Console.WriteLine("\nPress any key to return to the menu...");
+        System.Console.ReadKey(true);
+    }
+
+    private static List<double> GetDoubleList(string prompt)
+    {
+        System.Console.WriteLine(prompt);
+        string? input = System.Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(input))
+            throw new NullInputException();
+
+        return input.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                    .Select(double.Parse)
+                    .ToList();
+    }
+
+    private static List<int> GetIntList(string prompt)
+    {
+        System.Console.WriteLine(prompt);
+        string? input = System.Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(input))
+            throw new NullInputException();
+
+        return input.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                    .Select(int.Parse)
+                    .ToList();
+    }
+
+    private static List<string> GetStringList(string prompt)
+    {
+        System.Console.WriteLine(prompt);
+        string? input = System.Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(input))
+            throw new NullInputException();
+
+        return input.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                    .ToList();
     }
 }
-        */

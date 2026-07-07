@@ -1,4 +1,4 @@
-﻿namespace MathsEngine.Utils;
+﻿namespace MathsEngine.Console.Utils;
 
 public static class ErrorDisplay
 {
