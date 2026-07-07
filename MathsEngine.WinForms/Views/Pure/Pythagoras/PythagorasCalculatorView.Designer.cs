@@ -226,7 +226,7 @@
             pythagorasTitleLabel.AutoSize = true;
             pythagorasTitleLabel.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             pythagorasTitleLabel.ForeColor = Color.Black;
-            pythagorasTitleLabel.Location = new Point(158, 28);
+            pythagorasTitleLabel.Location = new Point(160, 30);
             pythagorasTitleLabel.Name = "pythagorasTitleLabel";
             pythagorasTitleLabel.Size = new Size(633, 37);
             pythagorasTitleLabel.TabIndex = 7;

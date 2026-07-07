@@ -10,6 +10,7 @@ namespace MathsEngine.WinForms
             InitializeComponent();
 
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -20,7 +21,7 @@ namespace MathsEngine.WinForms
 
         public void LoadView(UserControl newUserControl)
         {
-            mainContentPanel.SuspendLayout();
+            //mainContentPanel.SuspendLayout();
 
             // Dispose the current control because it's not needed anymore.
             if (mainContentPanel.Controls.Count > 0)
@@ -34,7 +35,7 @@ namespace MathsEngine.WinForms
             mainContentPanel.Controls.Add(newUserControl);
             newUserControl.BringToFront();
 
-            mainContentPanel.ResumeLayout();
+            //mainContentPanel.ResumeLayout();
         }
         
         private void pureButton_Click(object sender, EventArgs e)

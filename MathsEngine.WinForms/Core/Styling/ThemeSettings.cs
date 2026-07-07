@@ -12,6 +12,8 @@ public static class ThemeSettings
     public static readonly Font TitleFont = new Font("Segoe UI", 20F, FontStyle.Bold);
 
     // Layout settings
-    public static int MainPanelWidth = 1164;
-    public static int MainPanelHeight = 657;
+    public static Size MainPanelSize = new Size(1164, 657);
+
+    public static Point BackButtonLocation = new Point(10, 10);
+    public static Point TitleLabelLocation = new Point(160, 30);
 }

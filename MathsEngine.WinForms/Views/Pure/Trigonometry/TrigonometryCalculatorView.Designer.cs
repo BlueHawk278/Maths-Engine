@@ -245,7 +245,7 @@
             trigTitleLabel.AutoSize = true;
             trigTitleLabel.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             trigTitleLabel.ForeColor = Color.Black;
-            trigTitleLabel.Location = new Point(158, 28);
+            trigTitleLabel.Location = new Point(160, 30);
             trigTitleLabel.Name = "trigTitleLabel";
             trigTitleLabel.Size = new Size(833, 37);
             trigTitleLabel.TabIndex = 11;

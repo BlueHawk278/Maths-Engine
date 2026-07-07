@@ -108,7 +108,7 @@
             pureTitleLabel.AutoSize = true;
             pureTitleLabel.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             pureTitleLabel.ForeColor = Color.Black;
-            pureTitleLabel.Location = new Point(149, 28);
+            pureTitleLabel.Location = new Point(160, 30);
             pureTitleLabel.Name = "pureTitleLabel";
             pureTitleLabel.Size = new Size(241, 25);
             pureTitleLabel.TabIndex = 7;

@@ -1,6 +1,4 @@
-﻿using MathsEngine.WinForms.Views.Pure;
-
-namespace MathsEngine.WinForms.Views.Pure.Trigonometry
+﻿namespace MathsEngine.WinForms.Views.Pure.Trigonometry
 {
     public partial class TrigonometryCalculatorView : UserControl
     {
@@ -21,7 +19,6 @@ namespace MathsEngine.WinForms.Views.Pure.Trigonometry
 
         private void CalculateOtherSideButton_CheckedChanged(object sender, EventArgs e)
         {
-            // If we're calculating a missing side, the angle is required.
             if (CalculateOtherSideButton.Checked)
             {
                 AngleTextBox.Enabled = true;
@@ -30,7 +27,6 @@ namespace MathsEngine.WinForms.Views.Pure.Trigonometry
 
         private void calculateMissingAngleButton_CheckedChanged(object sender, EventArgs e)
         {
-            // If we're calculating the missing angle, disable angle input.
             if (calculateMissingAngleButton.Checked)
             {
                 AngleTextBox.Enabled = false;
