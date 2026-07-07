@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             backButton1 = new MathsEngine.WinForms.Controls.Navigation.BackButton();
-            viewTitleLabel = new Label();
             explanationTextBox = new RichTextBox();
             calculateButton1 = new MathsEngine.WinForms.Controls.Navigation.CalculateButton();
             clearButton = new MathsEngine.WinForms.Controls.Navigation.ClearButton();
@@ -48,6 +47,7 @@
             panel1 = new Panel();
             ResultTextBox = new TextBox();
             ResultLabel = new Label();
+            trigTitleLabel = new MathsEngine.WinForms.Controls.Display.TitleLabel();
             inputPanel.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -62,16 +62,6 @@
             backButton1.TabIndex = 1;
             backButton1.Text = "Back";
             backButton1.UseVisualStyleBackColor = true;
-            // 
-            // viewTitleLabel
-            // 
-            viewTitleLabel.AutoSize = true;
-            viewTitleLabel.Font = new Font("Segoe UI", 20F);
-            viewTitleLabel.Location = new Point(158, 28);
-            viewTitleLabel.Name = "viewTitleLabel";
-            viewTitleLabel.Size = new Size(663, 37);
-            viewTitleLabel.TabIndex = 2;
-            viewTitleLabel.Text = "Welcome to the Right-Angled Trigonometry Calculator";
             // 
             // explanationTextBox
             // 
@@ -250,16 +240,27 @@
             ResultLabel.TabIndex = 0;
             ResultLabel.Text = "Result:";
             // 
+            // trigTitleLabel
+            // 
+            trigTitleLabel.AutoSize = true;
+            trigTitleLabel.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            trigTitleLabel.ForeColor = Color.Black;
+            trigTitleLabel.Location = new Point(158, 28);
+            trigTitleLabel.Name = "trigTitleLabel";
+            trigTitleLabel.Size = new Size(833, 37);
+            trigTitleLabel.TabIndex = 11;
+            trigTitleLabel.Text = "Welcome to the Right-Angled Triangle Trigonometry Calculator";
+            // 
             // TrigonometryCalculatorView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(trigTitleLabel);
             Controls.Add(panel1);
             Controls.Add(explanationTextBox);
             Controls.Add(calculateButton1);
             Controls.Add(clearButton);
             Controls.Add(inputPanel);
-            Controls.Add(viewTitleLabel);
             Controls.Add(backButton1);
             Name = "TrigonometryCalculatorView";
             Size = new Size(1164, 657);
@@ -274,7 +275,6 @@
         #endregion
 
         private Controls.Navigation.BackButton backButton1;
-        private Label viewTitleLabel;
         private RichTextBox explanationTextBox;
         private Controls.Navigation.CalculateButton calculateButton1;
         private Controls.Navigation.ClearButton clearButton;
@@ -293,5 +293,6 @@
         private Panel panel1;
         private TextBox ResultTextBox;
         private Label ResultLabel;
+        private Controls.Display.TitleLabel trigTitleLabel;
     }
 }

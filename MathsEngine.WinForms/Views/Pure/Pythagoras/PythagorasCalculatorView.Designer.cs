@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             backButton1 = new MathsEngine.WinForms.Controls.Navigation.BackButton();
-            viewTitleLabel = new Label();
             inputPanel = new Panel();
             OtherSideButton = new RadioButton();
             CheckValidCalculationButton = new RadioButton();
@@ -46,6 +45,7 @@
             panel1 = new Panel();
             ResultTextBox = new TextBox();
             ResultLabel = new Label();
+            pythagorasTitleLabel = new MathsEngine.WinForms.Controls.Display.TitleLabel();
             inputPanel.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -61,16 +61,6 @@
             backButton1.Text = "Back";
             backButton1.UseVisualStyleBackColor = true;
             backButton1.Click += backButton1_Click;
-            // 
-            // viewTitleLabel
-            // 
-            viewTitleLabel.AutoSize = true;
-            viewTitleLabel.Font = new Font("Segoe UI", 20F);
-            viewTitleLabel.Location = new Point(158, 28);
-            viewTitleLabel.Name = "viewTitleLabel";
-            viewTitleLabel.Size = new Size(582, 37);
-            viewTitleLabel.TabIndex = 1;
-            viewTitleLabel.Text = "Welcome to the Pythagoras Theorem Calculator";
             // 
             // inputPanel
             // 
@@ -231,16 +221,27 @@
             ResultLabel.TabIndex = 0;
             ResultLabel.Text = "Result:";
             // 
+            // pythagorasTitleLabel
+            // 
+            pythagorasTitleLabel.AutoSize = true;
+            pythagorasTitleLabel.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            pythagorasTitleLabel.ForeColor = Color.Black;
+            pythagorasTitleLabel.Location = new Point(158, 28);
+            pythagorasTitleLabel.Name = "pythagorasTitleLabel";
+            pythagorasTitleLabel.Size = new Size(633, 37);
+            pythagorasTitleLabel.TabIndex = 7;
+            pythagorasTitleLabel.Text = "Welcome to the Pythagoras Theorem Calculator";
+            // 
             // PythagorasCalculatorView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(pythagorasTitleLabel);
             Controls.Add(panel1);
             Controls.Add(StepsTextBox);
             Controls.Add(calculateButton);
             Controls.Add(clearButton);
             Controls.Add(inputPanel);
-            Controls.Add(viewTitleLabel);
             Controls.Add(backButton1);
             Name = "PythagorasCalculatorView";
             Size = new Size(1164, 657);
@@ -255,7 +256,6 @@
         #endregion
 
         private Controls.Navigation.BackButton backButton1;
-        private Label viewTitleLabel;
         private Panel inputPanel;
         private RadioButton OtherSideButton;
         private RadioButton CheckValidCalculationButton;
@@ -272,5 +272,6 @@
         private Panel panel1;
         private TextBox ResultTextBox;
         private Label ResultLabel;
+        private Controls.Display.TitleLabel pythagorasTitleLabel;
     }
 }

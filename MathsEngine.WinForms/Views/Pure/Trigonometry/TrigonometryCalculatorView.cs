@@ -8,7 +8,8 @@ namespace MathsEngine.WinForms.Views.Pure.Trigonometry
         {
             InitializeComponent();
 
-            // Navigation: go back to the Pure hub.
+            ThemeManager.ApplyTheme(this);
+
             backButton1.BackRequested += (_, _) =>
             {
                 if (FindForm() is MainForm mainForm)

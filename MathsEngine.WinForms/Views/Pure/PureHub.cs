@@ -10,6 +10,8 @@ namespace MathsEngine.WinForms.Views.Pure
         {
             InitializeComponent();
 
+            ThemeManager.ApplyTheme(this);
+
             // Navigation: go back to the Home view.
             backButton1.BackRequested += (_, _) =>
             {

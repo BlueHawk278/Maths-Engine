@@ -28,24 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pureTitleLabel = new Label();
             algebraButton = new Button();
             coordGeometryButton = new Button();
             matricesButton = new Button();
             pythagorasButton = new Button();
             trigonometryButton = new Button();
             backButton1 = new MathsEngine.WinForms.Controls.Navigation.BackButton();
+            pureTitleLabel = new MathsEngine.WinForms.Controls.Display.TitleLabel();
             SuspendLayout();
-            // 
-            // pureTitleLabel
-            // 
-            pureTitleLabel.AutoSize = true;
-            pureTitleLabel.Font = new Font("Segoe UI", 20F);
-            pureTitleLabel.Location = new Point(149, 28);
-            pureTitleLabel.Name = "pureTitleLabel";
-            pureTitleLabel.Size = new Size(321, 37);
-            pureTitleLabel.TabIndex = 0;
-            pureTitleLabel.Text = "Welcome to the Pure Hub";
             // 
             // algebraButton
             // 
@@ -113,17 +103,28 @@
             backButton1.Text = "Back";
             backButton1.UseVisualStyleBackColor = true;
             // 
+            // pureTitleLabel
+            // 
+            pureTitleLabel.AutoSize = true;
+            pureTitleLabel.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            pureTitleLabel.ForeColor = Color.Black;
+            pureTitleLabel.Location = new Point(149, 28);
+            pureTitleLabel.Name = "pureTitleLabel";
+            pureTitleLabel.Size = new Size(241, 25);
+            pureTitleLabel.TabIndex = 7;
+            pureTitleLabel.Text = "Welcome to the Pure Hub";
+            // 
             // PureHub
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(pureTitleLabel);
             Controls.Add(backButton1);
             Controls.Add(trigonometryButton);
             Controls.Add(pythagorasButton);
             Controls.Add(matricesButton);
             Controls.Add(coordGeometryButton);
             Controls.Add(algebraButton);
-            Controls.Add(pureTitleLabel);
             Name = "PureHub";
             Size = new Size(1164, 657);
             ResumeLayout(false);
@@ -132,12 +133,12 @@
 
         #endregion
 
-        private Label pureTitleLabel;
         private Button algebraButton;
         private Button coordGeometryButton;
         private Button matricesButton;
         private Button pythagorasButton;
         private Button trigonometryButton;
         private Controls.Navigation.BackButton backButton1;
+        private Controls.Display.TitleLabel pureTitleLabel;
     }
 }

@@ -8,6 +8,8 @@ namespace MathsEngine.WinForms
         public MainForm()
         {
             InitializeComponent();
+
+            FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
         private void MainForm_Load(object sender, EventArgs e)

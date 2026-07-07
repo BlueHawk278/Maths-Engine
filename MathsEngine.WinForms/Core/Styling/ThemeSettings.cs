@@ -1,0 +1,17 @@
+﻿namespace MathsEngine.WinForms.Core.Styling;
+
+public static class ThemeSettings
+{
+    // Centralized variables
+    public static readonly Color BackgroundColor = Color.White;
+    public static readonly Color ForegroundColor = Color.Black;
+
+    // Fonts
+    public static readonly Font BaseFont = new Font("Segoe UI", 10F, FontStyle.Regular);
+    public static readonly Font ButtonFont = new Font("Segoe UI", 10F, FontStyle.Bold);
+    public static readonly Font TitleFont = new Font("Segoe UI", 20F, FontStyle.Bold);
+
+    // Layout settings
+    public static int MainPanelWidth = 1164;
+    public static int MainPanelHeight = 657;
+}

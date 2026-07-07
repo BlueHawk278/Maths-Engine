@@ -9,6 +9,9 @@ namespace MathsEngine.WinForms.Views.Pure.Pythagoras
         public PythagorasCalculatorView()
         {
             InitializeComponent();
+
+            ThemeManager.ApplyTheme(this);
+
             _presenter = new PythagorasPresenter(this);
         }
 
