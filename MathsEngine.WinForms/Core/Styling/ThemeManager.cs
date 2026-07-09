@@ -16,7 +16,6 @@ public static class ThemeManager
             if(control is UserControl)
                 control.Size = ThemeSettings.MainPanelSize;
 
-            // Apply specific control styles
             if (control is Button btn)
                 btn.Font = ThemeSettings.ButtonFont;
 

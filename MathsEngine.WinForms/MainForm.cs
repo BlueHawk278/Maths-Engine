@@ -1,5 +1,6 @@
 using MathsEngine.WinForms.Views;
 using MathsEngine.WinForms.Views.Pure;
+using MathsEngine.WinForms.Views.Statistics;
 
 namespace MathsEngine.WinForms
 {
@@ -37,15 +38,14 @@ namespace MathsEngine.WinForms
 
             //mainContentPanel.ResumeLayout();
         }
-        
-        private void pureButton_Click(object sender, EventArgs e)
-        {
-            LoadView(new PureHub());
-        }
-
         private void homeButton_Click(object sender, EventArgs e)
         {
             LoadView(new Home());
+        }
+
+        private void pureButton_Click(object sender, EventArgs e)
+        {
+            LoadView(new PureHub());
         }
 
         private void mechanicsButton_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace MathsEngine.WinForms
 
         private void statisticsButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Statistics view is not implemented yet.", "Maths Engine", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LoadView(new StatisticsHub());
         }
     }
 }

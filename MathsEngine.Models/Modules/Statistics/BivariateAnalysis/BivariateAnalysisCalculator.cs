@@ -8,15 +8,12 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
     /// </summary>
     public class BivariateAnalysisCalculator
     {
-        // --- 1. Data is stored as private instance fields ---
-
         private readonly List<double> _scores1;
         private readonly List<double> _scores2;
 
         public Correlation Correlation { get; private set; }
         public string CorrelationString;
 
-        // --- 2. Results are exposed as public properties with private setters ---
         public List<double> Ranks1 { get; private set; }
         public List<double> Ranks2 { get; private set; }
         public List<double> Difference { get; private set; }
@@ -136,14 +133,9 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             return 1 - (topLine / bottomLine);
         }
 
-        private Correlation GetCorrelation()
-        {
-            return CorrelationExtensions.getCorrelation(CorrelationCoefficient);
-        }
+        private Correlation GetCorrelation() => CorrelationExtensions.getCorrelation(CorrelationCoefficient);
+        
 
-        private string GetCorrelationString()
-        {
-            return CorrelationExtensions.displayString(Correlation);
-        }
+        private string GetCorrelationString() => CorrelationExtensions.displayString(Correlation);
     }
 }

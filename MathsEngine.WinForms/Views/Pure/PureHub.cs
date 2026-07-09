@@ -2,60 +2,57 @@
 using MathsEngine.WinForms.Views.Pure.Pythagoras;
 using MathsEngine.WinForms.Views.Pure.Trigonometry;
 
-namespace MathsEngine.WinForms.Views.Pure
+namespace MathsEngine.WinForms.Views.Pure;
+
+public partial class PureHub : UserControl
 {
-    public partial class PureHub : UserControl
+    public PureHub()
     {
-        public PureHub()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            ThemeManager.ApplyTheme(this);
+        ThemeManager.ApplyTheme(this);
 
-            // Navigation: go back to the Home view.
-            backButton1.BackRequested += (_, _) =>
-            {
-                if (FindForm() is MainForm mainForm)
-                {
-                    mainForm.LoadView(new Home());
-                }
-            };
-        }
-
-        private void pythagorasButton_Click(object sender, EventArgs e)
+        // Navigation: go back to the Home view.
+        backButton1.BackRequested += (_, _) =>
         {
             if (FindForm() is MainForm mainForm)
             {
-                mainForm.LoadView(new PythagorasCalculatorView());
+                mainForm.LoadView(new Home());
             }
-        }
+        };
+    }
 
-        private void algebraButton_Click(object sender, EventArgs e)
+    private void pythagorasButton_Click(object sender, EventArgs e)
+    {
+        if (FindForm() is MainForm mainForm)
         {
-            MessageBox.Show("Algebra is not implemented yet.", "Maths Engine", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            mainForm.LoadView(new PythagorasCalculatorView());
         }
+    }
 
-        private void coordGeometryButton_Click(object sender, EventArgs e)
+    private void algebraButton_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show("Algebra is not implemented yet.", "Maths Engine", MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+
+    private void coordGeometryButton_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show("Co-ordinate Geometry is not implemented yet.", "Maths Engine", MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+
+    private void matricesButton_Click(object sender, EventArgs e)
+    {
+        if (FindForm() is MainForm mainForm)
         {
-            MessageBox.Show("Co-ordinate Geometry is not implemented yet.", "Maths Engine", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            mainForm.LoadView(new MatricesCalculatorView());
         }
+    }
 
-        private void matricesButton_Click(object sender, EventArgs e)
+    private void trigonometryButton_Click(object sender, EventArgs e)
+    {
+        if (FindForm() is MainForm mainForm)
         {
-            if (FindForm() is MainForm mainForm)
-            {
-                mainForm.LoadView(new MatricesCalculatorView());
-            }
-
-            //MessageBox.Show("Matrices is not implemented yet.", "Maths Engine", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void trigonometryButton_Click(object sender, EventArgs e)
-        {
-            if (FindForm() is MainForm mainForm)
-            {
-                mainForm.LoadView(new TrigonometryCalculatorView());
-            }
+            mainForm.LoadView(new TrigonometryCalculatorView());
         }
     }
 }

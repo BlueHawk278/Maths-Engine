@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             lblTitle = new MathsEngine.WinForms.Controls.Display.TitleLabel();
-            backButton1 = new MathsEngine.WinForms.Controls.Navigation.BackButton();
+            BackButton = new MathsEngine.WinForms.Controls.Navigation.BackButton();
             SuspendLayout();
             // 
             // lblTitle
@@ -43,22 +43,22 @@
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Default Title";
             // 
-            // backButton1
+            // BackButton
             // 
-            backButton1.FlatStyle = FlatStyle.Flat;
-            backButton1.ForeColor = Color.Black;
-            backButton1.Location = new Point(19, 15);
-            backButton1.Name = "backButton1";
-            backButton1.Size = new Size(100, 50);
-            backButton1.TabIndex = 1;
-            backButton1.Text = "Back";
-            backButton1.UseVisualStyleBackColor = true;
+            BackButton.FlatStyle = FlatStyle.Flat;
+            BackButton.ForeColor = Color.Black;
+            BackButton.Location = new Point(19, 15);
+            BackButton.Name = "BackButton";
+            BackButton.Size = new Size(100, 50);
+            BackButton.TabIndex = 1;
+            BackButton.Text = "Back";
+            BackButton.UseVisualStyleBackColor = true;
             // 
             // BaseViewControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(backButton1);
+            Controls.Add(BackButton);
             Controls.Add(lblTitle);
             Name = "BaseViewControl";
             Size = new Size(697, 487);
@@ -69,6 +69,6 @@
         #endregion
 
         private Controls.Display.TitleLabel lblTitle;
-        private Controls.Navigation.BackButton backButton1;
+        private Controls.Navigation.BackButton BackButton;
     }
 }

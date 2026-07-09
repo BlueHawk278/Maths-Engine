@@ -66,6 +66,7 @@
             statisticsButton.TabIndex = 3;
             statisticsButton.Text = "Statistics";
             statisticsButton.UseVisualStyleBackColor = true;
+            statisticsButton.Click += statisticsButton_Click;
             // 
             // mechanicsButton
             // 
@@ -84,7 +85,7 @@
             pureButton.TabIndex = 1;
             pureButton.Text = "Pure\r\n";
             pureButton.UseVisualStyleBackColor = true;
-            pureButton.Click += this.pureButton_Click;
+            pureButton.Click += pureButton_Click;
             // 
             // homeButton
             // 
@@ -94,7 +95,7 @@
             homeButton.TabIndex = 0;
             homeButton.Text = "Home";
             homeButton.UseVisualStyleBackColor = true;
-            homeButton.Click += this.homeButton_Click;
+            homeButton.Click += homeButton_Click;
             // 
             // mainContentPanel
             // 
