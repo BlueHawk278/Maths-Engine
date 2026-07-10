@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using MathsEngine.Core.Modules.Explanations;
-using MathsEngine.Modules.Pure.PythagorasTheorem;
+using MathsEngine.Core.Modules.Pure.PythagorasTheorem;
 
-namespace MathsEngine.Modules.Explanations.Pure
+namespace MathsEngine.Core.Modules.Explanations.Pure.PythagorasTheorem
 {
     /// <summary>
     /// Provides step-by-step explanations for Pythagoras theorem calculations.
@@ -46,7 +46,7 @@ namespace MathsEngine.Modules.Explanations.Pure
 
             // Step 5: Take square root
             steps.Add("Step 5: Take the square root");
-            double value = PythagorasTheorem.CalculateHypotenuse(sideA, sideB);
+            double value = MathsEngine.Core.Modules.Pure.PythagorasTheorem.PythagorasTheorem.CalculateHypotenuse(sideA, sideB);
             steps.Add($"  c = √{sum:F2} = {value:F2}");
             steps.Add("");
 
@@ -94,7 +94,7 @@ namespace MathsEngine.Modules.Explanations.Pure
 
             // Step 5: Take square root
             steps.Add("Step 5: Take the square root");
-            double value = PythagorasTheorem.CalculateOtherSide(hypotenuse, knownSide);
+            double value = MathsEngine.Core.Modules.Pure.PythagorasTheorem.PythagorasTheorem.CalculateOtherSide(hypotenuse, knownSide);
             steps.Add($"  b = √{difference:F2} = {value:F2}");
             steps.Add("");
 

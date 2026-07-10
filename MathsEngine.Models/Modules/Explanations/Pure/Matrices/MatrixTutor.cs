@@ -1,8 +1,7 @@
 using System.Text;
-using MathsEngine.Core.Modules.Explanations;
 using MathsEngine.Modules.Pure.Matrices;
 
-namespace MathsEngine.Modules.Explanations.Pure;
+namespace MathsEngine.Core.Modules.Explanations.Pure.Matrices;
 
 /// <summary>
 /// Provides step-by-step explanations for matrix calculations.

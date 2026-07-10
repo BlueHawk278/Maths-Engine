@@ -1,7 +1,7 @@
 ﻿using System;
 using MathsEngine.Utils;
 
-namespace MathsEngine.Modules.Pure.PythagorasTheorem
+namespace MathsEngine.Core.Modules.Pure.PythagorasTheorem
 {
     /// <summary>
     /// Provides static methods for Pythagoras theorem calculations

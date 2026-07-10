@@ -14,7 +14,7 @@ public class BivariateAnalysisTutorTests
 
         var result = BivariateAnalysisTutor.CalculateSpearmanRankWithSteps(scores1, scores2);
 
-        Assert.Equal(1.0, result.Value, 2);
+        Assert.Equal(1.0, result.Correlation, 2);
     }
 
     [Fact]
@@ -25,7 +25,7 @@ public class BivariateAnalysisTutorTests
 
         var result = BivariateAnalysisTutor.CalculateSpearmanRankWithSteps(scores1, scores2);
 
-        Assert.Equal(-1.0, result.Value, 2);
+        Assert.Equal(-1.0, result.Correlation, 2);
     }
 
     [Fact]
@@ -104,7 +104,7 @@ public class BivariateAnalysisTutorTests
 
         var result = BivariateAnalysisTutor.CalculateSpearmanRankWithSteps(scores1, scores2);
 
-        Assert.InRange(result.Value, -1.0, 1.0);
+        Assert.InRange(result.Correlation, -1.0, 1.0);
         Assert.NotEmpty(result.Steps);
     }
 }

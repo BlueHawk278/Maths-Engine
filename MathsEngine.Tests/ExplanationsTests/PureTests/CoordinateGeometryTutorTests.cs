@@ -1,4 +1,4 @@
-﻿using MathsEngine.Modules.Explanations.Pure;
+﻿using MathsEngine.Core.Modules.Explanations.Pure.CoordinateGeometry;
 using MathsEngine.Modules.Pure.CoordinateGeometry;
 using Xunit;
 

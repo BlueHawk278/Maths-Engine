@@ -1,4 +1,4 @@
-﻿namespace MathsEngine.Modules.Pure.Trigonometry
+﻿namespace MathsEngine.Core.Modules.Pure.Trigonometry
 {
     /// <summary>
     /// Represents the sides of a right-angled triangle relative to an angle.

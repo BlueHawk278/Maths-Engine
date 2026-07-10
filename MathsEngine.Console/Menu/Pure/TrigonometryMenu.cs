@@ -1,4 +1,4 @@
-﻿using MathsEngine.Modules.Pure.Trigonometry;
+﻿using MathsEngine.Core.Modules.Pure.Trigonometry;
 using MathsEngine.Console.Utils;
 using MathsEngine.Utils;
 

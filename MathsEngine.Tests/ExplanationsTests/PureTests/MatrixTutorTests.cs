@@ -1,7 +1,7 @@
 using Xunit;
 using MathsEngine.Modules.Explanations;
-using MathsEngine.Modules.Explanations.Pure;
 using MathsEngine.Modules.Pure.Matrices;
+using MathsEngine.Core.Modules.Explanations.Pure.Matrices;
 
 namespace MathsEngine.Tests.ExplanationsTests.PureTests;
 

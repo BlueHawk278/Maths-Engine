@@ -28,10 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            StepsTextBox = new RichTextBox();
+            SuspendLayout();
+            // 
+            // StepsTextBox
+            // 
+            StepsTextBox.Location = new Point(575, 10);
+            StepsTextBox.Name = "StepsTextBox";
+            StepsTextBox.ReadOnly = true;
+            StepsTextBox.Size = new Size(340, 365);
+            StepsTextBox.TabIndex = 6;
+            StepsTextBox.Text = "";
+            // 
+            // BivariateAnalysisCalculatorView
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(StepsTextBox);
+            Name = "BivariateAnalysisCalculatorView";
+            Controls.SetChildIndex(StepsTextBox, 0);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private RichTextBox StepsTextBox;
     }
 }

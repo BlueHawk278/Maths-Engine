@@ -1,5 +1,5 @@
 ﻿using MathsEngine.Modules.Pure.CoordinateGeometry;
-using MathsEngine.Modules.Pure.Trigonometry;
+using MathsEngine.Core.Modules.Pure.Trigonometry;
 
 namespace MathsEngine.Console.Utils;
 

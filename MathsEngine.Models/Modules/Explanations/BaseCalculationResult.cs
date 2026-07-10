@@ -8,7 +8,6 @@ public abstract class BaseCalculationResult
 
     protected BaseCalculationResult(List<string> steps)
     {
-        // Ensure Steps is never null and wrap it securely
         Steps = steps?.AsReadOnly() ?? new List<string>().AsReadOnly();
     }
 

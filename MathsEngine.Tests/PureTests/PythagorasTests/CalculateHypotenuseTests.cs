@@ -1,4 +1,4 @@
-﻿using MathsEngine.Modules.Pure.PythagorasTheorem;
+﻿using MathsEngine.Core.Modules.Pure.PythagorasTheorem;
 using MathsEngine.Utils;
 using Xunit;
 

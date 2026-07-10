@@ -1,7 +1,6 @@
 using Xunit;
-using MathsEngine.Modules.Explanations;
-using MathsEngine.Modules.Explanations.Pure;
-using MathsEngine.Modules.Pure.Trigonometry;
+using MathsEngine.Core.Modules.Explanations.Pure.Trigonometry;
+using MathsEngine.Core.Modules.Pure.Trigonometry;
 
 namespace MathsEngine.Tests.ExplanationsTests.PureTests;
 

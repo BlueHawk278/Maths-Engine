@@ -37,7 +37,7 @@
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblTitle.ForeColor = Color.Black;
-            lblTitle.Location = new Point(161, 71);
+            lblTitle.Location = new Point(159, 28);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(177, 37);
             lblTitle.TabIndex = 0;

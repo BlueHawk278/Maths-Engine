@@ -1,5 +1,5 @@
-﻿using Xunit;
-using MathsEngine.Modules.Pure.Trigonometry;
+﻿using MathsEngine.Core.Modules.Pure.Trigonometry;
+using Xunit;
 using MathsEngine.Utils;
 
 namespace MathsEngine.Tests.PureTests.TrigonometryTests;

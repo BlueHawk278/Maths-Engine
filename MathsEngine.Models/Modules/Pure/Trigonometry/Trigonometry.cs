@@ -1,7 +1,6 @@
-﻿using System;
-using MathsEngine.Utils;
+﻿using MathsEngine.Utils;
 
-namespace MathsEngine.Modules.Pure.Trigonometry
+namespace MathsEngine.Core.Modules.Pure.Trigonometry
 {
     public static class Trigonometry
     {

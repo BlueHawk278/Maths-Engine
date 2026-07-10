@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using MathsEngine.Core.Modules.Explanations;
-using MathsEngine.Modules.Pure.Trigonometry;
+using MathsEngine.Core.Modules.Pure.Trigonometry;
 
-namespace MathsEngine.Modules.Explanations.Pure
+namespace MathsEngine.Core.Modules.Explanations.Pure.Trigonometry
 {
     /// <summary>
     /// Provides step-by-step explanations for trigonometry calculations.
@@ -49,7 +49,7 @@ namespace MathsEngine.Modules.Explanations.Pure
 
             // Step 5: Calculate the result
             steps.Add("Step 5: Calculate the missing side");
-            double value = Trigonometry.CalculateMissingSide(
+            double value = MathsEngine.Core.Modules.Pure.Trigonometry.Trigonometry.CalculateMissingSide(
                 knownSideLength, angle, knownSideType, sideToFind);
             steps.Add($"  {sideToFind} = {value:F2}");
             steps.Add("");
@@ -93,7 +93,7 @@ namespace MathsEngine.Modules.Explanations.Pure
 
             // Step 4: Calculate
             steps.Add("Step 4: Compute the angle");
-            double angle = Trigonometry.CalculateMissingAngle(
+            double angle = MathsEngine.Core.Modules.Pure.Trigonometry.Trigonometry.CalculateMissingAngle(
                 side1Length, side1Type, side2Length, side2Type);
             steps.Add($"  Angle = {angle:F2}°");
             steps.Add("");
