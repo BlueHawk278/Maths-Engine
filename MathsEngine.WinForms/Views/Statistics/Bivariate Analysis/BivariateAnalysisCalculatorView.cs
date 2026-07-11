@@ -1,184 +1,156 @@
-﻿using MathsEngine.WinForms.Controls.Navigation;
-using MathsEngine.WinForms.Core.Styling;
-using MathsEngine.Core.Modules.Explanations;
+﻿using MathsEngine.Presentation.Presenters.Statistics.BivariateAnalysis;
+using MathsEngine.WinForms.Controls.Display;
 
-namespace MathsEngine.WinForms.Views.Statistics.Bivariate_Analysis;
-
-public partial class BivariateAnalysisCalculatorView : BaseViewControl
+namespace MathsEngine.WinForms.Views.Statistics.Bivariate_Analysis
 {
-    private Panel _containerPanel;
-    private NumericUpDown _numericUpDown1;
-    private DataGridView _dataGridView;
-    private CalculateButton _calculateButton;
-    private ClearButton _clearButton;
-
-    public BivariateAnalysisCalculatorView()
+    public partial class BivariateAnalysisCalculatorView : BaseViewControl, IBivariateAnalysisView
     {
-        InitializeComponent();
+        private readonly BivariateAnalysisPresenter _presenter;
 
-        TitleLabel = "Bivariate Analysis Calculator";
+        public event EventHandler? CalculateAttempted;
+        public event EventHandler? ClearAttempted;
 
-        InitializeCustomLayout();
-        SetupGrid((int)_numericUpDown1.Value);
-
-        InitializeCustomButtons();
-
-        ThemeManager.ApplyTheme(this);
-    }
-
-    private void InitializeCustomLayout()
-    {
-        // Panel container
-        _containerPanel = new Panel();
-        _containerPanel.Location = new Point(10, 100);
-        _containerPanel.Size = new Size(525, 280);
-        _containerPanel.BorderStyle = BorderStyle.FixedSingle;
-
-        // NumericUpDown configuration (5 to 10 columns)
-        _numericUpDown1 = new NumericUpDown();
-        _numericUpDown1.Location = new Point(190, 15);
-        _numericUpDown1.Size = new Size(60, 23);
-        _numericUpDown1.Minimum = 5;
-        _numericUpDown1.Maximum = 10;
-        _numericUpDown1.Value = 5;
-        _numericUpDown1.ValueChanged += NumericUpDown1_ValueChanged;
-
-        Label lblChoose = new Label();
-        lblChoose.Text = "Number of Data Columns:";
-        lblChoose.Location = new Point(15, 15);
-        lblChoose.AutoSize = true;
-
-        // DataGridView config
-        _dataGridView = new DataGridView();
-        _dataGridView.Location = new Point(15, 50);
-        _dataGridView.Size = new Size(493, 210);
-        _dataGridView.AllowUserToAddRows = false; // Prevents the empty bottom row
-        _dataGridView.RowHeadersVisible = false;  // Hides the default left margin arrow column
-
-        // Add components to panel
-        _containerPanel.Controls.Add(_numericUpDown1);
-        _containerPanel.Controls.Add(lblChoose);
-        _containerPanel.Controls.Add(_dataGridView);
-
-        Controls.Add(_containerPanel);
-        Size = new Size(800, 350);
-        Text = "Data Analysis Grid";
-    }
-
-    private void SetupGrid(int desiredDataColumns)
-    {
-        _dataGridView.Columns.Clear();
-
-        DataGridViewTextBoxColumn itemColumn = new DataGridViewTextBoxColumn();
-        itemColumn.Name = "ItemHeader";
-        itemColumn.HeaderText = "";
-        itemColumn.Width = 90;
-        itemColumn.DefaultCellStyle.Font = new Font(_dataGridView.Font, FontStyle.Bold);
-        itemColumn.DefaultCellStyle.BackColor = Color.WhiteSmoke;
-        itemColumn.SortMode = DataGridViewColumnSortMode.NotSortable; // Prevents sorting on click
-        _dataGridView.Columns.Add(itemColumn);
-
-        // Generate data columns dynamically (A, B, C, D...)
-        for (int i = 0; i < desiredDataColumns; i++)
+        public BivariateAnalysisCalculatorView()
         {
-            DataGridViewTextBoxColumn dataColumn = new DataGridViewTextBoxColumn();
-            // Converts index 0, 1, 2... into 'A', 'B', 'C'...
-            char columnLetter = (char)('A' + i);
+            InitializeComponent();
 
-            dataColumn.Name = $"Col{columnLetter}";
-            dataColumn.HeaderText = columnLetter.ToString();
-            dataColumn.Width = 40;
-            dataColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataColumn.SortMode = DataGridViewColumnSortMode.NotSortable; // Prevents sorting on click
-            _dataGridView.Columns.Add(dataColumn);
+            TitleLabel = "Bivariate Analysis Calculator";
+            SetupGrid((int)_numericUpDown1.Value);
+
+            _presenter = new BivariateAnalysisPresenter(this);
+
+            ThemeManager.ApplyTheme(this);
         }
 
-        string[] rowTitles = { "Score 1", "Score 2", "Rank 1", "Rank 2", "d", "d²" };
+        public List<double> Scores1 => GatherRowData(0);
+        public List<double> Scores2 => GatherRowData(1);
 
-        for (int r = 0; r < rowTitles.Length; r++)
+        public void DisplayResults(List<double> ranks1, List<double> ranks2, List<double> diffs,
+                                   List<double> diffsSquared, double sumDiffSquared,
+                                   double coefficient, string interpretation, string steps)
         {
-            int rowIndex = _dataGridView.Rows.Add();
-            // Assign the row title to the first column
-            _dataGridView.Rows[rowIndex].Cells[0].Value = rowTitles[r];
+            int dataColumnCount = _dataGridView.Columns.Count - 1;
+            int count = Math.Min(dataColumnCount, ranks1.Count);
 
-            if (r > 1)
+            for (int i = 0; i < count; i++)
             {
-                _dataGridView.Rows[rowIndex].ReadOnly = true;
-                _dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightGray;
+                int colIndex = i + 1;
+                _dataGridView.Rows[2].Cells[colIndex].Value = ranks1[i];
+                _dataGridView.Rows[3].Cells[colIndex].Value = ranks2[i];
+                _dataGridView.Rows[4].Cells[colIndex].Value = diffs[i];
+                _dataGridView.Rows[5].Cells[colIndex].Value = diffsSquared[i];
             }
+
+            _lblSigmaDifferenceSquared.Text = $"Σd² = {sumDiffSquared:F2}";
+            _lblCorrelation.Text = $"Correlation Coefficient = {coefficient:F3}";
+            _lblCorrelationInterpretation.Text = $"Interpretation: {interpretation}";
+            StepsTextBox.Text = steps;
         }
-    }
 
-    private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
-    {
-        SetupGrid((int)_numericUpDown1.Value);
-    }
-
-    private void InitializeCustomButtons()
-    {
-        _calculateButton = new CalculateButton();
-        _clearButton = new ClearButton();
-
-        _calculateButton.Text = "Calculate";
-        _calculateButton.Name = "calculateButton";
-        _calculateButton.Size = ThemeSettings.ActionButtonSize;
-        _calculateButton.Location = new Point(10, 400);
-        _calculateButton.Click += calculateButton_Click;
-
-        _clearButton.Text = "Clear";
-        _clearButton.Name = "clearButton";
-        _clearButton.Size = ThemeSettings.ActionButtonSize;
-        _clearButton.Location = new Point(285, 400);
-        _clearButton.Click += clearButton_Click;
-
-        Controls.Add(_calculateButton);
-        Controls.Add(_clearButton);
-    }
-
-    private void calculateButton_Click(object sender, EventArgs e)
-    {
-        List<double> scores1 = new List<double>();
-        List<double> scores2 = new List<double>();
-
-        // Make sure we actually have rows to read from
-        if (_dataGridView.Rows.Count >= 2)
+        public void ClearDisplay()
         {
-            // Start at i = 1 to skip the first column (index 0)
-            for (int i = 1; i < _dataGridView.Rows[0].Cells.Count; i++)
+            for (int r = 0; r < _dataGridView.Rows.Count; r++)
             {
-                var cellValue = _dataGridView.Rows[0].Cells[i].Value;
-                if (cellValue != null && double.TryParse(cellValue.ToString(), out double val))
+                for (int c = 1; c < _dataGridView.Columns.Count; c++)
                 {
-                    scores1.Add(val);
+                    _dataGridView.Rows[r].Cells[c].Value = null;
                 }
             }
 
-            // Start at i = 1 to skip the first column (index 0)
-            for (int i = 1; i < _dataGridView.Rows[1].Cells.Count; i++)
+            _lblSigmaDifferenceSquared.Text = "Σd² = ";
+            _lblCorrelation.Text = "Correlation Coefficient = ";
+            _lblCorrelationInterpretation.Text = "Interpretation: ";
+            StepsTextBox.Text = string.Empty;
+        }
+
+        public void ShowError(string message) => MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        // UI Events
+        private void calculateButton_Click(object sender, EventArgs e)
+        {
+            CalculateAttempted?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            ClearAttempted?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            SetupGrid((int)_numericUpDown1.Value);
+
+            clearButton_Click(this, EventArgs.Empty);
+        }
+
+        // Helper Methods
+        private List<double> GatherRowData(int rowIndex)
+        {
+            var list = new List<double>();
+            if (_dataGridView.Rows.Count > rowIndex)
             {
-                var cellValue = _dataGridView.Rows[1].Cells[i].Value;
-                if (cellValue != null && double.TryParse(cellValue.ToString(), out double val))
+                for (int i = 1; i < _dataGridView.Columns.Count; i++)
                 {
-                    scores2.Add(val);
+                    var cellValue = _dataGridView.Rows[rowIndex].Cells[i].Value;
+                    if (cellValue != null && double.TryParse(cellValue.ToString(), out double val))
+                    {
+                        list.Add(val);
+                    }
+                }
+            }
+            return list;
+        }
+
+        private void SetupGrid(int desiredDataColumns)
+        {
+            _dataGridView.Columns.Clear();
+
+            // Header Column setup
+            DataGridViewTextBoxColumn itemColumn = new DataGridViewTextBoxColumn
+            {
+                Name = "ItemHeader",
+                HeaderText = "",
+                Width = 90,
+                SortMode = DataGridViewColumnSortMode.NotSortable
+            };
+            itemColumn.DefaultCellStyle.Font = new Font(_dataGridView.Font, FontStyle.Bold);
+            itemColumn.DefaultCellStyle.BackColor = Color.WhiteSmoke;
+            _dataGridView.Columns.Add(itemColumn);
+
+            // Data Columns setup
+            for (int i = 0; i < desiredDataColumns; i++)
+            {
+                char columnLetter = (char)('A' + i);
+                _dataGridView.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = $"Col{columnLetter}",
+                    HeaderText = columnLetter.ToString(),
+                    Width = 40,
+                    SortMode = DataGridViewColumnSortMode.NotSortable,
+                    DefaultCellStyle = { Alignment = DataGridViewContentAlignment.MiddleCenter }
+                });
+            }
+
+            string[] rowTitles = { "Score 1", "Score 2", "Rank 1", "Rank 2", "d", "d²" };
+            for (int r = 0; r < rowTitles.Length; r++)
+            {
+                int rowIndex = _dataGridView.Rows.Add();
+                _dataGridView.Rows[rowIndex].Cells[0].Value = rowTitles[r];
+
+                if (r > 1) // Calculated rows are read-only
+                {
+                    _dataGridView.Rows[rowIndex].ReadOnly = true;
+                    _dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightGray;
                 }
             }
         }
 
-        var result = Modules.Explanations.Statistics.BivariateAnalysisTutor.CalculateSpearmanRankWithSteps(scores1, scores2);
-
-        StepsTextBox.Text = result.GetStepsAsString();
-    }
-
-    private void clearButton_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    protected override void btnBack_Click(object sender, EventArgs e)
-    {
-        if (FindForm() is MainForm mainForm)
+        protected override void btnBack_Click(object sender, EventArgs e)
         {
-            mainForm.LoadView(new StatisticsHub());
+            if (FindForm() is MainForm mainForm)
+            {
+                mainForm.LoadView(new StatisticsHub());
+            }
         }
     }
 }

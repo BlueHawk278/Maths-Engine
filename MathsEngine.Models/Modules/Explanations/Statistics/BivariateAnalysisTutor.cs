@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MathsEngine.Core.Modules.Explanations;
-using MathsEngine.Core.Modules.Explanations.Statistics;
 using MathsEngine.Modules.Statistics.BivariateAnalysis;
 
 namespace MathsEngine.Modules.Explanations.Statistics
@@ -12,7 +10,11 @@ namespace MathsEngine.Modules.Explanations.Statistics
     /// </summary>
     public static class BivariateAnalysisTutor
     {
-        public static BivariateAnalysisResult CalculateSpearmanRankWithSteps(List<double> scores1, List<double> scores2)
+        // Changed the return type from BivariateAnalysisResult to a ValueTuple
+        public static (List<double> Ranks1, List<double> Ranks2, List<double> Difference,
+                       List<double> DifferenceSquared, double SumDifferenceSquared,
+                       double Correlation, string CorrelationInterpretation, string Steps)
+            CalculateSpearmanRankWithSteps(List<double> scores1, List<double> scores2)
         {
             var steps = new List<string>();
 
@@ -67,11 +69,11 @@ namespace MathsEngine.Modules.Explanations.Statistics
             // Calculate Spearman's rank correlation coefficient
             steps.Add("Step 6: Calculate Spearman's Rank Correlation Coefficient (rs)");
             steps.Add("  Formula: rs = 1 - (6Σd²) / (n(n² - 1))");
-            
+
             int n = scores1.Count;
             double numerator = 6 * calculator.SumDifferenceSquared;
             double denominator = n * (Math.Pow(n, 2) - 1);
-            
+
             steps.Add($"  rs = 1 - (6 × {calculator.SumDifferenceSquared:F2}) / ({n} × ({n}² - 1))");
             steps.Add($"  rs = 1 - {numerator:F2} / {denominator:F2}");
             steps.Add($"  rs = 1 - {numerator / denominator:F4}");
@@ -93,21 +95,33 @@ namespace MathsEngine.Modules.Explanations.Statistics
             steps.Add($"  Spearman's Rank Correlation Coefficient = {calculator.CorrelationCoefficient:F4}");
             steps.Add($"  Interpretation: {calculator.CorrelationString}");
 
-            return new BivariateAnalysisResult(calculator.Ranks1, calculator.Ranks2, calculator.Difference, 
-                calculator.DifferenceSquared, calculator.CorrelationCoefficient, calculator.SumDifferenceSquared, steps);
+            // Join the steps string array together right here
+            string formattedSteps = string.Join(Environment.NewLine, steps);
+
+            // Return a clean ValueTuple directly to the presenter
+            return (
+                calculator.Ranks1,
+                calculator.Ranks2,
+                calculator.Difference,
+                calculator.DifferenceSquared,
+                calculator.SumDifferenceSquared,
+                calculator.CorrelationCoefficient,
+                calculator.CorrelationString,
+                formattedSteps
+            );
         }
 
         private static string GetCorrelationInterpretation(double rs)
         {
             double absRs = Math.Abs(rs);
             string direction = rs >= 0 ? "positive" : "negative";
-            
+
             if (absRs == 1.0)
                 return $"Perfect {direction} correlation";
             if (absRs >= 0.8)
                 return $"Strong {direction} correlation";
             if (absRs >= 0.6)
-                return $"Moderate {direction} correlation"; 
+                return $"Moderate {direction} correlation";
             if (absRs >= 0.4)
                 return $"Weak {direction} correlation";
             if (absRs > 0)

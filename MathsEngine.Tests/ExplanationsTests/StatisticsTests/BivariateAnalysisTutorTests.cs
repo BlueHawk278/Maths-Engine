@@ -37,7 +37,7 @@ public class BivariateAnalysisTutorTests
         var result = BivariateAnalysisTutor.CalculateSpearmanRankWithSteps(scores1, scores2);
 
         Assert.NotEmpty(result.Steps);
-        string stepsText = result.GetStepsAsString();
+        string stepsText = result.Steps;
         Assert.Contains("Step 1", stepsText);
         Assert.Contains("Rank", stepsText);
         Assert.Contains("difference", stepsText, StringComparison.OrdinalIgnoreCase);
@@ -52,7 +52,7 @@ public class BivariateAnalysisTutorTests
 
         var result = BivariateAnalysisTutor.CalculateSpearmanRankWithSteps(scores1, scores2);
 
-        string stepsText = result.GetStepsAsString();
+        string stepsText = result.Steps;
         Assert.Contains("Ranks for Data Set 1", stepsText);
         Assert.Contains("Ranks for Data Set 2", stepsText);
     }
@@ -65,7 +65,7 @@ public class BivariateAnalysisTutorTests
 
         var result = BivariateAnalysisTutor.CalculateSpearmanRankWithSteps(scores1, scores2);
 
-        string stepsText = result.GetStepsAsString();
+        string stepsText = result.Steps;
         Assert.Contains("difference in ranks", stepsText, StringComparison.OrdinalIgnoreCase);
         Assert.Contains("d²", stepsText);
     }
@@ -78,7 +78,7 @@ public class BivariateAnalysisTutorTests
 
         var result = BivariateAnalysisTutor.CalculateSpearmanRankWithSteps(scores1, scores2);
 
-        string stepsText = result.GetStepsAsString();
+        string stepsText = result.Steps;
         Assert.Contains("rs = 1 -", stepsText);
         Assert.Contains("6Σd²", stepsText);
     }
@@ -91,7 +91,7 @@ public class BivariateAnalysisTutorTests
 
         var result = BivariateAnalysisTutor.CalculateSpearmanRankWithSteps(scores1, scores2);
 
-        string stepsText = result.GetStepsAsString();
+        string stepsText = result.Steps;
         Assert.Contains("Interpret", stepsText);
         Assert.Contains("correlation", stepsText, StringComparison.OrdinalIgnoreCase);
     }
