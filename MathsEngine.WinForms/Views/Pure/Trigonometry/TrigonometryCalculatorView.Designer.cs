@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            backButton1 = new MathsEngine.WinForms.Controls.Navigation.BackButton();
+            backButton = new MathsEngine.WinForms.Controls.Navigation.BackButton();
             explanationTextBox = new RichTextBox();
-            calculateButton1 = new MathsEngine.WinForms.Controls.Navigation.CalculateButton();
+            calculateButton = new MathsEngine.WinForms.Controls.Navigation.CalculateButton();
             clearButton = new MathsEngine.WinForms.Controls.Navigation.ClearButton();
             inputPanel = new Panel();
             calculateMissingAngleButton = new RadioButton();
@@ -48,20 +48,22 @@
             ResultTextBox = new TextBox();
             ResultLabel = new Label();
             trigTitleLabel = new MathsEngine.WinForms.Controls.Display.TitleLabel();
+            TargetSideComboBox = new ComboBox();
             inputPanel.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // backButton1
+            // backButton
             // 
-            backButton1.FlatStyle = FlatStyle.Flat;
-            backButton1.ForeColor = Color.Black;
-            backButton1.Location = new Point(10, 10);
-            backButton1.Name = "backButton1";
-            backButton1.Size = new Size(100, 50);
-            backButton1.TabIndex = 1;
-            backButton1.Text = "Back";
-            backButton1.UseVisualStyleBackColor = true;
+            backButton.FlatStyle = FlatStyle.Flat;
+            backButton.ForeColor = Color.Black;
+            backButton.Location = new Point(10, 10);
+            backButton.Name = "backButton";
+            backButton.Size = new Size(100, 50);
+            backButton.TabIndex = 1;
+            backButton.Text = "Back";
+            backButton.UseVisualStyleBackColor = true;
+            backButton.Click += backButton_Click;
             // 
             // explanationTextBox
             // 
@@ -72,32 +74,35 @@
             explanationTextBox.TabIndex = 9;
             explanationTextBox.Text = "";
             // 
-            // calculateButton1
+            // calculateButton
             // 
-            calculateButton1.FlatStyle = FlatStyle.Flat;
-            calculateButton1.Font = new Font("Segoe UI", 15F);
-            calculateButton1.ForeColor = Color.Black;
-            calculateButton1.Location = new Point(158, 472);
-            calculateButton1.Name = "calculateButton1";
-            calculateButton1.Size = new Size(250, 60);
-            calculateButton1.TabIndex = 8;
-            calculateButton1.Text = "Calculate";
-            calculateButton1.UseVisualStyleBackColor = true;
+            calculateButton.FlatStyle = FlatStyle.Flat;
+            calculateButton.Font = new Font("Segoe UI", 15F);
+            calculateButton.ForeColor = Color.Black;
+            calculateButton.Location = new Point(158, 500);
+            calculateButton.Name = "calculateButton";
+            calculateButton.Size = new Size(250, 60);
+            calculateButton.TabIndex = 8;
+            calculateButton.Text = "Calculate";
+            calculateButton.UseVisualStyleBackColor = true;
+            calculateButton.Click += calculateButton_Click;
             // 
             // clearButton
             // 
             clearButton.FlatStyle = FlatStyle.Flat;
             clearButton.Font = new Font("Segoe UI", 15F);
             clearButton.ForeColor = Color.Black;
-            clearButton.Location = new Point(158, 397);
+            clearButton.Location = new Point(158, 420);
             clearButton.Name = "clearButton";
             clearButton.Size = new Size(250, 60);
             clearButton.TabIndex = 7;
             clearButton.Text = "Clear";
             clearButton.UseVisualStyleBackColor = true;
+            clearButton.Click += clearButton_Click;
             // 
             // inputPanel
             // 
+            inputPanel.Controls.Add(TargetSideComboBox);
             inputPanel.Controls.Add(calculateMissingAngleButton);
             inputPanel.Controls.Add(AngleTextBox);
             inputPanel.Controls.Add(angleLabel);
@@ -111,7 +116,7 @@
             inputPanel.Controls.Add(oppositeLabel);
             inputPanel.Location = new Point(158, 90);
             inputPanel.Name = "inputPanel";
-            inputPanel.Size = new Size(250, 226);
+            inputPanel.Size = new Size(250, 250);
             inputPanel.TabIndex = 6;
             // 
             // calculateMissingAngleButton
@@ -173,6 +178,7 @@
             CheckValidCalculationButton.TabStop = true;
             CheckValidCalculationButton.Text = "Check Valid Calculation";
             CheckValidCalculationButton.UseVisualStyleBackColor = true;
+            CheckValidCalculationButton.CheckedChanged += CheckValidCalculationButton_CheckedChanged;
             // 
             // AdjacentTextBox
             // 
@@ -217,7 +223,7 @@
             // 
             panel1.Controls.Add(ResultTextBox);
             panel1.Controls.Add(ResultLabel);
-            panel1.Location = new Point(158, 330);
+            panel1.Location = new Point(158, 350);
             panel1.Name = "panel1";
             panel1.Size = new Size(250, 45);
             panel1.TabIndex = 10;
@@ -251,6 +257,15 @@
             trigTitleLabel.TabIndex = 11;
             trigTitleLabel.Text = "Welcome to the Right-Angled Triangle Trigonometry Calculator";
             // 
+            // TargetSideComboBox
+            // 
+            TargetSideComboBox.FormattingEnabled = true;
+            TargetSideComboBox.Items.AddRange(new object[] { "Hypotenuse", "Opposite", "Adjacent" });
+            TargetSideComboBox.Location = new Point(15, 213);
+            TargetSideComboBox.Name = "TargetSideComboBox";
+            TargetSideComboBox.Size = new Size(149, 23);
+            TargetSideComboBox.TabIndex = 13;
+            // 
             // TrigonometryCalculatorView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -258,10 +273,10 @@
             Controls.Add(trigTitleLabel);
             Controls.Add(panel1);
             Controls.Add(explanationTextBox);
-            Controls.Add(calculateButton1);
+            Controls.Add(calculateButton);
             Controls.Add(clearButton);
             Controls.Add(inputPanel);
-            Controls.Add(backButton1);
+            Controls.Add(backButton);
             Name = "TrigonometryCalculatorView";
             Size = new Size(1164, 657);
             inputPanel.ResumeLayout(false);
@@ -274,9 +289,9 @@
 
         #endregion
 
-        private Controls.Navigation.BackButton backButton1;
+        private Controls.Navigation.BackButton backButton;
         private RichTextBox explanationTextBox;
-        private Controls.Navigation.CalculateButton calculateButton1;
+        private Controls.Navigation.CalculateButton calculateButton;
         private Controls.Navigation.ClearButton clearButton;
         private Panel inputPanel;
         private RadioButton CalculateOtherSideButton;
@@ -294,5 +309,6 @@
         private TextBox ResultTextBox;
         private Label ResultLabel;
         private Controls.Display.TitleLabel trigTitleLabel;
+        private ComboBox TargetSideComboBox;
     }
 }

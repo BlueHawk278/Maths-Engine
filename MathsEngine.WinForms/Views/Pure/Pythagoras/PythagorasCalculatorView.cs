@@ -18,9 +18,7 @@ namespace MathsEngine.WinForms.Views.Pure.Pythagoras
         private void backButton1_Click(object sender, EventArgs e)
         {
             if (FindForm() is MainForm mainForm)
-            {
                 mainForm.LoadView(new PureHub());
-            }
         }
 
         private void clearButton_Click(object sender, EventArgs e)

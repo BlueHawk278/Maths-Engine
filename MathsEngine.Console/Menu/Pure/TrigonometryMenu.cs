@@ -1,5 +1,6 @@
-﻿using MathsEngine.Core.Modules.Pure.Trigonometry;
-using MathsEngine.Console.Utils;
+﻿using MathsEngine.Console.Utils;
+using MathsEngine.Core.Modules.Explanations.Pure.Trigonometry;
+using MathsEngine.Core.Modules.Pure.Trigonometry;
 using MathsEngine.Utils;
 
 namespace MathsEngine.Console.Menu.Pure;
@@ -12,8 +13,9 @@ public static class TrigonometryMenu
             System.Console.Clear();
             System.Console.WriteLine("1. Calculate a missing side");
             System.Console.WriteLine("2. Calculate a missing angle");
-            System.Console.WriteLine("3. Back");
-            int response = Parsing.GetMenuInput("Input: ", 3);
+            System.Console.WriteLine("3. Check valid triangle");
+            System.Console.WriteLine("4. Back");
+            int response = Parsing.GetMenuInput("Input: ", 4);
 
             switch (response)
             {
@@ -23,7 +25,10 @@ public static class TrigonometryMenu
                 case 2:
                     HandleMissingAngle();
                     break;
-                case 3: return;
+                case 3:
+                    HandleCheckValidTriangle();
+                    break;
+                case 4: return;
             }
         }
     }
@@ -136,6 +141,38 @@ public static class TrigonometryMenu
         catch (Exception ex)
         {
             ErrorDisplay.ShowError(ex.Message);
+        }
+        finally
+        {
+            System.Console.WriteLine("\nPress any key to return to the menu...");
+            System.Console.ReadKey(true);
+        }
+    }
+
+    private static void HandleCheckValidTriangle()
+    {
+        System.Console.Clear();
+        System.Console.WriteLine("Checking for a valid triangle\n");
+
+        double? hypotenuse = Parsing.GetNullableDoubleInput("Enter the value for the Hypotenuse: ");
+        double? opposite = Parsing.GetNullableDoubleInput("Enter the value for the Opposite: ");
+        double? adjacent = Parsing.GetNullableDoubleInput("Enter the value for the Adjacent: ");
+        double? angle = Parsing.GetNullableDoubleInput("Enter the value for the Angle: ");
+
+        try
+        {
+            var result = TrigonometryTutor.IsValidTriangleWithSteps(hypotenuse, opposite, adjacent, angle);
+
+            System.Console.WriteLine("\n--- Validation Analysis Steps ---");
+            System.Console.WriteLine(result.Steps);
+        }
+        catch (NullInputException)
+        {
+            ErrorDisplay.ShowError("Validation failed: You must provide a value for all inputs.");
+        }
+        catch (Exception ex)
+        {
+            ErrorDisplay.ShowError($"An unexpected error occurred during validation: {ex.Message}");
         }
         finally
         {

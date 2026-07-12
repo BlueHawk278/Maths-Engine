@@ -175,5 +175,87 @@ namespace MathsEngine.Core.Modules.Explanations.Pure.Trigonometry
 
             return "Inverse function";
         }
+
+        public static (bool IsValid, string Steps) IsValidTriangleWithSteps(double? hypotenuse, double? opposite, double? adjacent, double? angle)
+        {
+            if (hypotenuse is null || opposite is null || adjacent is null || angle is null)
+                throw new Utils.NullInputException();
+
+            var steps = new List<string>();
+
+            steps.Add("Step 1: Check geometric constraints (Values must be > 0, angle must be between 0° and 90°)");
+            steps.Add($"  Hypotenuse: {hypotenuse}, Opposite: {opposite}, Adjacent: {adjacent}, Angle: {angle}°");
+
+            if (hypotenuse <= 0 || opposite <= 0 || adjacent <= 0 || angle <= 0 || angle >= 90)
+            {
+                steps.Add("  Result: Invalid. One or more inputs break basic triangle constraints.");
+                return (false, string.Join(Environment.NewLine, steps));
+            }
+            steps.Add("  Result: Constraints passed.");
+            steps.Add("");
+
+            steps.Add("Step 2: Verify Hypotenuse rule (Must be the longest side)");
+            if (hypotenuse <= opposite || hypotenuse <= adjacent)
+            {
+                steps.Add($"  Result: Invalid. Hypotenuse must be longer than Opposite ({opposite}) and Adjacent ({adjacent}).");
+                return (false, string.Join(Environment.NewLine, steps));
+            }
+            steps.Add("  Result: Hypotenuse side property holds true.");
+            steps.Add("");
+
+            steps.Add("Step 3: Evaluate trigonometric ratios matching the reference angle (using 0.001 tolerance)");
+            double radians = angle.Value * (Math.PI / 180.0);
+            double tolerance = 0.001;
+
+            // Check SOH
+            double actualSin = opposite.Value / hypotenuse.Value;
+            double expectedSin = Math.Sin(radians);
+            steps.Add($"  SOH Test: {opposite.Value} / {hypotenuse.Value} = {actualSin:F4} (Expected Sin({angle}°): {expectedSin:F4})");
+            if (Math.Abs(actualSin - expectedSin) > tolerance)
+            {
+                steps.Add("  Result: Invalid. Opposite/Hypotenuse ratio deviates from the given angle.");
+                return (false, string.Join(Environment.NewLine, steps));
+            }
+
+            // Check CAH
+            double actualCos = adjacent.Value / hypotenuse.Value;
+            double expectedCos = Math.Cos(radians);
+            steps.Add($"  CAH Test: {adjacent.Value} / {hypotenuse.Value} = {actualCos:F4} (Expected Cos({angle}°): {expectedCos:F4})");
+            if (Math.Abs(actualCos - expectedCos) > tolerance)
+            {
+                steps.Add("  Result: Invalid. Adjacent/Hypotenuse ratio deviates from the given angle.");
+                return (false, string.Join(Environment.NewLine, steps));
+            }
+
+            // Check TOA
+            double actualTan = opposite.Value / adjacent.Value;
+            double expectedTan = Math.Tan(radians);
+            steps.Add($"  TOA Test: {opposite.Value} / {adjacent.Value} = {actualTan:F4} (Expected Tan({angle}°): {expectedTan:F4})");
+            if (Math.Abs(actualTan - expectedTan) > tolerance)
+            {
+                steps.Add("  Result: Invalid. Opposite/Adjacent ratio deviates from the given angle.");
+                return (false, string.Join(Environment.NewLine, steps));
+            }
+            steps.Add("  Result: All trigonometric ratios line up cleanly.");
+            steps.Add("");
+
+            steps.Add("Step 4: Verify Pythagorean Theorem consistency (a² + b² = c²)");
+            double hypotenuseSquared = hypotenuse.Value * hypotenuse.Value;
+            double otherSidesSquaredSum = (opposite.Value * opposite.Value) + (adjacent.Value * adjacent.Value);
+            steps.Add($"  c² = {hypotenuseSquared:F3} | a² + b² = {otherSidesSquaredSum:F3}");
+
+            if (Math.Abs(hypotenuseSquared - otherSidesSquaredSum) > tolerance)
+            {
+                steps.Add("  Result: Invalid. Trilateral lengths fail Pythagorean consistency.");
+                return (false, string.Join(Environment.NewLine, steps));
+            }
+            steps.Add("  Result: Pythagorean theorem matches.");
+            steps.Add("");
+
+            steps.Add("Final Answer:");
+            steps.Add("  This is a completely valid right-angled triangle.");
+
+            return (true, string.Join(Environment.NewLine, steps));
+        }
     }
 }
