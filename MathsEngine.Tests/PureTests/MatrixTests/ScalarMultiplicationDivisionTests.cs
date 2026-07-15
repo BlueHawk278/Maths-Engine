@@ -17,11 +17,11 @@ public class ScalarMultiplicationDivisionTests
     {
         MatrixBase matrix = new MatrixBase(new double[,] { { 1, 2, 3 }, { 2, 3, 4 } });
         int number = 3;
-
         double[,] expectedResult = new double[,] { { 3, 6, 9 }, { 6, 9, 12 } };
-        double[,] result = MatrixCalculator.ScalarMultiplication(matrix, number);
 
-        Assert.Equal(expectedResult, result);
+        MatrixBase result = MatrixCalculator.ScalarMultiplication(matrix, number);
+
+        Assert.True(result.Equals(expectedResult));
     }
 
     /*
@@ -51,9 +51,9 @@ public class ScalarMultiplicationDivisionTests
         int number = 2;
 
         double[,] expectedResult = new double[,] { { 1, 2, 3 }, { 2, 3, 4 } };
-        double[,] result = MatrixCalculator.ScalarDivision(matrix, number);
+        MatrixBase result = MatrixCalculator.ScalarDivision(matrix, number);
 
-        Assert.Equal(expectedResult, result);
+        Assert.True(result.Equals(expectedResult));
     }
 
     /*

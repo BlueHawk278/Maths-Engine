@@ -64,7 +64,7 @@ internal static class MatrixMenu
         try
         {
             var result = MatrixCalculator.AddMatrix(matrix1, matrix2);
-            DisplayMatrix(result);
+            DisplayMatrix(result.Matrix);
 
             System.Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
             System.Console.ReadKey();
@@ -95,7 +95,7 @@ internal static class MatrixMenu
         try
         {
             var result = MatrixCalculator.SubtractMatrix(matrix1, matrix2);
-            DisplayMatrix(result);
+            DisplayMatrix(result.Matrix);
 
             System.Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
             System.Console.ReadKey();
@@ -125,7 +125,7 @@ internal static class MatrixMenu
         try
         {
             var result = MatrixCalculator.ScalarMultiplication(matrix, number);
-            DisplayMatrix(result);
+            DisplayMatrix(result.Matrix);
 
             System.Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
             System.Console.ReadKey();
@@ -150,7 +150,7 @@ internal static class MatrixMenu
         try
         {
             var result = MatrixCalculator.ScalarDivision(matrix, number);
-            DisplayMatrix(result);
+            DisplayMatrix(result.Matrix);
 
             System.Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
             System.Console.ReadKey();
@@ -182,7 +182,7 @@ internal static class MatrixMenu
         try
         {
             var result = MatrixCalculator.MatrixMultiplication(matrix1, matrix2);
-            DisplayMatrix(result);
+            DisplayMatrix(result.Matrix);
 
             System.Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");
             System.Console.ReadKey();
@@ -202,7 +202,7 @@ internal static class MatrixMenu
 
         try
         {
-            var determinant = MatrixCalculator.CalculateDeterminant(matrix);
+            var determinant = matrix.CalculateDeterminant();
             System.Console.WriteLine($"Determinant: {determinant}");
 
             System.Console.WriteLine("\nCalculation complete. Press any key to return to the menu...");

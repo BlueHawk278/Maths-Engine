@@ -3,7 +3,7 @@ using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Pure.Matrices
 {
-    public class MatrixBase
+    public class MatrixBase : IEquatable<int[,]>
     {
         public int NumRows { get; }
         public int NumCols { get; }
@@ -39,7 +39,6 @@ namespace MathsEngine.Modules.Pure.Matrices
             if (size <= 0)
                 throw new ArgumentException();
 
-            // This constructor will now create an un-filled matrix.
             var identityMatrix = new MatrixBase(size, size);
 
             for (int i = 0; i < size; i++)
@@ -59,6 +58,60 @@ namespace MathsEngine.Modules.Pure.Matrices
             if (matrix.Matrix.GetLength(1) == 0)
                 return true;
             return false;
+        }
+
+        /// <summary>
+        /// Calculates the determinant for any given matrix. ***AD - BC***
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public double CalculateDeterminant()
+        {
+            if (Matrix == null)
+                throw new NullInputException();
+
+            if (NumCols != 2 || NumRows != 2)
+                throw new NotSquareMatrixException("Must be a 2x2 Square matrix");
+
+            double ad = Matrix[0, 0] * Matrix[1, 1];
+            double bc = Matrix[0, 1] * Matrix[1, 0];
+
+            return ad - bc;
+        }
+
+        // public MatrixBase CalculateInverseMatrix() {}
+
+        public bool Equals(int[,]? other)
+        {
+            if (other is null) return false;
+            if (NumRows != other.GetLength(0) || NumCols != other.GetLength(1)) return false;
+
+            for (int i = 0; i < NumRows; i++)
+            {
+                for (int j = 0; j < NumCols; j++)
+                {
+                    if (Matrix[i, j] != other[i, j]) return false;
+                }
+            }
+
+            return true;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is not MatrixBase) return false;
+            if (NumRows != ((MatrixBase)obj).NumRows || NumCols != ((MatrixBase)obj).NumCols) return false;
+
+            for (int i = 0; i < NumRows; i++)
+            {
+                for (int j = 0; j < NumCols; j++)
+                {
+                    if (Matrix[i, j]  != ((MatrixBase)obj).Matrix[j, i]) return false;
+                }
+            }
+
+            return true;
         }
     }
 }

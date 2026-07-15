@@ -31,16 +31,16 @@ public static class MatrixTutor
         steps.Add("  Formula: C[i,j] = A[i,j] + B[i,j]");
         steps.Add("");
 
-        double[,] result = MatrixCalculator.AddMatrix(matrix1, matrix2);
+        MatrixBase result = MatrixCalculator.AddMatrix(matrix1, matrix2);
 
         steps.Add("Step 3: Show the addition");
-        steps.Add(FormatMatrixOperation(matrix1.Matrix, matrix2.Matrix, result, "+"));
+        steps.Add(FormatMatrixOperation(matrix1.Matrix, matrix2.Matrix, result.Matrix, "+"));
         steps.Add("");
 
         steps.Add("Final Answer:");
-        steps.Add(FormatMatrix(result));
+        steps.Add(FormatMatrix(result.Matrix));
 
-        return new MatrixCalculationResult(result, steps);
+        return new MatrixCalculationResult(result.Matrix, steps);
     }
 
     public static MatrixCalculationResult SubtractMatrixWithSteps(MatrixBase matrix1, MatrixBase matrix2)
@@ -65,16 +65,16 @@ public static class MatrixTutor
         steps.Add("  Formula: C[i,j] = A[i,j] - B[i,j]");
         steps.Add("");
 
-        double[,] result = MatrixCalculator.SubtractMatrix(matrix1, matrix2);
+        MatrixBase result = MatrixCalculator.SubtractMatrix(matrix1, matrix2);
 
         steps.Add("Step 3: Show the subtraction");
-        steps.Add(FormatMatrixOperation(matrix1.Matrix, matrix2.Matrix, result, "-"));
+        steps.Add(FormatMatrixOperation(matrix1.Matrix, matrix2.Matrix, result.Matrix, "-"));
         steps.Add("");
 
         steps.Add("Final Answer:");
-        steps.Add(FormatMatrix(result));
+        steps.Add(FormatMatrix(result.Matrix));
 
-        return new MatrixCalculationResult(result, steps);
+        return new MatrixCalculationResult(result.Matrix, steps);
     }
 
     public static MatrixCalculationResult ScalarMultiplicationWithSteps(MatrixBase matrix, double scalar)
@@ -94,16 +94,16 @@ public static class MatrixTutor
         steps.Add(FormatMatrix(matrix.Matrix));
         steps.Add("");
 
-        double[,] result = MatrixCalculator.ScalarMultiplication(matrix, scalar);
+        MatrixBase result = MatrixCalculator.ScalarMultiplication(matrix, scalar);
 
         steps.Add("Step 4: After scalar multiplication");
-        steps.Add(FormatMatrix(result));
+        steps.Add(FormatMatrix(result.Matrix));
         steps.Add("");
 
         steps.Add("Final Answer:");
-        steps.Add(FormatMatrix(result));
+        steps.Add(FormatMatrix(result.Matrix));
 
-        return new MatrixCalculationResult(result, steps);
+        return new MatrixCalculationResult(result.Matrix, steps);
     }
 
     public static MatrixCalculationResult ScalarDivisionWithSteps(MatrixBase matrix, double scalar)
@@ -129,16 +129,16 @@ public static class MatrixTutor
         steps.Add(FormatMatrix(matrix.Matrix));
         steps.Add("");
 
-        double[,] result = MatrixCalculator.ScalarDivision(matrix, scalar);
+        MatrixBase result = MatrixCalculator.ScalarDivision(matrix, scalar);
 
         steps.Add("Step 4: After scalar division");
-        steps.Add(FormatMatrix(result));
+        steps.Add(FormatMatrix(result.Matrix));
         steps.Add("");
 
         steps.Add("Final Answer:");
-        steps.Add(FormatMatrix(result));
+        steps.Add(FormatMatrix(result.Matrix));
 
-        return new MatrixCalculationResult(result, steps);
+        return new MatrixCalculationResult(result.Matrix, steps);
     }
 
     public static MatrixCalculationResult MatrixMultiplicationWithSteps(MatrixBase matrix1, MatrixBase matrix2)
@@ -165,7 +165,7 @@ public static class MatrixTutor
         steps.Add("  (Sum of products of row i from Matrix 1 and column j from Matrix 2)");
         steps.Add("");
 
-        double[,] result = MatrixCalculator.MatrixMultiplication(matrix1, matrix2);
+        MatrixBase result = MatrixCalculator.MatrixMultiplication(matrix1, matrix2);
 
         steps.Add("Step 3: Calculate each element");
         for (int i = 0; i < matrix1.NumRows; i++)
@@ -181,16 +181,16 @@ public static class MatrixTutor
                     terms.Add($"({matrix1.Matrix[i, k]:F1}×{matrix2.Matrix[k, j]:F1})");
                 }
                 calculation.Append(string.Join(" + ", terms));
-                calculation.Append($" = {result[i, j]:F2}");
+                calculation.Append($" = {result.Matrix[i, j]:F2}");
                 steps.Add(calculation.ToString());
             }
         }
         steps.Add("");
 
         steps.Add("Final Answer:");
-        steps.Add(FormatMatrix(result));
+        steps.Add(FormatMatrix(result.Matrix));
 
-        return new MatrixCalculationResult(result, steps);
+        return new MatrixCalculationResult(result.Matrix, steps);
     }
 
     public static ScalarCalculationResult CalculateDeterminantWithSteps(MatrixBase matrix)
@@ -227,7 +227,7 @@ public static class MatrixTutor
         steps.Add($"  bc = {matrix.Matrix[0,1]:F2} × {matrix.Matrix[1,0]:F2} = {bc:F2}");
         steps.Add("");
 
-        double value = MatrixCalculator.CalculateDeterminant(matrix);
+        double value = matrix.CalculateDeterminant();
 
         steps.Add("Step 5: Calculate ad - bc");
         steps.Add($"  det(A) = {ad:F2} - {bc:F2} = {value:F2}");

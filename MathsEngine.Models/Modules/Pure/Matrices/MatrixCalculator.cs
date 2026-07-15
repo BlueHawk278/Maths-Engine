@@ -10,7 +10,7 @@ namespace MathsEngine.Modules.Pure.Matrices
         /// </summary>
         /// <param name="matrix1"> The matrix that will be subtracted from or added to. </param>
         /// <param name="matrix2"> The matrix that will be subtracted by or added to. </param>
-        public static double[,] AddMatrix(MatrixBase matrix1, MatrixBase matrix2)
+        public static MatrixBase AddMatrix(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (matrix1 == null || matrix2 == null)
                 throw new NullInputException();
@@ -29,9 +29,10 @@ namespace MathsEngine.Modules.Pure.Matrices
                     result[i, j] = matrix1.Matrix[i, j] + matrix2.Matrix[i, j];
                 }
             }
-            return result;
+            return new MatrixBase(result);
         }
-        public static double[,] SubtractMatrix(MatrixBase matrix1, MatrixBase matrix2)
+
+        public static MatrixBase SubtractMatrix(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (matrix1 == null || matrix2 == null)
                 throw new NullInputException();
@@ -50,7 +51,7 @@ namespace MathsEngine.Modules.Pure.Matrices
                     result[i, j] = matrix1.Matrix[i, j] - matrix2.Matrix[i, j];
                 }
             }
-            return result;
+            return new MatrixBase(result);
         }
 
 
@@ -61,7 +62,7 @@ namespace MathsEngine.Modules.Pure.Matrices
         /// <param name="number"> The number to multiply the matrix by. </param>
         /// <returns> The result of the matrix * number.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public static double[,] ScalarMultiplication(MatrixBase matrix, double number)
+        public static MatrixBase ScalarMultiplication(MatrixBase matrix, double number)
         {
             if (matrix == null || MatrixBase.CheckEmptyMatrix(matrix))
                 throw new NullInputException();
@@ -75,9 +76,10 @@ namespace MathsEngine.Modules.Pure.Matrices
                     result[i, j] = matrix.Matrix[i, j] * number;
                 }
             }
-            return result;
+            return new MatrixBase(result);
         }
-        public static double[,] ScalarDivision(MatrixBase matrix, double number)
+
+        public static MatrixBase ScalarDivision(MatrixBase matrix, double number)
         {
             if (matrix == null || MatrixBase.CheckEmptyMatrix(matrix))
                 throw new NullInputException();
@@ -94,7 +96,7 @@ namespace MathsEngine.Modules.Pure.Matrices
                     result[i, j] = matrix.Matrix[i, j] / number;
                 }
             }
-            return result;
+            return new MatrixBase(result);
         }
 
         /// <summary>
@@ -104,12 +106,12 @@ namespace MathsEngine.Modules.Pure.Matrices
         /// <param name="matrix2"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public static double[,] MatrixMultiplication(MatrixBase matrix1, MatrixBase matrix2)
+        public static MatrixBase MatrixMultiplication(MatrixBase matrix1, MatrixBase matrix2)
         {
             if (!IsValidForMultiplication(matrix1, matrix2))
                 throw new IncompatibleMatrixMultiplicationException();
 
-            double[,] resultMatrix = new double[matrix1.NumRows, matrix2.NumCols];
+            double[,] result = new double[matrix1.NumRows, matrix2.NumCols];
 
             for (int i = 0; i < matrix1.NumRows; i++)
             {
@@ -121,11 +123,11 @@ namespace MathsEngine.Modules.Pure.Matrices
                     {
                         sum += matrix1.Matrix[i, k] * matrix2.Matrix[k, j];
                     }
-                    resultMatrix[i, j] = sum;
+                    result[i, j] = sum;
                 }
             }
 
-            return resultMatrix;
+            return new MatrixBase(result);
         }
 
         /// <summary>
@@ -144,26 +146,6 @@ namespace MathsEngine.Modules.Pure.Matrices
             if (matrix1.NumCols == matrix2.NumRows)
                 return true;
             return false;
-        }
-
-        /// <summary>
-        /// Calculates the determinant for any given matrix. ***AD - BC***
-        /// </summary>
-        /// <param name="matrix"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
-        public static double CalculateDeterminant(MatrixBase matrix)
-        {
-            if (matrix == null)
-                throw new NullInputException();
-
-            if (matrix.NumCols != 2 || matrix.NumRows != 2)
-                throw new NotSquareMatrixException("Must be a 2x2 Square matrix");
-
-            double ad = matrix.Matrix[0, 0] * matrix.Matrix[1, 1];
-            double bc = matrix.Matrix[0, 1] * matrix.Matrix[1, 0];
-
-            return ad - bc;
         }
     }
 }

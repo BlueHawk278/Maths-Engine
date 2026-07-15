@@ -22,9 +22,9 @@ public class AddSubtractMatrixTests
         MatrixBase matrix2 = new MatrixBase(array2);
 
         double[,] expectedResult = { { 10, 10, 10 }, { 10, 10, 10 }, { 10, 10, 10 } };
-        double[,] result = MatrixCalculator.AddMatrix(matrix1, matrix2);
+        MatrixBase result = MatrixCalculator.AddMatrix(matrix1, matrix2);
 
-        Assert.Equal(expectedResult, result);
+        Assert.True(result.Equals(expectedResult));
     }
 
     /*
@@ -72,9 +72,9 @@ public class AddSubtractMatrixTests
         MatrixBase matrix2 = new MatrixBase(array2);
 
         double[,] expectedResult = { { 8, 6, 4 }, { 2, 0, -2 }, { -4, -6, -8 } };
-        double[,] result = MatrixCalculator.SubtractMatrix(matrix2, matrix1);
+        MatrixBase result = MatrixCalculator.SubtractMatrix(matrix2, matrix1);
 
-        Assert.Equal(expectedResult, result);
+        Assert.True(result.Equals(expectedResult));
     }
 
     /*
