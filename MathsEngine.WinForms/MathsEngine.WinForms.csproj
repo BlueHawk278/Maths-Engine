@@ -31,4 +31,8 @@
     <Folder Include="Views\Statistics\Dispersion\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ScottPlot.WinForms" Version="5.1.59" />
+  </ItemGroup>
+
 </Project>
