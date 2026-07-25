@@ -2,15 +2,8 @@
 {
     partial class PythagorasCalculatorView
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,13 +15,8 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            backButton1 = new MathsEngine.WinForms.Controls.Navigation.BackButton();
             inputPanel = new Panel();
             OtherSideButton = new RadioButton();
             CheckValidCalculationButton = new RadioButton();
@@ -45,22 +33,9 @@
             panel1 = new Panel();
             ResultTextBox = new TextBox();
             ResultLabel = new Label();
-            pythagorasTitleLabel = new MathsEngine.WinForms.Controls.Display.TitleLabel();
             inputPanel.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // backButton1
-            // 
-            backButton1.FlatStyle = FlatStyle.Flat;
-            backButton1.ForeColor = Color.Black;
-            backButton1.Location = new Point(10, 10);
-            backButton1.Name = "backButton1";
-            backButton1.Size = new Size(100, 50);
-            backButton1.TabIndex = 0;
-            backButton1.Text = "Back";
-            backButton1.UseVisualStyleBackColor = true;
-            backButton1.Click += backButton1_Click;
             // 
             // inputPanel
             // 
@@ -170,7 +145,6 @@
             clearButton.TabIndex = 3;
             clearButton.Text = "Clear";
             clearButton.UseVisualStyleBackColor = true;
-            clearButton.Click += clearButton_Click;
             // 
             // calculateButton
             // 
@@ -183,7 +157,6 @@
             calculateButton.TabIndex = 4;
             calculateButton.Text = "Calculate";
             calculateButton.UseVisualStyleBackColor = true;
-            calculateButton.Click += calculateButton_Click;
             // 
             // StepsTextBox
             // 
@@ -221,28 +194,15 @@
             ResultLabel.TabIndex = 0;
             ResultLabel.Text = "Result:";
             // 
-            // pythagorasTitleLabel
-            // 
-            pythagorasTitleLabel.AutoSize = true;
-            pythagorasTitleLabel.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            pythagorasTitleLabel.ForeColor = Color.Black;
-            pythagorasTitleLabel.Location = new Point(160, 30);
-            pythagorasTitleLabel.Name = "pythagorasTitleLabel";
-            pythagorasTitleLabel.Size = new Size(633, 37);
-            pythagorasTitleLabel.TabIndex = 7;
-            pythagorasTitleLabel.Text = "Welcome to the Pythagoras Theorem Calculator";
-            // 
             // PythagorasCalculatorView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pythagorasTitleLabel);
             Controls.Add(panel1);
             Controls.Add(StepsTextBox);
             Controls.Add(calculateButton);
             Controls.Add(clearButton);
             Controls.Add(inputPanel);
-            Controls.Add(backButton1);
             Name = "PythagorasCalculatorView";
             Size = new Size(1164, 657);
             inputPanel.ResumeLayout(false);
@@ -255,7 +215,6 @@
 
         #endregion
 
-        private Controls.Navigation.BackButton backButton1;
         private Panel inputPanel;
         private RadioButton OtherSideButton;
         private RadioButton CheckValidCalculationButton;
@@ -272,6 +231,5 @@
         private Panel panel1;
         private TextBox ResultTextBox;
         private Label ResultLabel;
-        private Controls.Display.TitleLabel pythagorasTitleLabel;
     }
 }

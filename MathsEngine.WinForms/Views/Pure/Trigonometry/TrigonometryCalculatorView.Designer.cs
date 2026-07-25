@@ -2,15 +2,8 @@
 {
     partial class TrigonometryCalculatorView
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,14 +15,9 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            backButton = new MathsEngine.WinForms.Controls.Navigation.BackButton();
-            explanationTextBox = new RichTextBox();
+            StepsTextBox = new RichTextBox();
             calculateButton = new MathsEngine.WinForms.Controls.Navigation.CalculateButton();
             clearButton = new MathsEngine.WinForms.Controls.Navigation.ClearButton();
             inputPanel = new Panel();
@@ -47,32 +35,19 @@
             panel1 = new Panel();
             ResultTextBox = new TextBox();
             ResultLabel = new Label();
-            trigTitleLabel = new MathsEngine.WinForms.Controls.Display.TitleLabel();
             TargetSideComboBox = new ComboBox();
             inputPanel.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // backButton
+            // StepsTextBox
             // 
-            backButton.FlatStyle = FlatStyle.Flat;
-            backButton.ForeColor = Color.Black;
-            backButton.Location = new Point(10, 10);
-            backButton.Name = "backButton";
-            backButton.Size = new Size(100, 50);
-            backButton.TabIndex = 1;
-            backButton.Text = "Back";
-            backButton.UseVisualStyleBackColor = true;
-            backButton.Click += backButton_Click;
-            // 
-            // explanationTextBox
-            // 
-            explanationTextBox.Location = new Point(459, 90);
-            explanationTextBox.Name = "explanationTextBox";
-            explanationTextBox.ReadOnly = true;
-            explanationTextBox.Size = new Size(300, 367);
-            explanationTextBox.TabIndex = 9;
-            explanationTextBox.Text = "";
+            StepsTextBox.Location = new Point(459, 90);
+            StepsTextBox.Name = "StepsTextBox";
+            StepsTextBox.ReadOnly = true;
+            StepsTextBox.Size = new Size(300, 367);
+            StepsTextBox.TabIndex = 9;
+            StepsTextBox.Text = "";
             // 
             // calculateButton
             // 
@@ -85,7 +60,6 @@
             calculateButton.TabIndex = 8;
             calculateButton.Text = "Calculate";
             calculateButton.UseVisualStyleBackColor = true;
-            calculateButton.Click += calculateButton_Click;
             // 
             // clearButton
             // 
@@ -98,7 +72,6 @@
             clearButton.TabIndex = 7;
             clearButton.Text = "Clear";
             clearButton.UseVisualStyleBackColor = true;
-            clearButton.Click += clearButton_Click;
             // 
             // inputPanel
             // 
@@ -246,17 +219,6 @@
             ResultLabel.TabIndex = 0;
             ResultLabel.Text = "Result:";
             // 
-            // trigTitleLabel
-            // 
-            trigTitleLabel.AutoSize = true;
-            trigTitleLabel.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            trigTitleLabel.ForeColor = Color.Black;
-            trigTitleLabel.Location = new Point(160, 30);
-            trigTitleLabel.Name = "trigTitleLabel";
-            trigTitleLabel.Size = new Size(833, 37);
-            trigTitleLabel.TabIndex = 11;
-            trigTitleLabel.Text = "Welcome to the Right-Angled Triangle Trigonometry Calculator";
-            // 
             // TargetSideComboBox
             // 
             TargetSideComboBox.FormattingEnabled = true;
@@ -270,13 +232,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(trigTitleLabel);
             Controls.Add(panel1);
-            Controls.Add(explanationTextBox);
+            Controls.Add(StepsTextBox);
             Controls.Add(calculateButton);
             Controls.Add(clearButton);
             Controls.Add(inputPanel);
-            Controls.Add(backButton);
             Name = "TrigonometryCalculatorView";
             Size = new Size(1164, 657);
             inputPanel.ResumeLayout(false);
@@ -289,8 +249,7 @@
 
         #endregion
 
-        private Controls.Navigation.BackButton backButton;
-        private RichTextBox explanationTextBox;
+        private RichTextBox StepsTextBox;
         private Controls.Navigation.CalculateButton calculateButton;
         private Controls.Navigation.ClearButton clearButton;
         private Panel inputPanel;
@@ -308,7 +267,6 @@
         private Panel panel1;
         private TextBox ResultTextBox;
         private Label ResultLabel;
-        private Controls.Display.TitleLabel trigTitleLabel;
         private ComboBox TargetSideComboBox;
     }
 }

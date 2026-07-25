@@ -2,36 +2,28 @@
 
 namespace MathsEngine.WinForms.Views.Pure.Pythagoras
 {
-    public partial class PythagorasCalculatorView : UserControl, IPythagorasView
+    public partial class PythagorasCalculatorView : CalculatorViewControl, IPythagorasView
     {
-        private PythagorasPresenter _presenter;
+        private readonly PythagorasPresenter _presenter;
 
         public PythagorasCalculatorView()
         {
             InitializeComponent();
+
+            TitleLabel = "Welcome to the Pythagoras Theorem Calculator";
 
             ThemeManager.ApplyTheme(this);
 
             _presenter = new PythagorasPresenter(this);
         }
 
-        private void backButton1_Click(object sender, EventArgs e)
+        protected override void btnBack_Click(object sender, EventArgs e)
         {
             if (FindForm() is MainForm mainForm)
+            {
                 mainForm.LoadView(new PureHub());
+            }
         }
-
-        private void clearButton_Click(object sender, EventArgs e)
-        {
-            ClearAttempted?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void calculateButton_Click(object sender, EventArgs e)
-        {
-            CalculateAttempted?.Invoke(this, EventArgs.Empty);
-        }
-
-        public void ShowError(string message) => MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         public double? SideA
         {
@@ -50,6 +42,7 @@ namespace MathsEngine.WinForms.Views.Pure.Pythagoras
             get => double.TryParse(TextBoxHypotenuse.Text, out double h) ? h : null;
             set => TextBoxHypotenuse.Text = Convert.ToString(value);
         }
+
         public bool FindHypotenuseChecked
         {
             get => HypotenuseButton.Checked;
@@ -64,8 +57,5 @@ namespace MathsEngine.WinForms.Views.Pure.Pythagoras
 
         public string Result { get => ResultTextBox.Text; set => ResultTextBox.Text = value; }
         public string Steps { get => StepsTextBox.Text; set => StepsTextBox.Text = value; }
-
-        public event EventHandler CalculateAttempted;
-        public event EventHandler ClearAttempted;
     }
 }

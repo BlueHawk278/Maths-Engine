@@ -5,15 +5,12 @@ using FontStyle = System.Drawing.FontStyle;
 
 namespace MathsEngine.WinForms.Views.Statistics.Bivariate_Analysis
 {
-    public partial class BivariateAnalysisCalculatorView : BaseViewControl, IBivariateAnalysisView
+    public partial class BivariateAnalysisCalculatorView : CalculatorViewControl, IBivariateAnalysisView
     {
         private readonly BivariateAnalysisPresenter _presenter;
 
         private double _initialXMin, _initialXMax, _initialYMin, _initialYMax;
         private double gradient, intercept;
-
-        public event EventHandler? CalculateAttempted;
-        public event EventHandler? ClearAttempted;
 
         public BivariateAnalysisCalculatorView()
         {
@@ -147,19 +144,6 @@ namespace MathsEngine.WinForms.Views.Statistics.Bivariate_Analysis
             GraphPlot.Refresh();
         }
 
-        public void ShowError(string message) => MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        // UI Events
-        private void calculateButton_Click(object sender, EventArgs e)
-        {
-            CalculateAttempted?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void clearButton_Click(object sender, EventArgs e)
-        {
-            ClearAttempted?.Invoke(this, EventArgs.Empty);
-        }
-
         private void ResetGraphButton_Click(object sender, EventArgs e)
         {
             GraphPlot.Plot.Axes.SetLimits(_initialXMin, _initialXMax, _initialYMin, _initialYMax);
@@ -170,7 +154,7 @@ namespace MathsEngine.WinForms.Views.Statistics.Bivariate_Analysis
         {
             SetupGrid((int)_numericUpDown1.Value);
 
-            clearButton_Click(this, EventArgs.Empty);
+            ClearDisplay();
         }
 
         // Helper Methods

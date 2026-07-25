@@ -3,17 +3,27 @@ using MathsEngine.Presentation.Presenters.Pure.Trigonometry;
 
 namespace MathsEngine.WinForms.Views.Pure.Trigonometry
 {
-    public partial class TrigonometryCalculatorView : UserControl, ITrigonometryView
+    public partial class TrigonometryCalculatorView : CalculatorViewControl, ITrigonometryView
     {
-        private TrigonometryPresenter _presenter;
+        private readonly TrigonometryPresenter _presenter;
 
         public TrigonometryCalculatorView()
         {
             InitializeComponent();
 
+            TitleLabel = "Welcome to the Right-Angled Triangle Trigonometry Calculator";
+
             ThemeManager.ApplyTheme(this);
 
             _presenter = new TrigonometryPresenter(this);
+        }
+
+        protected override void btnBack_Click(object sender, EventArgs e)
+        {
+            if (FindForm() is MainForm mainForm)
+            {
+                mainForm.LoadView(new PureHub());
+            }
         }
 
         private void CalculateOtherSideButton_CheckedChanged(object sender, EventArgs e)
@@ -44,24 +54,6 @@ namespace MathsEngine.WinForms.Views.Pure.Trigonometry
                 AngleTextBox.Enabled = true;
             }
         }
-
-        private void backButton_Click(object sender, EventArgs e)
-        {
-            if (FindForm() is MainForm mainForm)
-                mainForm.LoadView(new PureHub());
-        }
-
-        private void clearButton_Click(object sender, EventArgs e)
-        {
-            ClearAttempted.Invoke(this, EventArgs.Empty);
-        }
-
-        private void calculateButton_Click(object sender, EventArgs e)
-        {
-            CalculateAttempted.Invoke(this, EventArgs.Empty);
-        }
-
-        public void ShowError(string message) => MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         public double? Hypotenuse
         {
@@ -133,19 +125,7 @@ namespace MathsEngine.WinForms.Views.Pure.Trigonometry
             }
         }
 
-        public string Result
-        {
-            get => ResultTextBox.Text;
-            set => ResultTextBox.Text = value;
-        }
-
-        public string Steps
-        {
-            get => explanationTextBox.Text;
-            set => explanationTextBox.Text = value;
-        }
-
-        public event EventHandler CalculateAttempted;
-        public event EventHandler ClearAttempted;
+        public string Result { get => ResultTextBox.Text; set => ResultTextBox.Text = value; }
+        public string Steps { get => StepsTextBox.Text; set => StepsTextBox.Text = value; }
     }
 }

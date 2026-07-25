@@ -136,7 +136,6 @@ namespace MathsEngine.WinForms.Views.Statistics.Bivariate_Analysis
             _calculateButton.Size = new Size(250, 60);
             _calculateButton.TabIndex = 8;
             _calculateButton.Text = "Calculate";
-            _calculateButton.Click += calculateButton_Click;
             // 
             // _clearButton
             // 
@@ -147,7 +146,6 @@ namespace MathsEngine.WinForms.Views.Statistics.Bivariate_Analysis
             _clearButton.Size = new Size(250, 60);
             _clearButton.TabIndex = 9;
             _clearButton.Text = "Clear";
-            _clearButton.Click += clearButton_Click;
             // 
             // GraphPlot
             // 

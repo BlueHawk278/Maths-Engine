@@ -2,15 +2,8 @@
 {
     partial class PureHub
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             algebraButton = new Button();
@@ -33,8 +22,6 @@
             matricesButton = new Button();
             pythagorasButton = new Button();
             trigonometryButton = new Button();
-            backButton1 = new MathsEngine.WinForms.Controls.Navigation.BackButton();
-            pureTitleLabel = new MathsEngine.WinForms.Controls.Display.TitleLabel();
             SuspendLayout();
             // 
             // algebraButton
@@ -92,34 +79,10 @@
             trigonometryButton.UseVisualStyleBackColor = true;
             trigonometryButton.Click += trigonometryButton_Click;
             // 
-            // backButton1
-            // 
-            backButton1.FlatStyle = FlatStyle.Flat;
-            backButton1.ForeColor = Color.Black;
-            backButton1.Location = new Point(10, 10);
-            backButton1.Name = "backButton1";
-            backButton1.Size = new Size(100, 50);
-            backButton1.TabIndex = 6;
-            backButton1.Text = "Back";
-            backButton1.UseVisualStyleBackColor = true;
-            // 
-            // pureTitleLabel
-            // 
-            pureTitleLabel.AutoSize = true;
-            pureTitleLabel.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            pureTitleLabel.ForeColor = Color.Black;
-            pureTitleLabel.Location = new Point(160, 30);
-            pureTitleLabel.Name = "pureTitleLabel";
-            pureTitleLabel.Size = new Size(241, 25);
-            pureTitleLabel.TabIndex = 7;
-            pureTitleLabel.Text = "Welcome to the Pure Hub";
-            // 
             // PureHub
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pureTitleLabel);
-            Controls.Add(backButton1);
             Controls.Add(trigonometryButton);
             Controls.Add(pythagorasButton);
             Controls.Add(matricesButton);
@@ -138,7 +101,5 @@
         private Button matricesButton;
         private Button pythagorasButton;
         private Button trigonometryButton;
-        private Controls.Navigation.BackButton backButton1;
-        private Controls.Display.TitleLabel pureTitleLabel;
     }
 }

@@ -16,15 +16,11 @@ namespace MathsEngine.WinForms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // Default view when the app starts.
             LoadView(new Home());
         }
 
         public void LoadView(UserControl newUserControl)
         {
-            //mainContentPanel.SuspendLayout();
-
-            // Dispose the current control because it's not needed anymore.
             if (mainContentPanel.Controls.Count > 0)
             {
                 var old = mainContentPanel.Controls[0];
@@ -35,8 +31,6 @@ namespace MathsEngine.WinForms
             newUserControl.Dock = DockStyle.Fill;
             mainContentPanel.Controls.Add(newUserControl);
             newUserControl.BringToFront();
-
-            //mainContentPanel.ResumeLayout();
         }
         private void homeButton_Click(object sender, EventArgs e)
         {

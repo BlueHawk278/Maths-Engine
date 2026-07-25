@@ -4,22 +4,23 @@ using MathsEngine.WinForms.Views.Pure.Trigonometry;
 
 namespace MathsEngine.WinForms.Views.Pure;
 
-public partial class PureHub : UserControl
+public partial class PureHub : BaseViewControl
 {
     public PureHub()
     {
         InitializeComponent();
 
-        ThemeManager.ApplyTheme(this);
+        TitleLabel = "Welcome to the Pure Hub";
 
-        // Navigation: go back to the Home view.
-        backButton1.BackRequested += (_, _) =>
+        ThemeManager.ApplyTheme(this);
+    }
+
+    protected override void btnBack_Click(object sender, EventArgs e)
+    {
+        if (FindForm() is MainForm mainForm)
         {
-            if (FindForm() is MainForm mainForm)
-            {
-                mainForm.LoadView(new Home());
-            }
-        };
+            mainForm.LoadView(new Home());
+        }
     }
 
     private void pythagorasButton_Click(object sender, EventArgs e)
