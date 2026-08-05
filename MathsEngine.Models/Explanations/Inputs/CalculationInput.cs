@@ -3,11 +3,11 @@ namespace MathsEngine.Core.Explanations.Inputs;
 public class CalculationInput
 {
     public string Name { get; set; }
-    public double Value { get; set; }
+    public IMathematicalValue Value { get; set; }
     public string? Unit { get; set; }
     public string? Symbol { get; set; }
 
-    public CalculationInput(string name, double value, string unit, string symbol)
+    public CalculationInput(string name, IMathematicalValue value, string unit, string symbol)
     {
         Name = name;
         Value = value;
@@ -15,7 +15,7 @@ public class CalculationInput
         Symbol = symbol;
     }
     
-    public CalculationInput(string name, double value, string unit)
+    public CalculationInput(string name, IMathematicalValue value, string unit)
     {
         Name = name;
         Value = value;
