@@ -1,17 +1,21 @@
-﻿using MathsEngine.Core.Measurement.Units.Area;
+﻿using MathsEngine.Core.Explanations.Inputs;
+using MathsEngine.Core.Measurement.Units.Area;
 using MathsEngine.Core.Measurement.Units.Length;
 using AreaMeasurement = MathsEngine.Core.Measurement.Units.Area.Area;
 using LengthMeasurement = MathsEngine.Core.Measurement.Units.Length.Length;
 
 namespace MathsEngine.Core.Measurement.Units.Volume;
 
-public class Volume : IEquatable<Volume>, IComparable<Volume>
+public class Volume : IMathematicalValue, IMeasurement, IEquatable<Volume>, IComparable<Volume>
 {
     public double Value { get; }
     public VolumeUnit Unit { get; }
 
     public Volume(double value, VolumeUnit unit)
     {
+        if (value <= 0)
+            throw new ArgumentOutOfRangeException(nameof(value), "Volume value must be greater than zero.");
+        
         Value = value;
         Unit = unit;
     }

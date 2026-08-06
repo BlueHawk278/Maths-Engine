@@ -1,15 +1,19 @@
-﻿using MathsEngine.Core.Measurement.Units.Area;
+﻿using MathsEngine.Core.Explanations.Inputs;
+using MathsEngine.Core.Measurement.Units.Area;
 using AreaMeasurement = MathsEngine.Core.Measurement.Units.Area.Area;
 
 namespace MathsEngine.Core.Measurement.Units.Length;
 
-public class Length : IEquatable<Length>, IComparable<Length>
+public class Length : IMathematicalValue, IMeasurement, IEquatable<Length>, IComparable<Length>
 {
     public double Value { get; }
     public LengthUnit Unit { get; }
 
     public Length(double value, LengthUnit unit)
     {
+        if (value <= 0)
+            throw new ArgumentOutOfRangeException(nameof(value), "Length value must be greater than zero.");
+        
         Value = value;
         Unit = unit;
     }
