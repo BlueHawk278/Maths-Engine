@@ -1,4 +1,4 @@
-﻿using MathsEngine.Presentation.Presenters.Statistics.BivariateAnalysis;
+﻿using MathsEngine.Core.Presenters.Statistics.BivariateAnalysis;
 using ScottPlot;
 using Color = System.Drawing.Color;
 using FontStyle = System.Drawing.FontStyle;

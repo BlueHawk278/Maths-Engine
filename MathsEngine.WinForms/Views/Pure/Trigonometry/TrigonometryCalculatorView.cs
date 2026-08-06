@@ -1,5 +1,5 @@
 ﻿using MathsEngine.Core.Modules.Pure.Trigonometry;
-using MathsEngine.Presentation.Presenters.Pure.Trigonometry;
+using MathsEngine.Core.Presenters.Pure.Trigonometry;
 
 namespace MathsEngine.WinForms.Views.Pure.Trigonometry
 {

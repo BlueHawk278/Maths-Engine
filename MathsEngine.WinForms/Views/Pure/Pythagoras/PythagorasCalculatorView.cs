@@ -1,4 +1,4 @@
-﻿using MathsEngine.Presentation.Presenters.Pure.PythagorasTheorem;
+﻿using MathsEngine.Core.Presenters.Pure.PythagorasTheorem;
 
 namespace MathsEngine.WinForms.Views.Pure.Pythagoras
 {

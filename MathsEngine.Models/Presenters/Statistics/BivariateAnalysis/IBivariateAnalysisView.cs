@@ -1,4 +1,4 @@
-﻿namespace MathsEngine.Presentation.Presenters.Statistics.BivariateAnalysis;
+﻿namespace MathsEngine.Core.Presenters.Statistics.BivariateAnalysis;
 
 public interface IBivariateAnalysisView
 {

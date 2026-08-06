@@ -1,4 +1,4 @@
-﻿namespace MathsEngine.Presentation.Presenters.Pure.PythagorasTheorem;
+﻿namespace MathsEngine.Core.Presenters.Pure.PythagorasTheorem;
 
 public interface IPythagorasView
 {

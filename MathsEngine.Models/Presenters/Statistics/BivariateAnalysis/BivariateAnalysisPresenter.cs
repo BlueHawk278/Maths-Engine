@@ -2,7 +2,7 @@
 using MathsEngine.Modules.Explanations.Statistics;
 using MathsEngine.Utils;
 
-namespace MathsEngine.Presentation.Presenters.Statistics.BivariateAnalysis;
+namespace MathsEngine.Core.Presenters.Statistics.BivariateAnalysis;
 
 public class BivariateAnalysisPresenter
 {

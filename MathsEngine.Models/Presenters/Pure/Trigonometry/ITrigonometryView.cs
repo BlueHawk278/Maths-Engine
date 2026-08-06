@@ -1,6 +1,6 @@
 ﻿using MathsEngine.Core.Modules.Pure.Trigonometry;
 
-namespace MathsEngine.Presentation.Presenters.Pure.Trigonometry;
+namespace MathsEngine.Core.Presenters.Pure.Trigonometry;
 
 public interface ITrigonometryView
 {
