@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using MathsEngine.Core.Modules.Explanations;
+using MathsEngine.Core.Utils.Exceptions;
 using MathsEngine.Modules.Mechanics.Dynamics;
 
 namespace MathsEngine.Modules.Explanations.Mechanics
@@ -19,7 +20,7 @@ namespace MathsEngine.Modules.Explanations.Mechanics
                 (a is null ? 1 : 0);
 
             if (missingCount != 1)
-                throw new Utils.NullInputException("Must be ONE missing value to perform the calculation");
+                throw new NullInputException("Must be ONE missing value to perform the calculation");
 
             var steps = new List<string>();
 

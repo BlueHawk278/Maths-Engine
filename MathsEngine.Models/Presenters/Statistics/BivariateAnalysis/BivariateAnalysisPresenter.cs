@@ -1,6 +1,6 @@
 ﻿using System;
+using MathsEngine.Core.Utils.Exceptions;
 using MathsEngine.Modules.Explanations.Statistics;
-using MathsEngine.Utils;
 
 namespace MathsEngine.Core.Presenters.Statistics.BivariateAnalysis;
 

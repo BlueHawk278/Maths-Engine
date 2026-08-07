@@ -1,5 +1,5 @@
 ﻿using MathsEngine.Core.Modules.Pure.PythagorasTheorem;
-using MathsEngine.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 using Xunit;
 
 namespace MathsEngine.Tests.PureTests.PythagorasTests;
@@ -15,7 +15,7 @@ public class CheckValidCalculationTests
         double a,
         double b)
     {
-        bool result = PythagorasTheorem.CheckValidCalculation(hypotenuse, a, b);
+        bool result = PythagorasCalculator.CheckValidCalculation(hypotenuse, a, b);
 
         Assert.False(result);
     }
@@ -29,7 +29,7 @@ public class CheckValidCalculationTests
         double a,
         double b)
     {
-        bool result = PythagorasTheorem.CheckValidCalculation(hypotenuse, a, b);
+        bool result = PythagorasCalculator.CheckValidCalculation(hypotenuse, a, b);
 
         Assert.True(result);
     }
@@ -44,7 +44,7 @@ public class CheckValidCalculationTests
         double b)
     {
         Assert.Throws<HypotenuseNotLongestSideException>(() =>
-            PythagorasTheorem.CheckValidCalculation(hypotenuse, a, b));
+            PythagorasCalculator.CheckValidCalculation(hypotenuse, a, b));
     }
 
     [Theory]
@@ -57,6 +57,6 @@ public class CheckValidCalculationTests
         double b)
     {
         Assert.Throws<NegativeSideLengthException>(() =>
-            PythagorasTheorem.CheckValidCalculation(hypotenuse, a, b));
+            PythagorasCalculator.CheckValidCalculation(hypotenuse, a, b));
     }
 }

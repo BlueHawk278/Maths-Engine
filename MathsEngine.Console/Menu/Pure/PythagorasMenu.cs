@@ -1,6 +1,6 @@
 ﻿using MathsEngine.Core.Modules.Pure.PythagorasTheorem;
 using MathsEngine.Console.Utils;
-using MathsEngine.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Console.Menu.Pure;
 internal static class PythagorasMenu
@@ -45,7 +45,7 @@ internal static class PythagorasMenu
             double? sideA = Parsing.GetNullableDoubleInput("Enter side A: ");
             double? sideB = Parsing.GetNullableDoubleInput("Enter side B: ");
 
-            double hypotenuse = PythagorasTheorem.CalculateHypotenuse(sideA, sideB);
+            double hypotenuse = PythagorasCalculator.CalculateHypotenuse(sideA, sideB);
 
             System.Console.WriteLine("\nHypotenuse: " + hypotenuse);
 
@@ -79,7 +79,7 @@ internal static class PythagorasMenu
             double? knownSide = Parsing.GetNullableDoubleInput("Enter the known side: ");
 
             double unknownSide =
-                PythagorasTheorem.CalculateOtherSide(hypotenuse, knownSide);
+                PythagorasCalculator.CalculateOtherSide(hypotenuse, knownSide);
 
             System.Console.WriteLine("\nUnknown side: " + unknownSide);
 
@@ -114,7 +114,7 @@ internal static class PythagorasMenu
             double? secondSide = Parsing.GetNullableDoubleInput("Enter the second side: ");
 
             bool validResult =
-                PythagorasTheorem.CheckValidCalculation(hypotenuse, firstSide, secondSide);
+                PythagorasCalculator.CheckValidCalculation(hypotenuse, firstSide, secondSide);
 
             System.Console.WriteLine((validResult) ? "\nThis is a valid equation" : "\nThis is not a valid equation");
 

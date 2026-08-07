@@ -1,5 +1,5 @@
 ﻿using MathsEngine.Core.Modules.Pure.PythagorasTheorem;
-using MathsEngine.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 using Xunit;
 
 namespace MathsEngine.Tests.PureTests.PythagorasTests;
@@ -15,7 +15,7 @@ public class CalculateHypotenuseTests
         double b,
         double expected)
     {
-        double result = PythagorasTheorem.CalculateHypotenuse(a, b);
+        double result = PythagorasCalculator.CalculateHypotenuse(a, b);
 
         Assert.Equal(expected, result, precision: 6);
     }
@@ -29,6 +29,6 @@ public class CalculateHypotenuseTests
         double b)
     {
         Assert.Throws<NegativeSideLengthException>(() =>
-            PythagorasTheorem.CalculateHypotenuse(a, b));
+            PythagorasCalculator.CalculateHypotenuse(a, b));
     }
 }

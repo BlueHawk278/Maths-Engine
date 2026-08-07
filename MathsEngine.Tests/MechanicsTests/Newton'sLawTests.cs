@@ -1,6 +1,6 @@
 ﻿using System;
+using MathsEngine.Core.Utils.Exceptions;
 using MathsEngine.Modules.Mechanics.Dynamics;
-using MathsEngine.Utils;
 using Xunit;
 
 namespace MathsEngine.Tests.MechanicsTests

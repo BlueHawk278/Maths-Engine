@@ -1,5 +1,5 @@
+using MathsEngine.Core.Utils.Exceptions;
 using MathsEngine.Modules.Statistics.Dispersion;
-using MathsEngine.Utils;
 using Xunit;
 
 namespace MathsEngine.Tests.StatisticsTest.DispersionTests

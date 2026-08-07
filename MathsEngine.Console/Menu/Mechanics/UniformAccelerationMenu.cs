@@ -1,6 +1,6 @@
 ﻿using MathsEngine.Modules.Mechanics.UniformAcceleration;
 using MathsEngine.Console.Utils;
-using MathsEngine.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Console.Menu.Mechanics;
 public static class UniformAccelerationMenu

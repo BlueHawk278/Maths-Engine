@@ -1,5 +1,5 @@
 ﻿using MathsEngine.Core.Modules.Pure.PythagorasTheorem;
-using MathsEngine.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 using Xunit;
 
 namespace MathsEngine.Tests.PureTests.PythagorasTests;
@@ -15,7 +15,7 @@ public class CalculateOtherSideTests
         double knownSide)
     {
         Assert.Throws<NegativeSideLengthException>(() =>
-            PythagorasTheorem.CalculateOtherSide(hypotenuse, knownSide));
+            PythagorasCalculator.CalculateOtherSide(hypotenuse, knownSide));
     }
 
     [Theory]
@@ -27,6 +27,6 @@ public class CalculateOtherSideTests
         double knownSide)
     {
         Assert.Throws<HypotenuseNotLongestSideException>(() =>
-            PythagorasTheorem.CalculateOtherSide(hypotenuse, knownSide));
+            PythagorasCalculator.CalculateOtherSide(hypotenuse, knownSide));
     }
 }

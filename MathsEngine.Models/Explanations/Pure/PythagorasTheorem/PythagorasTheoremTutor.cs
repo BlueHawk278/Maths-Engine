@@ -14,7 +14,7 @@ namespace MathsEngine.Core.Modules.Explanations.Pure.PythagorasTheorem
         {
             // Validate inputs early to provide better error messages
             if (sideA is null || sideB is null)
-                throw new Utils.NullInputException();
+                throw new Utils.Exceptions.NullInputException();
 
             var steps = new List<string>();
 
@@ -46,7 +46,7 @@ namespace MathsEngine.Core.Modules.Explanations.Pure.PythagorasTheorem
 
             // Step 5: Take square root
             steps.Add("Step 5: Take the square root");
-            double value = MathsEngine.Core.Modules.Pure.PythagorasTheorem.PythagorasTheorem.CalculateHypotenuse(sideA, sideB);
+            double value = MathsEngine.Core.Modules.Pure.PythagorasTheorem.PythagorasCalculator.CalculateHypotenuse(sideA, sideB);
             steps.Add($"  c = √{sum:F2} = {value:F2}");
             steps.Add("");
 
@@ -61,7 +61,7 @@ namespace MathsEngine.Core.Modules.Explanations.Pure.PythagorasTheorem
         {
             // Validate inputs early to provide better error messages
             if (hypotenuse is null || knownSide is null)
-                throw new Utils.NullInputException();
+                throw new Utils.Exceptions.NullInputException();
 
             var steps = new List<string>();
 
@@ -94,7 +94,7 @@ namespace MathsEngine.Core.Modules.Explanations.Pure.PythagorasTheorem
 
             // Step 5: Take square root
             steps.Add("Step 5: Take the square root");
-            double value = MathsEngine.Core.Modules.Pure.PythagorasTheorem.PythagorasTheorem.CalculateOtherSide(hypotenuse, knownSide);
+            double value = MathsEngine.Core.Modules.Pure.PythagorasTheorem.PythagorasCalculator.CalculateOtherSide(hypotenuse, knownSide);
             steps.Add($"  b = √{difference:F2} = {value:F2}");
             steps.Add("");
 

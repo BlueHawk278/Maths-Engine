@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MathsEngine.Utils
+namespace MathsEngine.Core.Utils.Exceptions
 {
     ///// General
 
@@ -21,6 +21,8 @@ namespace MathsEngine.Utils
         public NullValuesException() : base("Too many null values") { }
         public NullValuesException(string message) : base(message) { }
     }
+
+
 
     ///// PURE
     
@@ -97,6 +99,8 @@ namespace MathsEngine.Utils
         public NotSquareMatrixException(string message) : base(message) { }
     }
 
+
+
     ///// Statistics
 
     // Bivariate Analysis
@@ -120,21 +124,33 @@ namespace MathsEngine.Utils
     /// <summary>
     /// Exception thrown when a calculation is attempted on an empty set of data.
     /// </summary>
-    public class EmptyDataSetException : Exception { }
+    public class EmptyDataSetException : Exception
+    {
+        public EmptyDataSetException() : base("Data set is empty") { }
+        public EmptyDataSetException(string message) : base(message) { }
+    }
 
     /// <summary>
     /// Exception thrown when a frequency is negative.
     /// </summary>
-    public class InvalidFrequencyException : Exception { }
+    public class InvalidFrequencyException : Exception
+    {
+        public InvalidFrequencyException() : base("Frequency must be a positive number") { }
+        public InvalidFrequencyException(string message) : base(message) { }
+    }
 
     /// <summary>
     /// Exception thrown when a class interval string is in an invalid format.
     /// </summary>
-    public class InvalidClassIntervalFormatException : Exception { }
+    public class InvalidClassIntervalFormatException : Exception
+    {
+        public InvalidClassIntervalFormatException() : base("Class interval string is in an invalid format") { }
+        public InvalidClassIntervalFormatException(string message) : base(message) { }
+    }
+
+
 
     ///// Mechanics
-
-    // Dynamics
 
     /// <summary>
     /// Exception thrown when the mass is inputted as 0.

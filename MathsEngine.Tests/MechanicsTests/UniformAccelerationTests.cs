@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 using MathsEngine.Modules.Mechanics.UniformAcceleration;
-using MathsEngine.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Tests.MechanicsTests.UniformAccelerationTests
 {

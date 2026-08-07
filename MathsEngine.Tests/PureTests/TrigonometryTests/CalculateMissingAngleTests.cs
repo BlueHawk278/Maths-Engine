@@ -1,6 +1,6 @@
 ﻿using MathsEngine.Core.Modules.Pure.Trigonometry;
 using Xunit;
-using MathsEngine.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Tests.PureTests.TrigonometryTests;
 
@@ -18,7 +18,7 @@ public class CalculateMissingAngleTests
     [InlineData(5.77, SideType.Opposite, 10, SideType.Adjacent, 30)]
     public void CalculateMissingAngle_WithValidInputs_ReturnsCorrectAngle(double side1Length, SideType side1Type, double side2Length, SideType side2Type, double expectedAngle)
     {
-        var result = Trigonometry.CalculateMissingAngle(side1Length, side1Type, side2Length, side2Type);
+        var result = TrigonometryCalculator.CalculateMissingAngle(side1Length, side1Type, side2Length, side2Type);
         Assert.Equal(expectedAngle, result, 0);
     }
 
@@ -38,7 +38,7 @@ public class CalculateMissingAngleTests
         SideType side2Type)
     {
         Assert.Throws<NegativeSideLengthException>(() =>
-            Trigonometry.CalculateMissingAngle(side1Length, side1Type, side2Length, side2Type));
+            TrigonometryCalculator.CalculateMissingAngle(side1Length, side1Type, side2Length, side2Type));
     }
 
     [Theory]
@@ -51,6 +51,6 @@ public class CalculateMissingAngleTests
         SideType side2Type)
     {
         Assert.Throws<HypotenuseNotLongestSideException>(() =>
-            Trigonometry.CalculateMissingAngle(side1Length, side1Type, side2Length, side2Type));
+            TrigonometryCalculator.CalculateMissingAngle(side1Length, side1Type, side2Length, side2Type));
     }
 }

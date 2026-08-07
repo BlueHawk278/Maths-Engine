@@ -19,7 +19,7 @@ namespace MathsEngine.Core.Modules.Explanations.Pure.Trigonometry
             // Validate inputs early to provide better error messages
             // The underlying calculation will also validate, but we access .Value before calling it
             if (knownSideLength is null || angle is null)
-                throw new Utils.NullInputException();
+                throw new Utils.Exceptions.NullInputException();
 
             var steps = new List<string>();
 
@@ -49,7 +49,7 @@ namespace MathsEngine.Core.Modules.Explanations.Pure.Trigonometry
 
             // Step 5: Calculate the result
             steps.Add("Step 5: Calculate the missing side");
-            double value = MathsEngine.Core.Modules.Pure.Trigonometry.Trigonometry.CalculateMissingSide(
+            double value = MathsEngine.Core.Modules.Pure.Trigonometry.TrigonometryCalculator.CalculateMissingSide(
                 knownSideLength, angle, knownSideType, sideToFind);
             steps.Add($"  {sideToFind} = {value:F2}");
             steps.Add("");
@@ -69,7 +69,7 @@ namespace MathsEngine.Core.Modules.Explanations.Pure.Trigonometry
         {
             // Validate inputs early to provide better error messages
             if (side1Length is null || side2Length is null)
-                throw new Utils.NullInputException();
+                throw new Utils.Exceptions.NullInputException();
 
             var steps = new List<string>();
 
@@ -93,7 +93,7 @@ namespace MathsEngine.Core.Modules.Explanations.Pure.Trigonometry
 
             // Step 4: Calculate
             steps.Add("Step 4: Compute the angle");
-            double angle = MathsEngine.Core.Modules.Pure.Trigonometry.Trigonometry.CalculateMissingAngle(
+            double angle = MathsEngine.Core.Modules.Pure.Trigonometry.TrigonometryCalculator.CalculateMissingAngle(
                 side1Length, side1Type, side2Length, side2Type);
             steps.Add($"  Angle = {angle:F2}°");
             steps.Add("");
@@ -179,7 +179,7 @@ namespace MathsEngine.Core.Modules.Explanations.Pure.Trigonometry
         public static (bool IsValid, string Steps) IsValidTriangleWithSteps(double? hypotenuse, double? opposite, double? adjacent, double? angle)
         {
             if (hypotenuse is null || opposite is null || adjacent is null || angle is null)
-                throw new Utils.NullInputException();
+                throw new Utils.Exceptions.NullInputException();
 
             var steps = new List<string>();
 

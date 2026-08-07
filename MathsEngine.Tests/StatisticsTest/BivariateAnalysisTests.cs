@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using MathsEngine.Core.Utils.Exceptions;
 using MathsEngine.Modules.Statistics.BivariateAnalysis;
-using MathsEngine.Utils;
 using Xunit;
 
 namespace MathsEngine.Tests.StatisticsTests

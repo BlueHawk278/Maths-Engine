@@ -1,5 +1,5 @@
-﻿using MathsEngine.Utils;
-using MathsEngine.Console.Utils;
+﻿using MathsEngine.Console.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 
 // Newton's 1st Law: A body will remain stationary or moving at a constant velocity unless acted upon by an external force.
 // Newton's 2nd Law: The resultant force is proportional to the acceleration - F = m*a

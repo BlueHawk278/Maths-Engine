@@ -1,9 +1,10 @@
 ﻿using System;
+using MathsEngine.Core.Utils.Exceptions;
 using MathsEngine.Utils;
 
 namespace MathsEngine.Core.Modules.Pure.Trigonometry
 {
-    public static class Trigonometry
+    public static class TrigonometryCalculator
     {
         public static double CalculateMissingSide(double? knownSideLength, double? angle, SideType knownSideType, SideType sideToFind)
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using MathsEngine.Core.Utils.Exceptions;
 using MathsEngine.Utils;
 
 namespace MathsEngine.Core.Modules.Pure.PythagorasTheorem
@@ -6,7 +7,7 @@ namespace MathsEngine.Core.Modules.Pure.PythagorasTheorem
     /// <summary>
     /// Provides static methods for Pythagoras theorem calculations
     /// </summary>
-    public static class PythagorasTheorem
+    public static class PythagorasCalculator
     {
         /// <summary>
         /// Calculates the length of the hypotenuse given side A and B

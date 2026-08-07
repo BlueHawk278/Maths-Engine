@@ -1,3 +1,4 @@
+using MathsEngine.Core.Utils.Exceptions;
 using MathsEngine.Utils;
 
 namespace MathsEngine.Modules.Statistics.Dispersion

@@ -1,6 +1,6 @@
 ﻿using MathsEngine.Modules.Pure.Matrices;
 using MathsEngine.Console.Utils;
-using MathsEngine.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Console.Menu.Pure;
 internal static class MatrixMenu

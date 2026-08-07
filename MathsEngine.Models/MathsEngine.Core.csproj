@@ -9,7 +9,6 @@
 	<ItemGroup>
 	  <Folder Include="Geometry\Enums\" />
 	  <Folder Include="Geometry\ThreeDimensional\" />
-	  <Folder Include="Utils\Exceptions\" />
 	</ItemGroup>
 
 </Project>

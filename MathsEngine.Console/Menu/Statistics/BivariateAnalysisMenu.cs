@@ -1,6 +1,6 @@
 ﻿using MathsEngine.Modules.Statistics.BivariateAnalysis;
 using MathsEngine.Console.Utils;
-using MathsEngine.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Console.Menu.Statistics;
 public static class BivariateAnalysisMenu

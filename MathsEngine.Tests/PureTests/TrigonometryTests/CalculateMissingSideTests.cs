@@ -1,6 +1,6 @@
 ﻿using MathsEngine.Core.Modules.Pure.Trigonometry;
 using Xunit;
-using MathsEngine.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Tests.PureTests.TrigonometryTests;
 
@@ -24,7 +24,7 @@ public class CalculateMissingSideTests
         SideType sideToFind,
         double expected)
     {
-        var result = Trigonometry.CalculateMissingSide(knownSideLength, angle, knownSideType, sideToFind);
+        var result = TrigonometryCalculator.CalculateMissingSide(knownSideLength, angle, knownSideType, sideToFind);
         Assert.Equal(expected, result, 2);
     }
 
@@ -42,7 +42,7 @@ public class CalculateMissingSideTests
         SideType sideToFind)
     {
         Assert.Throws<NegativeSideLengthException>(() =>
-            Trigonometry.CalculateMissingSide(knownSideLength, angle, knownSideType, sideToFind));
+            TrigonometryCalculator.CalculateMissingSide(knownSideLength, angle, knownSideType, sideToFind));
     }
 
     [Theory]
@@ -57,7 +57,7 @@ public class CalculateMissingSideTests
         SideType sideToFind)
     {
         Assert.Throws<AcuteAngleException>(() =>
-            Trigonometry.CalculateMissingSide(knownSideLength, angle, knownSideType, sideToFind));
+            TrigonometryCalculator.CalculateMissingSide(knownSideLength, angle, knownSideType, sideToFind));
     }
 
     [Theory]
@@ -71,6 +71,6 @@ public class CalculateMissingSideTests
         SideType sideToFind)
     {
         Assert.Throws<DuplicateSideException>(() =>
-            Trigonometry.CalculateMissingSide(knownSideLength, angle, knownSideType, sideToFind));
+            TrigonometryCalculator.CalculateMissingSide(knownSideLength, angle, knownSideType, sideToFind));
     }
 }

@@ -1,7 +1,7 @@
 ﻿using MathsEngine.Console.Utils;
 using MathsEngine.Core.Modules.Explanations.Pure.Trigonometry;
 using MathsEngine.Core.Modules.Pure.Trigonometry;
-using MathsEngine.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Console.Menu.Pure;
 public static class TrigonometryMenu
@@ -65,7 +65,7 @@ public static class TrigonometryMenu
 
         try
         {
-            double result = Trigonometry.CalculateMissingSide(knownSideLength, angle, sideKnown, sideToFindType);
+            double result = TrigonometryCalculator.CalculateMissingSide(knownSideLength, angle, sideKnown, sideToFindType);
 
             System.Console.WriteLine($"\nResult: {sideToFindType} = {result:F2}");
         }
@@ -118,7 +118,7 @@ public static class TrigonometryMenu
 
         try
         {
-            double result = Trigonometry.CalculateMissingAngle(side1Length, side1Type, side2Length, side2Type);
+            double result = TrigonometryCalculator.CalculateMissingAngle(side1Length, side1Type, side2Length, side2Type);
 
             System.Console.WriteLine($"\nResult: angle = {result:F2}°");
         }

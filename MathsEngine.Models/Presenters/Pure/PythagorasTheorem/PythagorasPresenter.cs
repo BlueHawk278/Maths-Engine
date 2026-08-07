@@ -1,5 +1,5 @@
 ﻿using MathsEngine.Core.Modules.Explanations.Pure.PythagorasTheorem;
-using MathsEngine.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Core.Presenters.Pure.PythagorasTheorem;
 

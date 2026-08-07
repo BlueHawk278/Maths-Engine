@@ -1,5 +1,4 @@
-﻿using System;
-using MathsEngine.Utils;
+﻿using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Modules.Pure.Matrices
 {

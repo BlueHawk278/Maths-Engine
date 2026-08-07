@@ -1,5 +1,6 @@
 using Xunit;
 using MathsEngine.Modules.Explanations.Mechanics;
+using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Tests.ExplanationsTests.MechanicsTests;
 
@@ -54,14 +55,14 @@ public class NewtonsLawsTutorTests
     [Fact]
     public void CalculateFmaWithSteps_WithAllValues_ThrowsException()
     {
-        Assert.Throws<Utils.NullInputException>(() =>
+        Assert.Throws<NullInputException>(() =>
             NewtonsLawsTutor.CalculateFmaWithSteps(50.0, 10.0, 5.0));
     }
 
     [Fact]
     public void CalculateFmaWithSteps_WithMultipleMissing_ThrowsException()
     {
-        Assert.Throws<Utils.NullInputException>(() =>
+        Assert.Throws<NullInputException>(() =>
             NewtonsLawsTutor.CalculateFmaWithSteps(null, null, 5.0));
     }
 }

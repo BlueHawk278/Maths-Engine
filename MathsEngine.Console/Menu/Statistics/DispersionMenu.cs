@@ -1,6 +1,6 @@
 ﻿using MathsEngine.Console.Utils;
+using MathsEngine.Core.Utils.Exceptions;
 using MathsEngine.Modules.Statistics.Dispersion;
-using MathsEngine.Utils;
 
 namespace MathsEngine.Console.Menu.Statistics;
 
