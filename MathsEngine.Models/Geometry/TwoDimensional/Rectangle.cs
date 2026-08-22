@@ -11,9 +11,9 @@ namespace MathsEngine.Core.Geometry.TwoDimensional;
 public class Rectangle : Shape2D
 {
     public override string Name => "Rectangle";
+    public override string DisplayName => "Rectangle";
     public override string Description => "A rectangle is a two-dimensional shape with four sides and four right angles. " +
                                           "It has opposite sides that are equal in length, and its area can be calculated by multiplying its length by its width.";
-    public override string DisplayName => "Rectangle";
     
     public Length Length { get; }
     public Length Width { get; }

@@ -9,5 +9,9 @@ public enum CalculationType
     Perimeter,
     SurfaceArea,
     Angle,
-    Unknown,
+    Velocity,
+    Acceleration,
+    Time,
+    Displacement,
+    Unknown
 }

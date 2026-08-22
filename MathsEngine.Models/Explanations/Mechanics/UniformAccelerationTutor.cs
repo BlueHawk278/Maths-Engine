@@ -1,12 +1,10 @@
-using System;
-using System.Collections.Generic;
 using MathsEngine.Core.Modules.Explanations;
 using MathsEngine.Modules.Mechanics.UniformAcceleration;
 
 namespace MathsEngine.Modules.Explanations.Mechanics
 {
     /// <summary>
-    /// Provides step-by-step explanations for Uniform Acceleration (SUVAT) calculations.
+    /// Provides step-by-step explanations for Uniform Acceleration (UVATS) calculations.
     /// </summary>
     public static class UniformAccelerationTutor
     {
