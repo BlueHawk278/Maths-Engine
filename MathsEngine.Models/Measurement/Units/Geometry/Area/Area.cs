@@ -1,10 +1,10 @@
 ﻿using MathsEngine.Core.Explanations.Inputs;
-using MathsEngine.Core.Measurement.Units.Length;
-using MathsEngine.Core.Measurement.Units.Volume;
-using LengthMeasurement = MathsEngine.Core.Measurement.Units.Length.Length;
-using VolumeMeasurement = MathsEngine.Core.Measurement.Units.Volume.Volume;
+using MathsEngine.Core.Measurement.Units.Geometry.Length;
+using MathsEngine.Core.Measurement.Units.Geometry.Volume;
+using LengthMeasurement = MathsEngine.Core.Measurement.Units.Geometry.Length.Length;
+using VolumeMeasurement = MathsEngine.Core.Measurement.Units.Geometry.Volume.Volume;
 
-namespace MathsEngine.Core.Measurement.Units.Area;
+namespace MathsEngine.Core.Measurement.Units.Geometry.Area;
 
 public class Area : IMathematicalValue, IMeasurement, IEquatable<Area>, IComparable<Area>
 {
@@ -24,7 +24,7 @@ public class Area : IMathematicalValue, IMeasurement, IEquatable<Area>, ICompara
 
     public Area ConvertTo(AreaUnit targetUnit)
     {
-        double newValue = UnitConverter.AreaConvert(Value, Unit, targetUnit);
+        double newValue = UnitConverter.Convert(Value, Unit, targetUnit);
         return new Area(newValue, targetUnit);
     }
 

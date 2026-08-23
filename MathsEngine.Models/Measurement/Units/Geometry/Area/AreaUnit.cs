@@ -1,6 +1,6 @@
-﻿namespace MathsEngine.Core.Measurement.Units.Area;
+﻿namespace MathsEngine.Core.Measurement.Units.Geometry.Area;
 
-public readonly struct AreaUnit
+public readonly struct AreaUnit : IUnit
 {
     public string Symbol { get; }
     public double ScaleFactor { get; }

@@ -1,41 +1,16 @@
-﻿using VolumeUnit = MathsEngine.Core.Measurement.Units.Volume.VolumeUnit;
-using VolumeMeasurement = MathsEngine.Core.Measurement.Units.Volume.Volume;
-using LengthUnit = MathsEngine.Core.Measurement.Units.Length.LengthUnit;
-using LengthMeasurement = MathsEngine.Core.Measurement.Units.Length.Length;
-using AreaUnit = MathsEngine.Core.Measurement.Units.Area.AreaUnit;
-using AreaMeasurement = MathsEngine.Core.Measurement.Units.Area.Area;
+﻿namespace MathsEngine.Core.Measurement.Units;
 
-namespace MathsEngine.Core.Measurement.Units;
-
-public class UnitConverter
+public static class UnitConverter
 {
-    public static double AreaConvert(double value, AreaUnit from, AreaUnit to)
+    public static double Convert<TUnit>(double value, TUnit fromUnit, TUnit toUnit) where TUnit : IUnit
     {
-        double baseValue = value * from.ScaleFactor;
-        return baseValue / to.ScaleFactor;
-    }
-    public static AreaMeasurement AreaConvert(AreaMeasurement area, AreaUnit to)
-    {
-        return area.ConvertTo(to);
-    }
+        if (fromUnit is null) throw new ArgumentNullException(nameof(fromUnit));
+        if (toUnit is null) throw new ArgumentNullException(nameof(toUnit));
 
-    public static double LengthConvert(double value, LengthUnit from, LengthUnit to)
-    {
-        double baseValue = value * from.ScaleFactor;
-        return baseValue / to.ScaleFactor;
-    }
-    public static LengthMeasurement LengthConvert(LengthMeasurement length, LengthUnit to)
-    {
-        return length.ConvertTo(to);
-    }
+        // Convert the value to a base unit (e.g., meters for length, seconds for time)
+        double baseValue = value * fromUnit.ScaleFactor;
 
-    public static double VolumeConvert(double value, VolumeUnit from, VolumeUnit to)
-    {
-        double baseValue = value * from.ScaleFactor;
-        return baseValue / to.ScaleFactor;
-    }
-    public static VolumeMeasurement VolumeConvert(VolumeMeasurement volume, VolumeUnit to)
-    {
-        return volume.ConvertTo(to);
+        // Convert the base unit value to the target unit
+        return baseValue / toUnit.ScaleFactor;
     }
 }

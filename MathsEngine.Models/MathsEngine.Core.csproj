@@ -9,8 +9,6 @@
 	<ItemGroup>
 	  <Folder Include="Geometry\Enums\" />
 	  <Folder Include="Geometry\ThreeDimensional\" />
-	  <Folder Include="Measurement\Units\Kinematics\Acceleration\" />
-	  <Folder Include="Measurement\Units\Kinematics\Displacement\" />
 	</ItemGroup>
 
 </Project>

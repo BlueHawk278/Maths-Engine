@@ -1,6 +1,6 @@
 using MathsEngine.Core.Explanations.Results;
-using MathsEngine.Core.Measurement.Units.Area;
-using MathsEngine.Core.Measurement.Units.Volume;
+using MathsEngine.Core.Measurement.Units.Geometry.Area;
+using MathsEngine.Core.Measurement.Units.Geometry.Volume;
 
 namespace MathsEngine.Core.Geometry.Abstractions;
 

@@ -1,8 +1,8 @@
 ﻿using MathsEngine.Core.Explanations.Inputs;
-using MathsEngine.Core.Measurement.Units.Area;
-using AreaMeasurement = MathsEngine.Core.Measurement.Units.Area.Area;
+using MathsEngine.Core.Measurement.Units.Geometry.Area;
+using AreaMeasurement = MathsEngine.Core.Measurement.Units.Geometry.Area.Area;
 
-namespace MathsEngine.Core.Measurement.Units.Length;
+namespace MathsEngine.Core.Measurement.Units.Geometry.Length;
 
 public class Length : IMathematicalValue, IMeasurement, IEquatable<Length>, IComparable<Length>
 {
@@ -22,7 +22,7 @@ public class Length : IMathematicalValue, IMeasurement, IEquatable<Length>, ICom
 
     public Length ConvertTo(LengthUnit targetUnit)
     {
-        double newValue = UnitConverter.LengthConvert(Value, Unit, targetUnit);
+        double newValue = UnitConverter.Convert(Value, Unit, targetUnit);
         return new Length(newValue, targetUnit);
     }
 

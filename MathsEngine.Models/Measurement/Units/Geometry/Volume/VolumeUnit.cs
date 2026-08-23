@@ -1,6 +1,6 @@
-﻿namespace MathsEngine.Core.Measurement.Units.Volume;
+﻿namespace MathsEngine.Core.Measurement.Units.Geometry.Volume;
 
-public readonly struct VolumeUnit
+public readonly struct VolumeUnit : IUnit
 {
     public string Symbol { get; }
     public double ScaleFactor { get; }

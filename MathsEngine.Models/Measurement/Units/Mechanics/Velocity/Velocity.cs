@@ -1,6 +1,6 @@
 ﻿using MathsEngine.Core.Explanations.Inputs;
 
-namespace MathsEngine.Core.Measurement.Units.Kinematics.Velocity;
+namespace MathsEngine.Core.Measurement.Units.Mechanics.Velocity;
 
 public class Velocity : IMathematicalValue, IMeasurement, IEquatable<Velocity>, IComparable<Velocity>
 {
@@ -14,14 +14,12 @@ public class Velocity : IMathematicalValue, IMeasurement, IEquatable<Velocity>, 
     }
 
     public double InMetersPerSecond => Value * Unit.ScaleFactor;
-
-    /*
+    
     public Velocity ConvertTo(VelocityUnit targetUnit)
     {
-        double newValue = UnitConverter.VelocityConvert(Value, Unit, targetUnit);
+        double newValue = UnitConverter.Convert(Value, Unit, targetUnit);
         return new Velocity(newValue, targetUnit);
     }
-    */
 
     public static Velocity operator +(Velocity left, Velocity right)
     {

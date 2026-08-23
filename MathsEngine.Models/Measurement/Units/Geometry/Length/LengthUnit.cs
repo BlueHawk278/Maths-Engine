@@ -1,6 +1,6 @@
-﻿namespace MathsEngine.Core.Measurement.Units.Length;
+﻿namespace MathsEngine.Core.Measurement.Units.Geometry.Length;
 
-public readonly struct LengthUnit
+public readonly struct LengthUnit : IUnit
 {
     public string Symbol { get; }
     public double ScaleFactor { get; }
