@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using MathsEngine.Core.Modules.Explanations;
+using MathsEngine.Core.Explanations.Models.Base;
 using MathsEngine.Core.Utils.Exceptions;
 using MathsEngine.Modules.Mechanics.Dynamics;
 
-namespace MathsEngine.Modules.Explanations.Mechanics
+namespace MathsEngine.Core.Explanations.Mechanics
 {
     /// <summary>
     /// Provides step-by-step explanations for Newton's Laws calculations.

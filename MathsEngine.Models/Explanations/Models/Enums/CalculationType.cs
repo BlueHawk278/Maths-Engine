@@ -1,4 +1,4 @@
-namespace MathsEngine.Core.Explanations.Enums;
+namespace MathsEngine.Core.Explanations.Models.Enums;
 
 public enum CalculationType
 {

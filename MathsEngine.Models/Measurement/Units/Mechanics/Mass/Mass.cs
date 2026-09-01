@@ -1,4 +1,4 @@
-﻿using MathsEngine.Core.Explanations.Inputs;
+﻿using MathsEngine.Core.Explanations.Models.Abstractions;
 
 namespace MathsEngine.Core.Measurement.Units.Mechanics.Mass;
 

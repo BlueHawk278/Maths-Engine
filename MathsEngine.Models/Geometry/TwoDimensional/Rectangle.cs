@@ -1,7 +1,7 @@
-using MathsEngine.Core.Explanations.Enums;
-using MathsEngine.Core.Explanations.Inputs;
-using MathsEngine.Core.Explanations.Results;
-using MathsEngine.Core.Explanations.Steps;
+using MathsEngine.Core.Explanations.Models.Abstractions;
+using MathsEngine.Core.Explanations.Models.Components;
+using MathsEngine.Core.Explanations.Models.Enums;
+using MathsEngine.Core.Explanations.Models.Results;
 using MathsEngine.Core.Geometry.Abstractions;
 using MathsEngine.Core.Measurement.Units.Geometry.Area;
 using MathsEngine.Core.Measurement.Units.Geometry.Length;
@@ -14,7 +14,7 @@ public class Rectangle : Shape2D
     public override string DisplayName => "Rectangle";
     public override string Description => "A rectangle is a two-dimensional shape with four sides and four right angles. " +
                                           "It has opposite sides that are equal in length, and its area can be calculated by multiplying its length by its width.";
-    
+
     public Length Length { get; }
     public Length Width { get; }
 
@@ -30,39 +30,50 @@ public class Rectangle : Shape2D
     public override CalculationResult<Area> CalculateArea()
     {
         Area area = new Area(Length.InMetres * Width.InMetres, AreaUnit.SquareMeter);
+
+        List<ICalculationItem> flow = new List<ICalculationItem>
+        {
+            new CalculationInput("Length", Length, Length.Unit.ToString(), "l"),
+            new CalculationInput("Width", Width, Width.Unit.ToString(), "w"),
+            new CalculationStep("Formula", formula: "Area = Length × Width"),
+            new CalculationStep("Unit Standardisation", note: $"Length = {Length.InMetres} m, Width = {Width.InMetres} m"),
+            new CalculationStep("Substitution", substitution: $"Area = {Length.InMetres} m × {Width.InMetres} m"),
+            new CalculationStep("Calculation", result: $"Area = {area.Value} {area.Unit}")
+        };
+
         return new CalculationResult<Area>(
             CalculationType.Area,
             area,
             area.Unit.ToString(),
-            new List<CalculationInput>
-            {
-                new CalculationInput("Length", Length, LengthUnit.Meter.ToString()),
-                new CalculationInput("Width", Width, LengthUnit.Meter.ToString())
-            }, 
-            new List<CalculationStep>());
+            flow,
+            $"The area of the rectangle is {area.Value} {area.Unit}."
+        );
     }
 
     public override CalculationResult<Length> CalculatePerimeter()
     {
-        Length perimeter = Length * 2 + Width * 2;
+        Length perimeter = (Length + Width) * 2;
+
+        List<ICalculationItem> flow = new List<ICalculationItem>
+        {
+            new CalculationInput("Length", Length, Length.Unit.ToString(), "l"),
+            new CalculationInput("Width", Width, Width.Unit.ToString(), "w"),
+            new CalculationStep("Formula", formula: "Perimeter = 2 × (Length + Width)"),
+            new CalculationStep("Substitution", substitution: $"Perimeter = 2 × ({Length.Value} {Length.Unit} + {Width.Value} {Width.Unit})"),
+            new CalculationStep("Calculation", result: $"Perimeter = {perimeter.Value} {perimeter.Unit}")
+        };
+
         return new CalculationResult<Length>(
             CalculationType.Perimeter,
             perimeter,
             perimeter.Unit.ToString(),
-            new List<CalculationInput>
-            {
-                new CalculationInput("Length", Length, Length.Unit.ToString()),
-                new CalculationInput("Width", Width, Width.Unit.ToString())
-            }, 
-            new List<CalculationStep>());
+            flow,
+            $"The perimeter of the rectangle is {perimeter.Value} {perimeter.Unit}."
+        );
     }
 
     public override bool Validate()
     {
-        if (Length == null || Width == null || Length.Value <= 0 || Width.Value <= 0)
-        {
-            return false;
-        }
-        return true;
+        return Length != null && Width != null && Length.Value > 0 && Width.Value > 0;
     }
 }

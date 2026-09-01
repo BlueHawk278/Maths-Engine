@@ -1,6 +1,6 @@
 ﻿using MathsEngine.Modules.Pure.CoordinateGeometry;
 
-namespace MathsEngine.Core.Modules.Explanations.Pure.CoordinateGeometry;
+namespace MathsEngine.Core.Explanations.Models.Base;
 
 public class CoordinateCalculationResult : BaseCalculationResult
 {

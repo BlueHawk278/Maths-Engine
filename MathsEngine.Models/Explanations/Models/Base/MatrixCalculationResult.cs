@@ -1,4 +1,4 @@
-﻿namespace MathsEngine.Core.Modules.Explanations.Pure.Matrices;
+﻿namespace MathsEngine.Core.Explanations.Models.Base;
 
 public class MatrixCalculationResult : BaseCalculationResult
 {

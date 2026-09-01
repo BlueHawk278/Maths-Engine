@@ -1,7 +1,7 @@
-using MathsEngine.Core.Modules.Explanations;
+using MathsEngine.Core.Explanations.Models.Base;
 using MathsEngine.Modules.Mechanics.UniformAcceleration;
 
-namespace MathsEngine.Modules.Explanations.Mechanics
+namespace MathsEngine.Core.Explanations.Mechanics
 {
     /// <summary>
     /// Provides step-by-step explanations for Uniform Acceleration (UVATS) calculations.

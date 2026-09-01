@@ -1,6 +1,5 @@
+using MathsEngine.Core.Explanations.Pure.PythagorasTheorem;
 using Xunit;
-using MathsEngine.Modules.Explanations;
-using MathsEngine.Core.Modules.Explanations.Pure.PythagorasTheorem;
 
 namespace MathsEngine.Tests.ExplanationsTests.PureTests;
 

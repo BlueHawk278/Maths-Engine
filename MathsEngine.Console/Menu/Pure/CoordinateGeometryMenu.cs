@@ -1,6 +1,6 @@
-﻿using MathsEngine.Core.Modules.Explanations;
-using MathsEngine.Console.Utils;
+﻿using MathsEngine.Console.Utils;
 using MathsEngine.Core.Modules.Explanations.Pure.CoordinateGeometry;
+using MathsEngine.Core.Explanations.Models.Base;
 
 namespace MathsEngine.Console.Menu.Pure;
 

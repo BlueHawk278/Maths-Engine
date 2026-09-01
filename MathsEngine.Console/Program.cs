@@ -1,4 +1,5 @@
-﻿using ConsoleMenu = global::MathsEngine.Console.Menu.Menu;
+﻿using MathsEngine.Core.Explanations.Models.Components;
+using ConsoleMenu = global::MathsEngine.Console.Menu.Menu;
 
 namespace MathsEngine.Console;
 

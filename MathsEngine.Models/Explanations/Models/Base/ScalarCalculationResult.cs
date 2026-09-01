@@ -1,4 +1,4 @@
-﻿namespace MathsEngine.Core.Modules.Explanations;
+﻿namespace MathsEngine.Core.Explanations.Models.Base;
 
 public class ScalarCalculationResult : BaseCalculationResult
 {

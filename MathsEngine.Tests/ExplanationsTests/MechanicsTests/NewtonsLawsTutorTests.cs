@@ -1,5 +1,5 @@
+using MathsEngine.Core.Explanations.Mechanics;
 using Xunit;
-using MathsEngine.Modules.Explanations.Mechanics;
 using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Tests.ExplanationsTests.MechanicsTests;

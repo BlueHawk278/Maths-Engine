@@ -1,5 +1,5 @@
 ﻿using MathsEngine.Console.Utils;
-using MathsEngine.Core.Modules.Explanations.Pure.Trigonometry;
+using MathsEngine.Core.Explanations.Pure.Trigonometry;
 using MathsEngine.Core.Modules.Pure.Trigonometry;
 using MathsEngine.Core.Utils.Exceptions;
 

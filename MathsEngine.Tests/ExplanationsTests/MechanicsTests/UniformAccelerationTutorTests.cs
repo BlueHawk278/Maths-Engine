@@ -1,6 +1,5 @@
+using MathsEngine.Core.Explanations.Mechanics;
 using Xunit;
-using MathsEngine.Modules.Explanations;
-using MathsEngine.Modules.Explanations.Mechanics;
 
 namespace MathsEngine.Tests.ExplanationsTests.MechanicsTests;
 

@@ -1,4 +1,4 @@
-using MathsEngine.Core.Explanations.Results;
+using MathsEngine.Core.Explanations.Models.Results;
 using MathsEngine.Core.Measurement.Units.Geometry.Area;
 using MathsEngine.Core.Measurement.Units.Geometry.Length;
 

@@ -1,4 +1,4 @@
-﻿using MathsEngine.Core.Modules.Explanations.Pure.PythagorasTheorem;
+﻿using MathsEngine.Core.Explanations.Pure.PythagorasTheorem;
 using MathsEngine.Core.Utils.Exceptions;
 
 namespace MathsEngine.Core.Presenters.Pure.PythagorasTheorem;

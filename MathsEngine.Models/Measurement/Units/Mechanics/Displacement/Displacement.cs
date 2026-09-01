@@ -1,4 +1,4 @@
-﻿using MathsEngine.Core.Explanations.Inputs;
+﻿using MathsEngine.Core.Explanations.Models.Abstractions;
 using MathsEngine.Core.Measurement.Units.Geometry.Length;
 
 namespace MathsEngine.Core.Measurement.Units.Mechanics.Displacement;

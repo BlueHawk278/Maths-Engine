@@ -1,4 +1,4 @@
-﻿using MathsEngine.Core.Explanations.Inputs;
+﻿using MathsEngine.Core.Explanations.Models.Abstractions;
 using MathsEngine.Core.Measurement.Units.Geometry.Length;
 using MathsEngine.Core.Measurement.Units.Geometry.Volume;
 using LengthMeasurement = MathsEngine.Core.Measurement.Units.Geometry.Length.Length;

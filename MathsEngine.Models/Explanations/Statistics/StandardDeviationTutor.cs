@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MathsEngine.Core.Modules.Explanations;
+using MathsEngine.Core.Explanations.Models.Base;
 using MathsEngine.Modules.Statistics.Dispersion;
 
-namespace MathsEngine.Modules.Explanations.Statistics
+namespace MathsEngine.Core.Explanations.Statistics
 {
     /// <summary>
     /// Provides step-by-step explanations for standard deviation and variance calculations.
