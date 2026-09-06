@@ -1,4 +1,4 @@
-﻿using MathsEngine.Modules.Statistics.BivariateAnalysis;
+﻿using MathsEngine.Core.Modules.Statistics.BivariateAnalysis;
 using MathsEngine.Console.Utils;
 using MathsEngine.Core.Utils.Exceptions;
 

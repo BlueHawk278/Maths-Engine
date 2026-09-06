@@ -46,22 +46,28 @@ namespace MathsEngine.Tests.StatisticsTest.DispersionTests
             double expectedVariance,
             double expectedStandardDeviation)
         {
-            // Arrange
             var calculator = new FrequencyTableCalculator(values, frequencies);
 
-            // Act
             calculator.Run();
 
-            // Assert
             Assert.Equal(expectedMean, calculator.Mean, 3);
             Assert.Equal(expectedVariance, calculator.Variance, 3);
             Assert.Equal(expectedStandardDeviation, calculator.StandardDeviation, 3);
         }
 
+        [Fact]
+        public void Run_ZeroTotalFrequency_ThrowsInvalidFrequencyException()
+        {
+            var values = new List<double> { 1, 2, 3 };
+            var frequencies = new List<int> { 0, 0, 0 };
+            var calculator = new FrequencyTableCalculator(values, frequencies);
+
+            Assert.Throws<InvalidFrequencyException>(() => calculator.Run());
+        }
+
         public static IEnumerable<object[]> DispersionTestData =>
             new List<object[]>
             {
-                // Test Case 1: From a textbook
                 new object[]
                 {
                     new List<double> { 0, 1, 2, 3, 4 },
@@ -70,7 +76,6 @@ namespace MathsEngine.Tests.StatisticsTest.DispersionTests
                     0.999,
                     0.999
                 },
-                // Test Case 2: Another textbook example
                 new object[]
                 {
                     new List<double> { 11, 12, 13, 14, 15, 16 },
@@ -78,6 +83,38 @@ namespace MathsEngine.Tests.StatisticsTest.DispersionTests
                     13.65,
                     1.528,
                     1.236
+                },
+                new object[]
+                {
+                    new List<double> { 10 },
+                    new List<int> { 5 },
+                    10.0,
+                    0.0,
+                    0.0
+                },
+                new object[]
+                {
+                    new List<double> { -5, -2, 0, 2, 5 },
+                    new List<int> { 2, 4, 10, 4, 2 },
+                    0.0,
+                    5.909,
+                    2.431
+                },
+                new object[]
+                {
+                    new List<double> { 1.5, 2.5, 3.5 },
+                    new List<int> { 10, 20, 10 },
+                    2.5,
+                    0.5,
+                    0.707
+                },
+                new object[]
+                {
+                    new List<double> { 10, 20, 30 },
+                    new List<int> { 100, 0, 100 },
+                    20.0,
+                    100.0,
+                    10.0
                 }
             };
     }

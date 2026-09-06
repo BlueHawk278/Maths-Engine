@@ -1,6 +1,5 @@
 using Xunit;
-using MathsEngine.Modules.Explanations;
-using MathsEngine.Modules.Explanations.Statistics;
+using MathsEngine.Core.Explanations.Statistics;
 
 namespace MathsEngine.Tests.ExplanationsTests.StatisticsTests;
 

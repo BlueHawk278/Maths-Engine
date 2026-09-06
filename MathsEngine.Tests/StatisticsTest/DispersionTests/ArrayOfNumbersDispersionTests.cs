@@ -42,7 +42,6 @@ namespace MathsEngine.Tests.StatisticsTest.DispersionTests
         public static IEnumerable<object[]> DispersionTestData =>
             new List<object[]>
             {
-                // Test Case 1: Simple integer values
                 new object[]
                 {
                     new List<double> { 1, 2, 3, 4, 5 },
@@ -50,7 +49,6 @@ namespace MathsEngine.Tests.StatisticsTest.DispersionTests
                     2.0,
                     Math.Sqrt(2.0)
                 },
-                // Test Case 2: Values with decimals
                 new object[]
                 {
                     new List<double> { 1.5, 2.5, 3.5, 4.5, 5.5 },
@@ -58,7 +56,6 @@ namespace MathsEngine.Tests.StatisticsTest.DispersionTests
                     2.0,
                     Math.Sqrt(2.0)
                 },
-                // Test Case 3: All same values
                 new object[]
                 {
                     new List<double> { 5, 5, 5, 5, 5 },
@@ -66,13 +63,40 @@ namespace MathsEngine.Tests.StatisticsTest.DispersionTests
                     0.0,
                     0.0
                 },
-                // Test Case 4: Textbook example
                 new object[]
                 {
                     new List<double> { 600, 470, 170, 430, 300 },
                     394.0,
                     21704.0,
                     147.323
+                },
+                new object[]
+                {
+                    new List<double> { 42 },
+                    42.0,
+                    0.0,
+                    0.0
+                },
+                new object[]
+                {
+                    new List<double> { -10, -5, 0, 5, 10 },
+                    0.0,
+                    50.0,
+                    7.071
+                },
+                new object[]
+                {
+                    new List<double> { -2.5, -1.5, -0.5 },
+                    -1.5,
+                    0.667,
+                    0.816
+                },
+                new object[]
+                {
+                    new List<double> { 1000000, 1000002, 1000004 },
+                    1000002.0,
+                    2.667,
+                    1.633
                 }
             };
     }

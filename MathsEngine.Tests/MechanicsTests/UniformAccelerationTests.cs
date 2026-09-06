@@ -1,62 +1,92 @@
 ﻿using System;
-using Xunit;
-using MathsEngine.Modules.Mechanics.UniformAcceleration;
 using MathsEngine.Core.Utils.Exceptions;
+using MathsEngine.Modules.Mechanics.UniformAcceleration;
+using Xunit;
 
 namespace MathsEngine.Tests.MechanicsTests.UniformAccelerationTests
 {
     public class UniformAccelerationCalculatorTests
     {
-        // Test for v = u + at
-        [Fact]
-        public void CalculateVUAT_FindV_ReturnsCorrectValue()
+        // --- v = u + at ---
+
+        [Theory]
+        [InlineData(null, 10, 2, 5, 20)]    // Find v
+        [InlineData(null, 30, -5, 4, 10)]   // Find v (deceleration)
+        [InlineData(20, null, 2, 5, 10)]    // Find u
+        [InlineData(20, 10, null, 5, 2)]    // Find a
+        [InlineData(20, 10, 2, null, 5)]    // Find t
+        public void CalculateVUAT_ValidInputs_ReturnsExpectedValue(
+            double? v, double? u, double? a, double? t, double expected)
         {
-            var result = UniformAccelerationCalculator.CalculateVUAT(null, 10, 2, 5); // v = 10 + 2*5
-            Assert.Equal(20, result);
+            var result = UniformAccelerationCalculator.CalculateVUAT(v, u, a, t);
+            Assert.Equal(expected, result.Value, 3);
         }
 
-        // Test for s = 0.5 * (u + v) * t
-        [Fact]
-        public void CalculateSUVT_FindS_ReturnsCorrectValue()
-        {
-            var result = UniformAccelerationCalculator.CalculateSUVT(null, 10, 20, 5); // s = 0.5 * (10+20) * 5
-            Assert.Equal(75, result);
-        }
+        // --- s = 0.5 * (u + v) * t ---
 
-        // Test for v^2 = u^2 + 2as
-        [Fact]
-        public void CalculateVUAS_FindV_ReturnsCorrectValue()
+        [Theory]
+        [InlineData(null, 10, 20, 5, 75)]   // Find s
+        [InlineData(75, null, 20, 5, 10)]   // Find u
+        [InlineData(75, 10, null, 5, 20)]   // Find v
+        [InlineData(75, 10, 20, null, 5)]   // Find t
+        public void CalculateSUVT_ValidInputs_ReturnsExpectedValue(
+            double? s, double? u, double? v, double? t, double expected)
         {
-            var result = UniformAccelerationCalculator.CalculateVUAS(null, 5, 2 , 10); // v^2 = 5^2 + 2*2*10 = 25 + 40 = 65
-            Assert.Equal(Math.Sqrt(65), result);
-        }
-
-        // Test for s = ut + 0.5at^2
-        [Fact]
-        public void CalculateSUTAT_FindS_ReturnsCorrectValue()
-        {
-            var result = UniformAccelerationCalculator.CalculateSUTAT(null, 10, 2, 5); // s = 10*5 + 0.5*2*5^2 = 50 + 25
-            Assert.Equal(75, result);
+            var result = UniformAccelerationCalculator.CalculateSUVT(s, u, v, t);
+            Assert.Equal(expected, result.Value, 3);
         }
 
         [Fact]
-        public void CalculateAverageVelocity_WithValidInputs_ReturnsCorrectAverage()
+        public void CalculateSUVT_ZeroSumVelocity_ThrowsDivideByZeroException()
         {
-            var result = UniformAccelerationCalculator.CalculateAverageVelocity(10, 20);
-            Assert.Equal(15, result);
+            Assert.Throws<DivideByZeroException>(() => UniformAccelerationCalculator.CalculateSUVT(10, 10, -10, null));
+        }
+
+        // --- v^2 = u^2 + 2as ---
+
+        [Theory]
+        [InlineData(null, 5, 2, 10, 8.062)] // Find v (sqrt(65))
+        [InlineData(20, null, 2, 75, 10)]   // Find u
+        [InlineData(20, 10, null, 75, 2)]   // Find a
+        [InlineData(20, 10, 2, null, 75)]   // Find s
+        public void CalculateVUAS_ValidInputs_ReturnsExpectedValue(
+            double? v, double? u, double? a, double? s, double expected)
+        {
+            var result = UniformAccelerationCalculator.CalculateVUAS(v, u, a, s);
+            Assert.Equal(expected, result.Value, 3);
+        }
+
+        // --- s = ut + 1/2at^2 ---
+
+        [Theory]
+        [InlineData(null, 10, 2, 5, 75)]    // Find s
+        [InlineData(null, 0, 10, 3, 44.1)]  // Find s (free fall from rest)
+        [InlineData(75, null, 2, 5, 10)]   // Find u
+        [InlineData(75, 10, null, 5, 2)]    // Find a
+        public void CalculateSUTAT_ValidInputs_ReturnsExpectedValue(
+            double? s, double? u, double? a, double? t, double expected)
+        {
+            var result = UniformAccelerationCalculator.CalculateSUTAT(s, u, a, t);
+            Assert.Equal(expected, result.Value, 3);
+        }
+
+        // --- Average Velocity ---
+
+        [Theory]
+        [InlineData(10, 20, 15)]
+        [InlineData(-10, -30, -20)]
+        [InlineData(0, 50, 25)]
+        public void CalculateAverageVelocity_ValidInputs_ReturnsCorrectAverage(
+            double u, double v, double expected)
+        {
+            var result = UniformAccelerationCalculator.CalculateAverageVelocity(u, v);
+            Assert.Equal(expected, result);
         }
 
         [Fact]
-        public void CalculateAverageVelocity_WithNullInput_ThrowsNullInputException()
+        public void CalculateAverageVelocity_NullInput_ThrowsNullInputException()
         {
             Assert.Throws<NullInputException>(() => UniformAccelerationCalculator.CalculateAverageVelocity(null, 20));
-        }
-
-        [Fact]
-        public void CalculateSUVT_WithDivisionByZero_ThrowsDivideByZeroException()
-        {
-            // This tests the case where t = 2s / (u + v) and u + v = 0
-            Assert.Throws<DivideByZeroException>(() => UniformAccelerationCalculator.CalculateSUVT(10, 10, -10, null));
         }
     }
 }

@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using MathsEngine.Modules.Statistics.BivariateAnalysis;
+using MathsEngine.Core.Modules.Statistics.BivariateAnalysis;
 
-namespace MathsEngine.Modules.Explanations.Statistics
+namespace MathsEngine.Core.Explanations.Statistics
 {
     /// <summary>
     /// Provides step-by-step explanations for Spearman's Rank correlation calculations.
@@ -98,7 +95,6 @@ namespace MathsEngine.Modules.Explanations.Statistics
             // Join the steps string array together right here
             string formattedSteps = string.Join(Environment.NewLine, steps);
 
-            // Return a clean ValueTuple directly to the presenter
             return (
                 calculator.Ranks1,
                 calculator.Ranks2,

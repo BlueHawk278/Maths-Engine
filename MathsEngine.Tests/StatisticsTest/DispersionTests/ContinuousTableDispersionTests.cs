@@ -55,22 +55,28 @@ namespace MathsEngine.Tests.StatisticsTest.DispersionTests
             double expectedVariance,
             double expectedStandardDeviation)
         {
-            // Arrange
             var calculator = new ContinuousTableCalculator(intervals, frequencies);
 
-            // Act
             calculator.Run();
 
-            // Assert
             Assert.Equal(expectedMean, calculator.Mean, 1); // Rounded to 1 decimal place for this test
             Assert.Equal(expectedVariance, calculator.Variance, 0); // Rounded to integer for this test
             Assert.Equal(expectedStandardDeviation, calculator.StandardDeviation, 1); // Rounded to 1 decimal place for this test
         }
 
+        [Fact]
+        public void Run_ZeroTotalFrequency_ThrowsInvalidFrequencyException()
+        {
+            var intervals = new List<string> { "10-20", "20-30" };
+            var frequencies = new List<int> { 0, 0 };
+            var calculator = new ContinuousTableCalculator(intervals, frequencies);
+
+            Assert.Throws<InvalidFrequencyException>(() => calculator.Run());
+        }
+
         public static IEnumerable<object[]> DispersionTestData =>
             new List<object[]>
             {
-                // Test Case 1: From a textbook
                 new object[]
                 {
                     new List<string> { "10-20", "20-30", "30-50", "50-90" },
@@ -78,6 +84,38 @@ namespace MathsEngine.Tests.StatisticsTest.DispersionTests
                     36.0,
                     304.0,
                     17.4
+                },
+                new object[]
+                {
+                    new List<string> { "0-10", "10-20", "20-30" },
+                    new List<int> { 5, 5, 5 },
+                    15.0,
+                    66.7,
+                    8.2
+                },
+                new object[]
+                {
+                    new List<string> { "0-100" },
+                    new List<int> { 10 },
+                    50.0,
+                    833.3,
+                    28.9
+                },
+                new object[]
+                {
+                    new List<string> { "0-5", "5-10", "10-15", "15-20" },
+                    new List<int> { 10, 0, 0, 10 },
+                    10.0,
+                    70.8,
+                    8.4
+                },
+                new object[]
+                {
+                    new List<string> { "10.5-20.5", "20.5-30.5" },
+                    new List<int> { 4, 6 },
+                    21.5,
+                    24.0,
+                    4.9
                 }
             };
     }

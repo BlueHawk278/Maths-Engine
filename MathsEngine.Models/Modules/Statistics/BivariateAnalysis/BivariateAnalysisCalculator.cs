@@ -1,7 +1,6 @@
 using MathsEngine.Core.Utils.Exceptions;
-using MathsEngine.Utils;
 
-namespace MathsEngine.Modules.Statistics.BivariateAnalysis
+namespace MathsEngine.Core.Modules.Statistics.BivariateAnalysis
 {
     /// <summary>
     /// Performs a complete bivariate analysis for a given set of paired scores.
@@ -59,7 +58,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         /// </summary>
         /// <param name="scores"> The list of values to be ranked</param>
         /// <returns></returns>
-        public List<double> CalculateRanksFor(List<double> scores)
+        private List<double> CalculateRanksFor(List<double> scores)
         {
             var sorted = new List<double>(scores);
             sorted.Sort();
@@ -97,7 +96,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         /// Calculates the difference between the ranks of the two data sets for each index
         /// </summary>
         /// <returns> The list of differences. </returns>
-        public List<double> CalculateDifference()
+        private List<double> CalculateDifference()
         {
             var differences = new List<double>();
             for (int i = 0; i < Ranks1.Count; i++)
@@ -107,7 +106,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             return differences;
         }
 
-        public List<double> CalculateDifferenceSquared()
+        private List<double> CalculateDifferenceSquared()
         {
             var diffsSquared = new List<double>();
             double sum = 0;
@@ -125,7 +124,7 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
         /// Calculates the decimal value for the correlation between the two data sets
         /// </summary>
         /// <returns></returns>
-        public double CalculateCorrelationValue()
+        private double CalculateCorrelationValue()
         {
             double topLine = SumDifferenceSquared * 6;
             double bottomLine = _scores1.Count * (Math.Pow(_scores1.Count, 2) - 1);
@@ -134,9 +133,8 @@ namespace MathsEngine.Modules.Statistics.BivariateAnalysis
             return 1 - (topLine / bottomLine);
         }
 
-        public Correlation GetCorrelation() => CorrelationExtensions.getCorrelation(CorrelationCoefficient);
+        private Correlation GetCorrelation() => CorrelationExtensions.getCorrelation(CorrelationCoefficient);
 
-
-        public string GetCorrelationString() => CorrelationExtensions.displayString(Correlation);
+        private string GetCorrelationString() => CorrelationExtensions.displayString(Correlation);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MathsEngine.Modules.Statistics.BivariateAnalysis
+﻿namespace MathsEngine.Core.Modules.Statistics.BivariateAnalysis
 {
     public enum Correlation
     {
