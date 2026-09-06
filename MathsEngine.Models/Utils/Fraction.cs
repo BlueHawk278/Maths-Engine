@@ -146,5 +146,10 @@ namespace MathsEngine.Utils
         {
             return Denominator == 1 ? $"{Numerator}" : $"{Numerator}/{Denominator}";
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
