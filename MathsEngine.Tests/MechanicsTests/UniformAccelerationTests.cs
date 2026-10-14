@@ -3,7 +3,7 @@ using MathsEngine.Core.Utils.Exceptions;
 using MathsEngine.Modules.Mechanics.UniformAcceleration;
 using Xunit;
 
-namespace MathsEngine.Tests.MechanicsTests.UniformAccelerationTests
+namespace MathsEngine.Tests.MechanicsTests
 {
     public class UniformAccelerationCalculatorTests
     {

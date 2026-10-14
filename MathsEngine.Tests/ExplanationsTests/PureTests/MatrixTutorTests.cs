@@ -1,12 +1,14 @@
 using MathsEngine.Core.Explanations.Pure.Matrices;
 using Xunit;
-using MathsEngine.Modules.Explanations;
 using MathsEngine.Modules.Pure.Matrices;
 
 namespace MathsEngine.Tests.ExplanationsTests.PureTests;
 
 public class MatrixTutorTests
 {
+    /// <summary>
+    /// Matrix Addition Tests
+    /// </summary>
     [Fact]
     public void AddMatrixWithSteps_ReturnsCorrectValue()
     {
@@ -36,6 +38,9 @@ public class MatrixTutorTests
         Assert.Contains("2×2", stepsText);
     }
 
+    /// <summary>
+    /// Matrix Substraction Tests
+    /// </summary>
     [Fact]
     public void SubtractMatrixWithSteps_ReturnsCorrectValue()
     {
@@ -64,6 +69,9 @@ public class MatrixTutorTests
         Assert.Contains("subtraction", stepsText);
     }
 
+    /// <summary>
+    /// Matrix Scalar Multiplication and Division Tests
+    /// </summary>
     [Fact]
     public void ScalarMultiplicationWithSteps_ReturnsCorrectValue()
     {
@@ -136,6 +144,9 @@ public class MatrixTutorTests
         Assert.Contains("C[", stepsText);
     }
 
+    /// <summary>
+    /// Matrix Determinant Tests
+    /// </summary>
     [Fact]
     public void CalculateDeterminantWithSteps_ReturnsCorrectValue()
     {
