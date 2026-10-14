@@ -10,6 +10,7 @@ public class Area : IMathematicalValue, IMeasurement, IEquatable<Area>, ICompara
 {
     public double Value { get; }
     public AreaUnit Unit { get; }
+    IUnit IMathematicalValue.Unit => Unit;
 
     public Area(double value, AreaUnit unit)
     {

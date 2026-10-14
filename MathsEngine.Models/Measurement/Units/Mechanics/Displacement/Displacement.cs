@@ -7,6 +7,7 @@ public class Displacement : IMathematicalValue, IMeasurement, IEquatable<Displac
 {
     public double Value { get; }
     public DisplacementUnit Unit { get; }
+    IUnit IMathematicalValue.Unit => Unit;
 
     public Displacement(double value, DisplacementUnit unit)
     {

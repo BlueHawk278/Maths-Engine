@@ -6,6 +6,7 @@ public class Force : IMathematicalValue, IMeasurement, IEquatable<Force>, ICompa
 {
     public double Value { get; }
     public ForceUnit Unit { get; }
+    IUnit IMathematicalValue.Unit => Unit;
 
     public Force(double value, ForceUnit unit)
     {

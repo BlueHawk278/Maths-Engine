@@ -10,6 +10,7 @@ public class Volume : IMathematicalValue, IMeasurement, IEquatable<Volume>, ICom
 {
     public double Value { get; }
     public VolumeUnit Unit { get; }
+    IUnit IMathematicalValue.Unit => Unit;
 
     public Volume(double value, VolumeUnit unit)
     {

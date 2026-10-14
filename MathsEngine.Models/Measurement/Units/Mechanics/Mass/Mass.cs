@@ -6,6 +6,7 @@ public class Mass : IMathematicalValue, IMeasurement, IEquatable<Mass>, ICompara
 {
     public double Value { get; }
     public MassUnit Unit { get; }
+    IUnit IMathematicalValue.Unit => Unit;
 
     public Mass(double value, MassUnit unit)
     {

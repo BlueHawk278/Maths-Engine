@@ -6,6 +6,7 @@ public class Velocity : IMathematicalValue, IMeasurement, IEquatable<Velocity>, 
 {
     public double Value { get; }
     public VelocityUnit Unit { get; }
+    IUnit IMathematicalValue.Unit => Unit;
 
     public Velocity(double value, VelocityUnit unit)
     {

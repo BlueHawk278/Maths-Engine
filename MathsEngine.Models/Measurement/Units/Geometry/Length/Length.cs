@@ -8,6 +8,7 @@ public class Length : IMathematicalValue, IMeasurement, IEquatable<Length>, ICom
 {
     public double Value { get; }
     public LengthUnit Unit { get; }
+    IUnit IMathematicalValue.Unit => Unit;
 
     public Length(double value, LengthUnit unit)
     {

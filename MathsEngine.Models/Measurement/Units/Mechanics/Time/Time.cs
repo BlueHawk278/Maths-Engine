@@ -6,6 +6,7 @@ public class Time : IMathematicalValue, IMeasurement, IEquatable<Time>, ICompara
 {
     public double Value { get; }
     public TimeUnit Unit { get; }
+    IUnit IMathematicalValue.Unit => Unit;
 
     public Time(double value, TimeUnit unit)
     {
